@@ -1,0 +1,75 @@
+// @group Site Header
+
+#site_header {
+    height: 175px;
+}
+
+#site_header a:active {
+    outline: 0;
+}
+
+#site_header a:hover {
+    text-decoration: none;
+}
+
+.logo {
+    display: block;
+    text-decoration: none;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 55px;
+    color: #d85312;
+
+    a {
+        color: inherit;
+    }
+}
+
+
+// @group Main Nav
+
+#site_menu {
+    margin-top: 17px;
+    width: 100%;
+    border-top: 1px dashed #c0c0c0;
+    border-bottom: 1px dashed #c0c0c0;
+}
+
+#site_menu ul {
+    height: 50px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#site_menu li {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    // width: 16.6%;
+    width: (100%/3);
+    float: left;
+    list-style: none;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+#site_menu li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+}
+
+#site_menu li a:hover {
+    color: #d85312;
+}
+
+// @end Main Nav
+
+
+
+
+// @end Site Header

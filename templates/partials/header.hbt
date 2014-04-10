@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{#if title}} {{ title }} | {{/if}} {{ sitename }}</title>
+
+        <meta name="description" content="{{ description }}">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    </head>
+    <body>
+
+        <header id="site_header">
+            <h1 class="logo"> <a href="/">{{ sitename }}</a></h1>  
+
+            <nav id="site_menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/posts/about/">About</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <div id="page_wrap" class="container">
+
+            <div id="main_content" class="row">
+            

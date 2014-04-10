@@ -1,0 +1,114 @@
+/* @group Typography */
+
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #0E0E0E;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sanchez', serif;
+}
+
+
+a {
+    color: #d85312;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.grey {
+    color: #868686;
+    text-shadow: 0 1px 1px #ffffff;
+}
+
+::-moz-selection {
+    background: #d85312;
+    color: #fbfbfb;
+    text-shadow: none;
+}
+
+::selection {
+    background: #d85312;
+    color: #fbfbfb;
+}
+
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+textarea {
+    resize: vertical;
+}
+
+blockquote {
+    background: #f7f7f7;
+    color: #999999;
+    width: 80%;
+    margin: 30px auto;
+    padding: 30px;
+    
+    font-size: 20px;
+    font-family: "Georgia";
+    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+     
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
+    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
+    -ms-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
+    -o-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
+    box-shadow: 0px 0px 8px rgba(0,0,0,.15);
+    
+    
+    position: relative;
+    
+    margin-bottom: 50px;
+}
+
+blockquote::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent; 
+    border-right: 15px solid transparent; 
+    border-top: 15px solid #f7f7f7;
+    top: 100%;
+    right: 90px;
+}
+
+blockquote::before {
+    content: "\201C";
+    color: #b83838;
+    font-size: 80px;
+    display: block;
+    position: absolute;
+    top: 16px;
+    left: 0px;
+}
+
+blockquote .author {
+     position: absolute;
+     font-size: 17px;
+     right: 50px;
+     bottom: -40px;  
+}
+
+
+/* @end Typography */

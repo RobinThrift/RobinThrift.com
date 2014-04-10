@@ -1,0 +1,95 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+
+ Title : WebBirckWorks V1
+ Author : Robin Thrift
+ URL : http://webbrickworks.com
+
+ Last Updated : 23.06.2013
+
+- - - - - - - - - - - - - - - - - - - - - */
+
+html, body {
+    font-family: 'Rambla', sans-serif;
+    color: #0E0E0E;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sanchez', serif;
+}
+
+
+a {
+    color: #d85312;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+::-moz-selection {
+    background: #d85312;
+    color: #fbfbfb;
+    text-shadow: none;
+}
+
+::selection {
+    background: #d85312;
+    color: #fbfbfb;
+}
+
+
+#header {
+    display: none;
+}
+
+textarea.textarea {
+    overflow: auto;
+    max-width: 80%;
+    min-width: 80%;
+    min-height: 100px;
+}
+
+input.text, input.search, textarea.textarea {
+    background: #fff;
+    border: 2px solid #999999;
+    border-radius: 1px 1px 1px 1px;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 10px;
+    width: 65%;
+}
+
+input.text, input.search {
+    margin-right: 35px;
+}
+
+
+.right {
+    position: relative;
+    right: -25px;
+}
+
+
+.buttons input {
+    display: inline-block;
+    border: 0;
+    width: auto;
+    height: 25px;
+    line-height: 26px;
+    padding: 5px 13px;
+    color: #fff;
+    background: #d85312;
+    cursor: pointer;
+    text-decoration: none;
+
+    margin: 8px 30px 8px 0px;
+
+    -webkit-box-shadow: 0px 0px 0px 4px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 0px 0px 4px rgba(0,0,0,.1);
+    -ms-box-shadow: 0px 0px 0px 4px rgba(0,0,0,.1);
+    -o-box-shadow: 0px 0px 0px 4px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 0px 4px rgba(0,0,0,.1);
+}

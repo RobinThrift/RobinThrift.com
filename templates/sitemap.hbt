@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  {{#each collections.posts}}
+  <url>
+    <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
+    {{#if this.lastmod}}
+      <lastmod>{{xmldate this.lastmod}}</lastmod>
+    {{else}}
+      <lastmod>{{xmldate this.date}}</lastmod>
+    {{/if}}
+    <changefreq>never</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {{/each}}
+  
+
+  {{#each collections.pages}}
+  <url>
+    <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
+    {{#if this.lastmod}}
+      <lastmod>{{xmldate this.lastmod}}</lastmod>
+    {{else}}
+      <lastmod>{{xmldate "2014-04-10"}}</lastmod>
+    {{/if}}
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {{/each}}
+
+</urlset>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>{{ sitename }}</title>
+            <description>{{ description }}</description>
+            <link>{{ baseUrl }}</link>
+
+            <atom:link href="{{ baseUrl }}/feed.xml" rel="self" type="application/rss+xml" />
+
+            {{#each collections.posts}}
+                <item>
+                    <title>{{ this.title }}</title>
+                    <description>{{ this.excerpt }}</description>
+                    <pubDate>{{xmldate this.date }}</pubDate>
+                    <link>{{ ../baseUrl }}/{{ this.path }}</link>
+                    <guid isPermaLink="true">{{ ../baseUrl }}/{{ this.path }}</guid>
+                </item>
+            {{/each}}
+    </channel>
+</rss>

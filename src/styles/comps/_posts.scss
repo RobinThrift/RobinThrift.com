@@ -1,0 +1,301 @@
+@import '_highlight';
+
+/* @group Post List  */
+
+.post {
+    background: #fff;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    -ms-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    -o-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    border-top: 4px solid #d85312;
+    position: relative;
+    overflow: hidden;
+}
+
+.post h2 {
+    padding: 0 20px;
+}
+
+.post article {
+    padding: 20px;
+}
+
+.post footer {
+    padding: 0 20px;
+}
+
+.post_type {
+    color: #fff;
+    background: #d85312;
+    position: absolute;
+    top: 8px;
+    right: 0px;
+    height: 25px;
+    line-height: 25px;
+    width: 40px;
+    text-indent: 5px;
+    font-family: 'icomoon';
+    -webkit-user-select: none;        
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+.post_feat_img {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.post_feat_img img {
+    width: 100%;
+}
+
+.post_feat_img::before {
+    content: " ";
+    position: absolute;
+    z-index: 0;
+    background: none;
+    width: 200%;
+    left: -50%;
+    height: 100%;
+    top: 0;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+
+    -webkit-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
+    -moz-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
+    -ms-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
+    -o-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
+    box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2)
+    
+    
+}
+
+
+/* @end Post List  */
+
+
+/* @group Posts/Pages */
+
+
+.the_post {
+    background: #fff;
+    padding-bottom: 15px;
+    padding-top: 20px;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    -ms-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    -o-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
+    border-top: 4px solid #d85312;
+    position: relative;
+}
+
+
+.the_post h2 {
+    padding: 0 20px;
+    font-size: 28px;
+    margin-bottom: 42px;
+}
+
+.the_post h3 {
+    font-size: 23px;
+    margin: 10px 0;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    position: relative;
+}
+
+.the_post h3::before {
+    content: ">";
+    position: absolute;
+    display: block;
+    color: #e65200;
+    left: -20px;
+    font-size: 28px;
+    top: -2px;
+}
+
+.the_post_title {
+    position: relative;
+}
+
+.the_post_title .button_wrapper {
+    margin: 20px 6%;
+}
+
+.the_post_date {
+    position: absolute;
+    color: #fff;
+    background: #d85312;
+    right: -10px;
+    top: 0;
+    height: 25px;
+    line-height: 25px;
+    padding: 6px;
+}
+
+.the_post_author {
+    position: absolute;
+    color: #fff;
+    background: #d85312;
+    right: -10px;
+    top: 31px;
+    height: 25px;
+    line-height: 25px;
+    padding: 6px;
+}
+
+
+/* for projects */
+
+.project_techs_libs_wrapper {
+    position: absolute;
+    color: #fff;
+    right: -10px;
+    top: 31px;
+    height: auto;
+    line-height: 25px;
+    overflow: hidden;
+    z-index: 55;
+}
+
+.project_techs_libs_wrapper a {
+    color: #fff;
+}
+
+.project_techs_libs_wrapper h5 {
+    left: -25px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.project_techs {
+    margin-bottom: 15px;
+}
+
+.project_techs, .project_libs {
+    background: #d85312;
+    padding: 0 10px 10px 30px;
+}
+
+
+section, .the_post > p, .the_post .entry-content {
+    padding: 1% 6%;
+    font-size: 17px;
+    line-height: 1.3em;
+}
+
+
+.the_post img {
+    background: #fff;
+    border: 5px solid #cccccc;
+    border: 5px solid rgba(0,0,0,.3);
+    position: relative;
+    margin-left: -80px;
+    
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    -o-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+.the_post img.fleft {
+    float: left;
+    margin: 20px 20px 25px -80px;
+}
+
+.the_post img.fright {
+    float: right;
+    margin: 20px -80px 25px 20px;
+}
+
+.side_note {
+    background: #f7f7f7;
+    color: #999999;
+    width: 30%;
+    margin: 0 auto;
+    padding: 10px;
+    
+    font-size: 19px;
+    font-family: "Georgia";
+     
+    border: 5px solid #cccccc;
+    border: 5px solid rgba(0,0,0,.3);
+     
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    -o-box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    
+    
+    margin: 20px -90px 20px 20px;
+    
+    position: relative;
+    
+    float: right;
+}
+
+code {
+    background: #f5f2f0;
+    padding: 3px 5px;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* @end Posts/Pages */
+
+
+
+/* @group Post Types */
+
+
+.type_posts::before {
+    content: "\e01f";
+}
+
+.type_lab::before {
+    content: "\e022";
+}
+
+.type_work::before {
+    content: "\e010";
+}
+
+/* @end Post Types */
+
+
+
+/* @group Social Stuff */
+
+.twitter-share-button {
+    margin: 5px 6%;
+    margin-right: 0;
+}
+
+.shareOnFB {
+    position: relative;
+    top: -10px;
+    margin: 0;
+}
+
+/* @end Social Stuff */

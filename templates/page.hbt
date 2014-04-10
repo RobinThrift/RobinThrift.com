@@ -1,0 +1,16 @@
+{{> header}}
+
+
+<article class="the_post threefifth littlelarger pid_{{ id }}">
+    <header class="the_post_title">
+        <h2>{{ title }}</h2>
+    </header>
+
+    {{{ contents }}}
+
+</article>
+
+
+{{> sidebar}}
+
+{{> footer}}
