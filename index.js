@@ -45,12 +45,6 @@ Handlebars.registerHelper('limit', function(collection, limit, start) {
 
 var debug = function() {
     return function(files, metalsmith, done){
-        // console.log(files);
-        for (var file in files) {
-            if (/index/.test(file)) {
-                console.log(file, files[file]);
-            }
-        }
         done();
     };
 };
@@ -99,14 +93,11 @@ Metalsmith(__dirname)
             return hljs.highlightAuto(code).value
         }
     }))
-    // .use(debug())
     .use(permalinks({
         pattern: 'posts/:title',
         relative: true
     }))
-    // .use(debug())
     .use(template('handlebars'))
-    // .use(debug())
     .use(sass({
         outputStyle: 'expanded'
     }))
@@ -114,6 +105,5 @@ Metalsmith(__dirname)
     .use(uglify({
         concat: 'js/init_grid.js'
     }))
-
     .destination('./build')
     .build();
