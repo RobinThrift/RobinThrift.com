@@ -94,7 +94,7 @@ Metalsmith(__dirname)
         }
     }))
     .use(permalinks({
-        pattern: 'posts/:title',
+        pattern: ':collection/:title',
         relative: true
     }))
     .use(template('handlebars'))
