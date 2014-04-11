@@ -8,7 +8,7 @@
         <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
 
