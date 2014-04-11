@@ -9,6 +9,8 @@ var Metalsmith  = require('metalsmith'),
     Handlebars  = require('handlebars'),
     moment      = require('moment'),
     paginate    = require('metalsmith-paginate'),
+    uglify      = require('metalsmith-uglify'),
+    include     = require('./metalsmith-include'),
     fs          = require('fs');
 
 
@@ -108,5 +110,10 @@ Metalsmith(__dirname)
     .use(sass({
         outputStyle: 'expanded'
     }))
+    .use(include())
+    .use(uglify({
+        concat: 'js/init_grid.js'
+    }))
+
     .destination('./build')
     .build();

@@ -19,13 +19,5 @@
             </div>
         </footer>
 
-        {% bundle %}
-            - /js/jquery.min.js
-            - /js/masonry.jquery.min.js
-            - /js/init_grid.js
-            - /js/search.js
-            - /js/responsiveslides.min.js
-            - /js/init_sliders.js
-        {% endbundle %}
     </body>
 </html>

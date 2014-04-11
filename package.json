@@ -21,6 +21,7 @@
     "metalsmith-collections": "^0.4.0",
     "metalsmith-excerpts": "^0.3.0",
     "moment": "^2.5.1",
-    "metalsmith-paginate": "^0.1.2"
+    "metalsmith-paginate": "^0.1.2",
+    "metalsmith-uglify": "0.0.6"
   }
 }
