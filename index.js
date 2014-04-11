@@ -96,7 +96,7 @@ Metalsmith(__dirname)
         smartLists: true,
         smartypants: true,
         highlight: function (code, lang, callback) {
-            return require('highlight.js').highlightAuto(code).value
+            return hljs.highlightAuto(code).value
         }
     }))
     // .use(debug())
