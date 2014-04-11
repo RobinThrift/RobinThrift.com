@@ -86,7 +86,7 @@ Metalsmith(__dirname)
     }))
     .use(paginate({
         perPage: 10,
-        path: 'blog/page'
+        path: ':collection/page'
     }))
     .use(excerpts())
     .use(markdown({
