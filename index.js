@@ -76,6 +76,11 @@ Metalsmith(__dirname)
         },
         pages: {
             pattern: 'content/pages/*.md'
+        },
+        podcasts: {
+            pattern: 'content/podcasts/*.md',
+            sortBy: 'date',
+            reverse: true
         }
     }))
     .use(paginate({

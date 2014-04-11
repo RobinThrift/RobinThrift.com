@@ -273,12 +273,8 @@ pre code {
     content: "\e600";
 }
 
-.type_lab::before {
-    content: "\e022";
-}
-
-.type_work::before {
-    content: "\e010";
+.type_podcasts::before {
+    content: "\e601";
 }
 
 /* @end Post Types */

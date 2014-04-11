@@ -24,6 +24,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/posts/about/">About</a></li>
                     <li><a href="/blog">Blog</a></li>
+                    <li><a href="/pages/podcasts">Podcast</a></li>
                 </ul>
             </nav>
         </header>
