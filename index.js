@@ -69,6 +69,11 @@ Metalsmith(__dirname)
     .metadata(require('./config.json'))
     .use(filter())
     .use(collections({
+        entries: {
+            pattern: 'content/po*/*.md',
+            sortBy: 'date',
+            reverse: true
+        },
         posts: {
             pattern: 'content/posts/*.md',
             sortBy: 'date',

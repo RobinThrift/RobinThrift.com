@@ -1,7 +1,7 @@
 {{> header }}
 
 <ul id="home_grid" class="hAtom posts block-two">
-    {{#each (limit collections.posts this.pagination.end this.pagination.start)}}
+    {{#each (limit collections.entries this.pagination.end this.pagination.start)}}
     <li class="hentry post">
         <div class="post_type type_{{ this.collection }}"></div>
         <h2 class="entry-title">
