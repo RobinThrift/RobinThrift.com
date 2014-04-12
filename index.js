@@ -22,6 +22,10 @@ Handlebars.registerHelper('xmldate', function(date) {
     return moment(date).format('ddd, DD MMM YYYY HH:mm:ss ZZ');
 });
 
+Handlebars.registerHelper('sitemapdate', function(date) {
+    return moment(date).format('YYYY-MM-DD');
+});
+
 Handlebars.registerHelper('date', function(date) {
     return moment(date).format('Do MMMM YYYY');
 });

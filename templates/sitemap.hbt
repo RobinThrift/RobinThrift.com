@@ -19,9 +19,9 @@
   <url>
     <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
     {{#if this.lastmod}}
-      <lastmod>{{xmldate this.lastmod}}</lastmod>
+      <lastmod>{{sitemapdate this.lastmod}}</lastmod>
     {{else}}
-      <lastmod>{{xmldate "2014-04-10"}}</lastmod>
+      <lastmod>{{sitemapdate "2014-04-13"}}</lastmod>
     {{/if}}
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
