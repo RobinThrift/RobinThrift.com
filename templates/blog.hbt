@@ -45,6 +45,6 @@
     {{/if}}
 </ul>
 
-<script src="{{ baseURL }}/js/init_grid.js"></script>
+<script src="{{ baseUrl }}/js/init_grid.js"></script>
 
 {{> footer }}

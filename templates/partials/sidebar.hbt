@@ -7,7 +7,7 @@
             </header>
 
             <div class="widget_body">
-                <form id="searchform" action="{{ baseURL }}/posts/search/">
+                <form id="searchform" action="{{ baseUrl }}/posts/search/">
                     <input type="search" name="q" id="searchterm" class="text_input" autocomplete="false" />
                     <input type="submit" class="button" value="Search" />
                 </form>

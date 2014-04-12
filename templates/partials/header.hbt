@@ -8,11 +8,11 @@
         <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="shortcut icon" href="{{ baseURL }}/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="{{ baseUrl }}/favicon.ico" type="image/x-icon" />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="{{ baseURL }}/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="{{ baseUrl }}/styles/main.css">
     </head>
     <body>
 
@@ -22,9 +22,9 @@
             <nav id="site_menu">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="{{ baseURL }}/pages/about/">About</a></li>
-                    <li><a href="{{ baseURL }}/pages/blog">Blog</a></li>
-                    <li><a href="{{ baseURL }}/pages/podcasts">Podcast</a></li>
+                    <li><a href="{{ baseUrl }}/pages/about/">About</a></li>
+                    <li><a href="{{ baseUrl }}/pages/blog">Blog</a></li>
+                    <li><a href="{{ baseUrl }}/pages/podcasts">Podcast</a></li>
                 </ul>
             </nav>
         </header>
