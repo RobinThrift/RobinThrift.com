@@ -3,7 +3,7 @@
 
   
   <url>
-    <loc>http://localhost:8000/posts/getting-to-know-metalsmith-js</loc>
+    <loc>http://www.robinthrift.com/posts/getting-to-know-metalsmith-js</loc>
     
       <lastmod>Thu, 10 Apr 2014 02:00:00 +0200</lastmod>
     
@@ -15,7 +15,7 @@
 
   
   <url>
-    <loc>http://localhost:8000/pages/about</loc>
+    <loc>http://www.robinthrift.com/pages/about</loc>
     
       <lastmod>Thu, 10 Apr 2014 00:00:00 +0200</lastmod>
     
@@ -24,7 +24,7 @@
   </url>
   
   <url>
-    <loc>http://localhost:8000/pages/blog</loc>
+    <loc>http://www.robinthrift.com/pages/blog</loc>
     
       <lastmod>Thu, 10 Apr 2014 00:00:00 +0200</lastmod>
     
@@ -33,7 +33,7 @@
   </url>
   
   <url>
-    <loc>http://localhost:8000/pages/podcasts</loc>
+    <loc>http://www.robinthrift.com/pages/podcasts</loc>
     
       <lastmod>Thu, 10 Apr 2014 00:00:00 +0200</lastmod>
     
@@ -42,7 +42,7 @@
   </url>
   
   <url>
-    <loc>http://localhost:8000/pages/search</loc>
+    <loc>http://www.robinthrift.com/pages/search</loc>
     
       <lastmod>Thu, 10 Apr 2014 00:00:00 +0200</lastmod>
     
