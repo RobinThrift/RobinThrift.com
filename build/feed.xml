@@ -9,21 +9,21 @@
 
             
                 <item>
-                    <title>Podcast Week 1</title>
-                    <description>&lt;p&gt;Whell... my podcasts and stuff are going to go here...&lt;/p&gt;
-</description>
-                    <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
-                    <link>http://www.robinthrift.com/podcasts/podcast-week-1</link>
-                    <guid isPermaLink="true">http://www.robinthrift.com/podcasts/podcast-week-1</guid>
-                </item>
-            
-                <item>
                     <title>Getting to Know Metalsmith</title>
                     <description>&lt;p&gt;There are dozens of static site generators out there. The most popular is probably &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, and for good reasons! It&amp;#39;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&amp;#39;s also the engine powering &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;, GitHub&amp;#39;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code &lt;a href=&quot;https://github.com/RobinThrift/RobinThrift.com&quot;&gt;here&lt;/a&gt;). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.&lt;/p&gt;
 </description>
                     <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
                     <link>http://www.robinthrift.com/posts/getting-to-know-metalsmith</link>
                     <guid isPermaLink="true">http://www.robinthrift.com/posts/getting-to-know-metalsmith</guid>
+                </item>
+            
+                <item>
+                    <title>Podcast Week 1</title>
+                    <description>&lt;p&gt;Whell... my podcasts and stuff are going to go here...&lt;/p&gt;
+</description>
+                    <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
+                    <link>http://www.robinthrift.com/podcasts/podcast-week-1</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/podcasts/podcast-week-1</guid>
                 </item>
             
     </channel>
