@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+        <channel>
+            <title>Robin Thrift</title>
+            <description>My personal blog</description>
+            <link>http://localhost:8000</link>
+
+            <atom:link href="http://localhost:8000/feed.xml" rel="self" type="application/rss+xml" />
+
+            
+                <item>
+                    <title>Podcast Week 1</title>
+                    <description>&lt;p&gt;Whell... my podcasts and stuff are going to go here...&lt;/p&gt;
+</description>
+                    <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
+                    <link>http://localhost:8000/podcasts/podcast-week-1</link>
+                    <guid isPermaLink="true">http://localhost:8000/podcasts/podcast-week-1</guid>
+                </item>
+            
+                <item>
+                    <title>Getting to Know Metalsmith.js</title>
+                    <description>&lt;p&gt;This post series will my experiences with Metalsmith.js.&lt;/p&gt;
+</description>
+                    <pubDate>Thu, 10 Apr 2014 02:00:00 +0200</pubDate>
+                    <link>http://localhost:8000/posts/getting-to-know-metalsmith-js</link>
+                    <guid isPermaLink="true">http://localhost:8000/posts/getting-to-know-metalsmith-js</guid>
+                </item>
+            
+    </channel>
+</rss>
