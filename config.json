@@ -1,6 +1,5 @@
 {
     "sitename": "Robin Thrift",
-    "LIVEbaseUrl": "http://robinthrift.com",
-    "baseUrl": "http://localhost:8000",
+    "baseUrl": "http://robinthrift.com",
     "description": "My personal blog"
 }
