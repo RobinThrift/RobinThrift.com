@@ -3,7 +3,7 @@
 /* @group Post List  */
 
 .post {
-    background: #fff;
+    background: $comp-bg;
     padding-bottom: 15px;
     padding-top: 20px;
     -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
@@ -29,8 +29,8 @@
 }
 
 .post_type {
-    color: #fff;
-    background: #d85312;
+    color: $comp-bg;
+    background: $accent;
     position: absolute;
     top: 8px;
     right: 0px;
@@ -66,20 +66,8 @@
     left: -50%;
     height: 100%;
     top: 0;
-
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
     border-radius: 50%;
-
-    -webkit-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
-    -moz-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
-    -ms-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
-    -o-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
     box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2)
-    
-    
 }
 
 
@@ -93,12 +81,8 @@
     background: #fff;
     padding-bottom: 15px;
     padding-top: 20px;
-    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    -ms-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    -o-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
     box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    border-top: 4px solid #d85312;
+    border-top: 4px solid $accent;
     position: relative;
 }
 
@@ -121,7 +105,7 @@
     content: ">";
     position: absolute;
     display: block;
-    color: #e65200;
+    color: $accent-lighter;
     left: -20px;
     font-size: 28px;
     top: -2px;
@@ -137,8 +121,8 @@
 
 .the_post_date {
     position: absolute;
-    color: #fff;
-    background: #d85312;
+    color: $comp-bg;
+    background: $accent;
     right: -10px;
     top: 0;
     height: 25px;
@@ -148,8 +132,8 @@
 
 .the_post_author {
     position: absolute;
-    color: #fff;
-    background: #d85312;
+    color: $comp-bg;
+    background: $accent;
     right: -10px;
     top: 31px;
     height: 25px;

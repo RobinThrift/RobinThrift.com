@@ -1,7 +1,7 @@
 /* @group Sidebar */
 
 #site_sidebar {
-    background: #fff;
+    background: $comp-bg;
     padding-bottom: 15px;
     padding-top: 20px;
     -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
@@ -9,7 +9,7 @@
     -ms-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
     -o-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
     box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    border-top: 4px solid #d85312;
+    border-top: 4px solid $accent;
     position: relative;
     overflow: hidden;
 }
@@ -43,25 +43,13 @@
     left: -50%;
     height: 90%;
     top: 10%;
-
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
     border-radius: 50%;
-
-    -webkit-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
-    -moz-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
-    -ms-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
-    -o-box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2);
     box-shadow: 0px 0px 10px 4px rgba(0,0,0,.2)
-    
-    
 }
 
 
 .widget header {
-    border-bottom: 1px solid #d85312;
+    border-bottom: 1px solid $accent;
     height: 25px;
     line-height: 25px; 
     text-align: right;
@@ -82,7 +70,7 @@
     line-height: 30px;
     margin: 0 auto;
     width: 100%;
-    background: #d85312;
+    background: $accent;
     position: relative;
 
     padding: 10px;
@@ -93,17 +81,13 @@
 }
 
 .widget_links_list li:nth-child(even) {
-    background: #be490f;
+    background: $accent-darker;
 }
 .widget_links_list li:nth-child(even)::after {
     position: absolute;
     display: block;
     content: "";
 
-    -webkit-box-shadow: inset 0px 0px 9px rgba(0,0,0,.2);
-    -moz-box-shadow: inset 0px 0px 9px rgba(0,0,0,.2);
-    -ms-box-shadow: inset 0px 0px 9px rgba(0,0,0,.2);
-    -o-box-shadow: inset 0px 0px 9px rgba(0,0,0,.2);
     box-shadow: inset 0px 0px 9px rgba(0,0,0,.2);
 
     top: 0;

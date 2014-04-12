@@ -9,7 +9,7 @@
     line-height: 26px;
     padding: 5px 13px;
     color: #fff;
-    background: #d85312;
+    background: $accent;
     cursor: pointer;
     text-decoration: none;
 
@@ -29,7 +29,7 @@ input[type="submit"].button {
 
 .button:hover {
     text-decoration: none;
-    background: #be490f;
+    background: $accent-darker;
 }
 
 .button .icon {

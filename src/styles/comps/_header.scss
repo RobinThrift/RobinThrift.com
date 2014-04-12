@@ -19,7 +19,7 @@
     line-height: 100px;
     text-align: center;
     font-size: 55px;
-    color: #d85312;
+    color: $accent;
 
     a {
         color: inherit;
@@ -32,8 +32,8 @@
 #site_menu {
     margin-top: 17px;
     width: 100%;
-    border-top: 1px dashed #c0c0c0;
-    border-bottom: 1px dashed #c0c0c0;
+    border-top: 1px dashed $divider;
+    border-bottom: 1px dashed $divider;
 }
 
 #site_menu ul {
@@ -64,7 +64,7 @@
 }
 
 #site_menu li a:hover {
-    color: #d85312;
+    color: $accent;
 }
 
 // @end Main Nav
