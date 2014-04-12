@@ -4,10 +4,6 @@
     background: $comp-bg;
     padding-bottom: 15px;
     padding-top: 20px;
-    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    -ms-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
-    -o-box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
     box-shadow: 0px 0px 3px 1px rgba(0,0,0,.1);
     border-top: 4px solid $accent;
     position: relative;
@@ -124,7 +120,7 @@
 /* @group Search */
 
 .search_box form {
-    background: #d85312;
+    background: $accent;
     display: block;
     height: 45px;
     position: relative;
@@ -142,14 +138,8 @@
     top: 1px;
     margin-top: 0;
     background: #fff;
-    color: #d85312;
-
-    -webkit-box-shadow: 0px 0px 0px 4px rgba(200,200,200,.5);
-    -moz-box-shadow: 0px 0px 0px 4px rgba(200,200,200,.5);
-    -ms-box-shadow: 0px 0px 0px 4px rgba(200,200,200,.5);
-    -o-box-shadow: 0px 0px 0px 4px rgba(200,200,200,.5);
+    color: $accent;
     box-shadow: 0px 0px 0px 4px rgba(200,200,200,.5)
-    
 }
 
 .search_box input.button[type="submit"] {

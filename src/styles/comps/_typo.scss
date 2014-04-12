@@ -26,13 +26,13 @@ a:hover {
 }
 
 ::-moz-selection {
-    background: #d85312;
+    background: $accent;
     color: #fbfbfb;
     text-shadow: none;
 }
 
 ::selection {
-    background: #d85312;
+    background: $accent;
     color: #fbfbfb;
 }
 

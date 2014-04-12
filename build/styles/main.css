@@ -1092,10 +1092,6 @@ html, body {
   background: #fff;
   padding-bottom: 15px;
   padding-top: 20px;
-  -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
   border-top: 4px solid #d85312;
   position: relative;
@@ -1245,10 +1241,6 @@ section, .the_post > p, .the_post .entry-content {
   border: 5px solid rgba(0, 0, 0, 0.3);
   position: relative;
   margin-left: -80px;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); }
 
 .the_post img.fleft {
@@ -1269,10 +1261,6 @@ section, .the_post > p, .the_post .entry-content {
   font-family: "Georgia";
   border: 5px solid #cccccc;
   border: 5px solid rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   margin: 20px -90px 20px 20px;
   position: relative;
@@ -1337,10 +1325,6 @@ label {
   background: #fff;
   padding-bottom: 15px;
   padding-top: 20px;
-  -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
   border-top: 4px solid #d85312;
   position: relative;
@@ -1451,10 +1435,6 @@ label {
   margin-top: 0;
   background: #fff;
   color: #d85312;
-  -webkit-box-shadow: 0px 0px 0px 4px rgba(200, 200, 200, 0.5);
-  -moz-box-shadow: 0px 0px 0px 4px rgba(200, 200, 200, 0.5);
-  -ms-box-shadow: 0px 0px 0px 4px rgba(200, 200, 200, 0.5);
-  -o-box-shadow: 0px 0px 0px 4px rgba(200, 200, 200, 0.5);
   box-shadow: 0px 0px 0px 4px rgba(200, 200, 200, 0.5); }
 
 .search_box input.button[type="submit"], .search_box input[type="submit"].pagination__link, .search_box input[type="submit"].pagination__link--older, .search_box input[type="submit"].pagination__link--newer {
