@@ -5,7 +5,18 @@
   <url>
     <loc>http://www.robinthrift.com/posts/getting-to-know-metalsmith</loc>
     
-      <lastmod>Sun, 13 Apr 2014 02:00:00 +0200</lastmod>
+      <lastmod>2014-04-13</lastmod>
+    
+    <changefreq>never</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>http://www.robinthrift.com/podcasts/podcast-week-1</loc>
+    
+      <lastmod>2014-04-13</lastmod>
     
     <changefreq>never</changefreq>
     <priority>1.0</priority>

@@ -5,9 +5,22 @@
   <url>
     <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
     {{#if this.lastmod}}
-      <lastmod>{{xmldate this.lastmod}}</lastmod>
+      <lastmod>{{sitemapdate this.lastmod}}</lastmod>
     {{else}}
-      <lastmod>{{xmldate this.date}}</lastmod>
+      <lastmod>{{sitemapdate this.date}}</lastmod>
+    {{/if}}
+    <changefreq>never</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {{/each}}
+
+  {{#each collections.podcasts}}
+  <url>
+    <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
+    {{#if this.lastmod}}
+      <lastmod>{{sitemapdate this.lastmod}}</lastmod>
+    {{else}}
+      <lastmod>{{sitemapdate this.date}}</lastmod>
     {{/if}}
     <changefreq>never</changefreq>
     <priority>1.0</priority>
