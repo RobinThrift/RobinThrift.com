@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "http://robinthrift.com",
+  "issues": "https://github.com/RobinThrift/RobinThrift.com/issues",
+  "repository": "https://github.com/RobinThrift/RobinThrift.com.git",
   "author": "Robin Thrift <thrift.d.robin@googlemail.com>",
   "license": "MIT",
   "devDependencies": {
