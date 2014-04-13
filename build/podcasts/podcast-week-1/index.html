@@ -55,20 +55,24 @@
             return false;">
           Share on Facebook
         </a>
-
-        <div class="button_wrapper">
-            
-
-            
-
-            
-        </div>
     </header>
 
 
     <div class="entry-content">
-        <p>Whell… my podcasts and stuff are going to go here…</p>
-<h3 id="at-least-this-is-my-plan-">At least this is my plan!</h3>
+
+        <section>
+            <audio src="http://themetaprogrammer.com/weekly_podcasts/test.mp3" preload="auto" />
+        </section>
+
+        <p>The first episode of my (hopefully) regular podcast. In this episode I will ramble about build scripts and app development.</p>
+<h3 id="show-notes">Show notes</h3>
+<ul>
+<li><a href="http://gulpjs.com/">Gulp</a></li>
+<li><a href="http://www.metalsmith.io/">Metalsmith</a></li>
+<li><a href="https://github.com/RobinThrift/RobinThrift.com">This website’s source code</a></li>
+<li><a href="http://5by5.tv/webahead/65">The Web Ahead Episode #65</a></li>
+<li><a href="https://www.mozilla.org/en-US/firefox/os/">Firefox OS</a></li>
+</ul>
 
     </div>
 
@@ -78,7 +82,7 @@
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'robinthriftcom', // required: replace example with your forum shortname
-                disqus_identifier = "podcast_12th April 2014_Podcast Week 1",
+                disqus_identifier = "podcast_13th April 2014_Podcast Week 1",
                 disqus_title = "Podcast Week 1";
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
@@ -144,6 +148,13 @@
     </ul>
 </aside>
 
+<script src="http://www.robinthrift.com/js/audio.min.js"></script>
+<script>
+    audiojs.events.ready(function() {
+        var as = audiojs.createAll();
+    });
+</script>
+
             </div>
 
         </div><!-- End #page_wrap -->
@@ -154,7 +165,7 @@
             <div class="footer_body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
-                    <a href="/feed.xml" target="_blank">Feed</a>
+                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="third">

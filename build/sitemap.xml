@@ -3,6 +3,15 @@
 
   
   <url>
+    <loc>http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</loc>
+    
+      <lastmod>2014-04-14</lastmod>
+    
+    <changefreq>never</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.robinthrift.com/posts/getting-to-know-metalsmith</loc>
     
       <lastmod>2014-04-13</lastmod>

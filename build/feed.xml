@@ -5,8 +5,17 @@
             <description>My personal blog</description>
             <link>http://www.robinthrift.com</link>
 
-            <atom:link href="http://www.robinthrift.com/feed.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="" rel="self" type="application/rss+xml" />
 
+            
+                <item>
+                    <title>Metalsmith Part 1: Setting Up the Forge</title>
+                    <description>&lt;p&gt;In my &lt;a href=&quot;http://www.robinthrift.com/posts/getting-to-know-metalsmith/&quot;&gt;last article&lt;/a&gt; I gave a brief introduction to &lt;a href=&quot;http://www.metalsmith.io/&quot;&gt;Metalsmith&lt;/a&gt;, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.&lt;/p&gt;
+</description>
+                    <pubDate>Mon, 14 Apr 2014 02:00:00 +0200</pubDate>
+                    <link>http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</guid>
+                </item>
             
                 <item>
                     <title>Getting to Know Metalsmith</title>
@@ -19,7 +28,7 @@
             
                 <item>
                     <title>Podcast Week 1</title>
-                    <description>&lt;p&gt;Whell... my podcasts and stuff are going to go here...&lt;/p&gt;
+                    <description>&lt;p&gt;The first episode of my (hopefully) regular podcast. In this episode I will ramble about build scripts and app development.&lt;/p&gt;
 </description>
                     <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
                     <link>http://www.robinthrift.com/podcasts/podcast-week-1</link>
