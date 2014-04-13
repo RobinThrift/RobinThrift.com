@@ -5,7 +5,7 @@
     <li class="hentry post">
         <div class="post_type type_{{ this.collection }}"></div>
         <h2 class="entry-title">
-            <a href="{{ ../baseUrl }}/{{ this.path }}" rel="bookmark">{{ this.title }}</a>
+            <a href="{{link this.path }}" rel="bookmark">{{ this.title }}</a>
         </h2>
         {{#if this.feat_img}}
             <div class="post_feat_img">
@@ -26,7 +26,7 @@
                 <div class="author info grey">By {{ this.author }}</div>
             {{/if}}
 
-            <a href="{{ ../baseUrl }}/{{ this.path }}" class="button">Read More</a>
+            <a href="{{link this.path }}" class="button">Read More</a>
         </footer>
     </li>
     {{/each}}
@@ -34,17 +34,17 @@
     {{#if this.pagination}}
         <nav class="pagination">
             {{#if this.pagination.next}}
-                <a href="{{ baseUrl }}/{{this.pagination.next.path}}" class="pagination__link--older">&lt; Older</a>
+                <a href="{{link this.pagination.next.path}}" class="pagination__link--older">&lt; Older</a>
             {{/if}}
         
             {{#if this.pagination.prev}}
-                <a href="{{ baseUrl }}/{{this.pagination.prev.path}}" class="pagination__link--newer">Newer &gt;</a>
+                <a href="{{link this.pagination.prev.path}}" class="pagination__link--newer">Newer &gt;</a>
             {{/if}}
             
         </nav>
     {{/if}}
 </ul>
 
-<script src="{{ baseUrl }}/js/init_grid.js"></script>
+<script src="{{link 'js/init_grid.js'}}"></script>
 
 {{> footer }}

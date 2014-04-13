@@ -5,15 +5,15 @@
             <description>{{ description }}</description>
             <link>{{ baseUrl }}</link>
 
-            <atom:link href="{{ baseUrl }}/feed.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="{{link /feed.xml}}" rel="self" type="application/rss+xml" />
 
             {{#each collections.entries}}
                 <item>
                     <title>{{ this.title }}</title>
                     <description>{{ this.excerpt }}</description>
                     <pubDate>{{xmldate this.date }}</pubDate>
-                    <link>{{ ../baseUrl }}/{{ this.path }}</link>
-                    <guid isPermaLink="true">{{ ../baseUrl }}/{{ this.path }}</guid>
+                    <link>{{link this.path }}</link>
+                    <guid isPermaLink="true">{{link this.path }}</guid>
                 </item>
             {{/each}}
     </channel>

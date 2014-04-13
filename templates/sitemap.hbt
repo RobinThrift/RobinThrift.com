@@ -3,7 +3,7 @@
 
   {{#each collections.posts}}
   <url>
-    <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
+    <loc>{{link this.path }}</loc>
     {{#if this.lastmod}}
       <lastmod>{{sitemapdate this.lastmod}}</lastmod>
     {{else}}
@@ -16,7 +16,7 @@
 
   {{#each collections.podcasts}}
   <url>
-    <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
+    <loc>{{link this.path }}</loc>
     {{#if this.lastmod}}
       <lastmod>{{sitemapdate this.lastmod}}</lastmod>
     {{else}}
@@ -30,7 +30,7 @@
 
   {{#each collections.pages}}
   <url>
-    <loc>{{ ../baseUrl }}/{{ this.path }}</loc>
+    <loc>{{link this.path}}</loc>
     {{#if this.lastmod}}
       <lastmod>{{sitemapdate this.lastmod}}</lastmod>
     {{else}}

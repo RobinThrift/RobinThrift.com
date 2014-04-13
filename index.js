@@ -11,6 +11,7 @@ var Metalsmith  = require('metalsmith'),
     paginate    = require('metalsmith-paginate'),
     uglify      = require('metalsmith-uglify'),
     include     = require('./metalsmith-include'),
+    metadata    = require('./config.json'),
     fs          = require('fs');
 
 
@@ -29,6 +30,11 @@ Handlebars.registerHelper('sitemapdate', function(date) {
 Handlebars.registerHelper('date', function(date) {
     return moment(date).format('Do MMMM YYYY');
 });
+
+Handlebars.registerHelper('link', function(path) {
+    return metadata.baseUrl + '/' + path;
+});
+
 
 Handlebars.registerHelper('limit', function(collection, limit, start) {
     var out   = [],
@@ -70,7 +76,7 @@ var filter = function() {
 
 
 Metalsmith(__dirname)
-    .metadata(require('./config.json'))
+    .metadata(metadata)
     .use(filter())
     .use(collections({
         entries: {

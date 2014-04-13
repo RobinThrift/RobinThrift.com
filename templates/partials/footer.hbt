@@ -8,7 +8,7 @@
             <div class="footer_body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
-                    <a href="/feed.xml" target="_blank">Feed</a>
+                    <a href="{{link '/feed.xml'}}" target="_blank">Feed</a>
                 </div>
 
                 <div class="third">
