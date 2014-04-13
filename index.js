@@ -5,6 +5,7 @@ var Metalsmith  = require('metalsmith'),
     permalinks  = require('metalsmith-permalinks'),
     excerpts    = require('metalsmith-excerpts'),
     collections = require('metalsmith-collections'),
+    drafts      = require('metalsmith-drafts');
     hljs        = require('highlight.js'),
     Handlebars  = require('handlebars'),
     moment      = require('moment'),
@@ -78,6 +79,7 @@ var filter = function() {
 Metalsmith(__dirname)
     .metadata(metadata)
     .use(filter())
+    .use(drafts())
     .use(collections({
         entries: {
             pattern: 'content/po*/*.md',
