@@ -38,7 +38,7 @@
     <div class="entry-content">
 
         <section>
-            <audio src="http://themetaprogrammer.com/weekly_podcasts/{{ fileUrl }}" preload="auto" />
+            <audio src="{{ fileUrl }}" preload="auto" />
         </section>
 
         {{{ contents }}}
