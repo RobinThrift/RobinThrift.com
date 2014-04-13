@@ -24,8 +24,8 @@
 				"name": "connection",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 28
+			"setIdx": 1,
+			"iconIdx": 0
 		},
 		{
 			"icon": {
@@ -50,8 +50,8 @@
 				"name": "podcast",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 29
+			"setIdx": 1,
+			"iconIdx": 1
 		},
 		{
 			"icon": {
@@ -75,8 +75,8 @@
 				"name": "headphones",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 17
+			"setIdx": 1,
+			"iconIdx": 2
 		},
 		{
 			"icon": {
@@ -95,11 +95,11 @@
 				"order": 4,
 				"prevSize": 32,
 				"code": 58882,
-				"name": "play",
+				"name": "play2",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 18
+			"setIdx": 1,
+			"iconIdx": 3
 		},
 		{
 			"icon": {
@@ -120,8 +120,8 @@
 				"name": "book",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 31
+			"setIdx": 1,
+			"iconIdx": 4
 		},
 		{
 			"icon": {
@@ -142,8 +142,8 @@
 				"name": "stack",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 45
+			"setIdx": 1,
+			"iconIdx": 5
 		},
 		{
 			"icon": {
@@ -164,8 +164,8 @@
 				"name": "googleplus",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 358
+			"setIdx": 1,
+			"iconIdx": 6
 		},
 		{
 			"icon": {
@@ -186,8 +186,8 @@
 				"name": "facebook",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 362
+			"setIdx": 1,
+			"iconIdx": 7
 		},
 		{
 			"icon": {
@@ -209,8 +209,8 @@
 				"name": "twitter",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 366
+			"setIdx": 1,
+			"iconIdx": 8
 		},
 		{
 			"icon": {
@@ -232,8 +232,8 @@
 				"name": "feed",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 369
+			"setIdx": 1,
+			"iconIdx": 9
 		},
 		{
 			"icon": {
@@ -254,8 +254,8 @@
 				"name": "youtube",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 372
+			"setIdx": 1,
+			"iconIdx": 10
 		},
 		{
 			"icon": {
@@ -277,8 +277,8 @@
 				"name": "github",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 394
+			"setIdx": 1,
+			"iconIdx": 11
 		},
 		{
 			"icon": {
@@ -302,8 +302,8 @@
 				"name": "file-css",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 441
+			"setIdx": 1,
+			"iconIdx": 12
 		},
 		{
 			"icon": {
@@ -324,8 +324,8 @@
 				"name": "file-zip",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 438
+			"setIdx": 1,
+			"iconIdx": 13
 		},
 		{
 			"icon": {
@@ -348,8 +348,8 @@
 				"name": "lab",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 165
+			"setIdx": 1,
+			"iconIdx": 14
 		},
 		{
 			"icon": {
@@ -370,8 +370,8 @@
 				"name": "newspaper",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 4
+			"setIdx": 1,
+			"iconIdx": 15
 		},
 		{
 			"icon": {
@@ -395,8 +395,8 @@
 				"name": "file",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 34
+			"setIdx": 1,
+			"iconIdx": 16
 		},
 		{
 			"icon": {
@@ -419,8 +419,8 @@
 				"name": "expand",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 130
+			"setIdx": 1,
+			"iconIdx": 17
 		},
 		{
 			"icon": {
@@ -443,8 +443,8 @@
 				"name": "contract",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 131
+			"setIdx": 1,
+			"iconIdx": 18
 		},
 		{
 			"icon": {
@@ -466,8 +466,8 @@
 				"name": "zoomin",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 128
+			"setIdx": 1,
+			"iconIdx": 19
 		},
 		{
 			"icon": {
@@ -490,8 +490,8 @@
 				"name": "zoomout",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 129
+			"setIdx": 1,
+			"iconIdx": 20
 		},
 		{
 			"icon": {
@@ -512,8 +512,8 @@
 				"name": "code",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 348
+			"setIdx": 1,
+			"iconIdx": 21
 		},
 		{
 			"icon": {
@@ -535,8 +535,8 @@
 				"name": "console",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 349
+			"setIdx": 1,
+			"iconIdx": 22
 		},
 		{
 			"icon": {
@@ -560,8 +560,8 @@
 				"name": "confused",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 234
+			"setIdx": 1,
+			"iconIdx": 23
 		},
 		{
 			"icon": {
@@ -585,8 +585,8 @@
 				"name": "wondering",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 238
+			"setIdx": 1,
+			"iconIdx": 24
 		},
 		{
 			"icon": {
@@ -610,8 +610,8 @@
 				"name": "thumbs-up",
 				"ligatures": ""
 			},
-			"setIdx": 0,
-			"iconIdx": 212
+			"setIdx": 1,
+			"iconIdx": 25
 		},
 		{
 			"icon": {
@@ -635,8 +635,104 @@
 				"name": "thumbs-up2",
 				"ligatures": ""
 			},
+			"setIdx": 1,
+			"iconIdx": 26
+		},
+		{
+			"icon": {
+				"paths": [
+					"M192 128l640 384-640 384z"
+				],
+				"tags": [
+					"play",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 266,
+				"order": 28,
+				"prevSize": 32,
+				"code": 58909,
+				"name": "play",
+				"ligatures": ""
+			},
 			"setIdx": 0,
-			"iconIdx": 213
+			"iconIdx": 266
+		},
+		{
+			"icon": {
+				"paths": [
+					"M128 128h320v768h-320zM576 128h320v768h-320z"
+				],
+				"tags": [
+					"pause",
+					"media control",
+					"audio"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 267,
+				"order": 29,
+				"prevSize": 32,
+				"code": 58910,
+				"name": "pause",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 267
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1014.662 822.66c-0.004-0.004-0.008-0.008-0.012-0.010l-310.644-310.65 310.644-310.65c0.004-0.004 0.008-0.006 0.012-0.010 3.344-3.346 5.762-7.254 7.312-11.416 4.246-11.376 1.824-24.682-7.324-33.83l-146.746-146.746c-9.148-9.146-22.45-11.566-33.828-7.32-4.16 1.55-8.070 3.968-11.418 7.31 0 0.004-0.004 0.006-0.008 0.010l-310.648 310.652-310.648-310.65c-0.004-0.004-0.006-0.006-0.010-0.010-3.346-3.342-7.254-5.76-11.414-7.31-11.38-4.248-24.682-1.826-33.83 7.32l-146.748 146.748c-9.148 9.148-11.568 22.452-7.322 33.828 1.552 4.16 3.97 8.072 7.312 11.416 0.004 0.002 0.006 0.006 0.010 0.010l310.65 310.648-310.65 310.652c-0.002 0.004-0.006 0.006-0.008 0.010-3.342 3.346-5.76 7.254-7.314 11.414-4.248 11.376-1.826 24.682 7.322 33.83l146.748 146.746c9.15 9.148 22.452 11.568 33.83 7.322 4.16-1.552 8.070-3.97 11.416-7.312 0.002-0.004 0.006-0.006 0.010-0.010l310.648-310.65 310.648 310.65c0.004 0.002 0.008 0.006 0.012 0.008 3.348 3.344 7.254 5.762 11.414 7.314 11.378 4.246 24.684 1.826 33.828-7.322l146.746-146.748c9.148-9.148 11.57-22.454 7.324-33.83-1.552-4.16-3.97-8.068-7.314-11.414z"
+				],
+				"tags": [
+					"close",
+					"cancel",
+					"quit",
+					"remove",
+					"cross"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 253,
+				"order": 30,
+				"prevSize": 32,
+				"code": 58908,
+				"name": "close",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 253
+		},
+		{
+			"icon": {
+				"paths": [
+					"M512 0c-278.748 0-505.458 222.762-511.848 499.974 5.92-241.864 189.832-435.974 415.848-435.974 229.75 0 416 200.576 416 448 0 53.020 42.98 96 96 96 53.020 0 96-42.98 96-96 0-282.77-229.23-512-512-512zM512 1024c278.748 0 505.458-222.762 511.848-499.974-5.92 241.864-189.832 435.974-415.848 435.974-229.75 0-416-200.576-416-448 0-53.020-42.98-96-96-96-53.020 0-96 42.98-96 96 0 282.77 229.23 512 512 512z"
+				],
+				"tags": [
+					"spinner",
+					"loading",
+					"busy",
+					"wait",
+					"wheel"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 124,
+				"order": 31,
+				"prevSize": 32,
+				"code": 58907,
+				"name": "spinner",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 124
 		}
 	],
 	"height": 1024,

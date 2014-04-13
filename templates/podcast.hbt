@@ -36,6 +36,11 @@
 
 
     <div class="entry-content">
+
+        <section>
+            <audio src="http://themetaprogrammer.com/weekly_podcasts/{{ fileUrl }}" preload="auto" />
+        </section>
+
         {{{ contents }}}
     </div>
 
@@ -64,5 +69,12 @@
 </article>
 
 {{> sidebar}}
+
+<script src="{{ baseUrl }}/js/audio.min.js"></script>
+<script>
+    audiojs.events.ready(function() {
+        var as = audiojs.createAll();
+    });
+</script>
 
 {{> footer }}
