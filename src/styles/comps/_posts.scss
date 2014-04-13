@@ -85,9 +85,9 @@
 
 
 .the_post h2 {
-    padding: 0 20px;
+    padding: 10px 20px;
     font-size: 28px;
-    margin-bottom: 42px;
+    margin-bottom: 15px;
 }
 
 .the_post h3 {
@@ -116,12 +116,16 @@
     margin: 20px 6%;
 }
 
+.the_post_title .button_wrapper:empty {
+    display: none;
+}
+
 .the_post_date {
     position: absolute;
     color: $comp-bg;
     background: $accent;
     right: -10px;
-    top: 0;
+    top: -30px;
     height: 25px;
     line-height: 25px;
     padding: 6px;
