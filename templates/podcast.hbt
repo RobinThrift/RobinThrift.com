@@ -18,20 +18,6 @@
             return false;">
           Share on Facebook
         </a>
-
-        <div class="button_wrapper">
-            {{# if demo }}
-                <a href="{{ demo }}" class="left_spacer button">Demo</a>
-            {{/if}}
-
-            {{#if files}}
-                <a href="{{ files }}" class="left_spacer button">Download Files</a>
-            {{/if}}
-
-            {{#if github}}
-                <a href="{{ github }}" target="_blank" class="left_spacer button">View On GitHub</a>
-            {{/if}}
-        </div>
     </header>
 
 
