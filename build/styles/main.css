@@ -1303,7 +1303,7 @@ html, body {
 section, .the_post > p, .the_post .entry-content {
   padding: 1% 6%;
   font-size: 17px;
-  line-height: 1.3em; }
+  line-height: 1.37em; }
 
 .the_post img {
   background: #fff;
@@ -1338,7 +1338,7 @@ section, .the_post > p, .the_post .entry-content {
 
 code {
   background: #f5f2f0;
-  padding: 0px 3px 3px 3px; }
+  padding: 0px 3px 2px 3px; }
 
 pre code {
   background: none;
