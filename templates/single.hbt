@@ -45,7 +45,7 @@
             <script type="text/javascript">
                 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
                 var disqus_shortname = 'robinthriftcom', // required: replace example with your forum shortname
-                    disqus_identifier = "post_{{ date }}_{{ title }}",
+                    disqus_identifier = "post_{{ title }}",
                     disqus_title = "{{ title }}";
 
                 /* * * DON'T EDIT BELOW THIS LINE * * */
