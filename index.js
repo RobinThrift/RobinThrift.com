@@ -121,7 +121,7 @@ Metalsmith(__dirname)
     }))
     .use(template('handlebars'))
     .use(sass({
-        outputStyle: 'expanded'
+        outputStyle: 'compressed'
     }))
     .use(include())
     .use(uglify({
