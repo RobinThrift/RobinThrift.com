@@ -705,6 +705,12 @@ blockquote .author {
   right: 50px;
   bottom: -40px; }
 
+.note--small {
+  color: #999999;
+  font-size: 13px;
+  padding: 2px 5px;
+  border-left: 3px solid #999; }
+
 /* @end Typography */
 /* @group Buttons */
 .button, .pagination__link, .pagination__link--older, .pagination__link--newer {
