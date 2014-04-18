@@ -9,6 +9,15 @@
 
             
                 <item>
+                    <title>Metalsmith Part 2 : Shaping The Metal</title>
+                    <description>&lt;p&gt;In my last &lt;a href=&quot;http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/&quot;&gt;post&lt;/a&gt; I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.&lt;/p&gt;
+</description>
+                    <pubDate>Fri, 18 Apr 2014 02:00:00 +0200</pubDate>
+                    <link>http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal</guid>
+                </item>
+            
+                <item>
                     <title>Metalsmith Part 1: Setting Up the Forge</title>
                     <description>&lt;p&gt;In my &lt;a href=&quot;http://www.robinthrift.com/posts/getting-to-know-metalsmith/&quot;&gt;last article&lt;/a&gt; I gave a brief introduction to &lt;a href=&quot;http://www.metalsmith.io/&quot;&gt;Metalsmith&lt;/a&gt;, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.&lt;/p&gt;
 </description>

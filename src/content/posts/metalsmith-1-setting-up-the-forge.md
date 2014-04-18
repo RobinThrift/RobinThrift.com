@@ -160,5 +160,6 @@ Take some time and experiment with Metalsmith and read the docs over at [Metalsm
 
 The source code for this tutorial can be found [here](https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1)
 
-
+#####Update:
+You can find the next post in this series here: [Metalsmith Part 2 : Shaping The Metal](http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal)
 
