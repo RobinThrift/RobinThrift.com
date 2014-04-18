@@ -11,7 +11,7 @@ $grue: #009999;
 
 /* @group Syntax highlighting (src:https://github.com/mojombo/tpw/blob/master/css/syntax.css) */
 
-.highlight, .entry-content pre { background: #fbfbfb; }
+.highlight, .entry-content pre { background: #fbfbfb; font-size: 15px; }
 .entry-content pre { padding: 8px 16px; }
 .highlight .c, .hljs-comment { color: $light-grey; font-style: italic } /* Comment */
 .highlight .err, .hljs-error { color: $light-grey; background-color: none } /* Error */
