@@ -5,6 +5,11 @@ template: single.hbt
 ---
 There are dozens of static site generators out there. The most popular is probably [Jekyll](http://jekyllrb.com/), and for good reasons! It's super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It's also the engine powering [GitHub Pages](https://pages.github.com/), GitHub's static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code [here](https://github.com/RobinThrift/RobinThrift.com)). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.
 
+<div class="side_note">
+    I have started writing the tutorials:
+    - [Part 1](http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/)
+    - [Part 2](http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/)
+</div>
 
 I built a few websites using Jekyll, but as my ruby-fu&trade; is quite limited I had a few problems when it came to plugins, especially developing my own, also I didn't like to depend on ruby, but I guess that's just me being the JS guy I am. Although I plan on learning ruby in-depth at some stage, I'm not there yet. Also I simply wanted to try something new, preferably JavaScript based.
 
@@ -36,5 +41,9 @@ In this series I will go over my experiences with Metalsmith and how I built thi
 
 Join me next time when I will go over the file structure and basic setup.
 
+####Update: Tutorials Posted
+I have started writing the tutorials:
+- [Metalsmith Part 1: Setting Up the Forge](http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/)
+- [Metalsmith Part 2 : Shaping The Metal](http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/)
 
 
