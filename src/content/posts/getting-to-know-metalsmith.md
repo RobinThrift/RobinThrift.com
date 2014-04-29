@@ -9,6 +9,7 @@ There are dozens of static site generators out there. The most popular is probab
     I have started writing the tutorials:
     - [Part 1](http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/)
     - [Part 2](http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/)
+    - [Part 3](http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/)
 </div>
 
 I built a few websites using Jekyll, but as my ruby-fu&trade; is quite limited I had a few problems when it came to plugins, especially developing my own, also I didn't like to depend on ruby, but I guess that's just me being the JS guy I am. Although I plan on learning ruby in-depth at some stage, I'm not there yet. Also I simply wanted to try something new, preferably JavaScript based.
@@ -45,5 +46,6 @@ Join me next time when I will go over the file structure and basic setup.
 I have started writing the tutorials:
 - [Metalsmith Part 1: Setting Up the Forge](http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/)
 - [Metalsmith Part 2 : Shaping The Metal](http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/)
+- [Metalsmith Part 3: Refining Our Tools](http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/)
 
 

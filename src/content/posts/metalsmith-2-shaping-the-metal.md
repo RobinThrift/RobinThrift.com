@@ -197,3 +197,7 @@ Now you have a list of all your articles ordered by date, newest first.
 That's all for now, but next time we will expand our knowledge on collections, look into pagination and have some more fun with Metalsmith's internals.
 
 The full source code for this part of the tutorial can be found [here](https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2)
+
+
+#####Update:
+You can find the next post in this series here: [Metalsmith Part 3: Shaping The Metal](http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/)
