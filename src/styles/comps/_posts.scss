@@ -17,6 +17,50 @@
     padding: 0 20px;
 }
 
+p > a {
+    display: inline-block;
+    position: relative;
+
+    &:hover {
+        
+        &::before {
+            left: -4px;
+            opacity: 1;
+        }
+
+        &::after {
+            right: -4px;
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        content: "[";
+        position: absolute;
+        display: block;
+        left: 4px;
+        top: 0;
+        opacity: 0;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+    }
+
+    &::after {
+        content: "]";
+        position: absolute;
+        display: block;
+        right: 4px;
+        top: 0;
+        opacity: 0;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+    }
+}
+
 .post article {
     padding: 20px;
 }

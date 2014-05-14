@@ -23,6 +23,47 @@
 
     a {
         color: inherit;
+        display: inline-block;
+        position: relative;
+
+        &:hover {
+        
+            &::before {
+                left: -25px;
+                opacity: 0.3;
+            }
+
+            &::after {
+                right: -25px;
+                opacity: 0.3;
+            }
+        }
+
+        &::before {
+            content: "[";
+            position: absolute;
+            display: block;
+            left: 2px;
+            top: 0;
+            opacity: 0;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -moz-transition: all .2s;
+            -ms-transition: all .2s;
+        }
+
+        &::after {
+            content: "]";
+            position: absolute;
+            display: block;
+            right: 2px;
+            top: 0;
+            opacity: 0;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -moz-transition: all .2s;
+            -ms-transition: all .2s;
+        }
     }
 }
 
@@ -61,6 +102,48 @@
     color: #000;
     text-decoration: none;
     display: block;
+
+    display: inline-block;
+    position: relative;
+
+    &:hover {
+        
+        &::before {
+            left: -11px;
+            opacity: 1;
+        }
+
+        &::after {
+            right: -11px;
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        content: "[";
+        position: absolute;
+        display: block;
+        left: 2px;
+        top: 0;
+        opacity: 0;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+    }
+
+    &::after {
+        content: "]";
+        position: absolute;
+        display: block;
+        right: 2px;
+        top: 0;
+        opacity: 0;
+        transition: all .2s;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+    }
 }
 
 #site_menu li a:hover {
