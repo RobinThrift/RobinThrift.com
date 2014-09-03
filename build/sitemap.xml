@@ -3,6 +3,15 @@
 
   
   <url>
+    <loc>http://www.robinthrift.com/posts/hannoverjs-august-metalsmith-talk</loc>
+    
+      <lastmod>2014-09-03</lastmod>
+    
+    <changefreq>never</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.robinthrift.com/posts/computing-education</loc>
     
       <lastmod>2014-05-23</lastmod>
