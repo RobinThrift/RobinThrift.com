@@ -70,8 +70,8 @@
         <p><a href="http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/">Last time</a> we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.</p>
 <p>Without wasting any time, let’s get started!</p>
 <h3 id="writing-plugins">Writing Plugins</h3>
-<p>I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let’s change that.</p>
-<p>Firstly a little reminder, how Metalsmith represents file internally:</p>
+<p>I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let’s change that.</p>
+<p>Firstly a little reminder, how Metalsmith represents files internally:</p>
 <pre><code class="lang-js">{
     <span class="hljs-string">'title'</span>: <span class="hljs-string">'FROM_THE_TITLE_KEY'</span>,
     <span class="hljs-string">'template'</span>: <span class="hljs-string">'TEMPLATE_NAME'</span>,

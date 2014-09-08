@@ -8,9 +8,9 @@ template: single.hbt
 Without wasting any time, let's get started!
 
 ###Writing Plugins
-I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let's change that.
+I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let's change that.
 
-Firstly a little reminder, how Metalsmith represents file internally:
+Firstly a little reminder, how Metalsmith represents files internally:
 ```js
 {
     'title': 'FROM_THE_TITLE_KEY',
