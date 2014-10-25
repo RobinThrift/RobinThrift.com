@@ -12,7 +12,7 @@ The source code for this tutorial can be found [here](https://github.com/RobinTh
 
 ###Collecting the Materials
 
-I usually start every project by thinking about the basic folder structure. A good folder setup is key to keep your files organised and maintainable. For out purposes I think the following structure will do the job:
+I usually start every project by thinking about the basic folder structure. A good folder setup is key to keep your files organised and maintainable. For our purposes I think the following structure will do the job:
 
 ```
 .
