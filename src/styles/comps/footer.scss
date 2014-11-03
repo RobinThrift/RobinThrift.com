@@ -1,0 +1,28 @@
+// src/styles/comps/footer.scss 
+@import '../_vars';
+
+
+.site-footer {
+    color: $main-contrast;
+    background: $main;
+
+    a {
+        color: inherit;
+    }
+}
+
+.site-footer__body {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    height: 70px;
+    line-height: 70px;
+
+    .third {
+        line-height: 70px;
+    }
+
+    .third:last-child {
+        float: right;
+    }
+}

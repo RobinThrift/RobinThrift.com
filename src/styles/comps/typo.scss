@@ -1,4 +1,5 @@
-/* @group Typography */
+// src/styles/comps/typo.scss
+@import '../_vars';
 
 html, body {
     font-family: 'Open Sans', sans-serif;
@@ -12,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 a {
-    color: $accent;
+    color: $main;
     text-decoration: none;
 }
 
@@ -26,14 +27,15 @@ a:hover {
 }
 
 ::-moz-selection {
-    background: $accent;
-    color: #fbfbfb;
+    background: $main;
+    color: $main-contrast;
     text-shadow: none;
 }
 
 ::selection {
-    background: $accent;
-    color: #fbfbfb;
+    background: $main;
+    color: $main-contrast;
+    text-shadow: none;
 }
 
 
@@ -58,25 +60,11 @@ blockquote {
     width: 80%;
     margin: 30px auto;
     padding: 30px;
-    
     font-size: 20px;
     font-family: "Georgia";
-    
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
     border-radius: 5px;
-     
-    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
-    -moz-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
-    -ms-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
-    -o-box-shadow: 0px 0px 8px rgba(0,0,0,.15);
     box-shadow: 0px 0px 8px rgba(0,0,0,.15);
-    
-    
     position: relative;
-    
     margin-bottom: 50px;
 }
 
@@ -113,10 +101,20 @@ blockquote .author {
 
 .note--small {
     color: #999999;
-    font-size: 13px;
+    font-size: 14px;
     padding: 2px 5px;
     border-left: 3px solid #999;
+    width: 100%;
+    max-width: $max-width;
+    margin: 10px auto;
 }
 
+.side-note {
+    width: 100%;
+    max-width: $max-width;
+    margin: 20px auto;
+    box-sizing: border-box;
+    padding: 10px;
+    background: $body-bg-accent;
+}
 
-/* @end Typography */

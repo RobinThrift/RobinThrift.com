@@ -1,19 +1,32 @@
 @import 'vendor/_normalize';
-@import 'vendor/_kube_grid';
 @import 'vendor/_icons';
 
 @import './_vars';
-@import 'comps/_icons';
-@import 'comps/_grid';   
-@import 'comps/_typo';  
-@import 'comps/_btns';   
-@import 'comps/_helper';  
+@import 'comps/helper';  
+@import 'comps/typo';  
+@import 'comps/btns';   
+
+@import 'comps/basics';
+@import 'comps/header'; 
+@import 'comps/content';
+@import 'comps/posts';
+@import 'comps/footer';
+@import 'comps/highlight';
+@import 'comps/audio_player';
+
 
 
 /* @group General */
 
 html, body {
-	background: url("../img/bg.png") repeat;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background: $body-bg;
+    height: 100%;
 }
 
 #page_wrap {    
@@ -21,7 +34,6 @@ html, body {
 
 /* @end General */
 
-@import 'comps/_header'; 
 
 /* @group Main Content */
 
@@ -38,15 +50,11 @@ html, body {
 
 
 
-@import 'comps/_posts'; 
 @import 'comps/_forms'; 
 
 /* @end Main Content */
 
 @import 'comps/_sidebar'; 
-
-
-@import 'comps/_footer'; 
 
 
 

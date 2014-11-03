@@ -9,66 +9,80 @@
         <meta name="viewport" content="width=device-width">
         <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
-        <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://localhost:3000/favicon.ico" type="image/x-icon" />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/styles/main.css">
     </head>
     <body>
 
-        <header id="site_header">
-            <h1 class="logo"> <a href="/">Robin Thrift</a></h1>  
+        <header class="site-header">
+            <h1 class="logo"><a href="/"><span class="light-text">&lt;</span>Robin Thrift</a><span class="light-text">/&gt;</span></h1>  
 
-            <nav id="site_menu">
+            <nav class="site-menu">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
+                    <li><a href="http://localhost:3000/pages/about/">About</a></li>
+                    <li><a href="http://localhost:3000/pages/blog">Blog</a></li>
+                    <li><a href="http://localhost:3000/pages/podcasts">Podcast</a></li>
                 </ul>
             </nav>
+
+            
+
+<div class="header__code">
+    <pre>
+        <code>
+return function(files, metalsmith, done) {
+    var metadata    = metalsmith.metadata(),
+        collections = metadata.collections,
+        colName, file, filePath;
+
+    for (file in files) {
+        colName = files[file].paginate;
+        filePath = opts.path;
+        if (colName) {
+            if (filePath) {
+                filePath = filePath.replace(':collection', colName);
+
+            }
+
+            paginate(filePath, collections[colName], file, files);
+
+        }
+
+    }
+
+    done();
+
+}
+        </code>
+    </pre>
+
+</div>
+
         </header>
 
 
-        <div id="page_wrap" class="container">
+        <div class="page-wrap">
 
-            <div id="main_content" class="row">
+            <div class="main-content">
             
 
 
-<article class="hentry the_post threefifth littlelarger pid_">
-    <header class="the_post_title">
-        <h2 class="entry-title">Getting to Know Metalsmith</h2>
-
-        <date class="published the_post_date">13th April 2014</date>
-
-        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-        <a class="shareOnFB" href="#"
-          onclick="
-            window.open(
-              'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-              'fb-share-dialog',
-              'width=626,height=436');
-            return false;">
-          Share on Facebook
-        </a>
-
-        <div class="button_wrapper">
-            
-
-            
-
-            
+<article class="hentry post">
+    <header class="post__header">
+        <div class="post__header__wrapper">
+            <h1 class="entry-title">Getting to Know Metalsmith</h1>
+            <date class="published post__date">13th April 2014</date>
         </div>
     </header>
 
 
     <div class="entry-content">
         <p>There are dozens of static site generators out there. The most popular is probably <a href="http://jekyllrb.com/">Jekyll</a>, and for good reasons! It’s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It’s also the engine powering <a href="https://pages.github.com/">GitHub Pages</a>, GitHub’s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code <a href="https://github.com/RobinThrift/RobinThrift.com">here</a>). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.</p>
-<div class="side_note"><br>    I have started writing the tutorials:<br>    - <a href="http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/">Part 1</a><br>    - <a href="http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/">Part 2</a><br>    - <a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">Part 3</a><br></div>
+<div class="side-note">I have started writing the tutorials:<br>    - <a href="http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/">Part 1</a><br>    - <a href="http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/">Part 2</a><br>    - <a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">Part 3</a><br></div>
 
 <p>I built a few websites using Jekyll, but as my ruby-fu&trade; is quite limited I had a few problems when it came to plugins, especially developing my own, also I didn’t like to depend on ruby, but I guess that’s just me being the JS guy I am. Although I plan on learning ruby in-depth at some stage, I’m not there yet. Also I simply wanted to try something new, preferably JavaScript based.</p>
 <p>Recently I’ve been using <a href="http://gulpjs.com/">Gulp.js</a> for all of my build scripts and I thought about using that. While I certainly could have done so, I don’t think it would have been very elegant. I like the way Gulp works, for projects like web apps, as it’s very flexible. For static sites/blogs however, it didn’t feel quite right. Of course there are tons of JS-based static site generators out there, but most weren’t quite what I was looking for. <a href="http://assemble.io/">Assemble.io</a> seems quite powerful but I couldn’t quite get myself to like it. I don’t think the structure of the website/docs are very good for beginners.</p>
@@ -122,65 +136,17 @@
 
 </article>
 
-<aside id="site_sidebar" class="third push-right">
-    <ul class="widgets">
-        
-        <li class="widget search_box">
-            <header>
-                <h4>Search</h4>
-            </header>
-
-            <div class="widget_body">
-                <form id="searchform" action="http://www.robinthrift.com/pages/search/">
-                    <input type="search" name="q" id="searchterm" class="text_input" autocomplete="false" />
-                    <input type="submit" class="button" value="Search" />
-                </form>
-            </div>
-        </li>
-
-        <li class="widget">
-            <header>
-                <h4>Where To Find Me</h4>
-            </header>
-
-            <div class="widget_body">
-                <ul class="widget_links_list">
-                    <li><a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a></li>
-                    <li><a target="_blank" href="https://github.com/RobinThrift">GitHub</a></li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="widget">
-            <header>
-                <h4>Reading List</h4>
-            </header>
-
-            <div class="widget_body">
-                <ul class="widget_links_list">
-                    <li><a target="_blank" href="http://javascriptweekly.com/">JavaScript Weekly</a></li>
-                    <li><a target="_blank" href="http://css-weekly.com/">CSS Weekly</a></li>
-                    <li><a target="_blank" href="http://html5weekly.com/">HTML5 Weekly</a></li>
-                    <li><a target="_blank" href="http://designpepper.com/a-drip-of-javascript">A Drip of JavaScript</a></li>
-                    <li><a target="_blank" href="http://statuscode.org/">Status Code</a></li>
-                    <li><a target="_blank" href="http://dailynerd.nl/">The Daily Nerd</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-</aside>
-
             </div>
 
         </div><!-- End #page_wrap -->
 
         <div class="clear"></div>
 
-        <footer id="site_footer">
-            <div class="footer_body">
+        <footer class="site-footer">
+            <div class="site-footer__body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
-                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
+                    <a href="http://localhost:3000/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="third">

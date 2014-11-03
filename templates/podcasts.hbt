@@ -1,33 +1,34 @@
 {{> header }}
 
-<ul id="home_grid" class="hAtom posts block-two">
+<ul class="post-list big-first Atom">
     {{#each (limit collections.podcasts this.pagination.end this.pagination.start)}}
     <li class="hentry post">
-        <div class="post_type type_{{ this.collection }}"></div>
-        <h2 class="entry-title">
-            <a href="{{link this.path }}" rel="bookmark">{{ this.title }}</a>
-        </h2>
-        {{#if this.feat_img}}
-            <div class="post_feat_img">
-                <img class="post_feat_img" alt="" src="{{ ../baseUrl }}/images/feat_imgs/{{ this.feat_img }}">
-            </div>
-        {{/if}}
-
-        {{#if this.images}}
-            <div class="post_feat_img">
-                <img class="post_feat_img" alt="" src="{{ ../baseUrl }}/images/{{ this.img_folder }}/{{ this.images.[0] }}">
-            </div>
-        {{/if}}
-        <article class="entry-summary">
-            {{{ this.excerpt }}}
-        </article>
-        <footer>
-            {{#if this.author}}
-                <div class="author info grey">By {{ this.author }}</div>
+        <div class="post-list__resp-wrapper">
+            <h2 class="entry-title">
+                <a href="{{link this.path }}" rel="bookmark">{{ this.title }}</a>
+            </h2>
+            {{#if this.feat_img}}
+                <div class="post_feat_img">
+                    <img class="post_feat_img" alt="" src="{{ ../baseUrl }}/images/feat_imgs/{{ this.feat_img }}">
+                </div>
             {{/if}}
 
-            <a href="{{link this.path }}" class="button">Read More</a>
-        </footer>
+            {{#if this.images}}
+                <div class="post_feat_img">
+                    <img class="post_feat_img" alt="" src="{{ ../baseUrl }}/images/{{ this.img_folder }}/{{ this.images.[0] }}">
+                </div>
+            {{/if}}
+            <article class="entry-summary">
+                {{{ this.excerpt }}}
+            </article>
+            <footer>
+                {{#if this.author}}
+                    <div class="author info grey">By {{ this.author }}</div>
+                {{/if}}
+
+                <a href="{{link this.path }}" class="button">Read More</a>
+            </footer>
+        </div>
     </li>
     {{/each}}
     

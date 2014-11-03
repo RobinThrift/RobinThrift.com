@@ -4,8 +4,8 @@
 
         <div class="clear"></div>
 
-        <footer id="site_footer">
-            <div class="footer_body">
+        <footer class="site-footer">
+            <div class="site-footer__body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
                     <a href="{{link 'feed.xml'}}" target="_blank">Feed</a>

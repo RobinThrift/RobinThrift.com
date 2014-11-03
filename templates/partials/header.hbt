@@ -17,10 +17,10 @@
     </head>
     <body>
 
-        <header id="site_header">
-            <h1 class="logo"> <a href="/">{{ sitename }}</a></h1>  
+        <header class="site-header">
+            <h1 class="logo"><a href="/"><span class="light-text">&lt;</span>{{ sitename }}</a><span class="light-text">/&gt;</span></h1>  
 
-            <nav id="site_menu">
+            <nav class="site-menu">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="{{link 'pages/about/'}}">About</a></li>
@@ -28,10 +28,12 @@
                     <li><a href="{{link 'pages/podcasts'}}">Podcast</a></li>
                 </ul>
             </nav>
+
+            {{> code}}
         </header>
 
 
-        <div id="page_wrap" class="container">
+        <div class="page-wrap">
 
-            <div id="main_content" class="row">
+            <div class="main-content">
             

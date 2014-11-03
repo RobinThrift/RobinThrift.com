@@ -1,1 +1,1 @@
-php -S localhost:8000 -t build
+browser-sync start --files "build/*, build/**/*" --server build

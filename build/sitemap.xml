@@ -3,7 +3,7 @@
 
   
   <url>
-    <loc>http://www.robinthrift.com/posts/hannoverjs-august-metalsmith-talk</loc>
+    <loc>http://localhost:3000/posts/hannoverjs-august-metalsmith-talk</loc>
     
       <lastmod>2014-09-03</lastmod>
     
@@ -12,7 +12,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/posts/computing-education</loc>
+    <loc>http://localhost:3000/posts/computing-education</loc>
     
       <lastmod>2014-05-23</lastmod>
     
@@ -21,7 +21,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools</loc>
+    <loc>http://localhost:3000/posts/metalsmith-part-3-refining-our-tools</loc>
     
       <lastmod>2014-04-29</lastmod>
     
@@ -30,7 +30,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal</loc>
+    <loc>http://localhost:3000/posts/metalsmith-part-2-shaping-the-metal</loc>
     
       <lastmod>2014-04-18</lastmod>
     
@@ -39,7 +39,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</loc>
+    <loc>http://localhost:3000/posts/metalsmith-part-1-setting-up-the-forge</loc>
     
       <lastmod>2014-04-14</lastmod>
     
@@ -48,7 +48,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/posts/getting-to-know-metalsmith</loc>
+    <loc>http://localhost:3000/posts/getting-to-know-metalsmith</loc>
     
       <lastmod>2014-04-13</lastmod>
     
@@ -59,7 +59,7 @@
 
   
   <url>
-    <loc>http://www.robinthrift.com/podcasts/podcast-week-1</loc>
+    <loc>http://localhost:3000/podcasts/podcast-week-1</loc>
     
       <lastmod>2014-04-13</lastmod>
     
@@ -71,7 +71,7 @@
 
   
   <url>
-    <loc>http://www.robinthrift.com/pages/about</loc>
+    <loc>http://localhost:3000/pages/about</loc>
     
       <lastmod>2014-04-13</lastmod>
     
@@ -80,7 +80,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/pages/blog</loc>
+    <loc>http://localhost:3000/pages/blog</loc>
     
       <lastmod>2014-04-13</lastmod>
     
@@ -89,7 +89,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/pages/podcasts</loc>
+    <loc>http://localhost:3000/pages/podcasts</loc>
     
       <lastmod>2014-04-13</lastmod>
     
@@ -98,7 +98,7 @@
   </url>
   
   <url>
-    <loc>http://www.robinthrift.com/pages/search</loc>
+    <loc>http://localhost:3000/pages/search</loc>
     
       <lastmod>2014-04-13</lastmod>
     

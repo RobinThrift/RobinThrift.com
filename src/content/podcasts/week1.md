@@ -2,7 +2,7 @@
 title: Podcast Week 1
 date: 2014-04-13
 template: podcast.hbt
-fileUrl: http://themetaprogrammer.com/weekly_podcasts/test.mp3
+fileUrl: http://media.devchat.tv/js-jabber/JSJ131Conferences.mp3?download=true
 ---
 The first episode of my (hopefully) regular podcast. In this episode I will ramble about build scripts and app development.
 

@@ -1,0 +1,97 @@
+// src/styles/comps/header.scss 
+@import '../_vars';
+
+.site-header {
+    height: 100%;
+    background: $main;
+    color: $main-contrast;
+    position: relative;
+
+    .light-text {
+        color: $main-light; 
+    }
+}
+
+.logo {
+    font-size: 40px;
+    color: inherit;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    margin-left: 5%;
+    float: left;
+    position: relative;
+    z-index: 5;
+
+    a {
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    @media handheld, only screen and (max-width: 670px) {
+        width: 95%;
+        float: none;
+        text-align: center;
+    }
+
+    @media handheld, only screen and (max-width: 330px) {
+        font-size: 30px;
+    }
+}
+
+.site-menu {
+    height: 50px;
+    line-height: 50px;
+    float: right;
+    margin-right: 5%;
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    
+    li {
+        list-style: none;
+        color: inherit;
+        float: left;
+        padding: 0 15px;
+
+        a {
+            color: inherit;
+        }
+        @media handheld, only screen and (max-width: 670px) {
+            font-size: 20px;
+            width: 25%;
+            box-sizing: border-box;
+        }
+    }
+
+    @media handheld, only screen and (max-width: 670px) {
+        width: 100%;
+        float: none;
+        right: 0;
+    }
+
+}
+
+.header__code {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    cursor: normal;
+    color: $main-light;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 80%;
+    font-size: 40px;
+    opacity: 0.2;
+    overflow: hidden;
+
+    pre {
+        margin: 0;
+    }
+}

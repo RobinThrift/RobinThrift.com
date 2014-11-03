@@ -1,0 +1,32 @@
+
+
+<div class="header__code">
+    <pre>
+        <code>
+return function(files, metalsmith, done) {
+    var metadata    = metalsmith.metadata(),
+        collections = metadata.collections,
+        colName, file, filePath;
+
+    for (file in files) {
+        colName = files[file].paginate;
+        filePath = opts.path;
+        if (colName) {
+            if (filePath) {
+                filePath = filePath.replace(':collection', colName);
+
+            }
+
+            paginate(filePath, collections[colName], file, files);
+
+        }
+
+    }
+
+    done();
+
+}
+        </code>
+    </pre>
+
+</div>

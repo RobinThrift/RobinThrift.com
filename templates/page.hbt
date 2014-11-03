@@ -1,16 +1,18 @@
 {{> header}}
 
 
-<article class="the_post threefifth littlelarger pid_{{ id }}">
-    <header class="the_post_title">
-        <h2>{{ title }}</h2>
+<article class="hentry post is-page">
+    <header class="post__header">
+        <div class="post__header__wrapper">
+            <h1 class="entry-title">{{ title }}</h1>
+        </div>
     </header>
 
-    {{{ contents }}}
+
+    <div class="entry-content">
+        {{{ contents }}}
+    </div>
 
 </article>
-
-
-{{> sidebar}}
 
 {{> footer}}

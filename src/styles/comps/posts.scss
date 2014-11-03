@@ -1,0 +1,117 @@
+// src/styles/comps/posts.scss
+@import '../_vars';
+
+.post {
+   
+    p, h3, h4, h5, pre code, section {
+        width: 100%;
+        max-width: $max-width;
+        margin: 20px auto;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+     
+    pre {
+        width: 100%;
+        box-sizing: border-box;
+        background: $body-bg-accent;
+
+        code {
+            display: block;
+            margin: 0 auto;
+            padding: 0;
+        }
+    }
+
+    &.is-page .entry-content, &.is-podcast .entry-content {
+        position: relative;
+        top: -200px;
+        background: $body-bg;
+        z-index: 10;
+        padding-top: 30px;
+        font-size: 17px;
+    }
+
+    &.is-podcast .post__header {
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        date {
+            position: relative;
+            bottom: 0;
+        }
+    }
+
+    ul {
+        width: 100%;
+        max-width: $max-width;
+        margin: 10px auto;
+    }
+}
+
+.post__header {
+    position: absolute;
+    width: 100%;
+    color: $main-contrast;
+    top: 75px;
+    z-index: 10;
+    height: 100%;
+
+    date {
+        font-size: 40px;
+        position: absolute;
+        bottom: 100px;
+    }
+
+    h1 {
+        font-size: 60px;
+    }
+}
+
+.post__header__wrapper {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+
+.post-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    z-index: 10;
+
+
+    li {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        background: $body-bg;
+    }
+    
+    li:nth-child(even) {
+        background: $body-bg-accent;
+    }
+    
+    &.big-first {
+
+        li:first-child {
+            top: -300px;
+            position: relative;
+            margin-bottom: -200px;
+            box-shadow: 0 0 20px rgba(0,0,0,.2);
+        }
+    }
+
+    .post-list__resp-wrapper {
+        margin: 0 auto;
+        max-width: $max-width;
+        width: 100%;
+    }
+}
+

@@ -1,17 +1,15 @@
+// src/styles/comps/highlight.scss 
+
 
 $light-grey: #999988;
-
-$orange: #d14d14;
-
+$red: #cb5243;
 $green: #00b15d;
-
 $purple: #a353b9;
-
 $grue: #009999;
 
 /* @group Syntax highlighting (src:https://github.com/mojombo/tpw/blob/master/css/syntax.css) */
 
-.highlight, .entry-content pre { background: #fbfbfb; font-size: 15px; }
+.highlight, .entry-content pre { font-size: 15px; }
 .entry-content pre { padding: 8px 16px; }
 .highlight .c, .hljs-comment { color: $light-grey; font-style: italic } /* Comment */
 .highlight .err, .hljs-error { color: $light-grey; background-color: none } /* Error */
@@ -39,7 +37,7 @@ $grue: #009999;
 .highlight .kr, .hljs-literal { font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
 .highlight .m, .hljs-number { color: $grue } /* Literal.Number */
-.highlight .s, .hljs-string, .lang-html .hljs-value { color: $orange } /* Literal.String */
+.highlight .s, .hljs-string, .lang-html .hljs-value { color: $red } /* Literal.String */
 .highlight .na { color: #008080 } /* Name.Attribute */
 .highlight .nb { color: #0086B3 } /* Name.Builtin */
 .highlight .nc { color: #445588; font-weight: bold } /* Name.Class */

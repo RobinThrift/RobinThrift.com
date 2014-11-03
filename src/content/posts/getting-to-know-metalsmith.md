@@ -5,8 +5,7 @@ template: single.hbt
 ---
 There are dozens of static site generators out there. The most popular is probably [Jekyll](http://jekyllrb.com/), and for good reasons! It's super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It's also the engine powering [GitHub Pages](https://pages.github.com/), GitHub's static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code [here](https://github.com/RobinThrift/RobinThrift.com)). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.
 
-<div class="side_note">
-    I have started writing the tutorials:
+<div class="side-note">I have started writing the tutorials:
     - [Part 1](http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/)
     - [Part 2](http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/)
     - [Part 3](http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/)
