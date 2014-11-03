@@ -2,7 +2,7 @@
 title: Podcast Week 1
 date: 2014-04-13
 template: podcast.hbt
-fileUrl: http://media.devchat.tv/js-jabber/JSJ131Conferences.mp3?download=true
+fileUrl: http://nothing.mp3
 ---
 The first episode of my (hopefully) regular podcast. In this episode I will ramble about build scripts and app development.
 
