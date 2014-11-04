@@ -59,10 +59,11 @@
     color: $main-contrast;
     z-index: 10;
     height: 100%;
-    top: 100%;
-    opacity: 0;
+    top: 75px;
+    opacity: 1;
     pointer-events: none;
-    @include animation(header_entry 1s ease forwards running);
+    @include animation(header_entry 1s);
+    @include animation-play-state(running);
 
     date {
         font-size: 40px;
