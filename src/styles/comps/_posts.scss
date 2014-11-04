@@ -62,7 +62,7 @@
     top: 100%;
     opacity: 0;
     pointer-events: none;
-    @include animation(header_entry 0.5s ease forwards running);
+    @include animation(header_entry 1s ease forwards running);
 
     date {
         font-size: 40px;
