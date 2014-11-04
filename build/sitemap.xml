@@ -53,13 +53,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/pages/podcasts</loc>
+    <loc>http://www.robinthrift.com/pages/search</loc>
       <lastmod>2014-04-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/pages/search</loc>
+    <loc>http://www.robinthrift.com/pages/podcasts</loc>
       <lastmod>2014-04-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
