@@ -2,21 +2,17 @@
 @import 'vendor/_icons';
 
 @import './_vars';
-@import 'comps/helper';  
-@import 'comps/typo';  
-@import 'comps/btns';   
+@import 'comps/_helper';  
+@import 'comps/_typo';  
+@import 'comps/_btns';   
 
-@import 'comps/basics';
-@import 'comps/header'; 
-@import 'comps/content';
-@import 'comps/posts';
-@import 'comps/footer';
-@import 'comps/highlight';
-@import 'comps/audio_player';
-
-
-
-/* @group General */
+@import 'comps/_basics';
+@import 'comps/_header'; 
+@import 'comps/_content';
+@import 'comps/_posts';
+@import 'comps/_footer';
+@import 'comps/_highlight';
+@import 'comps/_audio_player';
 
 html, body {
     margin: 0;
@@ -28,109 +24,3 @@ body {
     background: $body-bg;
     height: 100%;
 }
-
-#page_wrap {    
-}
-
-/* @end General */
-
-
-/* @group Main Content */
-
-#main_content {
-	margin: 50px auto;
-	width: 100%;
-}
-
-#home_grid {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-
-
-
-@import 'comps/_forms'; 
-
-/* @end Main Content */
-
-@import 'comps/_sidebar'; 
-
-
-
-/* @group Responisviness */
-
-@media handheld, only screen and (max-width: 1028px) {
-	.logo img {
-		margin: 0 7% 0 13%;
-	}
-}
-
-
-@media handheld, only screen and (max-width: 710px) {
-	.block-two > li {
-		width: 44.809%;
-		margin-left: 1.191%;
-	}
-
-	.third,
-	.quarter,
-	.fifth,
-	.sixth,
-	.twothird,
-	.twofifth,
-	.threefifth,
-	.fourfifth,
-	.fivesixth,
-	.threequarter,
-	.threefifth.littlelarger {
-		width: 100%;
-		margin: 20px auto;
-		float: none;
-	}
-
-    .project_techs_libs_wrapper {
-        right: 0;
-    }
-
-    .the_post_date, .the_post_author {
-        position: relative;
-        right: 0;
-        margin-left: 10px;
-        top: 0;
-        margin-bottom: 15px;
-    } 
-}
-
-
-@media handheld, only screen and (max-width: 615px) {
-	.block-two > li {
-		width: 98%;
-		float: none;
-		margin-top: 100px;
-	}
-
-	#site_menu {
-		height: auto;
-		overflow: hidden;
-	}
-
-	#site_menu li {
-		width: 50%;
-	}
-
-    .block-two > li {
-        margin-top: 0;
-    }
-
-
-    #site_header {
-        height: auto;
-    }
-}
-
-/* @end Responisviness */
-
-
-
-
