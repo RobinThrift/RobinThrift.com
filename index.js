@@ -126,7 +126,7 @@ Metalsmith(__dirname)
     }))
     .use(include())
     .use(uglify({
-        concat: 'js/init_grid.js'
+        concat: 'js/main.js'
     }))
     .destination('./build')
     .build();

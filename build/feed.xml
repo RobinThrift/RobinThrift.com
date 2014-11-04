@@ -3,7 +3,7 @@
         <channel>
             <title>Robin Thrift</title>
             <description>My personal blog</description>
-            <link>http://localhost:3000</link>
+            <link>http://www.robinthrift.com</link>
 
             <atom:link href="" rel="self" type="application/rss+xml" />
 
@@ -12,48 +12,48 @@
                     <description>&lt;p&gt;I gave a little introductuary talk about &lt;a href=&quot;http://metalsmith.io&quot;&gt;Metalsmith&lt;/a&gt; at last month&amp;#39;s &lt;a href=&quot;http://hannoverjs.de&quot;&gt;HannoverJS&lt;/a&gt;. &lt;/p&gt;
 </description>
                     <pubDate>Wed, 03 Sep 2014 02:00:00 +0200</pubDate>
-                    <link>http://localhost:3000/posts/hannoverjs-august-metalsmith-talk</link>
-                    <guid isPermaLink="true">http://localhost:3000/posts/hannoverjs-august-metalsmith-talk</guid>
+                    <link>http://www.robinthrift.com/posts/hannoverjs-august-metalsmith-talk</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/hannoverjs-august-metalsmith-talk</guid>
                 </item>
                 <item>
                     <title>Metalsmith Part 3: Refining Our Tools</title>
                     <description>&lt;p&gt;&lt;a href=&quot;http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/&quot;&gt;Last time&lt;/a&gt; we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.&lt;/p&gt;
 </description>
                     <pubDate>Tue, 29 Apr 2014 02:00:00 +0200</pubDate>
-                    <link>http://localhost:3000/posts/metalsmith-part-3-refining-our-tools</link>
-                    <guid isPermaLink="true">http://localhost:3000/posts/metalsmith-part-3-refining-our-tools</guid>
+                    <link>http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools</guid>
                 </item>
                 <item>
                     <title>Metalsmith Part 2 : Shaping The Metal</title>
                     <description>&lt;p&gt;In my last &lt;a href=&quot;http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/&quot;&gt;post&lt;/a&gt; I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.&lt;/p&gt;
 </description>
                     <pubDate>Fri, 18 Apr 2014 02:00:00 +0200</pubDate>
-                    <link>http://localhost:3000/posts/metalsmith-part-2-shaping-the-metal</link>
-                    <guid isPermaLink="true">http://localhost:3000/posts/metalsmith-part-2-shaping-the-metal</guid>
+                    <link>http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal</guid>
                 </item>
                 <item>
                     <title>Metalsmith Part 1: Setting Up the Forge</title>
                     <description>&lt;p&gt;In my &lt;a href=&quot;http://www.robinthrift.com/posts/getting-to-know-metalsmith/&quot;&gt;last article&lt;/a&gt; I gave a brief introduction to &lt;a href=&quot;http://www.metalsmith.io/&quot;&gt;Metalsmith&lt;/a&gt;, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.&lt;/p&gt;
 </description>
                     <pubDate>Mon, 14 Apr 2014 02:00:00 +0200</pubDate>
-                    <link>http://localhost:3000/posts/metalsmith-part-1-setting-up-the-forge</link>
-                    <guid isPermaLink="true">http://localhost:3000/posts/metalsmith-part-1-setting-up-the-forge</guid>
+                    <link>http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</guid>
                 </item>
                 <item>
                     <title>Getting to Know Metalsmith</title>
                     <description>&lt;p&gt;There are dozens of static site generators out there. The most popular is probably &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, and for good reasons! It&amp;#39;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&amp;#39;s also the engine powering &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;, GitHub&amp;#39;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code &lt;a href=&quot;https://github.com/RobinThrift/RobinThrift.com&quot;&gt;here&lt;/a&gt;). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.&lt;/p&gt;
 </description>
                     <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
-                    <link>http://localhost:3000/posts/getting-to-know-metalsmith</link>
-                    <guid isPermaLink="true">http://localhost:3000/posts/getting-to-know-metalsmith</guid>
+                    <link>http://www.robinthrift.com/posts/getting-to-know-metalsmith</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/posts/getting-to-know-metalsmith</guid>
                 </item>
                 <item>
                     <title>Podcast Week 1</title>
                     <description>&lt;p&gt;The first episode of my (hopefully) regular podcast. In this episode I will ramble about build scripts and app development.&lt;/p&gt;
 </description>
                     <pubDate>Sun, 13 Apr 2014 02:00:00 +0200</pubDate>
-                    <link>http://localhost:3000/podcasts/podcast-week-1</link>
-                    <guid isPermaLink="true">http://localhost:3000/podcasts/podcast-week-1</guid>
+                    <link>http://www.robinthrift.com/podcasts/podcast-week-1</link>
+                    <guid isPermaLink="true">http://www.robinthrift.com/podcasts/podcast-week-1</guid>
                 </item>
     </channel>
 </rss>
