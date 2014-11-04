@@ -107,6 +107,7 @@ blockquote .author {
     width: 100%;
     max-width: $max-width;
     margin: 10px auto;
+    box-sizing: border-box;
 }
 
 .side-note {
