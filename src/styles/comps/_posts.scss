@@ -111,6 +111,15 @@
         }
     }
 
+    h2 {
+        margin-bottom: 0px;    
+    }
+
+    .post__date {
+        color: #868686;
+        text-shadow: 0 1px 1px #ffffff;
+    }
+
     .post-list__resp-wrapper {
         margin: 0 auto;
         max-width: $max-width;

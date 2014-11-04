@@ -30,37 +30,38 @@
             </nav>
 
             
-            
-            <div class="header__code">
-                <pre>
-                    <code>
-            return function(files, metalsmith, done) {
-                var metadata    = metalsmith.metadata(),
-                    collections = metadata.collections,
-                    colName, file, filePath;
-            
-                for (file in files) {
-                    colName = files[file].paginate;
-                    filePath = opts.path;
-                    if (colName) {
-                        if (filePath) {
-                            filePath = filePath.replace(':collection', colName);
-            
-                        }
-            
-                        paginate(filePath, collections[colName], file, files);
-            
-                    }
-            
-                }
-            
-                done();
-            
+
+<div class="header__code">
+    <pre>
+        <code>
+return function(files, metalsmith, done) {
+    var metadata    = metalsmith.metadata(),
+        collections = metadata.collections,
+        colName, file, filePath;
+
+    for (file in files) {
+        colName = files[file].paginate;
+        filePath = opts.path;
+        if (colName) {
+            if (filePath) {
+                filePath = filePath.replace(':collection', colName);
+
             }
-                    </code>
-                </pre>
-            
-            </div>
+
+            paginate(filePath, collections[colName], file, files);
+
+        }
+
+    }
+
+    done();
+
+}
+        </code>
+    </pre>
+
+</div>
+
         </header>
 
 
@@ -68,6 +69,7 @@
 
             <div class="main-content">
             
+
 
 <article class="hentry post">
     <header class="post__header">
@@ -85,10 +87,10 @@
 <p>I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let’s change that.</p>
 <p>Firstly a little reminder, how Metalsmith represents files internally:</p>
 <pre><code class="lang-js">{
-    'title': '<span class="hljs-type">FROM_THE_TITLE_KEY</span>',
-    '<span class="hljs-keyword">template</span>': '<span class="hljs-type">TEMPLATE_NAME</span>',
-    'contents': &lt;<span class="hljs-type">Buffer</span>()&gt;,
-    'mode': '<span class="hljs-type">HEX_FILE_PERM_CODE</span>'
+    <span class="hljs-string">'title'</span>: <span class="hljs-string">'FROM_THE_TITLE_KEY'</span>,
+    <span class="hljs-string">'template'</span>: <span class="hljs-string">'TEMPLATE_NAME'</span>,
+    <span class="hljs-string">'contents'</span>: &lt;Buffer()&gt;,
+    <span class="hljs-string">'mode'</span>: <span class="hljs-string">'HEX_FILE_PERM_CODE'</span>
 }
 </code></pre>
 <p>And Metalsmith passes an object with all the files to every function that is passed to <code>.use()</code>. But that’s not all, Metalsmith also passes you the current Metalsmith instance and a function to call, when you’re done, so a full plugin would look like this:</p>
@@ -114,15 +116,15 @@ Metalsmith(__dirname)
 };
 </code></pre>
 <p>We want our plugin to add a template key to our posts (if there is none), so we’ll need to filter out our posts first. We will do so, by looping over the files list and use a regular expression to check if the file is a post:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> findTemplate = function(config) {
-    <span class="hljs-keyword">var</span> pattern = new <span class="hljs-type">RegExp</span>(config.pattern);
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> findTemplate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config)</span> {</span>
+    <span class="hljs-keyword">var</span> pattern = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(config.pattern);
 
-    <span class="hljs-keyword">return</span> function(files, metalsmith, done) {
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(files, metalsmith, done)</span> {</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> file <span class="hljs-keyword">in</span> files) {
             <span class="hljs-keyword">if</span> (pattern.test(file)) {
                 <span class="hljs-keyword">var</span> _f = files[file];
-                <span class="hljs-keyword">if</span> (!_f.<span class="hljs-keyword">template</span>) {
-                    _f.<span class="hljs-keyword">template</span> = config.templateName;
+                <span class="hljs-keyword">if</span> (!_f.template) {
+                    _f.template = config.templateName;
                 }
             }
         }
@@ -175,7 +177,7 @@ done(new Error(<span class="hljs-string">'Oh noes!'</span>));
 </code></pre><p>That’s it. Metalsmith will copy the files over, including the file structure. Done. <code>next()</code>!</p>
 <h3 id="preprocessing">Preprocessing</h3>
 <p>Now using plain CSS and JS is boring, SCSS and CoffeeScript are way more fun! At least, we’ll pretend for now, because that’s what we are going to set up now.<br>Firstly we will need to install the CS (<a href="https://github.com/joaoafrmartins/metalsmith-coffee">metalsmith-coffee</a>) and SCSS (<a href="https://github.com/stevenschobert/metalsmith-sass">metalsmith-sass</a>) plugins via npm:</p>
-<pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith-coffee metalsmith-sass
+<pre><code>$ npm install <span class="hljs-subst">--</span>save<span class="hljs-attribute">-dev</span> metalsmith<span class="hljs-attribute">-coffee</span> metalsmith<span class="hljs-attribute">-sass</span>
 </code></pre><p>Then require them in your build script and add them to your chain (they will filter the files themselves):</p>
 <pre><code class="lang-js">//<span class="hljs-keyword">...</span>
     .use(sass({
@@ -247,3 +249,4 @@ done(new Error(<span class="hljs-string">'Oh noes!'</span>));
         </script>
     </body>
 </html>
+

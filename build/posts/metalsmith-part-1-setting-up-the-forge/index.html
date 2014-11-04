@@ -30,37 +30,38 @@
             </nav>
 
             
-            
-            <div class="header__code">
-                <pre>
-                    <code>
-            return function(files, metalsmith, done) {
-                var metadata    = metalsmith.metadata(),
-                    collections = metadata.collections,
-                    colName, file, filePath;
-            
-                for (file in files) {
-                    colName = files[file].paginate;
-                    filePath = opts.path;
-                    if (colName) {
-                        if (filePath) {
-                            filePath = filePath.replace(':collection', colName);
-            
-                        }
-            
-                        paginate(filePath, collections[colName], file, files);
-            
-                    }
-            
-                }
-            
-                done();
-            
+
+<div class="header__code">
+    <pre>
+        <code>
+return function(files, metalsmith, done) {
+    var metadata    = metalsmith.metadata(),
+        collections = metadata.collections,
+        colName, file, filePath;
+
+    for (file in files) {
+        colName = files[file].paginate;
+        filePath = opts.path;
+        if (colName) {
+            if (filePath) {
+                filePath = filePath.replace(':collection', colName);
+
             }
-                    </code>
-                </pre>
-            
-            </div>
+
+            paginate(filePath, collections[colName], file, files);
+
+        }
+
+    }
+
+    done();
+
+}
+        </code>
+    </pre>
+
+</div>
+
         </header>
 
 
@@ -68,6 +69,7 @@
 
             <div class="main-content">
             
+
 
 <article class="hentry post">
     <header class="post__header">
@@ -97,9 +99,9 @@
 <span class="hljs-string">|_ package.json</span>
 </code></pre><p>Let’s start at the bottom: The <code>package.json</code> will hold our dependencies which we’ll be setting up now. For this simple example we will only need a few packages, namely Metalsmith. You can either add it to your <code>package.json</code> under the <code>dependencies</code> or <code>devDependencies</code> key, but I usually just use the command line to install the package and save it as a dependency at the same time. If you choose to add them manually to the <code>package.json</code> don’t forget to run <code>npm install</code> to install all your dependencies once you’ve declared them.</p>
 <p>So let us go ahead and install Metalsmith. Using the command line execute the following:</p>
-<pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith
+<pre><code><span class="hljs-comment">$</span> <span class="hljs-comment">npm</span> <span class="hljs-comment">install</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">save</span><span class="hljs-literal">-</span><span class="hljs-comment">dev</span> <span class="hljs-comment">metalsmith</span>
 </code></pre><p>Now let’s create the actual build file which will contain the instructions on how to generate our site. I will call this <code>index.js</code> but you could also call it <code>build.js</code> or something along those lines (index.js is often the “default” for node projects). We’ll start with some boilerplate code:</p>
-<pre><code class="lang-js"><span class="hljs-reserved">var</span> Metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
 
 
 Metalsmith(__dirname)
@@ -120,7 +122,7 @@ Hi, this is my start page; neat ain't it? ;)
 <div class="side_note">If you are not familiar with markdown check out <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">this</a> guide.</div>
 
 <p>To do so we will first need to install the markdown plugin for metalsmith, conveniently named <code>metalsmith-markdown</code>. So go ahead and add it to your <code>package.json</code> or install it via the command line:</p>
-<pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith-markdown
+<pre><code>$ npm install <span class="hljs-subst">--</span>save<span class="hljs-attribute">-dev</span> metalsmith<span class="hljs-attribute">-markdown</span>
 </code></pre><p>Then we simply need to require it and call it in our build file:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> Metalsmith = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith'</span>),
     markdown   = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-markdown'</span>);
@@ -134,7 +136,7 @@ Metalsmith(__dirname)
 <p>If you run the build script now (<code>node index</code>) you will find a file named <code>index.html</code> in the <code>build</code> directory. As you can see it’s super easy to add plugins to Metalsmith and customise the way your files are processed. If you have ever worked with <a href="http://gulpjs.com/">Gulp</a> or <a href="http://expressjs.com/">express.js</a> this will look very familiar.</p>
 <h3 id="shaping-your-content">Shaping Your Content</h3>
 <p>Of course rendered markdown is not enough to make a full website. In this next step we will add some templates to wrap our content. For this we will use another Metalsmith plugin cleverly called <code>metalsmith-templates</code>. As before go ahead and install it and add it to your build script:</p>
-<pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith-templates
+<pre><code>$ npm install <span class="hljs-subst">--</span>save<span class="hljs-attribute">-dev</span> metalsmith<span class="hljs-attribute">-templates</span>
 </code></pre><pre><code class="lang-js"><span class="hljs-keyword">var</span> Metalsmith = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith'</span>),
     markdown   = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-markdown'</span>),
     templates  = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-templates'</span>);
@@ -148,7 +150,7 @@ Metalsmith(__dirname)
 </code></pre>
 <p>As with the markdown plugin we simply pass the <code>templates()</code> function to the <code>use()</code> method to tell Metalsmith to use this plugin. However we are still missing some key parts for this to work, firstly some templates and a templating engine. <code>metalsmith-templates</code> is build on top of <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>, which gives us tons of engines to choose from. I will go with <a href="http://handlebarsjs.com/">Handlebars</a> but you could also choose <a href="http://jade-lang.com/">Jade</a> or <a href="http://paularmstrong.github.io/swig/">Swig</a>. </p>
 <p>We need to install our engine and tell <code>metalsmith-templates</code> which engine to use:</p>
-<pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> handlebars
+<pre><code><span class="hljs-comment">$</span> <span class="hljs-comment">npm</span> <span class="hljs-comment">install</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">save</span><span class="hljs-literal">-</span><span class="hljs-comment">dev</span> <span class="hljs-comment">handlebars</span>
 </code></pre><pre><code class="lang-js">// <span class="hljs-keyword">...</span>
 .use(templates(<span class="hljs-string">'handlebars'</span>))
 // <span class="hljs-keyword">...</span>
@@ -238,3 +240,4 @@ Metalsmith(__dirname)
         </script>
     </body>
 </html>
+

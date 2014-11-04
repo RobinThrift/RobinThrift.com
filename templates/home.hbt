@@ -7,6 +7,7 @@
             <h2 class="post-title entry-title">
                 <a href="{{link this.path }}" rel="bookmark">{{ this.title }}</a>
             </h2>
+            <date class="post__date">{{date this.date }}</date>
 
             {{#if this.feat_img}}
                 <div class="post_feat_img">
@@ -23,9 +24,6 @@
             <article class="entry-summary">
                 {{{ this.excerpt }}}
             </article>
-            <footer>
-                <a href="{{link this.path }}" class="button">Read More</a>
-            </footer>
         </div>
     </li>
     {{/each}}

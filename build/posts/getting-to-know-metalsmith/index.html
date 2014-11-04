@@ -30,37 +30,38 @@
             </nav>
 
             
-            
-            <div class="header__code">
-                <pre>
-                    <code>
-            return function(files, metalsmith, done) {
-                var metadata    = metalsmith.metadata(),
-                    collections = metadata.collections,
-                    colName, file, filePath;
-            
-                for (file in files) {
-                    colName = files[file].paginate;
-                    filePath = opts.path;
-                    if (colName) {
-                        if (filePath) {
-                            filePath = filePath.replace(':collection', colName);
-            
-                        }
-            
-                        paginate(filePath, collections[colName], file, files);
-            
-                    }
-            
-                }
-            
-                done();
-            
+
+<div class="header__code">
+    <pre>
+        <code>
+return function(files, metalsmith, done) {
+    var metadata    = metalsmith.metadata(),
+        collections = metadata.collections,
+        colName, file, filePath;
+
+    for (file in files) {
+        colName = files[file].paginate;
+        filePath = opts.path;
+        if (colName) {
+            if (filePath) {
+                filePath = filePath.replace(':collection', colName);
+
             }
-                    </code>
-                </pre>
-            
-            </div>
+
+            paginate(filePath, collections[colName], file, files);
+
+        }
+
+    }
+
+    done();
+
+}
+        </code>
+    </pre>
+
+</div>
+
         </header>
 
 
@@ -68,6 +69,7 @@
 
             <div class="main-content">
             
+
 
 <article class="hentry post">
     <header class="post__header">
@@ -87,10 +89,10 @@
 <p>This is were Metalsmith comes in.</p>
 <h3 id="forging-with-javascript">Forging with JavaScript</h3>
 <p><a href="http://www.metalsmith.io/">Metalsmith</a> by the guys over at <a href="https://segment.io/">Segment.io</a> is “an extremely simple, pluggable static site generator”. What that means is, is that everything is a plugin. There’s a very small core which creates a list of files for your plugins to work with (similar to Gulp). You give it a source directory and then tell it which plugins to use; if you know <a href="http://expressjs.com/">express.js</a> or have used Gulp before, this will look very familiar:</p>
-<pre><code class="lang-js">Metalsmith<span class="hljs-comment">(__dirname)</span>
-    .use<span class="hljs-comment">(markdown()</span>)
-    .use<span class="hljs-comment">(templates('handlebars')</span>)
-    .build<span class="hljs-comment">()</span>;
+<pre><code class="lang-js"><span class="hljs-function">Metalsmith(__dirname)</span>
+    <span class="hljs-class">.use</span>(<span class="hljs-function">markdown()</span>)
+    <span class="hljs-class">.use</span>(<span class="hljs-function">templates(<span class="hljs-string">'handlebars'</span>)</span>)
+    <span class="hljs-class">.build</span>();
 </code></pre>
 <p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files. </p>
 <p>Metalsmith will also parse any YAML front-matter at the top of every file, which acts as metadata, e. g. title, date and template.</p>
@@ -163,3 +165,4 @@
         </script>
     </body>
 </html>
+
