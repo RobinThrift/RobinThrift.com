@@ -13,10 +13,12 @@
 
 .site-footer__body {
     width: 100%;
+    box-sizing: border-box;
     max-width: $max-width;
     margin: 0 auto;
     height: 70px;
     line-height: 70px;
+    padding: 10px;
 
     .third {
         line-height: 70px;

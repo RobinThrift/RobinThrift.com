@@ -6,16 +6,12 @@
 
         <footer class="site-footer">
             <div class="site-footer__body">
-                <div class="third">
+                <div class="half">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
                     <a href="{{link 'feed.xml'}}" target="_blank">Feed</a>
                 </div>
 
-                <div class="third">
-
-                </div>
-
-                <div class="third align_right">&copy;2014 Robin Thrift</div>
+                <div class="half align_right">&copy;2014 Robin Thrift</div>
             </div>
         </footer>
 
