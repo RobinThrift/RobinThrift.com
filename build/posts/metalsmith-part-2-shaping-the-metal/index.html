@@ -9,11 +9,11 @@
         <meta name="viewport" content="width=device-width">
         <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
-        <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://localhost:3000/favicon.ico" type="image/x-icon" />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/styles/main.css">
     </head>
     <body>
 
@@ -23,45 +23,44 @@
             <nav class="site-menu">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
+                    <li><a href="http://localhost:3000/pages/about/">About</a></li>
+                    <li><a href="http://localhost:3000/pages/blog">Blog</a></li>
+                    <li><a href="http://localhost:3000/pages/podcasts">Podcast</a></li>
                 </ul>
             </nav>
 
             
-
-<div class="header__code">
-    <pre>
-        <code>
-return function(files, metalsmith, done) {
-    var metadata    = metalsmith.metadata(),
-        collections = metadata.collections,
-        colName, file, filePath;
-
-    for (file in files) {
-        colName = files[file].paginate;
-        filePath = opts.path;
-        if (colName) {
-            if (filePath) {
-                filePath = filePath.replace(':collection', colName);
-
+            
+            <div class="header__code">
+                <pre>
+                    <code>
+            return function(files, metalsmith, done) {
+                var metadata    = metalsmith.metadata(),
+                    collections = metadata.collections,
+                    colName, file, filePath;
+            
+                for (file in files) {
+                    colName = files[file].paginate;
+                    filePath = opts.path;
+                    if (colName) {
+                        if (filePath) {
+                            filePath = filePath.replace(':collection', colName);
+            
+                        }
+            
+                        paginate(filePath, collections[colName], file, files);
+            
+                    }
+            
+                }
+            
+                done();
+            
             }
-
-            paginate(filePath, collections[colName], file, files);
-
-        }
-
-    }
-
-    done();
-
-}
-        </code>
-    </pre>
-
-</div>
-
+                    </code>
+                </pre>
+            
+            </div>
         </header>
 
 
@@ -69,7 +68,6 @@ return function(files, metalsmith, done) {
 
             <div class="main-content">
             
-
 
 <article class="hentry post">
     <header class="post__header">
@@ -128,10 +126,10 @@ Handlebars.registerPartial(<span class="hljs-string">'footer'</span>, fs.readFil
 <h3 id="files-and-paths">Files and Paths</h3>
 <p>As you might have noticed, Metalsmith replicates the input folder structure in our output folder (<code>build/</code>). When you run Metalsmith, it looks though your source folder and creates an internal representation for every file, including it’s contents and path. It also populates every internal file object with the metadata you pass it in the YAML front-matter. We end up with an object where each key is the file’s path and each file object looks something like this:</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">'title'</span>: <span class="hljs-string">'FROM_THE_TITLE_KEY'</span>,
-    <span class="hljs-string">'template'</span>: <span class="hljs-string">'TEMPLATE_NAME'</span>,
-    <span class="hljs-string">'contents'</span>: &lt;Buffer()&gt;,
-    <span class="hljs-string">'mode'</span>: <span class="hljs-string">'HEX_FILE_PERM_CODE'</span>
+    'title': '<span class="hljs-type">FROM_THE_TITLE_KEY</span>',
+    '<span class="hljs-keyword">template</span>': '<span class="hljs-type">TEMPLATE_NAME</span>',
+    'contents': &lt;<span class="hljs-type">Buffer</span>()&gt;,
+    'mode': '<span class="hljs-type">HEX_FILE_PERM_CODE</span>'
 }
 </code></pre>
 <p>As you can see it’s a very simple and intuitive structure that makes it easy to work with the files and write plugins. But you are not limited to modifying only the files themselves, you can also alter the file list, deleting or adding files (including virtual ones).</p>
@@ -179,12 +177,12 @@ Metalsmith(__dirname)
 
 <p>If you run your build script now, you won’t find an <code>about.html</code> but instead a folder named “about” in the <code>pages/</code> folder with an <code>index.html</code> file. This will result in a link that looks like this: “hostname/pages/about”, just like we wanted.</p>
 <p>We can do the same for our posts. So let’s create a simple posts called “First Post” in <code>src/content/posts/first-post.md</code>:</p>
-<pre><code class="lang-markdown"><span class="hljs-bullet">---
-</span>title: "First Post"
-date: 2014-04-18
-<span class="hljs-header">template: post.hbt
----</span>
-This is an amazing blogpost!
+<pre><code class="lang-markdown">---
+title: <span class="hljs-string">"First Post"</span>
+date: <span class="hljs-number">2014</span>-<span class="hljs-number">04</span>-<span class="hljs-number">18</span>
+<span class="hljs-keyword">template</span>: post.hbt
+---
+<span class="hljs-type">This</span> <span class="hljs-keyword">is</span> an amazing blogpost!
 </code></pre>
 <div class="note--small">You will need to also create a post template (you can use the same as for the page for now)</div>
 
@@ -274,7 +272,7 @@ This is an amazing blogpost!
             <div class="site-footer__body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
-                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
+                    <a href="http://localhost:3000/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="third">
@@ -297,4 +295,3 @@ This is an amazing blogpost!
         </script>
     </body>
 </html>
-

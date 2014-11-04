@@ -9,11 +9,11 @@
         <meta name="viewport" content="width=device-width">
         <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
-        <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://localhost:3000/favicon.ico" type="image/x-icon" />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/styles/main.css">
     </head>
     <body>
 
@@ -23,45 +23,44 @@
             <nav class="site-menu">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
+                    <li><a href="http://localhost:3000/pages/about/">About</a></li>
+                    <li><a href="http://localhost:3000/pages/blog">Blog</a></li>
+                    <li><a href="http://localhost:3000/pages/podcasts">Podcast</a></li>
                 </ul>
             </nav>
 
             
-
-<div class="header__code">
-    <pre>
-        <code>
-return function(files, metalsmith, done) {
-    var metadata    = metalsmith.metadata(),
-        collections = metadata.collections,
-        colName, file, filePath;
-
-    for (file in files) {
-        colName = files[file].paginate;
-        filePath = opts.path;
-        if (colName) {
-            if (filePath) {
-                filePath = filePath.replace(':collection', colName);
-
+            
+            <div class="header__code">
+                <pre>
+                    <code>
+            return function(files, metalsmith, done) {
+                var metadata    = metalsmith.metadata(),
+                    collections = metadata.collections,
+                    colName, file, filePath;
+            
+                for (file in files) {
+                    colName = files[file].paginate;
+                    filePath = opts.path;
+                    if (colName) {
+                        if (filePath) {
+                            filePath = filePath.replace(':collection', colName);
+            
+                        }
+            
+                        paginate(filePath, collections[colName], file, files);
+            
+                    }
+            
+                }
+            
+                done();
+            
             }
-
-            paginate(filePath, collections[colName], file, files);
-
-        }
-
-    }
-
-    done();
-
-}
-        </code>
-    </pre>
-
-</div>
-
+                    </code>
+                </pre>
+            
+            </div>
         </header>
 
 
@@ -69,7 +68,6 @@ return function(files, metalsmith, done) {
 
             <div class="main-content">
             
-
 
 
 <article class="the_post threefifth littlelarger pid_search">
@@ -103,7 +101,7 @@ return function(files, metalsmith, done) {
             </header>
 
             <div class="widget_body">
-                <form id="searchform" action="http://www.robinthrift.com/pages/search/">
+                <form id="searchform" action="http://localhost:3000/pages/search/">
                     <input type="search" name="q" id="searchterm" class="text_input" autocomplete="false" />
                     <input type="submit" class="button" value="Search" />
                 </form>
@@ -141,7 +139,6 @@ return function(files, metalsmith, done) {
         </li>
     </ul>
 </aside>
-
             </div>
 
         </div><!-- End #page_wrap -->
@@ -152,7 +149,7 @@ return function(files, metalsmith, done) {
             <div class="site-footer__body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
-                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
+                    <a href="http://localhost:3000/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="third">

@@ -9,11 +9,11 @@
         <meta name="viewport" content="width=device-width">
         <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
-        <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://localhost:3000/favicon.ico" type="image/x-icon" />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost:3000/styles/main.css">
     </head>
     <body>
 
@@ -23,45 +23,44 @@
             <nav class="site-menu">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
+                    <li><a href="http://localhost:3000/pages/about/">About</a></li>
+                    <li><a href="http://localhost:3000/pages/blog">Blog</a></li>
+                    <li><a href="http://localhost:3000/pages/podcasts">Podcast</a></li>
                 </ul>
             </nav>
 
             
-
-<div class="header__code">
-    <pre>
-        <code>
-return function(files, metalsmith, done) {
-    var metadata    = metalsmith.metadata(),
-        collections = metadata.collections,
-        colName, file, filePath;
-
-    for (file in files) {
-        colName = files[file].paginate;
-        filePath = opts.path;
-        if (colName) {
-            if (filePath) {
-                filePath = filePath.replace(':collection', colName);
-
+            
+            <div class="header__code">
+                <pre>
+                    <code>
+            return function(files, metalsmith, done) {
+                var metadata    = metalsmith.metadata(),
+                    collections = metadata.collections,
+                    colName, file, filePath;
+            
+                for (file in files) {
+                    colName = files[file].paginate;
+                    filePath = opts.path;
+                    if (colName) {
+                        if (filePath) {
+                            filePath = filePath.replace(':collection', colName);
+            
+                        }
+            
+                        paginate(filePath, collections[colName], file, files);
+            
+                    }
+            
+                }
+            
+                done();
+            
             }
-
-            paginate(filePath, collections[colName], file, files);
-
-        }
-
-    }
-
-    done();
-
-}
-        </code>
-    </pre>
-
-</div>
-
+                    </code>
+                </pre>
+            
+            </div>
         </header>
 
 
@@ -69,7 +68,6 @@ return function(files, metalsmith, done) {
 
             <div class="main-content">
             
-
 
 <article class="hentry post">
     <header class="post__header">
@@ -89,10 +87,10 @@ return function(files, metalsmith, done) {
 <p>This is were Metalsmith comes in.</p>
 <h3 id="forging-with-javascript">Forging with JavaScript</h3>
 <p><a href="http://www.metalsmith.io/">Metalsmith</a> by the guys over at <a href="https://segment.io/">Segment.io</a> is “an extremely simple, pluggable static site generator”. What that means is, is that everything is a plugin. There’s a very small core which creates a list of files for your plugins to work with (similar to Gulp). You give it a source directory and then tell it which plugins to use; if you know <a href="http://expressjs.com/">express.js</a> or have used Gulp before, this will look very familiar:</p>
-<pre><code class="lang-js"><span class="hljs-function">Metalsmith(__dirname)</span>
-    <span class="hljs-class">.use</span>(<span class="hljs-function">markdown()</span>)
-    <span class="hljs-class">.use</span>(<span class="hljs-function">templates(<span class="hljs-string">'handlebars'</span>)</span>)
-    <span class="hljs-class">.build</span>();
+<pre><code class="lang-js">Metalsmith<span class="hljs-comment">(__dirname)</span>
+    .use<span class="hljs-comment">(markdown()</span>)
+    .use<span class="hljs-comment">(templates('handlebars')</span>)
+    .build<span class="hljs-comment">()</span>;
 </code></pre>
 <p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files. </p>
 <p>Metalsmith will also parse any YAML front-matter at the top of every file, which acts as metadata, e. g. title, date and template.</p>
@@ -146,7 +144,7 @@ return function(files, metalsmith, done) {
             <div class="site-footer__body">
                 <div class="third">
                     <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
-                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
+                    <a href="http://localhost:3000/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="third">
@@ -169,4 +167,3 @@ return function(files, metalsmith, done) {
         </script>
     </body>
 </html>
-
