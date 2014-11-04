@@ -122,7 +122,8 @@ Metalsmith(__dirname)
     }))
     .use(template('handlebars'))
     .use(sass({
-        outputStyle: 'compressed'
+        outputStyle: 'compressed',
+        includePaths: require('node-neat').includePaths
     }))
     .use(include())
     .use(uglify({
