@@ -32,6 +32,15 @@
             {{> code}}
         </header>
 
+        <nav class="little-nav">
+            <div class="little-nav__activator"><span class="light-text">&lt;</span><h2 class="logo">{{ sitename }}</h2><span class="light-text last">&gt;</span><span class="light-text middle">/</span></div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{link 'pages/about/'}}">About</a></li>
+                <li><a href="{{link 'pages/blog'}}">Blog</a></li>
+                <li><a href="{{link 'pages/podcasts'}}">Podcast</a></li>
+            </ul>
+        </nav>
 
         <div class="page-wrap">
 
