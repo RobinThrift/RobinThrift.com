@@ -5,14 +5,14 @@ var Metalsmith  = require('metalsmith'),
     permalinks  = require('metalsmith-permalinks'),
     excerpts    = require('metalsmith-excerpts'),
     collections = require('metalsmith-collections'),
-    drafts      = require('metalsmith-drafts');
+    drafts      = require('metalsmith-drafts'),
     hljs        = require('highlight.js'),
     Handlebars  = require('handlebars'),
     moment      = require('moment'),
     paginate    = require('metalsmith-paginate'),
     uglify      = require('metalsmith-uglify'),
     include     = require('./metalsmith-include'),
-    metadata    = require('./config.json'),
+    metadata    = require('./config')(process.argv),
     fs          = require('fs');
 
 
