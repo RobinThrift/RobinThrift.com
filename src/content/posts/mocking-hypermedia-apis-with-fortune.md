@@ -2,7 +2,7 @@
 title: "Mocking Hypermedia APIs with Fortune.js"
 date: 2014-11-20
 template: single.hbt
-draft: true
+draft: false
 ---
 
 Now we all know what a RESTful API is, right? Well almost. What most people mean by a "REST API" is usually
@@ -33,3 +33,37 @@ First we need to install `fortune.js`:
 ```none
 $ npm install fortune
 ```
+
+Then we can use it like this:
+
+```js
+var fortune = require('fortune'),
+    server  = fortune();
+
+server.listen(1337);
+```
+
+This will start an [express.js](http://expressjs.com) server on port `1337`. Not very exciting and 
+actually pretty useless. So let's add a model:
+
+
+```js
+var fortune = require('fortune'),
+    server  = fortune();
+
+server.resource('user', {
+    username: String,
+    email: String,
+    age: Number
+});
+
+server.listen(1337);
+```
+
+This will automagically create a bunch of routes for us:
+
+- GET `/users`: Lists all users
+- GET `/users/:id`: Retrieves a single user by id
+- Plus a bunch of creation and update routes
+
+<div class="side-note">Check the [fortune.js docs](https://github.com/daliwali/fortune#basic-usage) for a full list of routes.</div>
