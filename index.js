@@ -130,4 +130,6 @@ Metalsmith(__dirname)
         concat: 'js/main.js'
     }))
     .destination('./build')
-    .build();
+    .build(function(err) {
+        if (err) { throw err; }
+    });
