@@ -2,7 +2,6 @@
 title: "Mocking Hypermedia APIs with Fortune.js"
 date: 2014-11-20
 template: single.hbt
-draft: false
 ---
 
 Now we all know what a RESTful API is, right? Well almost. What most people mean by a "REST API" is usually
@@ -67,3 +66,85 @@ This will automagically create a bunch of routes for us:
 - Plus a bunch of creation and update routes
 
 <div class="side-note">Check the [fortune.js docs](https://github.com/daliwali/fortune#basic-usage) for a full list of routes.</div>
+
+We'll test this by `POST`ing so data to it (using a tool like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) or [Hurl.it](https://www.hurl.it/)):
+
+```json
+{
+    "users": [
+        {
+            "username": "Rob",
+            "email": "someone@example.com",
+            "age": 25
+        }
+    ]
+}
+```
+
+If everything goes as intendet we'll get the exact same data back. And by simply `GET`ing `/users` we can confirm, that we
+created a new user (which is persistent).
+
+
+### Relationships
+
+Let's add another resource and connect the two (note, that fortune pluralizes our strings automatically):
+
+```js
+server.resource('user', {
+    username: String,
+    email: String,
+    age: Number,
+    posts: [{ref: 'post', inverse: 'author'}]
+});
+
+server.resource('post', {
+    content: String,
+    title: String,
+    date: Date,
+    author: 'user'
+});
+```
+Each user is asigned a collection of posts (one-to-many), an each post has exactly one author, which we will map to 
+the `author` key. If we request `/users` now, we should ge something like:
+
+```json
+{
+    "users": [
+        {
+            "id": "4RvBm0Z1izH0q6bS",
+            "username": "Rob",
+            "email": "someone@example.com",
+            "age": 25
+        }
+    ],
+    "links": {
+        "users.posts": {
+            "href": "/posts/{users.posts}",
+            "type": "posts"
+        }
+    }
+}
+```
+
+This might be a little unfamiliar if you're not used to Hypermedia APIs, but it's a very
+flexible representation of your data.
+
+Now let's add a post:
+
+```json
+{
+    "posts": [ 
+        {
+            "title": "Lorem Ipsum",
+            "content": "Nothing to see here",
+            "date": "2014-11-28",
+            "links": {
+                "author": "4RvBm0Z1izH0q6bS"
+            }
+        }
+    ]
+}
+```
+
+By posting this to `/posts` we'll add a new post and connect it to the user with the id "4RvBm0Z1izH0q6bS". As you can see,
+our `author` to `user` mapping still holds and makes for a very nice data structure.
