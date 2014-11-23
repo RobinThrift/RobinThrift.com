@@ -2,7 +2,6 @@
 title: "Weekly Picks No. 1"
 date: 2014-11-23
 template: single.hbt
-draft: true
 ---
 
 These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:
