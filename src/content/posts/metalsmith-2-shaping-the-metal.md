@@ -74,7 +74,7 @@ As you can see it's a very simple and intuitive structure that makes it easy to 
 
 
 ###Link Structure
-If we leave or site like this, we will have links that look like this: "hostname/content/pages/about.html", but wouldn't it be much nicer (and search engine friendlier) to have a link structure like this: "hostname/pages/about"? 
+If we leave or site like this, we will have links that look like this: "hostname/content/pages/about.html", but wouldn't it be much nicer (and search engine friendlier) to have a link structure like this: "hostname/pages/about"?
 
 To achieve this we will need two more Metalsmith plugins: [metalsmith-collections](https://github.com/segmentio/metalsmith-collections) and [metalsmith-permalinks](https://github.com/segmentio/metalsmith-permalinks), so install those and save them to your dependencies. Now we will use these two plugins together to achieve our desired result:
 
@@ -110,7 +110,7 @@ The first option is the quickest, but only allows you to add your content to one
     }
 }))
 //...
-``` 
+```
 
 Metalsmith will now create a collection for our pages. While it may seem silly to create a collection for our pages it will come in useful when we are constructing our permalinks and when you want to construct a sitemap. For now let's continue with our permalinks:
 
@@ -200,4 +200,4 @@ The full source code for this part of the tutorial can be found [here](https://g
 
 
 #####Update:
-You can find the next post in this series here: [Metalsmith Part 3: Shaping The Metal](http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/)
+You can find the next post in this series here: [Metalsmith Part 3: Refining Our Tools](http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/)
