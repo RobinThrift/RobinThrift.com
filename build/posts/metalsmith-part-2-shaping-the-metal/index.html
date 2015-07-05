@@ -7,82 +7,34 @@
 
         <meta name="description" content="My personal blog">
         <meta name="viewport" content="width=device-width">
-        <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
         <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato|Source+Code+Pro:300|Merriweather' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
     </head>
     <body>
 
         <header class="site-header">
-            <h1 class="logo"><a href="/"><span class="light-text">&lt;</span>Robin Thrift</a><span class="light-text">/&gt;</span></h1>  
+            <h1 class="logo"><a href="/">Robin Thrift</a></h1>  
 
-            <nav class="site-menu">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
+            <nav class="social-nav">
+                <ul class="social-links">
+                    <li class="social-links__link"><a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a></li>
+                    <li class="social-links__link"><a target="_blank" href="https://github.com/RobinThrift">GitHub</a></li>
                 </ul>
             </nav>
-
-            
-
-<div class="header__code">
-    <pre>
-        <code>
-return function(files, metalsmith, done) {
-    var metadata    = metalsmith.metadata(),
-        collections = metadata.collections,
-        colName, file, filePath;
-
-    for (file in files) {
-        colName = files[file].paginate;
-        filePath = opts.path;
-        if (colName) {
-            if (filePath) {
-                filePath = filePath.replace(':collection', colName);
-
-            }
-
-            paginate(filePath, collections[colName], file, files);
-
-        }
-
-    }
-
-    done();
-
-}
-        </code>
-    </pre>
-
-</div>
-
         </header>
-
-        <nav class="little-nav">
-            <div class="little-nav__activator"><span class="light-text">&lt;</span><h2 class="logo">Robin Thrift</h2><span class="light-text last">&gt;</span><span class="light-text middle">/</span></div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
-            </ul>
-        </nav>
 
         <div class="page-wrap">
 
             <div class="main-content">
             
 
-
 <article class="hentry post">
-    <header class="post__header">
-        <div class="post__header__wrapper">
+    <header class="post__header ">
+        <div class="post__header__wrapper ">
             <h1 class="entry-title">Metalsmith Part 2 : Shaping The Metal</h1>
             <date class="published post__date">18th April 2014</date>
         </div>
@@ -108,13 +60,13 @@ Tell the world something about yourself here!
 <h4 id="template-partials">Template Partials</h4>
 <p>At this stage we should also create partials for the head and foot section of our template, so we don’t have to copy and paste it every time and can simply create a menu or logo that will appear on every page. Every templating engine handles partials differently, so I will only quickly go over my Handlebars version here:</p>
 <p>I simply added this to my <code>index.js</code> and added a <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/header.hbt">header.hbt</a> and <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/footer.hbt">footer.hbt</a>:</p>
-<pre><code class="lang-js">// <span class="hljs-keyword">...</span>
-Handlebars = <span class="hljs-keyword">require</span>(<span class="hljs-string">'handlebars'</span>),
-fs         = <span class="hljs-keyword">require</span>(<span class="hljs-string">'fs'</span>);
+<pre><code class="lang-js"><span class="hljs-comment">// ...</span>
+Handlebars = <span class="hljs-built_in">require</span>(<span class="hljs-string">'handlebars'</span>),
+fs         = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
 
 Handlebars.registerPartial(<span class="hljs-string">'header'</span>, fs.readFileSync(__dirname + <span class="hljs-string">'/templates/partials/header.hbt'</span>).toString());
 Handlebars.registerPartial(<span class="hljs-string">'footer'</span>, fs.readFileSync(__dirname + <span class="hljs-string">'/templates/partials/footer.hbt'</span>).toString());
-//<span class="hljs-keyword">...</span>
+<span class="hljs-comment">//...</span>
 </code></pre>
 <div class="note--small">Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/58ba1d06938cc5fae76a070bd09fb03913474673">here</a></div>
 
@@ -137,27 +89,27 @@ Handlebars.registerPartial(<span class="hljs-string">'footer'</span>, fs.readFil
 <h3 id="files-and-paths">Files and Paths</h3>
 <p>As you might have noticed, Metalsmith replicates the input folder structure in our output folder (<code>build/</code>). When you run Metalsmith, it looks though your source folder and creates an internal representation for every file, including it’s contents and path. It also populates every internal file object with the metadata you pass it in the YAML front-matter. We end up with an object where each key is the file’s path and each file object looks something like this:</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">'title'</span>: <span class="hljs-string">'FROM_THE_TITLE_KEY'</span>,
-    <span class="hljs-string">'template'</span>: <span class="hljs-string">'TEMPLATE_NAME'</span>,
-    <span class="hljs-string">'contents'</span>: &lt;Buffer()&gt;,
-    <span class="hljs-string">'mode'</span>: <span class="hljs-string">'HEX_FILE_PERM_CODE'</span>
+    'title': '<span class="hljs-type">FROM_THE_TITLE_KEY</span>',
+    '<span class="hljs-keyword">template</span>': '<span class="hljs-type">TEMPLATE_NAME</span>',
+    'contents': &lt;<span class="hljs-type">Buffer</span>()&gt;,
+    'mode': '<span class="hljs-type">HEX_FILE_PERM_CODE</span>'
 }
 </code></pre>
 <p>As you can see it’s a very simple and intuitive structure that makes it easy to work with the files and write plugins. But you are not limited to modifying only the files themselves, you can also alter the file list, deleting or adding files (including virtual ones).</p>
 <h3 id="link-structure">Link Structure</h3>
-<p>If we leave or site like this, we will have links that look like this: “hostname/content/pages/about.html”, but wouldn’t it be much nicer (and search engine friendlier) to have a link structure like this: “hostname/pages/about”? </p>
+<p>If we leave or site like this, we will have links that look like this: “hostname/content/pages/about.html”, but wouldn’t it be much nicer (and search engine friendlier) to have a link structure like this: “hostname/pages/about”?</p>
 <p>To achieve this we will need two more Metalsmith plugins: <a href="https://github.com/segmentio/metalsmith-collections">metalsmith-collections</a> and <a href="https://github.com/segmentio/metalsmith-permalinks">metalsmith-permalinks</a>, so install those and save them to your dependencies. Now we will use these two plugins together to achieve our desired result:</p>
 <p>Let’s modify our <code>index.js</code></p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-    collections = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-collections'</span>),
-    permalinks  = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-permalinks'</span>),
-//<span class="hljs-keyword">...</span>
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+    collections = <span class="hljs-function"><span class="hljs-title">require</span><span class="hljs-params">(<span class="hljs-string">'metalsmith-collections'</span>)</span></span>,
+    permalinks  = <span class="hljs-function"><span class="hljs-title">require</span><span class="hljs-params">(<span class="hljs-string">'metalsmith-permalinks'</span>)</span></span>,
+<span class="hljs-comment">//...</span>
 
-Metalsmith(__dirname)
-    .use(collections())
-    .use(permalinks())
-    //<span class="hljs-keyword">...</span>
-    .build()
+<span class="hljs-function"><span class="hljs-title">Metalsmith</span><span class="hljs-params">(__dirname)</span></span>
+    .<span class="hljs-function"><span class="hljs-title">use</span><span class="hljs-params">(collections()</span></span>)
+    .<span class="hljs-function"><span class="hljs-title">use</span><span class="hljs-params">(permalinks()</span></span>)
+    <span class="hljs-comment">//...</span>
+    .<span class="hljs-function"><span class="hljs-title">build</span><span class="hljs-params">()</span></span>
 </code></pre>
 <div class="note--small">Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/d72b5c4fde8956eefdf92f5c0736cb4d8795998c">here</a></div>
 
@@ -168,48 +120,48 @@ Metalsmith(__dirname)
 <li>file path pattern matching</li>
 </ul>
 <p>The first option is the quickest, but only allows you to add your content to one collection at a time and is easy to forget. The second option is extremely flexible and safer, so we’ll be going with that. So let us add some patterns for our content types:</p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-.use(collections({
-    pages: {
-        pattern: <span class="hljs-string">'content/pages/*.md'</span>
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+<span class="hljs-class">.use</span>(<span class="hljs-function">collections</span>({
+    <span class="hljs-tag">pages</span>: {
+        <span class="hljs-attribute">pattern</span>: <span class="hljs-string">'content/pages/*.md'</span>
     }
 }))
-//<span class="hljs-keyword">...</span>
+<span class="hljs-comment">//...</span>
 </code></pre>
 <p>Metalsmith will now create a collection for our pages. While it may seem silly to create a collection for our pages it will come in useful when we are constructing our permalinks and when you want to construct a sitemap. For now let’s continue with our permalinks:</p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-.use(permalinks({
-    pattern: <span class="hljs-string">':collection/:title'</span>
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+<span class="hljs-class">.use</span>(<span class="hljs-function">permalinks</span>({
+    <span class="hljs-attribute">pattern</span>: <span class="hljs-string">':collection/:title'</span>
 }))
-//<span class="hljs-keyword">...</span>
+<span class="hljs-comment">//...</span>
 </code></pre>
 <div class="note--small">Make sure to call this after the <code>markdown()</code> plugin!</div>
 
 
 <p>If you run your build script now, you won’t find an <code>about.html</code> but instead a folder named “about” in the <code>pages/</code> folder with an <code>index.html</code> file. This will result in a link that looks like this: “hostname/pages/about”, just like we wanted.</p>
 <p>We can do the same for our posts. So let’s create a simple posts called “First Post” in <code>src/content/posts/first-post.md</code>:</p>
-<pre><code class="lang-markdown"><span class="hljs-bullet">---
-</span>title: "First Post"
-date: 2014-04-18
-<span class="hljs-header">template: post.hbt
----</span>
-This is an amazing blogpost!
+<pre><code class="lang-markdown">---
+title: <span class="hljs-string">"First Post"</span>
+date: <span class="hljs-number">2014</span>-<span class="hljs-number">04</span>-<span class="hljs-number">18</span>
+<span class="hljs-keyword">template</span>: post.hbt
+---
+<span class="hljs-type">This</span> <span class="hljs-keyword">is</span> an amazing blogpost!
 </code></pre>
 <div class="note--small">You will need to also create a post template (you can use the same as for the page for now)</div>
 
 <p>Now we just need to extend the options object for the collections function:</p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-.use(collections({
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+.<span class="hljs-keyword">use</span>(collections({
     pages: {
         pattern: <span class="hljs-string">'content/pages/*.md'</span>
     },
     posts: {
         pattern: <span class="hljs-string">'content/posts/*.md'</span>,
         sortBy: <span class="hljs-string">'date'</span>,
-        reverse: true
+        reverse: <span class="hljs-literal">true</span>
     }
 }))
-//<span class="hljs-keyword">...</span>
+<span class="hljs-comment">//...</span>
 </code></pre>
 <div class="note--small">Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/12c88cd4845fe6e6043766f50af552a5ead8cbde">here</a></div>
 
@@ -243,13 +195,12 @@ This is an amazing blogpost!
 <p>That’s all for now, but next time we will expand our knowledge on collections, look into pagination and have some more fun with Metalsmith’s internals.</p>
 <p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></p>
 <h5 id="update-">Update:</h5>
-<p>You can find the next post in this series here: <a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Shaping The Metal</a></p>
+<p>You can find the next post in this series here: <a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Refining Our Tools</a></p>
 
     </div>
 
 
     <section>
-            
                 <div id="disqus_thread"></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -267,7 +218,6 @@ This is an amazing blogpost!
                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
             
-            
 
 
 
@@ -284,30 +234,13 @@ This is an amazing blogpost!
         <footer class="site-footer">
             <div class="site-footer__body">
                 <div class="half">
-                    <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
+                    <a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a>|
+                    <a target="_blank" href="https://github.com/RobinThrift">GitHub</a>|
                     <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
                 </div>
 
-                <div class="half align_right">&copy;2014 Robin Thrift</div>
+                <div class="half align_right">&copy;2015 Robin Thrift</div>
             </div>
         </footer>
-    
-        <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
-        <script>
-            $('.little-nav__activator').on('click', function() {
-                $('.little-nav').toggleClass('open');
-            });
-        </script>
-
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-50108015-1', 'robinthrift.com');
-            ga('send', 'pageview');
-        </script>
     </body>
 </html>
-

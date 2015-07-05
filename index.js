@@ -37,6 +37,14 @@ Handlebars.registerHelper('link', function(path) {
     return metadata.baseUrl + '/' + path;
 });
 
+Handlebars.registerHelper('twitter', function(name) {
+    return 'https://twitter.com/' + name;
+});
+
+Handlebars.registerHelper('github', function(name) {
+    return 'https://github.com/' + name;
+});
+
 
 Handlebars.registerHelper('limit', function(collection, limit, start) {
     var out   = [],
@@ -82,21 +90,8 @@ Metalsmith(__dirname)
     .use(filter())
     .use(drafts())
     .use(collections({
-        entries: {
-            pattern: 'content/po*/*.md',
-            sortBy: 'date',
-            reverse: true
-        },
         posts: {
             pattern: 'content/posts/*.md',
-            sortBy: 'date',
-            reverse: true
-        },
-        pages: {
-            pattern: 'content/pages/*.md'
-        },
-        podcasts: {
-            pattern: 'content/podcasts/*.md',
             sortBy: 'date',
             reverse: true
         }
@@ -109,7 +104,6 @@ Metalsmith(__dirname)
     .use(markdown({
         gfm: true,
         tables: true,
-        breaks: true,
         smartLists: true,
         smartypants: true,
         highlight: function (code, lang, callback) {
@@ -124,10 +118,6 @@ Metalsmith(__dirname)
     .use(sass({
         outputStyle: 'compressed',
         includePaths: require('node-neat').includePaths
-    }))
-    .use(include())
-    .use(uglify({
-        concat: 'js/main.js'
     }))
     .destination('./build')
     .build(function(err) {

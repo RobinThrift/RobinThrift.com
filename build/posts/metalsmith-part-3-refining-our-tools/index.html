@@ -7,82 +7,34 @@
 
         <meta name="description" content="My personal blog">
         <meta name="viewport" content="width=device-width">
-        <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
         <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato|Source+Code+Pro:300|Merriweather' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
     </head>
     <body>
 
         <header class="site-header">
-            <h1 class="logo"><a href="/"><span class="light-text">&lt;</span>Robin Thrift</a><span class="light-text">/&gt;</span></h1>  
+            <h1 class="logo"><a href="/">Robin Thrift</a></h1>  
 
-            <nav class="site-menu">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                    <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
+            <nav class="social-nav">
+                <ul class="social-links">
+                    <li class="social-links__link"><a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a></li>
+                    <li class="social-links__link"><a target="_blank" href="https://github.com/RobinThrift">GitHub</a></li>
                 </ul>
             </nav>
-
-            
-
-<div class="header__code">
-    <pre>
-        <code>
-return function(files, metalsmith, done) {
-    var metadata    = metalsmith.metadata(),
-        collections = metadata.collections,
-        colName, file, filePath;
-
-    for (file in files) {
-        colName = files[file].paginate;
-        filePath = opts.path;
-        if (colName) {
-            if (filePath) {
-                filePath = filePath.replace(':collection', colName);
-
-            }
-
-            paginate(filePath, collections[colName], file, files);
-
-        }
-
-    }
-
-    done();
-
-}
-        </code>
-    </pre>
-
-</div>
-
         </header>
-
-        <nav class="little-nav">
-            <div class="little-nav__activator"><span class="light-text">&lt;</span><h2 class="logo">Robin Thrift</h2><span class="light-text last">&gt;</span><span class="light-text middle">/</span></div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="http://www.robinthrift.com/pages/about/">About</a></li>
-                <li><a href="http://www.robinthrift.com/pages/blog">Blog</a></li>
-                <li><a href="http://www.robinthrift.com/pages/podcasts">Podcast</a></li>
-            </ul>
-        </nav>
 
         <div class="page-wrap">
 
             <div class="main-content">
             
 
-
 <article class="hentry post">
-    <header class="post__header">
-        <div class="post__header__wrapper">
+    <header class="post__header ">
+        <div class="post__header__wrapper ">
             <h1 class="entry-title">Metalsmith Part 3: Refining Our Tools</h1>
             <date class="published post__date">29th April 2014</date>
         </div>
@@ -96,44 +48,44 @@ return function(files, metalsmith, done) {
 <p>I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let’s change that.</p>
 <p>Firstly a little reminder, how Metalsmith represents files internally:</p>
 <pre><code class="lang-js">{
-    <span class="hljs-string">'title'</span>: <span class="hljs-string">'FROM_THE_TITLE_KEY'</span>,
-    <span class="hljs-string">'template'</span>: <span class="hljs-string">'TEMPLATE_NAME'</span>,
-    <span class="hljs-string">'contents'</span>: &lt;Buffer()&gt;,
-    <span class="hljs-string">'mode'</span>: <span class="hljs-string">'HEX_FILE_PERM_CODE'</span>
+    'title': '<span class="hljs-type">FROM_THE_TITLE_KEY</span>',
+    '<span class="hljs-keyword">template</span>': '<span class="hljs-type">TEMPLATE_NAME</span>',
+    'contents': &lt;<span class="hljs-type">Buffer</span>()&gt;,
+    'mode': '<span class="hljs-type">HEX_FILE_PERM_CODE</span>'
 }
 </code></pre>
 <p>And Metalsmith passes an object with all the files to every function that is passed to <code>.use()</code>. But that’s not all, Metalsmith also passes you the current Metalsmith instance and a function to call, when you’re done, so a full plugin would look like this:</p>
-<pre><code class="lang-js">var plugin = <span class="hljs-keyword">function</span>(files, metalsmith, done) {
-    console.log(files);
-    done();
+<pre><code class="lang-js">var plugin = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(files, metalsmith, done)</span> {</span>
+    console.<span class="hljs-built_in">log</span><span class="hljs-params">(files)</span>;
+    done<span class="hljs-params">()</span>;
 };
 
-Metalsmith(__dirname)
-    //<span class="hljs-keyword">...</span>
-    .use(plugin)
-    //<span class="hljs-keyword">...</span>
+Metalsmith<span class="hljs-params">(__dirname)</span>
+    <span class="hljs-comment">//...</span>
+    .<span class="hljs-keyword">use</span><span class="hljs-params">(plugin)</span>
+    <span class="hljs-comment">//...</span>
 </code></pre>
 <div class="note--small">The object keys represent the file path.</div>
 
 <p>As you can probably guess, this will simply log all the files to the console. Go ahead and try it, it will give you a feel about how Metalsmith works.  </p>
 <p>Before we go on, we should modify out plugin to return a function. This allows us to pass the plugin a configuration object (and use it multiple times with different configs):</p>
-<pre><code class="lang-js">var findTemplate = <span class="hljs-keyword">function</span>(config) {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(files, metalsmith, done) {
-        //<span class="hljs-keyword">...</span>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> findTemplate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(files, metalsmith, done)</span> </span>{
+        <span class="hljs-comment">//...</span>
         done();
     };
 };
 </code></pre>
 <p>We want our plugin to add a template key to our posts (if there is none), so we’ll need to filter out our posts first. We will do so, by looping over the files list and use a regular expression to check if the file is a post:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> findTemplate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(config)</span> {</span>
-    <span class="hljs-keyword">var</span> pattern = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(config.pattern);
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> findTemplate = function(config) {
+    <span class="hljs-keyword">var</span> pattern = new <span class="hljs-type">RegExp</span>(config.pattern);
 
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(files, metalsmith, done)</span> {</span>
+    <span class="hljs-keyword">return</span> function(files, metalsmith, done) {
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> file <span class="hljs-keyword">in</span> files) {
             <span class="hljs-keyword">if</span> (pattern.test(file)) {
                 <span class="hljs-keyword">var</span> _f = files[file];
-                <span class="hljs-keyword">if</span> (!_f.template) {
-                    _f.template = config.templateName;
+                <span class="hljs-keyword">if</span> (!_f.<span class="hljs-keyword">template</span>) {
+                    _f.<span class="hljs-keyword">template</span> = config.templateName;
                 }
             }
         }
@@ -142,13 +94,13 @@ Metalsmith(__dirname)
 };
 </code></pre>
 <p>We can now use the plugin as follows:</p>
-<pre><code class="lang-js">Metalsmith(__dirname)
-    //<span class="hljs-keyword">...</span>
-    .use(findTemplate({
-        pattern: <span class="hljs-string">'posts'</span>,
-        templateName: <span class="hljs-string">'post.hbt'</span>
+<pre><code class="lang-js"><span class="hljs-tag">Metalsmith</span>(__dirname)
+    <span class="hljs-comment">//...</span>
+    <span class="hljs-class">.use</span>(<span class="hljs-function">findTemplate</span>({
+        <span class="hljs-attribute">pattern</span>: <span class="hljs-string">'posts'</span>,
+        <span class="hljs-attribute">templateName</span>: <span class="hljs-string">'post.hbt'</span>
     }))
-    //<span class="hljs-keyword">...</span>
+    <span class="hljs-comment">//...</span>
 </code></pre>
 <div class="note--small">Don’t forget to remove the template key from your posts!</div>
 
@@ -156,14 +108,14 @@ Metalsmith(__dirname)
 <p>As you can see by the example above, each plugin is also passed the current metalsmith instance. This allows you to pass around, or set, global metadata. This includes things like the collections we created in the last tutorial, but also configuration. There’s a plugin called <a href="https://github.com/segmentio/metalsmith-metadata">metalsmith-metadata</a> that loads extra config data from a file. You could use this to set things like the base URL, similar to Jekyll’s <code>_config.yml</code>.</p>
 <h4 id="a-note-error-handling">A Note Error Handling</h4>
 <p>Metalsmith uses <a href="https://github.com/segmentio/ware">ware</a> to allow for the nice chaining syntax, however, this also means we need to adapt our error handling. Firstly, if an error occurs, we shouldn’t just throw it, we should pass it to the <code>done()</code> function as the first parameter. Like so:</p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-done(new Error(<span class="hljs-string">'Oh noes!'</span>));
-//<span class="hljs-keyword">...</span>
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+done(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Oh noes!'</span>));
+<span class="hljs-comment">//...</span>
 </code></pre>
 <p>We can then catch the error in the <code>build()</code> method. To do so, we pass it a callback, which first parameter will be the error, if any (the second parameter is a list of all the files):</p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-    .build(<span class="hljs-keyword">function</span>(err) {
-        <span class="hljs-keyword">if</span> (err) { throw err; }
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+    .build(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{
+        <span class="hljs-keyword">if</span> (err) { <span class="hljs-keyword">throw</span> err; }
     });
 </code></pre>
 <p>Now that we’ve got that out of the way, let us continue improving our script!</p>
@@ -171,29 +123,30 @@ done(new Error(<span class="hljs-string">'Oh noes!'</span>));
 <p>Most websites (even simple ones) will need some kind of static assets, like styles, scripts or fonts. We will get to preprocessing styles and scripts in a bit, but for now, we’ll assume that we are using good ol’ CSS and plain, old, simple, non-fancy, unsexy, no-frills-no-spills, boring, not-named-after-a-beverage JavaScript.</p>
 <p>To copy over these <em>exciting</em> files we will just add them to our <code>src/</code> directory. </p>
 <pre><code>.
-<span class="hljs-string">|– src/</span>
-    <span class="hljs-string">|– content/</span>
-    <span class="hljs-string">|– images/</span>
-    <span class="hljs-string">|– styles/</span>
-    <span class="hljs-string">|   |_ main.css</span>
-    <span class="hljs-string">|_ scripts/</span>
-        <span class="hljs-string">|_ main.js</span>
-<span class="hljs-string">|– templates/</span>
-<span class="hljs-string">|   |_ partials/</span>
-<span class="hljs-string">|– config.json</span>
-<span class="hljs-string">|– index.js</span>
-<span class="hljs-string">|_ package.json</span>
+|<span class="hljs-string">– src/
+    </span>|<span class="hljs-string">– content/
+    </span>|<span class="hljs-string">– images/
+    </span>|<span class="hljs-string">– styles/
+    </span>|<span class="hljs-string">   </span>|<span class="hljs-string">_ main.css
+    </span>|<span class="hljs-string">_ scripts/
+        </span>|<span class="hljs-string">_ main.js
+</span>|<span class="hljs-string">– templates/
+</span>|<span class="hljs-string">   </span>|<span class="hljs-string">_ partials/
+</span>|<span class="hljs-string">– config.json
+</span>|<span class="hljs-string">– index.js
+</span>|<span class="hljs-string">_ package.json</span>
 </code></pre><p>That’s it. Metalsmith will copy the files over, including the file structure. Done. <code>next()</code>!</p>
 <h3 id="preprocessing">Preprocessing</h3>
-<p>Now using plain CSS and JS is boring, SCSS and CoffeeScript are way more fun! At least, we’ll pretend for now, because that’s what we are going to set up now.<br>Firstly we will need to install the CS (<a href="https://github.com/joaoafrmartins/metalsmith-coffee">metalsmith-coffee</a>) and SCSS (<a href="https://github.com/stevenschobert/metalsmith-sass">metalsmith-sass</a>) plugins via npm:</p>
-<pre><code>$ npm install <span class="hljs-subst">--</span>save<span class="hljs-attribute">-dev</span> metalsmith<span class="hljs-attribute">-coffee</span> metalsmith<span class="hljs-attribute">-sass</span>
+<p>Now using plain CSS and JS is boring, SCSS and CoffeeScript are way more fun! At least, we’ll pretend for now, because that’s what we are going to set up now.
+Firstly we will need to install the CS (<a href="https://github.com/joaoafrmartins/metalsmith-coffee">metalsmith-coffee</a>) and SCSS (<a href="https://github.com/stevenschobert/metalsmith-sass">metalsmith-sass</a>) plugins via npm:</p>
+<pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith-coffee metalsmith-sass
 </code></pre><p>Then require them in your build script and add them to your chain (they will filter the files themselves):</p>
-<pre><code class="lang-js">//<span class="hljs-keyword">...</span>
-    .use(sass({
-        outputStyle: <span class="hljs-string">'compressed'</span>
+<pre><code class="lang-js"><span class="hljs-comment">//...</span>
+    <span class="hljs-class">.use</span>(<span class="hljs-function">sass</span>({
+        <span class="hljs-attribute">outputStyle</span>: <span class="hljs-string">'compressed'</span>
     }))
-    .use(coffee())
-//<span class="hljs-keyword">...</span>
+    <span class="hljs-class">.use</span>(<span class="hljs-function">coffee</span>())
+<span class="hljs-comment">//...</span>
 </code></pre>
 <p>Both plugins accept all the options their respective underlying plugins do. Check the docs, if in doubt.</p>
 <h3 id="were-to-go-from-here">Were to go from here</h3>
@@ -205,7 +158,6 @@ done(new Error(<span class="hljs-string">'Oh noes!'</span>));
 
 
     <section>
-            
                 <div id="disqus_thread"></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -223,7 +175,6 @@ done(new Error(<span class="hljs-string">'Oh noes!'</span>));
                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
             
-            
 
 
 
@@ -240,30 +191,13 @@ done(new Error(<span class="hljs-string">'Oh noes!'</span>));
         <footer class="site-footer">
             <div class="site-footer__body">
                 <div class="half">
-                    <a href="https://twitter.com/RobinThrift" target="_blank">Twitter</a> |
+                    <a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a>|
+                    <a target="_blank" href="https://github.com/RobinThrift">GitHub</a>|
                     <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
                 </div>
 
-                <div class="half align_right">&copy;2014 Robin Thrift</div>
+                <div class="half align_right">&copy;2015 Robin Thrift</div>
             </div>
         </footer>
-    
-        <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
-        <script>
-            $('.little-nav__activator').on('click', function() {
-                $('.little-nav').toggleClass('open');
-            });
-        </script>
-
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-50108015-1', 'robinthrift.com');
-            ga('send', 'pageview');
-        </script>
     </body>
 </html>
-

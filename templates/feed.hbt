@@ -7,7 +7,7 @@
 
             <atom:link href="{{link /feed.xml}}" rel="self" type="application/rss+xml" />
 
-            {{#each collections.entries}}
+            {{#each collections.posts}}
                 <item>
                     <title>{{ this.title }}</title>
                     <description>{{ this.excerpt }}</description>

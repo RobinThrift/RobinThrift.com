@@ -7,40 +7,25 @@
 
         <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width">
-        <meta name="google-site-verification" content="H_a4F0EDeG8NhUvCRWRJM3dtoWAlam-1bLt6kz33vvE" />
 
         <link rel="shortcut icon" href="{{link 'favicon.ico'}}" type="image/x-icon" />
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700|Sanchez" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lato|Source+Code+Pro:300|Merriweather' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" type="text/css" href="{{link 'styles/main.css'}}">
     </head>
     <body>
 
         <header class="site-header">
-            <h1 class="logo"><a href="/"><span class="light-text">&lt;</span>{{ sitename }}</a><span class="light-text">/&gt;</span></h1>  
+            <h1 class="logo"><a href="/">{{ sitename }}</a></h1>  
 
-            <nav class="site-menu">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="{{link 'pages/about/'}}">About</a></li>
-                    <li><a href="{{link 'pages/blog'}}">Blog</a></li>
-                    <li><a href="{{link 'pages/podcasts'}}">Podcast</a></li>
+            <nav class="social-nav">
+                <ul class="social-links">
+                    <li class="social-links__link"><a target="_blank" href="{{twitter twitter}}">Twitter</a></li>
+                    <li class="social-links__link"><a target="_blank" href="{{github github}}">GitHub</a></li>
                 </ul>
             </nav>
-
-            {{> code}}
         </header>
-
-        <nav class="little-nav">
-            <div class="little-nav__activator"><span class="light-text">&lt;</span><h2 class="logo">{{ sitename }}</h2><span class="light-text last">&gt;</span><span class="light-text middle">/</span></div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{{link 'pages/about/'}}">About</a></li>
-                <li><a href="{{link 'pages/blog'}}">Blog</a></li>
-                <li><a href="{{link 'pages/podcasts'}}">Podcast</a></li>
-            </ul>
-        </nav>
 
         <div class="page-wrap">
 

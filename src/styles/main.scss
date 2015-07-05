@@ -1,18 +1,13 @@
-@import 'vendor/_normalize';
-@import 'vendor/_icons';
-
 @import './_vars';
+@import 'bourbon';
 @import 'comps/_helper';  
 @import 'comps/_typo';  
-@import 'comps/_btns';   
 
 @import 'comps/_basics';
 @import 'comps/_header'; 
-@import 'comps/_content';
 @import 'comps/_posts';
 @import 'comps/_footer';
 @import 'comps/_highlight';
-@import 'comps/_audio_player';
 
 html, body {
     margin: 0;

@@ -4,13 +4,17 @@ var prod = {
         'sitename': 'Robin Thrift',
         'baseUrl': 'http://www.robinthrift.com',
         'description': 'My personal blog',
-        'isDev': false
+        'isDev': false,
+        'twitter': 'RobinThrift',
+        'github': 'RobinThrift'
     },
     dev = {
-        'sitename': 'Robin Thrift (DEV)',
-        'baseUrl': 'http://localhost:3000',
+        'sitename': 'Robin Thrift',
+        'baseUrl': 'http://192.168.178.32:3000',
         'description': 'My personal blog',
-        'isDev': true
+        'isDev': true,
+        'twitter': 'RobinThrift',
+        'github': 'RobinThrift'
     };
 
 module.exports = function(args) {

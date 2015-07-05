@@ -2,13 +2,14 @@
 @import '../_vars';
 
 html, body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    color: $main-font;
+    font-family: $copy-font;
+    font-weight: 400;
+    color: $copy-colour;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Sanchez', serif;
+    font-family: $heading-font;
+    color: $heading-colour;
 }
 
 
@@ -19,11 +20,6 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-.grey {
-    color: #868686;
-    text-shadow: 0 1px 1px #ffffff;
 }
 
 ::-moz-selection {
@@ -41,17 +37,6 @@ a:hover {
 
 img {
     vertical-align: middle;
-}
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-
-textarea {
-    resize: vertical;
 }
 
 blockquote {
@@ -98,6 +83,14 @@ blockquote .author {
      bottom: -40px;  
 }
 
+.note {
+    font-size: 16px;
+    padding: 0px 20px;
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
 .note--small {
     color: #999999;
@@ -119,3 +112,7 @@ blockquote .author {
     background: $body-bg-accent;
 }
 
+code {
+    font-family: $code-font;
+    font-weight: 300;
+}

@@ -2,19 +2,41 @@
 
 
 $light-grey: #999988;
-$red: #cb5243;
-$green: #00b15d;
-$purple: #a353b9;
-$grue: #009999;
+$red: #b87a7a;
+$green: #7ab87a;
+$purple: #b87ab8;
+$grue: #7ab8b8;
+$code-bg: #011b21;
+$code-fg: #ffffff;
 
+pre {
+    width: 100%;
+    box-sizing: border-box;
+    background: $code-bg;
+    color: $code-fg;
+    font-family: $code-font;
+    font-size: 14px;
+    font-family: 300;
+    overflow: auto;
+
+    code {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    @media handheld, only screen and (max-width: 400px) {
+        font-size: 12px;
+    }
+}
 /* @group Syntax highlighting (src:https://github.com/mojombo/tpw/blob/master/css/syntax.css) */
 
 .highlight, .entry-content pre { font-size: 15px; }
 .entry-content pre { padding: 8px 16px; }
 .highlight .c, .hljs-comment { color: $light-grey; font-style: italic } /* Comment */
 .highlight .err, .hljs-error { color: $light-grey; background-color: none } /* Error */
-.highlight .k, .hljs-keyword { font-weight: bold } /* Keyword */
-.highlight .o, .hljs-operator { font-weight: bold; color: #2b475e; } /* Operator */
+.highlight .k, .hljs-keyword { font-weight: normal } /* Keyword */
+.highlight .o, .hljs-operator { font-weight: normal; color: #2b475e; } /* Operator */
 .highlight .cm, .hljs-comment { color: $light-grey; font-style: italic } /* Comment.Multiline */
 .highlight .cp, .hljs-preprocessor { color: $light-grey; font-weight: bold } /* Comment.Preproc */
 .highlight .c1 { color: $light-grey; font-style: italic } /* Comment.Single */
@@ -71,7 +93,6 @@ $grue: #009999;
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
 
-.hljs-params { color: $purple; }
 .hljs-title { color: $grue; }
 .hljs-attribute { color: $green; }
 

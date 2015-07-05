@@ -1,11 +1,32 @@
 {{> header }}
 
 <article class="hentry post">
-    <header class="post__header">
-        <div class="post__header__wrapper">
+    <header class="post__header {{#if feat_img}} post__header--feat-img {{/if}}">
+        <div class="post__header__wrapper {{ feat_img_contrast }}">
             <h1 class="entry-title">{{ title }}</h1>
             <date class="published post__date">{{date date }}</date>
         </div>
+        {{#if feat_img}}
+            <div class="post__header__feat-img">
+                <img src="{{link feat_img }}" alt="{{ title }}">
+                {{#if feat_img_attr}}
+                    <div class="post__header__feat-img__attr">
+                        {{#if feat_img_attr.name}}
+                            {{#if feat_img_attr.url}}
+                                <a href="{{feat_img_attr.url}}">{{ feat_img_attr.name }}</a>     
+                            {{else}}
+                                <span>{{feat_img_attr.name}}</span>
+                            {{/if}}
+                        {{else}}
+                            {{#if feat_img_attr.url}}
+                                <a href="{{feat_img_attr.url}}"></a>     
+                            {{/if}}
+                        {{/if}}
+
+                    </div>
+                {{/if}}
+            </div>
+        {{/if}}
     </header>
 
 

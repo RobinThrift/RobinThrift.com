@@ -1,205 +1,79 @@
 // src/styles/comps/header.scss 
-@import 'bourbon';
-@import '../_vars';
-
 .site-header {
-    height: 100%;
-    background: $main;
-    color: $main-contrast;
+    height: $header-height;
+    background: $body-bg;
     position: relative;
-    z-index: 4;
-}
-
-.light-text {
-    color: $main-light; 
+    width: 100%;
 }
 
 .logo {
-    font-size: 40px;
-    color: inherit;
-    height: 50px;
-    margin: 0;
-    padding: 0;
-    margin-left: 5%;
+    font-family: $heading-font;
+    color: $header-font-colour;
+    height: $header-height;
+    line-height: $header-height;
+    background: $header-bg;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 0 20px;
+    padding: 0 10px;
     float: left;
     position: relative;
-    z-index: 6;
-    background: $main;
 
     a {
         color: inherit;
-
         &:hover {
             text-decoration: none;
         }
     }
 
-    @media handheld, only screen and (max-width: 670px) {
-        width: 95%;
-        float: none;
+    @media handheld, only screen and (max-width: 370px) {
+        width: 100%;
+        margin: 0;
         text-align: center;
-    }
-
-    @media handheld, only screen and (max-width: 330px) {
-        font-size: 30px;
-    }
-}
-
-.site-menu {
-    height: 50px;
-    line-height: 50px;
-    float: right;
-    margin-right: 5%;
-
-    ul {
-        margin: 0;
         padding: 0;
-    }
-    
-    li {
-        list-style: none;
-        color: inherit;
-        float: left;
-        padding: 0 15px;
-
-        a {
-            color: inherit;
-        }
-        @media handheld, only screen and (max-width: 670px) {
-            font-size: 20px;
-            width: 25%;
-            box-sizing: border-box;
-        }
-    }
-
-    @media handheld, only screen and (max-width: 670px) {
-        width: 96%;
-        float: none;
-        right: 0;
-    }
-
-}
-
-.header__code {
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    cursor: normal;
-    color: $main-light;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 80%;
-    font-size: 40px;
-    opacity: 0.2;
-    overflow: hidden;
-
-    pre {
-        margin: 0;
+        font-size: 24px;
     }
 }
 
-.little-nav {
-    background: $main;
-    color: $main-contrast;
-    font-size: 40px;
-    width: 53px;
-    height: 53px;
-    padding: 0 3px;
-    position: fixed;
-    top: 10px;
-    border-radius: 3px;
-    left: 5%;
-    overflow: hidden;
-    z-index: 3;
-    font-family: 'Sanchez', serif;
-    box-shadow: 0 0 4px rgba(0,0,0,.2);
-    @include transition(all .8s);
-    @include perspective(800);
+.social-nav {
+    font-family: $heading-font;
+    color: $header-bg;
+    height: $header-height;
+    line-height: $header-height;
+    margin: 0 20px 0 0;
+    padding: 0;
+    float: right;
+    position: relative;
 
     a {
         color: inherit;
+        &:hover {
+            text-decoration: none;
+        }
     }
 
-    ul {
-        margin: 5px 0;
-        padding: 0;
+    @media handheld, only screen and (max-width: 370px) {
+        display: none; 
+    }
+}
+
+.social-links {
+    padding: 0;
+    margin: 0;
+
+    &__link {
         list-style: none;
-        font-size: 18px;
-        display: none;
-        text-align: center;
-    }
+        float: left;
 
-    li {
-        margin: 5px 0;
-    }
-
-    .little-nav__activator {
-        width: 100%;
-        height: 53px;
-        line-height: 49px;
-        cursor: pointer;
-
-        &:hover span {
-            color: $main-contrast;
-        }
-
-        span {
-            float: right;
-            @include transition(all .5s);
-            user-select: none;
-            
-            &:first-child {
-                float: left;
-            }
-        }
-
-        .logo {
-            width: 0%;
-            overflow: hidden;
-            font-size: 18px;
-            height: 53px;
-            line-height: 53px;
-            float: left;
-            display: inline-block;
-            @include transition(all .8s);
-            margin: 0;
-            text-align: center;
-            background: none;
-        }
-
-    }
-    
-    &.open {
-        height: 200px;
-        width: 180px;
-        @include transform(rotateY(360deg));
-
-        ul {
+        a {
             display: block;
-        }
-        .little-nav__activator .logo {
-            width: 100%; 
-            display: block;
+            height: 100%;
+            padding: 0 20px;
         }
 
-        .little-nav__activator span {
-            float: none;
-            position: absolute;
-            margin-top: -5px;
-            @include transform(scaleY(1.8) scaleX(0.85) scale(0.9));
-
-            &:first-child {
-                left: 12px;
-            }
-
-            &.last {
-                left: 2px;
-            }
-
-            &.middle {
-                display: none;
-            }
+        &:hover {
+            background: $header-bg;
+            color: $header-font-colour;
         }
     }
 }

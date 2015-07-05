@@ -1,25 +1,13 @@
 {{> header }}
 
-<ul class="post-list big-first Atom">
-    {{#each (limit collections.entries this.pagination.end this.pagination.start)}}
+<ul class="post-list Atom">
+    {{#each (limit collections.posts this.pagination.end this.pagination.start)}}
     <li class="hentry post">
         <div class="post-list__resp-wrapper">
             <h2 class="post-title entry-title">
                 <a href="{{link this.path }}" rel="bookmark">{{ this.title }}</a>
             </h2>
             <date class="post__date">{{date this.date }}</date>
-
-            {{#if this.feat_img}}
-                <div class="post_feat_img">
-                    <img class="post_feat_img" alt="" src="/images/feat_imgs/{{ this.feat_img }}">
-                </div>
-            {{/if}}
-
-            {{#if this.images}}
-                <div class="post_feat_img">
-                    <img class="post_feat_img" alt="" src="/images/{{ this.img_folder }}/{{ this.images.[0] }}">
-                </div>
-            {{/if}}
 
             <article class="entry-summary">
                 {{{ this.excerpt }}}
