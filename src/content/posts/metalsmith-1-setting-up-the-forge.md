@@ -87,6 +87,10 @@ Metalsmith(__dirname)
 
 If you run the build script now (`node index`) you will find a file named `index.html` in the `build` directory. As you can see it's super easy to add plugins to Metalsmith and customise the way your files are processed. If you have ever worked with [Gulp](http://gulpjs.com/) or [express.js](http://expressjs.com/) this will look very familiar.
 
+***Note:*** Some versions of Metalsmith require a callback on the build method.  If the code above doesn't create the `build` directory, change `.build()` to:
+```js
+    .build(function (err) { if(err) console.log(err) })
+```
 
 ###Shaping Your Content
 
