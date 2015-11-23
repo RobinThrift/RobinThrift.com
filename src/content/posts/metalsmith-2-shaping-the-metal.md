@@ -181,7 +181,7 @@ And create the template (`templates/blog.hbt`):
         {{#each collections.posts}}
             <li>
                 <h3>{{this.title}}</h3>
-                <article>{{this.contents}}</article>
+                <article>{{{this.contents}}}</article>
             </li>
         {{/each}}
     </ul>
