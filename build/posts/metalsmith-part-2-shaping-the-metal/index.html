@@ -8,11 +8,11 @@
         <meta name="description" content="My personal blog">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://192.168.178.32:3000/favicon.ico" type="image/x-icon" />
 
         <link href='http://fonts.googleapis.com/css?family=Lato|Source+Code+Pro:300|Merriweather' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="http://192.168.178.32:3000/styles/main.css">
     </head>
     <body>
 
@@ -45,8 +45,8 @@
         <p>In my last <a href="http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/">post</a> I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.</p>
 <div class="note">The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></div>
 
-<h3 id="content-types">Content Types</h3>
-<p>Firstly we will need to determine, what kind of content we want to create, or rather, its type. Wordpress by default gives you two options: posts and pages. Posts are blog posts, so articles that are added regularly and pages are content that doesn’t change very often, like contact or about pages. This separation is simple enough so we will use it for now, feel free to add any extra types you will need.</p>
+<p>###Content Types
+Firstly we will need to determine, what kind of content we want to create, or rather, its type. Wordpress by default gives you two options: posts and pages. Posts are blog posts, so articles that are added regularly and pages are content that doesn’t change very often, like contact or about pages. This separation is simple enough so we will use it for now, feel free to add any extra types you will need.</p>
 <p>Unlike something like <a href="http://jekyllrb.com/">Jekyll</a> Metalsmith does not have a built in “static” page and “dynamic” post mechanism, all files are treated (and created) equal. This has advantages and disadvantages, but I think it makes Metalsmith very flexible.</p>
 <p>Firstly, create a new folder for each content type in the <code>src/content</code> folder. Let’s start with an example about page:</p>
 <pre><code class="lang-markdown"><span class="hljs-bullet">---
@@ -57,8 +57,8 @@ Tell the world something about yourself here!
 </code></pre>
 <div class="note--small">Save this to <code>src/content/pages/about.md</code></div>
 
-<h4 id="template-partials">Template Partials</h4>
-<p>At this stage we should also create partials for the head and foot section of our template, so we don’t have to copy and paste it every time and can simply create a menu or logo that will appear on every page. Every templating engine handles partials differently, so I will only quickly go over my Handlebars version here:</p>
+<p>####Template Partials
+At this stage we should also create partials for the head and foot section of our template, so we don’t have to copy and paste it every time and can simply create a menu or logo that will appear on every page. Every templating engine handles partials differently, so I will only quickly go over my Handlebars version here:</p>
 <p>I simply added this to my <code>index.js</code> and added a <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/header.hbt">header.hbt</a> and <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/footer.hbt">footer.hbt</a>:</p>
 <pre><code class="lang-js"><span class="hljs-comment">// ...</span>
 Handlebars = <span class="hljs-built_in">require</span>(<span class="hljs-string">'handlebars'</span>),
@@ -71,33 +71,33 @@ Handlebars.registerPartial(<span class="hljs-string">'footer'</span>, fs.readFil
 <div class="note--small">Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/58ba1d06938cc5fae76a070bd09fb03913474673">here</a></div>
 
 <p>As you can see I created a new sub folder in my <code>templates/</code> folder named <code>partials</code> with the two partial templates containing the wrapping HTML for our content.</p>
-<h3 id="creating-content-templates">Creating Content Templates</h3>
-<p>Now that we have set up our partials it’s time to add the page template (as required by the “template”-key in <code>about.md</code>), so go ahead and create a <code>page.hbt</code> in the <code>templates/</code> folder. We won’t do anything special here, just print the title and content:</p>
-<pre><code class="lang-handlebars"><span class="xml"></span><span class="hljs-expression">{{&gt; <span class="hljs-variable">header</span>}}</span><span class="xml">
-<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">title</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<p>###Creating Content Templates
+Now that we have set up our partials it’s time to add the page template (as required by the “template”-key in <code>about.md</code>), so go ahead and create a <code>page.hbt</code> in the <code>templates/</code> folder. We won’t do anything special here, just print the title and content:</p>
+<pre><code class="lang-handlebars"><span class="hljs-expansion">{{&gt; header}}</span>
+&lt;h2&gt;<span class="hljs-expansion">{{title}}</span>&lt;<span class="hljs-regexp">/h2&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-title">article</span>&gt;</span>
-    </span><span class="hljs-expression">{{{<span class="hljs-variable">contents</span>}}</span><span class="xml">}
-<span class="hljs-tag">&lt;/<span class="hljs-title">article</span>&gt;</span>
+&lt;article&gt;
+    {{{contents}}}
+&lt;/article</span>&gt;
 
-</span><span class="hljs-expression">{{&gt; <span class="hljs-variable">footer</span>}}</span><span class="xml"></span>
+<span class="hljs-expansion">{{&gt; footer}}</span>
 </code></pre>
 <div class="note--small">The <code>{{&gt; header}}</code> and <code>{{&gt; footer}}</code> are including the partials we defined in our <code>index.js</code></div>
 
 
 <p>When you build your project again, you will find an <code>about.html</code>-file under <code>build/content/pages/</code>, just as expected.</p>
-<h3 id="files-and-paths">Files and Paths</h3>
-<p>As you might have noticed, Metalsmith replicates the input folder structure in our output folder (<code>build/</code>). When you run Metalsmith, it looks though your source folder and creates an internal representation for every file, including it’s contents and path. It also populates every internal file object with the metadata you pass it in the YAML front-matter. We end up with an object where each key is the file’s path and each file object looks something like this:</p>
+<p>###Files and Paths
+As you might have noticed, Metalsmith replicates the input folder structure in our output folder (<code>build/</code>). When you run Metalsmith, it looks though your source folder and creates an internal representation for every file, including it’s contents and path. It also populates every internal file object with the metadata you pass it in the YAML front-matter. We end up with an object where each key is the file’s path and each file object looks something like this:</p>
 <pre><code class="lang-js">{
-    'title': '<span class="hljs-type">FROM_THE_TITLE_KEY</span>',
-    '<span class="hljs-keyword">template</span>': '<span class="hljs-type">TEMPLATE_NAME</span>',
-    'contents': &lt;<span class="hljs-type">Buffer</span>()&gt;,
-    'mode': '<span class="hljs-type">HEX_FILE_PERM_CODE</span>'
+    <span class="hljs-string">'title'</span>: <span class="hljs-string">'FROM_THE_TITLE_KEY'</span>,
+    <span class="hljs-string">'template'</span>: <span class="hljs-string">'TEMPLATE_NAME'</span>,
+    <span class="hljs-string">'contents'</span>: &lt;Buffer<span class="hljs-comment">()</span>&gt;,
+    <span class="hljs-string">'mode'</span>: <span class="hljs-string">'HEX_FILE_PERM_CODE'</span>
 }
 </code></pre>
 <p>As you can see it’s a very simple and intuitive structure that makes it easy to work with the files and write plugins. But you are not limited to modifying only the files themselves, you can also alter the file list, deleting or adding files (including virtual ones).</p>
-<h3 id="link-structure">Link Structure</h3>
-<p>If we leave or site like this, we will have links that look like this: “hostname/content/pages/about.html”, but wouldn’t it be much nicer (and search engine friendlier) to have a link structure like this: “hostname/pages/about”?</p>
+<p>###Link Structure
+If we leave or site like this, we will have links that look like this: “hostname/content/pages/about.html”, but wouldn’t it be much nicer (and search engine friendlier) to have a link structure like this: “hostname/pages/about”?</p>
 <p>To achieve this we will need two more Metalsmith plugins: <a href="https://github.com/segmentio/metalsmith-collections">metalsmith-collections</a> and <a href="https://github.com/segmentio/metalsmith-permalinks">metalsmith-permalinks</a>, so install those and save them to your dependencies. Now we will use these two plugins together to achieve our desired result:</p>
 <p>Let’s modify our <code>index.js</code></p>
 <pre><code class="lang-js"><span class="hljs-comment">//...</span>
@@ -140,12 +140,12 @@ Handlebars.registerPartial(<span class="hljs-string">'footer'</span>, fs.readFil
 
 <p>If you run your build script now, you won’t find an <code>about.html</code> but instead a folder named “about” in the <code>pages/</code> folder with an <code>index.html</code> file. This will result in a link that looks like this: “hostname/pages/about”, just like we wanted.</p>
 <p>We can do the same for our posts. So let’s create a simple posts called “First Post” in <code>src/content/posts/first-post.md</code>:</p>
-<pre><code class="lang-markdown">---
-title: <span class="hljs-string">"First Post"</span>
-date: <span class="hljs-number">2014</span>-<span class="hljs-number">04</span>-<span class="hljs-number">18</span>
-<span class="hljs-keyword">template</span>: post.hbt
----
-<span class="hljs-type">This</span> <span class="hljs-keyword">is</span> an amazing blogpost!
+<pre><code class="lang-markdown"><span class="hljs-bullet">---
+</span>title: "First Post"
+date: 2014-04-18
+<span class="hljs-header">template: post.hbt
+---</span>
+This is an amazing blogpost!
 </code></pre>
 <div class="note--small">You will need to also create a post template (you can use the same as for the page for now)</div>
 
@@ -166,57 +166,41 @@ date: <span class="hljs-number">2014</span>-<span class="hljs-number">04</span>-
 <div class="note--small">Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/12c88cd4845fe6e6043766f50af552a5ead8cbde">here</a></div>
 
 <p>Here we make use of metalsmith-collections options to sort the posts by date and reverse the order, so the newest are first.</p>
-<h3 id="collections-in-templates">Collections in Templates</h3>
-<p>Our collections are kind of useless (except for the permalinks) without displaying them, so let’s change that. We are going to add a page that lists all of our blog posts, so create a file called <code>blog.md</code> in your <code>src/content/pages</code> folder and add the following content:</p>
+<p>###Collections in Templates
+Our collections are kind of useless (except for the permalinks) without displaying them, so let’s change that. We are going to add a page that lists all of our blog posts, so create a file called <code>blog.md</code> in your <code>src/content/pages</code> folder and add the following content:</p>
 <pre><code class="lang-markdown"><span class="hljs-bullet">---
 </span>title: Blog
 <span class="hljs-header">template: blog.hbt
 ---</span>
 </code></pre>
 <p>And create the template (<code>templates/blog.hbt</code>):</p>
-<pre><code class="lang-handlebars"><span class="xml"></span><span class="hljs-expression">{{&gt; <span class="hljs-variable">header</span>}}</span><span class="xml">
-<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">title</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<pre><code class="lang-handlebars"><span class="hljs-expansion">{{&gt; header}}</span>
+&lt;h2&gt;<span class="hljs-expansion">{{title}}</span>&lt;<span class="hljs-regexp">/h2&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-title">article</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
-        </span><span class="hljs-expression">{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> collections.posts</span>}}</span><span class="xml">
-            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">this.title</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">article</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">this.contents</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">article</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
-        </span><span class="hljs-expression">{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
-    <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">article</span>&gt;</span>
+&lt;article&gt;
+    &lt;ul&gt;
+        {{#each collections.posts}}
+            &lt;li&gt;
+                &lt;h3&gt;{{this.title}}&lt;/h</span>3&gt;
+                &lt;article&gt;<span class="hljs-expansion">{{this.contents}}</span>&lt;<span class="hljs-regexp">/article&gt;
+            &lt;/li</span>&gt;
+        <span class="hljs-expansion">{{/each}}</span>
+    &lt;<span class="hljs-regexp">/ul&gt;
+&lt;/article</span>&gt;
 
-</span><span class="hljs-expression">{{&gt; <span class="hljs-variable">footer</span>}}</span><span class="xml"></span>
+<span class="hljs-expansion">{{&gt; footer}}</span>
 </code></pre>
 <p>Now you have a list of all your articles ordered by date, newest first.</p>
-<h3 id="keep-the-flame-going">Keep the Flame going</h3>
-<p>That’s all for now, but next time we will expand our knowledge on collections, look into pagination and have some more fun with Metalsmith’s internals.</p>
+<p>###Keep the Flame going
+That’s all for now, but next time we will expand our knowledge on collections, look into pagination and have some more fun with Metalsmith’s internals.</p>
 <p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></p>
-<h5 id="update-">Update:</h5>
-<p>You can find the next post in this series here: <a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Refining Our Tools</a></p>
+<p>#####Update:
+You can find the next post in this series here: <a href="http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Refining Our Tools</a></p>
 
     </div>
 
 
     <section>
-                <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'robinthriftcom', // required: replace example with your forum shortname
-                        disqus_identifier = "post_Metalsmith Part 2 : Shaping The Metal",
-                        disqus_title = "Metalsmith Part 2 : Shaping The Metal";
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function() {
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
             
 
 
@@ -236,7 +220,7 @@ date: <span class="hljs-number">2014</span>-<span class="hljs-number">04</span>-
                 <div class="half">
                     <a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a>|
                     <a target="_blank" href="https://github.com/RobinThrift">GitHub</a>|
-                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
+                    <a href="http://192.168.178.32:3000/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="half align_right">&copy;2015 Robin Thrift</div>

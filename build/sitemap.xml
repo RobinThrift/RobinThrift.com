@@ -2,37 +2,37 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>http://www.robinthrift.com/posts/weekly-picks-no-1</loc>
+    <loc>http://192.168.178.32:3000/posts/weekly-picks-no-1</loc>
       <lastmod>2014-11-23</lastmod>
     <changefreq>never</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/posts/hannoverjs-august-metalsmith-talk</loc>
+    <loc>http://192.168.178.32:3000/posts/hannoverjs-august-metalsmith-talk</loc>
       <lastmod>2014-09-03</lastmod>
     <changefreq>never</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/posts/metalsmith-part-3-refining-our-tools</loc>
+    <loc>http://192.168.178.32:3000/posts/metalsmith-part-3-refining-our-tools</loc>
       <lastmod>2014-04-29</lastmod>
     <changefreq>never</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal</loc>
+    <loc>http://192.168.178.32:3000/posts/metalsmith-part-2-shaping-the-metal</loc>
       <lastmod>2014-04-18</lastmod>
     <changefreq>never</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge</loc>
+    <loc>http://192.168.178.32:3000/posts/metalsmith-part-1-setting-up-the-forge</loc>
       <lastmod>2014-04-14</lastmod>
     <changefreq>never</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.robinthrift.com/posts/getting-to-know-metalsmith</loc>
+    <loc>http://192.168.178.32:3000/posts/getting-to-know-metalsmith</loc>
       <lastmod>2014-04-13</lastmod>
     <changefreq>never</changefreq>
     <priority>1.0</priority>

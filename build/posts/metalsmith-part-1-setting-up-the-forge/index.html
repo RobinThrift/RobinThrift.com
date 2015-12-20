@@ -8,11 +8,11 @@
         <meta name="description" content="My personal blog">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="shortcut icon" href="http://www.robinthrift.com/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="http://192.168.178.32:3000/favicon.ico" type="image/x-icon" />
 
         <link href='http://fonts.googleapis.com/css?family=Lato|Source+Code+Pro:300|Merriweather' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" type="text/css" href="http://www.robinthrift.com/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="http://192.168.178.32:3000/styles/main.css">
     </head>
     <body>
 
@@ -44,8 +44,8 @@
     <div class="entry-content">
         <p>In my <a href="http://www.robinthrift.com/posts/getting-to-know-metalsmith/">last article</a> I gave a brief introduction to <a href="http://www.metalsmith.io/">Metalsmith</a>, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.</p>
 <p>The source code for this tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1">here</a>.</p>
-<p><span class="side_note">You will need Node.js and NPM. To find out, how to install them check the <a href="http://nodejs.org/">official documentation</a>.</span></p>
-<h3 id="collecting-the-materials">Collecting the Materials</h3>
+<p><span class="side-note">You will need Node.js and NPM. To find out, how to install them check the <a href="http://nodejs.org/">official documentation</a>.</span></p>
+<p>###Collecting the Materials</p>
 <p>I usually start every project by thinking about the basic folder structure. A good folder setup is key to keep your files organised and maintainable. For our purposes I think the following structure will do the job:</p>
 <pre><code>.
 |<span class="hljs-string">– src/
@@ -62,7 +62,7 @@
 <p>So let us go ahead and install Metalsmith. Using the command line execute the following:</p>
 <pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith
 </code></pre><p>Now let’s create the actual build file which will contain the instructions on how to generate our site. I will call this <code>index.js</code> but you could also call it <code>build.js</code> or something along those lines (index.js is often the “default” for node projects). We’ll start with some boilerplate code:</p>
-<pre><code class="lang-js"><span class="hljs-reserved">var</span> Metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Metalsmith = <span class="hljs-built_in">require</span>(<span class="hljs-string">'metalsmith'</span>);
 
 
 Metalsmith(__dirname)
@@ -70,7 +70,7 @@ Metalsmith(__dirname)
     .build()
 </code></pre>
 <p>While this code doesn’t do anything except copy the files from <code>src/</code> to <code>build/</code> it does give us a good starting point at least. Metalsmith will look for a folder named <code>src</code> in the given directory. You could change the source folder by calling the <code>source()</code> method and passing it a directory name. Here we are using a variable set by node that will point to the directory our build file is in. Then we set the destination folder using the <code>destination()</code> method, and then tell Metalsmith to run by calling <code>build()</code>.</p>
-<h3 id="adding-some-content">Adding some Content</h3>
+<p>###Adding some Content</p>
 <p>As I said before, our script is pretty much useless right now, so let’s add some content. Create a file name <code>index.md</code> in the <code>src/</code> directory and fill it with the following content:</p>
 <pre><code class="lang-markdown"><span class="hljs-bullet">---
 </span><span class="hljs-header">title: Home
@@ -80,37 +80,37 @@ Hi, this is my start page; neat ain't it? ;)
 ###Some info!
 </code></pre>
 <p>The first block enclosed by the <code>---</code> is YAML front-matter, a simple format used to associate metadata with the file that Metalsmith parses and can then be used by plugins. In this example we are telling Metalsmith that the title of the page is “Home”, nothing too useful yet. What follows after the front-matter is markdown which we’ll be easily able to convert to HTML.</p>
-<div class="side_note">If you are not familiar with markdown check out <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">this</a> guide.</div>
+<div class="side-note">If you are not familiar with markdown check out <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">this</a> guide.</div>
 
 <p>To do so we will first need to install the markdown plugin for metalsmith, conveniently named <code>metalsmith-markdown</code>. So go ahead and add it to your <code>package.json</code> or install it via the command line:</p>
 <pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith-markdown
 </code></pre><p>Then we simply need to require it and call it in our build file:</p>
-<pre><code class="lang-js">var Metalsmith = require<span class="hljs-params">('metalsmith')</span>,
-    markdown   = require<span class="hljs-params">('metalsmith-markdown')</span>;
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Metalsmith = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith'</span>),
+    markdown   = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-markdown'</span>);
 
 
-Metalsmith<span class="hljs-params">(__dirname)</span>
-    .<span class="hljs-keyword">use</span><span class="hljs-params">(markdown<span class="hljs-params">()</span>)</span>
-    .destination<span class="hljs-params">('./build')</span>
-    .build<span class="hljs-params">()</span>
+Metalsmith(__dirname)
+    .<span class="hljs-keyword">use</span>(markdown())
+    .destination(<span class="hljs-string">'./build'</span>)
+    .build()
 </code></pre>
 <p>If you run the build script now (<code>node index</code>) you will find a file named <code>index.html</code> in the <code>build</code> directory. As you can see it’s super easy to add plugins to Metalsmith and customise the way your files are processed. If you have ever worked with <a href="http://gulpjs.com/">Gulp</a> or <a href="http://expressjs.com/">express.js</a> this will look very familiar.</p>
 <p><strong><em>Note:</em></strong> Some versions of Metalsmith require a callback on the build method.  If the code above doesn’t create the <code>build</code> directory, change <code>.build()</code> to:</p>
 <pre><code class="lang-js">    .build(<span class="hljs-keyword">function</span> (<span class="hljs-built_in">err</span>) { <span class="hljs-keyword">if</span>(<span class="hljs-built_in">err</span>) console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">err</span>) })
 </code></pre>
-<h3 id="shaping-your-content">Shaping Your Content</h3>
+<p>###Shaping Your Content</p>
 <p>Of course rendered markdown is not enough to make a full website. In this next step we will add some templates to wrap our content. For this we will use another Metalsmith plugin cleverly called <code>metalsmith-templates</code>. As before go ahead and install it and add it to your build script:</p>
 <pre><code>$ npm install --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span> metalsmith-templates
-</code></pre><pre><code class="lang-js">var Metalsmith = require<span class="hljs-params">('metalsmith')</span>,
-    markdown   = require<span class="hljs-params">('metalsmith-markdown')</span>,
-    templates  = require<span class="hljs-params">('metalsmith-templates')</span>;
+</code></pre><pre><code class="lang-js"><span class="hljs-keyword">var</span> Metalsmith = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith'</span>),
+    markdown   = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-markdown'</span>),
+    templates  = <span class="hljs-keyword">require</span>(<span class="hljs-string">'metalsmith-templates'</span>);
 
 
-Metalsmith<span class="hljs-params">(__dirname)</span>
-    .<span class="hljs-keyword">use</span><span class="hljs-params">(markdown<span class="hljs-params">()</span>)</span>
-    .<span class="hljs-keyword">use</span><span class="hljs-params">(templates<span class="hljs-params">()</span>)</span>
-    .destination<span class="hljs-params">('./build')</span>
-    .build<span class="hljs-params">()</span>
+Metalsmith(__dirname)
+    .<span class="hljs-keyword">use</span>(markdown())
+    .<span class="hljs-keyword">use</span>(templates())
+    .destination(<span class="hljs-string">'./build'</span>)
+    .build()
 </code></pre>
 <p>As with the markdown plugin we simply pass the <code>templates()</code> function to the <code>use()</code> method to tell Metalsmith to use this plugin. However we are still missing some key parts for this to work, firstly some templates and a templating engine. <code>metalsmith-templates</code> is build on top of <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>, which gives us tons of engines to choose from. I will go with <a href="http://handlebarsjs.com/">Handlebars</a> but you could also choose <a href="http://jade-lang.com/">Jade</a> or <a href="http://paularmstrong.github.io/swig/">Swig</a>. </p>
 <p>We need to install our engine and tell <code>metalsmith-templates</code> which engine to use:</p>
@@ -140,33 +140,17 @@ Metalsmith<span class="hljs-params">(__dirname)</span>
 <span class="hljs-header">template: home.hbt
 ---</span>
 </code></pre><p>Now run you build script et voilà, a wrapped index.html in our <code>build/</code> directory. </p>
-<h4 id="turn-the-heat-up">Turn the heat up</h4>
-<p>Next time I will dive more into the inner workings of Metalsmith and I will show you how to work with collections, multiple types of content and how to further structure your project.</p>
+<p>####Turn the heat up
+Next time I will dive more into the inner workings of Metalsmith and I will show you how to work with collections, multiple types of content and how to further structure your project.</p>
 <p>Take some time and experiment with Metalsmith and read the docs over at <a href="http://www.metalsmith.io/">Metalsmith.io</a>.</p>
 <p>The source code for this tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1">here</a></p>
-<h5 id="update-">Update:</h5>
-<p>You can find the next post in this series here: <a href="http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal">Metalsmith Part 2 : Shaping The Metal</a></p>
+<p>#####Update:
+You can find the next post in this series here: <a href="http://www.robinthrift.com/posts/metalsmith-part-2-shaping-the-metal">Metalsmith Part 2 : Shaping The Metal</a></p>
 
     </div>
 
 
     <section>
-                <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'robinthriftcom', // required: replace example with your forum shortname
-                        disqus_identifier = "post_Metalsmith Part 1: Setting Up the Forge",
-                        disqus_title = "Metalsmith Part 1: Setting Up the Forge";
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function() {
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
             
 
 
@@ -186,7 +170,7 @@ Metalsmith<span class="hljs-params">(__dirname)</span>
                 <div class="half">
                     <a target="_blank" href="https://twitter.com/RobinThrift">Twitter</a>|
                     <a target="_blank" href="https://github.com/RobinThrift">GitHub</a>|
-                    <a href="http://www.robinthrift.com/feed.xml" target="_blank">Feed</a>
+                    <a href="http://192.168.178.32:3000/feed.xml" target="_blank">Feed</a>
                 </div>
 
                 <div class="half align_right">&copy;2015 Robin Thrift</div>

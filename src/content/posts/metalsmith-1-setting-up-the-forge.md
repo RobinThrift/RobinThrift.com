@@ -8,7 +8,7 @@ In my [last article](http://www.robinthrift.com/posts/getting-to-know-metalsmith
 
 The source code for this tutorial can be found [here](https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1).
 
-<span class="side_note">You will need Node.js and NPM. To find out, how to install them check the [official documentation](http://nodejs.org/).</span>
+<span class="side-note">You will need Node.js and NPM. To find out, how to install them check the [official documentation](http://nodejs.org/).</span>
 
 ###Collecting the Materials
 
@@ -64,7 +64,7 @@ Hi, this is my start page; neat ain't it? ;)
 
 The first block enclosed by the `---` is YAML front-matter, a simple format used to associate metadata with the file that Metalsmith parses and can then be used by plugins. In this example we are telling Metalsmith that the title of the page is "Home", nothing too useful yet. What follows after the front-matter is markdown which we'll be easily able to convert to HTML.
 
-<div class="side_note">If you are not familiar with markdown check out [this](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) guide.</div>
+<div class="side-note">If you are not familiar with markdown check out [this](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) guide.</div>
 
 To do so we will first need to install the markdown plugin for metalsmith, conveniently named `metalsmith-markdown`. So go ahead and add it to your `package.json` or install it via the command line:
 
