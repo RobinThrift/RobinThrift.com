@@ -1,1 +1,1 @@
-wr "node index.js" src templates
+node_modules/.bin/wr "node index.js" src templates
