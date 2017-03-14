@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en-gb">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="Metalsmith Part 3: Refining Our Tools - Robin Thrift" property="og:title">
+<title>Metalsmith Part 3: Refining Our Tools | Robin Thrift</title>
+<link rel="stylesheet" href="https://robinthrift.com//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/gruvbox-dark.min.css">
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/RobinThrift">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/RobinThrift">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 17, 2014</h2>
+    <h1 class="title">Metalsmith Part 3: Refining Our Tools</h1>
+    
+    <div class="content">
+      
+
+<p><a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/">Last time</a> we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.</p>
+
+<p>Without wasting any time, let&rsquo;s get started!</p>
+
+<h3 id="writing-plugins">Writing Plugins</h3>
+
+<p>I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let&rsquo;s change that.</p>
+
+<p>Firstly a little reminder, how Metalsmith represents files internally:</p>
+
+<pre><code class="language-js">{
+    'title': 'FROM_THE_TITLE_KEY',
+    'template': 'TEMPLATE_NAME',
+    'contents': &lt;Buffer()&gt;,
+    'mode': 'HEX_FILE_PERM_CODE'
+}
+</code></pre>
+
+<p>And Metalsmith passes an object with all the files to every function that is passed to <code>.use()</code>. But that&rsquo;s not all, Metalsmith also passes you the current Metalsmith instance and a function to call, when you&rsquo;re done, so a full plugin would look like this:</p>
+
+<pre><code class="language-js">var plugin = function(files, metalsmith, done) {
+    console.log(files);
+    done();
+};
+
+Metalsmith(__dirname)
+    //...
+    .use(plugin)
+    //...
+</code></pre>
+
+<div class="note--small">The object keys represent the file path.</div>
+
+<p>As you can probably guess, this will simply log all the files to the console. Go ahead and try it, it will give you a feel about how Metalsmith works.</p>
+
+<p>Before we go on, we should modify out plugin to return a function. This allows us to pass the plugin a configuration object (and use it multiple times with different configs):</p>
+
+<pre><code class="language-js">var findTemplate = function(config) {
+    return function(files, metalsmith, done) {
+        //...
+        done();
+    };
+};
+</code></pre>
+
+<p>We want our plugin to add a template key to our posts (if there is none), so we&rsquo;ll need to filter out our posts first. We will do so, by looping over the files list and use a regular expression to check if the file is a post:</p>
+
+<pre><code class="language-js">var findTemplate = function(config) {
+    var pattern = new RegExp(config.pattern);
+
+    return function(files, metalsmith, done) {
+        for (var file in files) {
+            if (pattern.test(file)) {
+                var _f = files[file];
+                if (!_f.template) {
+                    _f.template = config.templateName;
+                }
+            }
+        }
+        done();
+    };
+};
+</code></pre>
+
+<p>We can now use the plugin as follows:</p>
+
+<pre><code class="language-js">Metalsmith(__dirname)
+    //...
+    .use(findTemplate({
+        pattern: 'posts',
+        templateName: 'post.hbt'
+    }))
+    //...
+</code></pre>
+
+<div class="note--small">Don't forget to remove the template key from your posts!</div>
+
+<h4 id="metalsmith-metadata">metalsmith.metadata()</h4>
+
+<p>As you can see by the example above, each plugin is also passed the current metalsmith instance. This allows you to pass around, or set, global metadata. This includes things like the collections we created in the last tutorial, but also configuration. There&rsquo;s a plugin called <a href="https://github.com/segmentio/metalsmith-metadata">metalsmith-metadata</a> that loads extra config data from a file. You could use this to set things like the base URL, similar to Jekyll&rsquo;s <code>_config.yml</code>.</p>
+
+<h4 id="a-note-error-handling">A Note Error Handling</h4>
+
+<p>Metalsmith uses <a href="https://github.com/segmentio/ware">ware</a> to allow for the nice chaining syntax, however, this also means we need to adapt our error handling. Firstly, if an error occurs, we shouldn&rsquo;t just throw it, we should pass it to the <code>done()</code> function as the first parameter. Like so:</p>
+
+<pre><code class="language-js">//...
+done(new Error('Oh noes!'));
+//...
+</code></pre>
+
+<p>We can then catch the error in the <code>build()</code> method. To do so, we pass it a callback, which first parameter will be the error, if any (the second parameter is a list of all the files):</p>
+
+<pre><code class="language-js">//...
+    .build(function(err) {
+        if (err) { throw err; }
+    });
+</code></pre>
+
+<p>Now that we&rsquo;ve got that out of the way, let us continue improving our script!</p>
+
+<h3 id="statics">Statics</h3>
+
+<p>Most websites (even simple ones) will need some kind of static assets, like styles, scripts or fonts. We will get to preprocessing styles and scripts in a bit, but for now, we&rsquo;ll assume that we are using good ol&rsquo; CSS and plain, old, simple, non-fancy, unsexy, no-frills-no-spills, boring, not-named-after-a-beverage JavaScript.</p>
+
+<p>To copy over these <em>exciting</em> files we will just add them to our <code>src/</code> directory.</p>
+
+<pre><code>.
+|– src/
+    |– content/
+    |– images/
+    |– styles/
+    |   |_ main.css
+    |_ scripts/
+        |_ main.js
+|– templates/
+|   |_ partials/
+|– config.json
+|– index.js
+|_ package.json
+</code></pre>
+
+<p>That&rsquo;s it. Metalsmith will copy the files over, including the file structure. Done. <code>next()</code>!</p>
+
+<h3 id="preprocessing">Preprocessing</h3>
+
+<p>Now using plain CSS and JS is boring, SCSS and CoffeeScript are way more fun! At least, we&rsquo;ll pretend for now, because that&rsquo;s what we are going to set up now.
+Firstly we will need to install the CS (<a href="https://github.com/joaoafrmartins/metalsmith-coffee">metalsmith-coffee</a>) and SCSS (<a href="https://github.com/stevenschobert/metalsmith-sass">metalsmith-sass</a>) plugins via npm:</p>
+
+<pre><code>$ npm install --save-dev metalsmith-coffee metalsmith-sass
+</code></pre>
+
+<p>Then require them in your build script and add them to your chain (they will filter the files themselves):</p>
+
+<pre><code class="language-js">//...
+    .use(sass({
+        outputStyle: 'compressed'
+    }))
+    .use(coffee())
+//...
+</code></pre>
+
+<p>Both plugins accept all the options their respective underlying plugins do. Check the docs, if in doubt.</p>
+
+<h3 id="were-to-go-from-here">Were to go from here</h3>
+
+<p>This time, we learnt, how to write out own little plugin and set up the rest of the &ldquo;basic&rdquo; plugins. I didn&rsquo;t include any styles here, as that would be beyond the scope of this tutorial, and with the static assets in place now, you can simply add them yourself.</p>
+
+<p>From here, you can go anywhere with a little JavaScript, so next time I will show an example, of a more complex plugin and hopefully you will fully understand the Metalsmith ecosystem.</p>
+
+<p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-3">here</a></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+

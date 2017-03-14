@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en-gb">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="Metalsmith Part 2: Shaping The Metal - Robin Thrift" property="og:title">
+<title>Metalsmith Part 2: Shaping The Metal | Robin Thrift</title>
+<link rel="stylesheet" href="https://robinthrift.com//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/gruvbox-dark.min.css">
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/RobinThrift">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/RobinThrift">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 15, 2014</h2>
+    <h1 class="title">Metalsmith Part 2: Shaping The Metal</h1>
+    
+    <div class="content">
+      
+
+<p>In my last <a href="http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/">post</a> I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.</p>
+
+<blockquote>
+<p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></p>
+</blockquote>
+
+<h3 id="content-types">Content Types</h3>
+
+<p>Firstly we will need to determine, what kind of content we want to create, or rather, its type. Wordpress by default gives you two options: posts and pages. Posts are blog posts, so articles that are added regularly and pages are content that doesn&rsquo;t change very often, like contact or about pages. This separation is simple enough so we will use it for now, feel free to add any extra types you will need.</p>
+
+<p>Unlike something like <a href="http://jekyllrb.com/">Jekyll</a> Metalsmith does not have a built in &ldquo;static&rdquo; page and &ldquo;dynamic&rdquo; post mechanism, all files are treated (and created) equal. This has advantages and disadvantages, but I think it makes Metalsmith very flexible.</p>
+
+<p>Firstly, create a new folder for each content type in the <code>src/content</code> folder. Let&rsquo;s start with an example about page:</p>
+
+<pre><code class="language-markdown">---
+title: About
+template: page.hbt
+---
+Tell the world something about yourself here!
+</code></pre>
+
+<p>Save this to <code>src/content/pages/about.md</code></p>
+
+<h4 id="template-partials">Template Partials</h4>
+
+<p>At this stage we should also create partials for the head and foot section of our template, so we don&rsquo;t have to copy and paste it every time and can simply create a menu or logo that will appear on every page. Every templating engine handles partials differently, so I will only quickly go over my Handlebars version here:</p>
+
+<p>I simply added this to my <code>index.js</code> and added a <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/header.hbt">header.hbt</a> and <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/footer.hbt">footer.hbt</a>:</p>
+
+<pre><code class="language-js">// ...
+Handlebars = require('handlebars'),
+fs         = require('fs');
+
+Handlebars.registerPartial('header', fs.readFileSync(__dirname + '/templates/partials/header.hbt').toString());
+Handlebars.registerPartial('footer', fs.readFileSync(__dirname + '/templates/partials/footer.hbt').toString());
+//...
+</code></pre>
+
+<blockquote>
+<p>Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/58ba1d06938cc5fae76a070bd09fb03913474673">here</a></p>
+</blockquote>
+
+<p>As you can see I created a new sub folder in my <code>templates/</code> folder named <code>partials</code> with the two partial templates containing the wrapping HTML for our content.</p>
+
+<h3 id="creating-content-templates">Creating Content Templates</h3>
+
+<p>Now that we have set up our partials it&rsquo;s time to add the page template (as required by the &ldquo;template&rdquo;-key in <code>about.md</code>), so go ahead and create a <code>page.hbt</code> in the <code>templates/</code> folder. We won&rsquo;t do anything special here, just print the title and content:</p>
+
+<pre><code class="language-handlebars">{{&gt; header}}
+&lt;h2&gt;{{title}}&lt;/h2&gt;
+
+&lt;article&gt;
+    {{{contents}}}
+&lt;/article&gt;
+
+{{&gt; footer}}
+</code></pre>
+
+<div class="note--small">The `{{> header}}` and `{{> footer}}` are including the partials we defined in our `index.js`</div>
+
+<p>When you build your project again, you will find an <code>about.html</code>-file under <code>build/content/pages/</code>, just as expected.</p>
+
+<h3 id="files-and-paths">Files and Paths</h3>
+
+<p>As you might have noticed, Metalsmith replicates the input folder structure in our output folder (<code>build/</code>). When you run Metalsmith, it looks though your source folder and creates an internal representation for every file, including it&rsquo;s contents and path. It also populates every internal file object with the metadata you pass it in the YAML front-matter. We end up with an object where each key is the file&rsquo;s path and each file object looks something like this:</p>
+
+<pre><code class="language-js">{
+    'title': 'FROM_THE_TITLE_KEY',
+    'template': 'TEMPLATE_NAME',
+    'contents': &lt;Buffer()&gt;,
+    'mode': 'HEX_FILE_PERM_CODE'
+}
+</code></pre>
+
+<p>As you can see it&rsquo;s a very simple and intuitive structure that makes it easy to work with the files and write plugins. But you are not limited to modifying only the files themselves, you can also alter the file list, deleting or adding files (including virtual ones).</p>
+
+<h3 id="link-structure">Link Structure</h3>
+
+<p>If we leave or site like this, we will have links that look like this: &ldquo;hostname/content/pages/about.html&rdquo;, but wouldn&rsquo;t it be much nicer (and search engine friendlier) to have a link structure like this: &ldquo;hostname/pages/about&rdquo;?</p>
+
+<p>To achieve this we will need two more Metalsmith plugins: <a href="https://github.com/segmentio/metalsmith-collections">metalsmith-collections</a> and <a href="https://github.com/segmentio/metalsmith-permalinks">metalsmith-permalinks</a>, so install those and save them to your dependencies. Now we will use these two plugins together to achieve our desired result:</p>
+
+<p>Let&rsquo;s modify our <code>index.js</code></p>
+
+<pre><code class="language-js">//...
+    collections = require('metalsmith-collections'),
+    permalinks  = require('metalsmith-permalinks'),
+//...
+
+Metalsmith(__dirname)
+    .use(collections())
+    .use(permalinks())
+    //...
+    .build()
+
+</code></pre>
+
+<blockquote>
+<p>Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/d72b5c4fde8956eefdf92f5c0736cb4d8795998c">here</a></p>
+</blockquote>
+
+<p>The <code>collections()</code> function creates a new array for each collection it can find and lists them in the internal metadata (not the file metadata), which then can be accessed in the templates under <code>collections.COLLECTION_NAME</code>. There are two ways to create collections:</p>
+
+<ul>
+<li>add a &ldquo;collections&rdquo; key to a files YAML front-matter</li>
+<li>file path pattern matching</li>
+</ul>
+
+<p>The first option is the quickest, but only allows you to add your content to one collection at a time and is easy to forget. The second option is extremely flexible and safer, so we&rsquo;ll be going with that. So let us add some patterns for our content types:</p>
+
+<pre><code class="language-js">//...
+.use(collections({
+    pages: {
+        pattern: 'content/pages/*.md'
+    }
+}))
+//...
+</code></pre>
+
+<p>Metalsmith will now create a collection for our pages. While it may seem silly to create a collection for our pages it will come in useful when we are constructing our permalinks and when you want to construct a sitemap. For now let&rsquo;s continue with our permalinks:</p>
+
+<pre><code class="language-js">//...
+.use(permalinks({
+    pattern: ':collection/:title'
+}))
+//...
+</code></pre>
+
+<div class="note--small">Make sure to call this after the `markdown()` plugin!</div>
+
+<p>If you run your build script now, you won&rsquo;t find an <code>about.html</code> but instead a folder named &ldquo;about&rdquo; in the <code>pages/</code> folder with an <code>index.html</code> file. This will result in a link that looks like this: &ldquo;hostname/pages/about&rdquo;, just like we wanted.</p>
+
+<p>We can do the same for our posts. So let&rsquo;s create a simple posts called &ldquo;First Post&rdquo; in <code>src/content/posts/first-post.md</code>:</p>
+
+<pre><code class="language-markdown">---
+title: &quot;First Post&quot;
+date: 2014-04-18
+template: post.hbt
+---
+This is an amazing blogpost!
+</code></pre>
+
+<div class="note--small">You will need to also create a post template (you can use the same as for the page for now)</div>
+
+<p>Now we just need to extend the options object for the collections function:</p>
+
+<pre><code class="language-js">//...
+.use(collections({
+    pages: {
+        pattern: 'content/pages/*.md'
+    },
+    posts: {
+        pattern: 'content/posts/*.md',
+        sortBy: 'date',
+        reverse: true
+    }
+}))
+//...
+</code></pre>
+
+<blockquote>
+<p>Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/12c88cd4845fe6e6043766f50af552a5ead8cbde">here</a></p>
+</blockquote>
+
+<p>Here we make use of metalsmith-collections options to sort the posts by date and reverse the order, so the newest are first.</p>
+
+<h3 id="collections-in-templates">Collections in Templates</h3>
+
+<p>Our collections are kind of useless (except for the permalinks) without displaying them, so let&rsquo;s change that. We are going to add a page that lists all of our blog posts, so create a file called <code>blog.md</code> in your <code>src/content/pages</code> folder and add the following content:</p>
+
+<pre><code class="language-markdown">---
+title: Blog
+template: blog.hbt
+---
+</code></pre>
+
+<p>And create the template (<code>templates/blog.hbt</code>):</p>
+
+<pre><code class="language-handlebars">{{&gt; header}}
+&lt;h2&gt;{{title}}&lt;/h2&gt;
+
+&lt;article&gt;
+    &lt;ul&gt;
+        {{#each collections.posts}}
+            &lt;li&gt;
+                &lt;h3&gt;{{this.title}}&lt;/h3&gt;
+                &lt;article&gt;{{this.contents}}&lt;/article&gt;
+            &lt;/li&gt;
+        {{/each}}
+    &lt;/ul&gt;
+&lt;/article&gt;
+
+{{&gt; footer}}
+</code></pre>
+
+<p>Now you have a list of all your articles ordered by date, newest first.</p>
+
+<h3 id="keep-the-flame-going">Keep the Flame going</h3>
+
+<p>That&rsquo;s all for now, but next time we will expand our knowledge on collections, look into pagination and have some more fun with Metalsmith&rsquo;s internals.</p>
+
+<p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></p>
+
+<h5 id="update">Update:</h5>
+
+<p>You can find the next post in this series here: <a href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Refining Our Tools</a></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
