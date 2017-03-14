@@ -1,0 +1,20 @@
+language: go
+before_install:
+    - openssl aes-256-cbc -K $encrypted_e462e79a70e0_key -iv $encrypted_e462e79a70e0_iv -in travis_rsa.enc -out travis_rsa -d
+install: go get -v github.com/spf13/hugo
+env:
+    global:
+        - SSH_KEY="travis_rsa"
+        - GIT_NAME="Robin Thrift"
+        - GIT_EMAIL="romancoedo@gmail.com"
+        - SOURCE_DIR="public"
+        - DEPLOY_BRANCH="master"
+script:
+    - git clone https://github.com/beli3ver/hemingway2 ./themes/hemingway2
+    - hugo
+after_success:
+    - echo "robinthrift.com" > ./public/CNAME
+    - ./scripts/deploy.sh
+notifications:
+    email:
+        on_failure: always
