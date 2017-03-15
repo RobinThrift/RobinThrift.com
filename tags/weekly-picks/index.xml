@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Weekly Picks on Robin Thrift</title>
-    <link>https://robinthrift.com/tags/weekly-picks/index.xml</link>
+    <link>http://robinthrift.com/tags/weekly-picks/index.xml</link>
     <description>Recent content in Weekly Picks on Robin Thrift</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2017</copyright>
-    <atom:link href="https://robinthrift.com/tags/weekly-picks/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://robinthrift.com/tags/weekly-picks/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Weekly Picks No. 6</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-6/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-6/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-6/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-6/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (18.04.16 - 24.04.16):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Weekly Picks No. 5</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-5/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-5/</link>
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-5/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-5/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (11.04.16 - 17.04.16):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -42,10 +42,10 @@
     
     <item>
       <title>Weekly Picks No. 4</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-4/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-4/</link>
       <pubDate>Sun, 03 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-4/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-4/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (28.03.16 - 03.04.16):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -59,10 +59,10 @@
     
     <item>
       <title>Weekly Picks No. 3</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-3/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-3/</link>
       <pubDate>Sun, 31 Jan 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-3/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-3/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (25.01.16 - 31.01.16) and why:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -83,7 +83,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://robinthrift.com/content/images/2016/03/alduin.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://robinthrift.com/content/images/2016/03/alduin.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://jadpole.github.io/arcaders/arcaders-1-0/&#34;&gt;ArcadeRS&lt;/a&gt;
@@ -102,10 +102,10 @@
     
     <item>
       <title>Weekly Picks No. 2</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-2/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-2/</link>
       <pubDate>Sun, 20 Dec 2015 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-2/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-2/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (14.12.15 - 20.12.15) and why:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -144,10 +144,10 @@ deals with the problem of concurrency.&lt;/li&gt;
     
     <item>
       <title>Weekly Picks No. 1</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-1/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-1/</link>
       <pubDate>Sun, 23 Nov 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-1/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-1/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:&lt;/p&gt;
 
 &lt;ul&gt;

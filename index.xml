@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Robin Thrift</title>
-    <link>https://robinthrift.com/index.xml</link>
+    <link>http://robinthrift.com/index.xml</link>
     <description>Recent content on Robin Thrift</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2017</copyright>
     <lastBuildDate>Sun, 24 Apr 2016 00:00:00 +0100</lastBuildDate>
-    <atom:link href="https://robinthrift.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://robinthrift.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Weekly Picks No. 6</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-6/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-6/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-6/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-6/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (18.04.16 - 24.04.16):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>Weekly Picks No. 5</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-5/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-5/</link>
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-5/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-5/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (11.04.16 - 17.04.16):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -43,10 +43,10 @@
     
     <item>
       <title>Weekly Picks No. 4</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-4/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-4/</link>
       <pubDate>Sun, 03 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-4/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-4/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (28.03.16 - 03.04.16):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -60,10 +60,10 @@
     
     <item>
       <title>Weekly Picks No. 3</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-3/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-3/</link>
       <pubDate>Sun, 31 Jan 2016 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-3/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-3/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (25.01.16 - 31.01.16) and why:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -84,7 +84,7 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://robinthrift.com/content/images/2016/03/alduin.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://robinthrift.com/content/images/2016/03/alduin.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://jadpole.github.io/arcaders/arcaders-1-0/&#34;&gt;ArcadeRS&lt;/a&gt;
@@ -103,10 +103,10 @@
     
     <item>
       <title>Weekly Picks No. 2</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-2/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-2/</link>
       <pubDate>Sun, 20 Dec 2015 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-2/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-2/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (14.12.15 - 20.12.15) and why:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -145,10 +145,10 @@ deals with the problem of concurrency.&lt;/li&gt;
     
     <item>
       <title>Weekly Picks No. 1</title>
-      <link>https://robinthrift.com/post/weekly-picks-no-1/</link>
+      <link>http://robinthrift.com/post/weekly-picks-no-1/</link>
       <pubDate>Sun, 23 Nov 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/weekly-picks-no-1/</guid>
+      <guid>http://robinthrift.com/post/weekly-picks-no-1/</guid>
       <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -171,10 +171,10 @@ deals with the problem of concurrency.&lt;/li&gt;
     
     <item>
       <title>HannoverJS August: Metalsmith Talk</title>
-      <link>https://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</link>
+      <link>http://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</guid>
+      <guid>http://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</guid>
       <description>&lt;p&gt;I gave a little introductory talk about &lt;a href=&#34;http://metalsmith.io&#34;&gt;Metalsmith&lt;/a&gt; at last month&amp;rsquo;s &lt;a href=&#34;http://hannoverjs.de&#34;&gt;HannoverJS&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;You can find the slides here:
@@ -185,13 +185,13 @@ deals with the problem of concurrency.&lt;/li&gt;
     
     <item>
       <title>Metalsmith Part 3: Refining Our Tools</title>
-      <link>https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</link>
+      <link>http://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</link>
       <pubDate>Thu, 17 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</guid>
+      <guid>http://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/&#34;&gt;Last time&lt;/a&gt; we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/&#34;&gt;Last time&lt;/a&gt; we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.&lt;/p&gt;
 
 &lt;p&gt;Without wasting any time, let&amp;rsquo;s get started!&lt;/p&gt;
 
@@ -346,10 +346,10 @@ Firstly we will need to install the CS (&lt;a href=&#34;https://github.com/joaoa
     
     <item>
       <title>Metalsmith Part 2: Shaping The Metal</title>
-      <link>https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</link>
+      <link>http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</guid>
+      <guid>http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</guid>
       <description>
 
 &lt;p&gt;In my last &lt;a href=&#34;http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/&#34;&gt;post&lt;/a&gt; I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.&lt;/p&gt;
@@ -557,19 +557,19 @@ template: blog.hbt
 
 &lt;h5 id=&#34;update&#34;&gt;Update:&lt;/h5&gt;
 
-&lt;p&gt;You can find the next post in this series here: &lt;a href=&#34;https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/&#34;&gt;Metalsmith Part 3: Refining Our Tools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can find the next post in this series here: &lt;a href=&#34;http://robinthrift.com/post/metalsmith-part-3-refining-our-tools/&#34;&gt;Metalsmith Part 3: Refining Our Tools&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Metalsmith Part 1: Setting Up the Forge</title>
-      <link>https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</link>
+      <link>http://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</guid>
+      <guid>http://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</guid>
       <description>
 
-&lt;p&gt;In my &lt;a href=&#34;https://robinthrift.com/post/getting-to-know-metalsmith/&#34;&gt;last article&lt;/a&gt; I gave a brief introduction to &lt;a href=&#34;http://www.metalsmith.io/&#34;&gt;Metalsmith&lt;/a&gt;, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.&lt;/p&gt;
+&lt;p&gt;In my &lt;a href=&#34;http://robinthrift.com/post/getting-to-know-metalsmith/&#34;&gt;last article&lt;/a&gt; I gave a brief introduction to &lt;a href=&#34;http://www.metalsmith.io/&#34;&gt;Metalsmith&lt;/a&gt;, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.&lt;/p&gt;
 
 &lt;p&gt;The source code for this tutorial can be found &lt;a href=&#34;https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -721,16 +721,16 @@ template: home.hbt
 
 &lt;h5 id=&#34;update&#34;&gt;Update:&lt;/h5&gt;
 
-&lt;p&gt;You can find the next post in this series here: &lt;a href=&#34;https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/&#34;&gt;Metalsmith Part 2 : Shaping The Metal&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can find the next post in this series here: &lt;a href=&#34;http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/&#34;&gt;Metalsmith Part 2 : Shaping The Metal&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Getting To Know Metalsmith</title>
-      <link>https://robinthrift.com/post/getting-to-know-metalsmith/</link>
+      <link>http://robinthrift.com/post/getting-to-know-metalsmith/</link>
       <pubDate>Sun, 13 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/getting-to-know-metalsmith/</guid>
+      <guid>http://robinthrift.com/post/getting-to-know-metalsmith/</guid>
       <description>
 
 &lt;p&gt;There are dozens of static site generators out there. The most popular is probably &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;, and for good reasons! It&amp;rsquo;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&amp;rsquo;s also the engine powering &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;, GitHub&amp;rsquo;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code &lt;a href=&#34;https://github.com/RobinThrift/RobinThrift.com&#34;&gt;here&lt;/a&gt;). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.&lt;/p&gt;
@@ -768,9 +768,9 @@ template: home.hbt
 &lt;p&gt;I have started writing the tutorials:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/&#34;&gt;Metalsmith Part 1: Setting Up the Forge&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/&#34;&gt;Metalsmith Part 2 : Shaping The Metal&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/&#34;&gt;Metalsmith Part 3: Refining Our Tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/&#34;&gt;Metalsmith Part 1: Setting Up the Forge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/&#34;&gt;Metalsmith Part 2 : Shaping The Metal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://robinthrift.com/post/metalsmith-part-3-refining-our-tools/&#34;&gt;Metalsmith Part 3: Refining Our Tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
