@@ -12,6 +12,11 @@ category = "categories"
 
 [params.highlight]
 style = "gruvbox-dark"
+languages = [
+    "swift",
+    "rust",
+    "go"
+]
 
 [[params.social]]
 url = "https://github.com/RobinThrift"
