@@ -2,12 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Weekly Picks on Robin Thrift</title>
-    <link>http://robinthrift.com/tags/weekly-picks/index.xml</link>
+    <link>http://robinthrift.com/tags/weekly-picks/</link>
     <description>Recent content in Weekly Picks on Robin Thrift</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2017</copyright>
-    <atom:link href="http://robinthrift.com/tags/weekly-picks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Apr 2016 00:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="http://robinthrift.com/tags/weekly-picks/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Weekly Picks No. 6</title>
@@ -15,13 +18,8 @@
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0100</pubDate>
       
       <guid>http://robinthrift.com/post/weekly-picks-no-6/</guid>
-      <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (18.04.16 - 24.04.16):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://robots.thoughtbot.com/rolling-random-romans&#34;&gt;Rolling Random Romans&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/joelquen&#34;&gt;Joël Quenneville&lt;/a&gt;: Excellent little tutorial on Elm.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://slackhq.com/launching-mission-control-day-part-1-a6053adbd522&#34;&gt;Launching Mission Control Day (part 1)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>These are programming and non-programming things I found interesting this past week (18.04.16 - 24.04.16):
+ Rolling Random Romans by Joël Quenneville: Excellent little tutorial on Elm. Launching Mission Control Day (part 1)  </description>
     </item>
     
     <item>
@@ -30,14 +28,8 @@
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0100</pubDate>
       
       <guid>http://robinthrift.com/post/weekly-picks-no-5/</guid>
-      <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (11.04.16 - 17.04.16):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.over-yonder.net/~fullermd/rants/bsd4linux/01&#34;&gt;BSD for Linux Users&lt;/a&gt;: Although a bit dated, it&amp;rsquo;s still an excellent essay by Matt Fuller on the differences both on the technical and philosophical aspects of BSDs and Linux.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md&#34;&gt;Passive event listeners&lt;/a&gt;: a new DOM API proposal that should help with performance when using scroll handlers (especially on mobile).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://arstechnica.com/gaming/2016/04/table-for-two-our-favorite-two-player-board-games-2/&#34;&gt;Table for two: Our favorite two-player board games onby Aaron Zimmerman on Ars&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>These are programming and non-programming things I found interesting this past week (11.04.16 - 17.04.16):
+ BSD for Linux Users: Although a bit dated, it&amp;rsquo;s still an excellent essay by Matt Fuller on the differences both on the technical and philosophical aspects of BSDs and Linux. Passive event listeners: a new DOM API proposal that should help with performance when using scroll handlers (especially on mobile). Table for two: Our favorite two-player board games onby Aaron Zimmerman on Ars  </description>
     </item>
     
     <item>
@@ -46,15 +38,8 @@
       <pubDate>Sun, 03 Apr 2016 00:00:00 +0100</pubDate>
       
       <guid>http://robinthrift.com/post/weekly-picks-no-4/</guid>
-      <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (28.03.16 - 03.04.16):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This should totally be a thing: &lt;a href=&#34;https://twitter.com/davechenell/status/710549108692541440&#34;&gt;https://twitter.com/davechenell/status/710549108692541440&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.suspectsemantics.com/blog/2016/03/27/string-types-in-rust/&#34;&gt;String Types in Rust&lt;/a&gt; by Andrew Brinker&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/s3git/s3git&#34;&gt;S3Git&lt;/a&gt; is &amp;ldquo;git for Cloud Storage&amp;rdquo;, a clever little tool, that allows one to easily sync files with &amp;ldquo;distributed, decentralized and versioned repositories&amp;rdquo;. It uses the &lt;em&gt;BLAKE2 Tree Hashing&lt;/em&gt; Algorithm for both deduplicated and hydrated storage&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wekan.io/&#34;&gt;Wekan&lt;/a&gt;: I&amp;rsquo;ve been using Wekan for a while now, and absolutely love it. It&amp;rsquo;s essentially a Trello clone, but that&amp;rsquo;s not a bad thing, as it has the distinct advantage, that you can host it yourself. I use it for all my side projects and it has helped me massively.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>These are programming and non-programming things I found interesting this past week (28.03.16 - 03.04.16):
+ This should totally be a thing: https://twitter.com/davechenell/status/710549108692541440 String Types in Rust by Andrew Brinker S3Git is &amp;ldquo;git for Cloud Storage&amp;rdquo;, a clever little tool, that allows one to easily sync files with &amp;ldquo;distributed, decentralized and versioned repositories&amp;rdquo;. It uses the BLAKE2 Tree Hashing Algorithm for both deduplicated and hydrated storage Wekan: I&amp;rsquo;ve been using Wekan for a while now, and absolutely love it.</description>
     </item>
     
     <item>
@@ -63,41 +48,8 @@
       <pubDate>Sun, 31 Jan 2016 00:00:00 +0100</pubDate>
       
       <guid>http://robinthrift.com/post/weekly-picks-no-3/</guid>
-      <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (25.01.16 - 31.01.16) and why:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/zeithq/micro&#34;&gt;github.com/zeithq/micro&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Very intersting micro services library with a beautifully minimalistic API. An excellent example for good APIs.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blogs.msdn.com/b/typescript/archive/2016/01/28/announcing-typescript-1-8-beta.aspx&#34;&gt;Typescript 1.8 Beta&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I&amp;rsquo;m a huge fan of Typescript and the 1.8 release will make it even better, allowing for easier JS and TS interop. I&amp;rsquo;m looking forward to using it.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/AlessandroYorba/Alduin&#34;&gt;Alduin Colourscheme&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I&amp;rsquo;ve been using &lt;a href=&#34;http://chriskempson.github.io/base16/#ocean&#34;&gt;base16-ocean (light and dark)&lt;/a&gt; up until now, but I instantly fell in love with this colourscheme, and am now using it both for my terminal as well as vim.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://robinthrift.com/content/images/2016/03/alduin.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://jadpole.github.io/arcaders/arcaders-1-0/&#34;&gt;ArcadeRS&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;An excellent and very detailed tutorial on how to write a game in Rust and generally a great Rust intro.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/developit/preact&#34;&gt;preact&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&amp;ldquo;⚡️ Fast 3kb React alternative with the same ES6 API. Components &amp;amp; Virtual DOM&amp;rdquo;. Looks very promising and with TS 1.8&amp;rsquo;s new option &lt;code&gt;--reactNamespac&lt;/code&gt; this can even be used in TS withough much pain.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>These are programming and non-programming things I found interesting this past week (25.01.16 - 31.01.16) and why:
+ github.com/zeithq/micro  Very intersting micro services library with a beautifully minimalistic API. An excellent example for good APIs.  Typescript 1.8 Beta  I&amp;rsquo;m a huge fan of Typescript and the 1.8 release will make it even better, allowing for easier JS and TS interop. I&amp;rsquo;m looking forward to using it.  Alduin Colourscheme  I&amp;rsquo;ve been using base16-ocean (light and dark) up until now, but I instantly fell in love with this colourscheme, and am now using it both for my terminal as well as vim.</description>
     </item>
     
     <item>
@@ -106,40 +58,8 @@
       <pubDate>Sun, 20 Dec 2015 00:00:00 +0100</pubDate>
       
       <guid>http://robinthrift.com/post/weekly-picks-no-2/</guid>
-      <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (14.12.15 - 20.12.15) and why:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Intel NUC
-
-&lt;ul&gt;
-&lt;li&gt;I bought this little barebones PC along with a 120GB SSD and 8GB RAM to be used as a simple home server. So far, I have nothing but good things to say about this little machine. Installing Ubuntu Server 14.04 LTS went without a hitch and Docker runs like a charm. It can easly handle anything I throw at it. The only thing I haven&amp;rsquo;t tried so far is running a CI Server, but I&amp;rsquo;m sure it&amp;rsquo;ll do just fine.&lt;/li&gt;
-&lt;li&gt;Amazon &lt;a href=&#34;http://www.amazon.com/Intel-NUC5i3RYH-Core-120GB-BOXNUC5i3RYH/dp/B00TG6GOVI/ref=sr_1_fkmr1_2?ie=UTF8&amp;amp;qid=1450617696&amp;amp;sr=8-2-fkmr1&amp;amp;keywords=Intel+BB+NUC5i3RYH&#34;&gt;US&lt;/a&gt; | &lt;a href=&#34;http://www.amazon.co.uk/Intel-Computing-NUC5i3RYH-Barebone-PC/dp/B00S1IQHKK/ref=sr_1_1?ie=UTF8&amp;amp;qid=1450617724&amp;amp;sr=8-1&amp;amp;keywords=intel+nuc+NUC5i3RYH&#34;&gt;UK&lt;/a&gt; | &lt;a href=&#34;http://www.amazon.de/gp/product/B00S1IQHKK?psc=1&amp;amp;redirect=true&amp;amp;ref_=oh_aui_detailpage_o03_s00&#34;&gt;DE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Chocolate Coated Coffee Beans
-
-&lt;ul&gt;
-&lt;li&gt;I&amp;rsquo;m no coffee expert but I do like a nice, richt, earthy coffee, and after hearing about these, I had to try them, and I like them a lot.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://orientdb.com/orientdb/&#34;&gt;Orient DB&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I&amp;rsquo;ve been thinking a lot about databases recently, and how we usually store our data. I&amp;rsquo;ve been looking at graph data bases and NoSQL, and this one cought my eye. I will keep a close eye on this one.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Test Runners:
-
-&lt;ul&gt;
-&lt;li&gt;In recent weeks I&amp;rsquo;ve been working on our testing infrastructure at work. I think there&amp;rsquo;s a lot of room for innovation in test runner in the JS world, specifically when looking at integration tests and running tests decoupled from the system that is initiating the tests, i. e. on an iPhone Simulator for React Native. &lt;a href=&#34;https://github.com/sindresorhus/ava&#34;&gt;Ava&lt;/a&gt; is very interesting but only
-deals with the problem of concurrency.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Fetching Data (SPAs):
-
-&lt;ul&gt;
-&lt;li&gt;While systems like GraphQL and Netflix&amp;rsquo;s Falcor are interesting, they&amp;rsquo;re not the end-all-solution. &lt;a href=&#34;https://engineering.heroku.com/blogs/2015-12-16-react-refetch/&#34;&gt;react-refetch&lt;/a&gt; is an interesting approach, however still doesn&amp;rsquo;t quite satisfy my needs&amp;hellip; I guess some more thinking and tinkering is required&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note, I found them this week, it does not mean they are new this week.&lt;/p&gt;
-</description>
+      <description>These are programming and non-programming things I found interesting this past week (14.12.15 - 20.12.15) and why:
+ Intel NUC  I bought this little barebones PC along with a 120GB SSD and 8GB RAM to be used as a simple home server. So far, I have nothing but good things to say about this little machine. Installing Ubuntu Server 14.04 LTS went without a hitch and Docker runs like a charm.</description>
     </item>
     
     <item>
@@ -148,24 +68,8 @@ deals with the problem of concurrency.&lt;/li&gt;
       <pubDate>Sun, 23 Nov 2014 00:00:00 +0100</pubDate>
       
       <guid>http://robinthrift.com/post/weekly-picks-no-1/</guid>
-      <description>&lt;p&gt;These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://golang-examples.tumblr.com/&#34;&gt;Golang Examples&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Learning a new language, and especially one with so many interesting features, is difficult without good examples.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/reimertz/gyver&#34;&gt;Gyver&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A clever little tool that helps you organize your thoughts and ideas or just gives you inspiration.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.amazon.com/Little-Secret-Nikki-Yanofsky/dp/B00N63SU96/ref=sr_1_1?s=dmusic&amp;amp;ie=UTF8&amp;amp;qid=1416313842&amp;amp;sr=1-1&amp;amp;keywords=Little+Secret&#34;&gt;Little Secret by Nikki Yanofsky&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note, I found them this week, it does not mean they are new this week.&lt;/p&gt;
-</description>
+      <description>These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:
+ Golang Examples  Learning a new language, and especially one with so many interesting features, is difficult without good examples.  Gyver  A clever little tool that helps you organize your thoughts and ideas or just gives you inspiration.  Little Secret by Nikki Yanofsky  Note, I found them this week, it does not mean they are new this week.</description>
     </item>
     
   </channel>
