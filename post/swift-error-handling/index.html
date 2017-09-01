@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+<body>
+  <!DOCTYPE html>
 <html lang="en-gb">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/gruvbox-dark.min.css">
 
 
-<section class="section">
+  <section class="section">
   <div class="container">
     <nav class="nav">
       <div class="nav-left">
@@ -45,20 +45,20 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h2 class="subtitle is-6">July 3, 2017</h2>
-    <h1 class="title">Error Handling in Swift?</h1>
-    
+  <section class="section">
+    <div class="container">
+      <h2 class="subtitle is-6">July 3, 2017</h2>
+      <h1 class="title">Error Handling in Swift?</h1>
+      
       <div class="tags">
     
         <a class="button is-link" href="/tags/swift">swift</a>
     
 </div>
 
-    
-    <div class="content">
       
+      <div class="content">
+        
 
 <p>I&rsquo;ve been writing a lot of Swift recently, both for iOS and macOS (maybe some server side Linux stuff in future too). Whenever you learn a new language you initially take some idioms from other languages with you. I am primarily a JavaScript developer, where, due to the nature of things, most operations are asynchronous, so they are wrapped in promises. Error handling in this case is mostly handled in anonymous functions where the first parameter is the error object:</p>
 
@@ -172,12 +172,12 @@ case .Error(let error):
 
 <p>I&rsquo;m not sure if this is the most idiomatic way to handle errors in Swift, but it certainly beats <code>try/catch</code> for me.</p>
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+  
 
-
-<section class="section">
+  <section class="section">
   <div class="container has-text-centered">
     <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2017</p>
   </div>
@@ -193,3 +193,4 @@ case .Error(let error):
 <script>hljs.initHighlightingOnLoad();</script>
 
 
+</body>
