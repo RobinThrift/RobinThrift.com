@@ -1,6 +1,6 @@
 languageCode = "en-gb"
 title = "Robin Thrift"
-baseURL = "http://robinthrift.com/"
+baseURL = "https://robinthrift.com/"
 theme = "hemingway2"
 copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2017"
 
