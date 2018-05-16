@@ -2,101 +2,101 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Robin Thrift</title>
-    <link>http://robinthrift.com/post/</link>
+    <link>https://robinthrift.com/post/</link>
     <description>Recent content in Posts on Robin Thrift</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2017</copyright>
     <lastBuildDate>Mon, 03 Jul 2017 00:00:00 +0100</lastBuildDate>
     
-	<atom:link href="http://robinthrift.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://robinthrift.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Error Handling in Swift?</title>
-      <link>http://robinthrift.com/post/swift-error-handling/</link>
+      <link>https://robinthrift.com/post/swift-error-handling/</link>
       <pubDate>Mon, 03 Jul 2017 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/swift-error-handling/</guid>
+      <guid>https://robinthrift.com/post/swift-error-handling/</guid>
       <description>I&amp;rsquo;ve been writing a lot of Swift recently, both for iOS and macOS (maybe some server side Linux stuff in future too). Whenever you learn a new language you initially take some idioms from other languages with you. I am primarily a JavaScript developer, where, due to the nature of things, most operations are asynchronous, so they are wrapped in promises. Error handling in this case is mostly handled in anonymous functions where the first parameter is the error object:</description>
     </item>
     
     <item>
       <title>Weekly Picks No. 6</title>
-      <link>http://robinthrift.com/post/weekly-picks-no-6/</link>
+      <link>https://robinthrift.com/post/weekly-picks-no-6/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/weekly-picks-no-6/</guid>
+      <guid>https://robinthrift.com/post/weekly-picks-no-6/</guid>
       <description>These are programming and non-programming things I found interesting this past week (18.04.16 - 24.04.16):
  Rolling Random Romans by Joël Quenneville: Excellent little tutorial on Elm. Launching Mission Control Day (part 1)  </description>
     </item>
     
     <item>
       <title>Weekly Picks No. 5</title>
-      <link>http://robinthrift.com/post/weekly-picks-no-5/</link>
+      <link>https://robinthrift.com/post/weekly-picks-no-5/</link>
       <pubDate>Sun, 17 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/weekly-picks-no-5/</guid>
+      <guid>https://robinthrift.com/post/weekly-picks-no-5/</guid>
       <description>These are programming and non-programming things I found interesting this past week (11.04.16 - 17.04.16):
  BSD for Linux Users: Although a bit dated, it&amp;rsquo;s still an excellent essay by Matt Fuller on the differences both on the technical and philosophical aspects of BSDs and Linux. Passive event listeners: a new DOM API proposal that should help with performance when using scroll handlers (especially on mobile). Table for two: Our favorite two-player board games onby Aaron Zimmerman on Ars  </description>
     </item>
     
     <item>
       <title>Weekly Picks No. 4</title>
-      <link>http://robinthrift.com/post/weekly-picks-no-4/</link>
+      <link>https://robinthrift.com/post/weekly-picks-no-4/</link>
       <pubDate>Sun, 03 Apr 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/weekly-picks-no-4/</guid>
+      <guid>https://robinthrift.com/post/weekly-picks-no-4/</guid>
       <description>These are programming and non-programming things I found interesting this past week (28.03.16 - 03.04.16):
  This should totally be a thing: https://twitter.com/davechenell/status/710549108692541440 String Types in Rust by Andrew Brinker S3Git is &amp;ldquo;git for Cloud Storage&amp;rdquo;, a clever little tool, that allows one to easily sync files with &amp;ldquo;distributed, decentralized and versioned repositories&amp;rdquo;. It uses the BLAKE2 Tree Hashing Algorithm for both deduplicated and hydrated storage Wekan: I&amp;rsquo;ve been using Wekan for a while now, and absolutely love it.</description>
     </item>
     
     <item>
       <title>Weekly Picks No. 3</title>
-      <link>http://robinthrift.com/post/weekly-picks-no-3/</link>
+      <link>https://robinthrift.com/post/weekly-picks-no-3/</link>
       <pubDate>Sun, 31 Jan 2016 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/weekly-picks-no-3/</guid>
+      <guid>https://robinthrift.com/post/weekly-picks-no-3/</guid>
       <description>These are programming and non-programming things I found interesting this past week (25.01.16 - 31.01.16) and why:
  github.com/zeithq/micro  Very intersting micro services library with a beautifully minimalistic API. An excellent example for good APIs.  Typescript 1.8 Beta  I&amp;rsquo;m a huge fan of Typescript and the 1.8 release will make it even better, allowing for easier JS and TS interop. I&amp;rsquo;m looking forward to using it.  Alduin Colourscheme  I&amp;rsquo;ve been using base16-ocean (light and dark) up until now, but I instantly fell in love with this colourscheme, and am now using it both for my terminal as well as vim.</description>
     </item>
     
     <item>
       <title>Weekly Picks No. 2</title>
-      <link>http://robinthrift.com/post/weekly-picks-no-2/</link>
+      <link>https://robinthrift.com/post/weekly-picks-no-2/</link>
       <pubDate>Sun, 20 Dec 2015 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/weekly-picks-no-2/</guid>
+      <guid>https://robinthrift.com/post/weekly-picks-no-2/</guid>
       <description>These are programming and non-programming things I found interesting this past week (14.12.15 - 20.12.15) and why:
  Intel NUC  I bought this little barebones PC along with a 120GB SSD and 8GB RAM to be used as a simple home server. So far, I have nothing but good things to say about this little machine. Installing Ubuntu Server 14.04 LTS went without a hitch and Docker runs like a charm.</description>
     </item>
     
     <item>
       <title>Weekly Picks No. 1</title>
-      <link>http://robinthrift.com/post/weekly-picks-no-1/</link>
+      <link>https://robinthrift.com/post/weekly-picks-no-1/</link>
       <pubDate>Sun, 23 Nov 2014 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/weekly-picks-no-1/</guid>
+      <guid>https://robinthrift.com/post/weekly-picks-no-1/</guid>
       <description>These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:
  Golang Examples  Learning a new language, and especially one with so many interesting features, is difficult without good examples.  Gyver  A clever little tool that helps you organize your thoughts and ideas or just gives you inspiration.  Little Secret by Nikki Yanofsky  Note, I found them this week, it does not mean they are new this week.</description>
     </item>
     
     <item>
       <title>HannoverJS August: Metalsmith Talk</title>
-      <link>http://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</link>
+      <link>https://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</link>
       <pubDate>Wed, 03 Sep 2014 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</guid>
+      <guid>https://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</guid>
       <description>I gave a little introductory talk about Metalsmith at last month&amp;rsquo;s HannoverJS.
 You can find the slides here: - Source - Presentation</description>
     </item>
     
     <item>
       <title>Metalsmith Part 3: Refining Our Tools</title>
-      <link>http://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</link>
+      <link>https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</link>
       <pubDate>Thu, 17 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</guid>
+      <guid>https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</guid>
       <description>Last time we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.
 Without wasting any time, let&amp;rsquo;s get started!
 Writing Plugins I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually.</description>
@@ -104,10 +104,10 @@ Writing Plugins I am going to start this tutorial off with a little plugin, that
     
     <item>
       <title>Metalsmith Part 2: Shaping The Metal</title>
-      <link>http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</link>
+      <link>https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</link>
       <pubDate>Tue, 15 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</guid>
+      <guid>https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</guid>
       <description>In my last post I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.
  The full source code for this part of the tutorial can be found here
  Content Types Firstly we will need to determine, what kind of content we want to create, or rather, its type.</description>
@@ -115,10 +115,10 @@ Writing Plugins I am going to start this tutorial off with a little plugin, that
     
     <item>
       <title>Metalsmith Part 1: Setting Up the Forge</title>
-      <link>http://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</link>
+      <link>https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</link>
       <pubDate>Mon, 14 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</guid>
+      <guid>https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</guid>
       <description>In my last article I gave a brief introduction to Metalsmith, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.
 The source code for this tutorial can be found here.
 You will need Node.js and NPM. To find out, how to install them check the official documentation.</description>
@@ -126,10 +126,10 @@ You will need Node.js and NPM. To find out, how to install them check the offici
     
     <item>
       <title>Getting To Know Metalsmith</title>
-      <link>http://robinthrift.com/post/getting-to-know-metalsmith/</link>
+      <link>https://robinthrift.com/post/getting-to-know-metalsmith/</link>
       <pubDate>Sun, 13 Apr 2014 00:00:00 +0100</pubDate>
       
-      <guid>http://robinthrift.com/post/getting-to-know-metalsmith/</guid>
+      <guid>https://robinthrift.com/post/getting-to-know-metalsmith/</guid>
       <description>There are dozens of static site generators out there. The most popular is probably Jekyll, and for good reasons! It&amp;rsquo;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&amp;rsquo;s also the engine powering GitHub Pages, GitHub&amp;rsquo;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code here).</description>
     </item>
     
