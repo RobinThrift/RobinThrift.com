@@ -3,7 +3,7 @@ title = "Metalsmith Part 3: Refining Our Tools"
 date = 2014-04-17T00:00:00+01:00
 +++
 
-[Last time]({{< ref "post/metalsmith-part-2-shaping-the-metal.md" >}}) we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.
+[Last time]({{< ref "metalsmith-part-2-shaping-the-metal.md" >}}) we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.
 
 Without wasting any time, let's get started!
 

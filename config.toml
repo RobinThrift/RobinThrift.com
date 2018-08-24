@@ -2,7 +2,7 @@ languageCode = "en-gb"
 title = "Robin Thrift"
 baseURL = "https://robinthrift.com/"
 theme = "hemingway2"
-copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2017"
+copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2018"
 
 [taxonomies]
 tag = "tags"
@@ -11,7 +11,7 @@ category = "categories"
 [params]
 
 [params.highlight]
-style = "gruvbox-dark"
+style = "dracula"
 languages = [
     "swift",
     "rust",

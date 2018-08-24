@@ -10,7 +10,7 @@ env:
         - SOURCE_DIR="public"
         - DEPLOY_BRANCH="master"
 script:
-    - git clone https://gitlab.com/beli3ver/hemingway2.git ./themes/hemingway2
+    - git clone https://github.com/RobinThrift/hemingway2.git ./themes/hemingway2
     - hugo
 after_success:
     - echo "robinthrift.com" > ./public/CNAME

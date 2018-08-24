@@ -203,4 +203,4 @@ The full source code for this part of the tutorial can be found [here](https://g
 
 
 ##### Update:
-You can find the next post in this series here: [Metalsmith Part 3: Refining Our Tools]({{< ref "post/metalsmith-part-3-refining-our-tools.md" >}})
+You can find the next post in this series here: [Metalsmith Part 3: Refining Our Tools]({{< ref "metalsmith-part-3-refining-our-tools.md" >}})

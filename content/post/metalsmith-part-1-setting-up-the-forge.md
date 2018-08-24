@@ -3,7 +3,7 @@ title = "Metalsmith Part 1: Setting Up the Forge"
 date = 2014-04-14T00:00:00+01:00
 +++
 
-In my [last article]({{< ref "post/getting-to-know-metalsmith.md" >}}) I gave a brief introduction to [Metalsmith](http://www.metalsmith.io/), a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.
+In my [last article]({{< ref "getting-to-know-metalsmith.md" >}}) I gave a brief introduction to [Metalsmith](http://www.metalsmith.io/), a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.
 
 The source code for this tutorial can be found [here](https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1).
 
@@ -165,4 +165,4 @@ Take some time and experiment with Metalsmith and read the docs over at [Metalsm
 The source code for this tutorial can be found [here](https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1)
 
 ##### Update:
-You can find the next post in this series here: [Metalsmith Part 2 : Shaping The Metal]({{< ref "post/metalsmith-part-2-shaping-the-metal.md" >}})
+You can find the next post in this series here: [Metalsmith Part 2 : Shaping The Metal]({{< ref "metalsmith-part-2-shaping-the-metal.md" >}})

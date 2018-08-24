@@ -39,7 +39,7 @@ Join me next time when I will go over the file structure and basic setup.
 
 I have started writing the tutorials:
 
-- [Metalsmith Part 1: Setting Up the Forge]({{< ref "post/metalsmith-part-1-setting-up-the-forge.md" >}})
-- [Metalsmith Part 2 : Shaping The Metal]({{< ref "post/metalsmith-part-2-shaping-the-metal.md" >}})
-- [Metalsmith Part 3: Refining Our Tools]({{< ref "post/metalsmith-part-3-refining-our-tools.md" >}})
+- [Metalsmith Part 1: Setting Up the Forge]({{< ref "metalsmith-part-1-setting-up-the-forge.md" >}})
+- [Metalsmith Part 2 : Shaping The Metal]({{< ref "metalsmith-part-2-shaping-the-metal.md" >}})
+- [Metalsmith Part 3: Refining Our Tools]({{< ref "metalsmith-part-3-refining-our-tools.md" >}})
 
