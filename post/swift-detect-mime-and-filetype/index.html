@@ -1,0 +1,174 @@
+<body>
+  <!DOCTYPE html>
+<html lang="en-gb">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="Detecting MIME type and file extension in Swift (using Uniform Type Identifiers) - Robin Thrift" property="og:title">
+<title>Detecting MIME type and file extension in Swift (using Uniform Type Identifiers) | Robin Thrift</title>
+<link rel="stylesheet" href="https://robinthrift.com//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://robinthrift.com//css/langs/dracula.min.css">
+
+
+  <section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://robinthrift.com//"><h1 class="title is-4">Robin Thrift</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/RobinThrift">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/RobinThrift">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="subtitle is-6">October 7, 2018</h2>
+      <h1 class="title">Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</h1>
+      
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/swift">swift</a>
+    
+        <a class="button is-link" href="/tags/ios">ios</a>
+    
+        <a class="button is-link" href="/tags/macos">macos</a>
+    
+        <a class="button is-link" href="/tags/matrix">matrix</a>
+    
+        <a class="button is-link" href="/tags/entropy">entropy</a>
+    
+</div>
+
+      
+      <div class="content">
+        
+
+<h2 id="why-do-we-want-to-detect-the-mime-type-or-file-extension">Why do we want to detect the MIME type or file extension?</h2>
+
+<p>The <a href="https://matrix.org/docs/spec/">Matrix spec</a> defines several messaging types for attachments (essentially binary blobs). The generic <code>m.file</code> can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (<code>m.audio</code>, <code>m.video</code> and <code>m.image</code> respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.</p>
+
+<p>One way of trying to determine, what kind of attachment we are sending is the extension. While this is not 100% accurate, it&rsquo;s a good first guess. However, we will need to maintain some kind of list, mapping extension (or MIME type) to message type. Nobody likes maintaining lists like that as it&rsquo;s easy to forget a type or make mistakes. So I thought there must already be a predefined list
+somewhere. Turns out, Apple&rsquo;s OSs do.</p>
+
+<h2 id="system-declared-uniform-type-identifiers">System-Declared Uniform Type Identifiers</h2>
+
+<p>Apple has this fund little list of what they call <a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html">&ldquo;System-Declared Uniform Type Identifiers&rdquo;</a> where all the known file types are listed (and their respective constants like <code>kUTTypePNG</code>). You can also add your own using the provided APIs (and benefit from any other application adding their definition, I believe).</p>
+
+<p>When trying to look into how to actually use them however, things get a bit iffy. So let&rsquo;s have a look at the API.</p>
+
+<p>Let&rsquo;s try to create a UTI from a file extension in Swift:</p>
+
+<blockquote>
+<p>NOTE: In order to use these in iOS you&rsquo;ll need to import <code>MobileCoreServices</code></p>
+</blockquote>
+
+<pre><code class="language-swift">let fileExtension: CFString = &quot;png&quot;
+let extUTI = UTTypeCreatePreferredIdentifierForTag(
+    kUTTagClassFilenameExtension,
+    fileExtension,
+    nil
+)?.takeUnretainedValue()
+</code></pre>
+
+<p><a href="https://developer.apple.com/documentation/coreservices/1448939-uttypecreatepreferredidentifierf"><code>UTTypeCreatePreferredIdentifierForTag</code></a> returns an <code>Unmanaged&lt;CFString&gt;?</code>. If you don&rsquo;t know what <code>Unmanaged</code> is, I recommend reading the <a href="https://nshipster.com/unmanaged/">NSHipster Guide on Unmanaged</a>.</p>
+
+<p>This will essentially return <code>nil</code>, if the extensions was not recognized, or a new <code>CFString</code> (of which we&rsquo;ll want to take an unretained value in most cases).</p>
+
+<p>Now that we have a UTI for this file extension we can use it to check conformity to a type class or get its associated MIME type.</p>
+
+<pre><code class="language-swift">let fileExtension: CFString = &quot;png&quot;
+guard
+    let extUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)?.takeUnretainedValue()
+else { return }
+
+guard
+    let mimeUTI = UTTypeCopyPreferredTagWithClass(extUTI, kUTTagClassMIMEType)
+else { return }
+
+print(mimeUTI) // will print 'audio/mpeg'
+
+</code></pre>
+
+<p><a href="https://developer.apple.com/documentation/coreservices/1442744-uttypecopypreferredtagwithclass"><code>UTTypeCopyPreferredTagWithClass</code></a> can be used to transfrom one UTI to another tag class, which we are doing here.</p>
+
+<p>We can try to get an appropriate file extension for a given mime type too:</p>
+
+<pre><code class="language-swift">let mimeType: CFString = &quot;image/png&quot;
+guard
+    let mimeUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType, nil)?.takeUnretainedValue()
+else { return }
+
+guard
+    let extUTI = UTTypeCopyPreferredTagWithClass(mimeUTI, kUTTagClassFilenameExtension)
+else { return }
+
+print(extUTI) // will print 'png'
+
+</code></pre>
+
+<p>Lastly let&rsquo;s use <a href="https://developer.apple.com/documentation/coreservices/1444079-uttypeconformsto"><code>UTTypeConformsTo</code></a> to check if our extension is an image:</p>
+
+<pre><code class="language-swift">let mimeType: CFString = &quot;image/png&quot;
+guard
+    let mimeUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType, nil)?.takeUnretainedValue()
+else { return }
+
+print(UTTypeConformsTo(mimeUTI, kUTTypeImage)) // will print `true`
+</code></pre>
+
+<p>So this is how you can use Apple&rsquo;s &ldquo;System-Declared Uniform Type Identifiers&rdquo; to detect the extension, MIME type and conformity of files in Swift.
+If you&rsquo;re interested in the full code and tests, check out the <a href="https://github.com/Kodeshack/EntropyKit">repo</a></p>
+
+<blockquote>
+<p>Direct link to the file at the time of writing: <a href="https://github.com/Kodeshack/EntropyKit/blob/7126b7079eeb1e3e3b6e5faec802dcfa2468d527/Sources/Utilities/MIMEType.swift">here</a>
+And the tests: <a href="https://github.com/Kodeshack/EntropyKit/blob/7126b7079eeb1e3e3b6e5faec802dcfa2468d527/Tests/Utilities/MIMETypeTests.swift">here</a></p>
+</blockquote>
+
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2018</p>
+  </div>
+</section>
+
+<script src="https://robinthrift.com//js/highlight.min.js"></script>
+
+<script type="text/javascript" src="https://robinthrift.com//js/langs/swift.min.js"></script>
+
+<script type="text/javascript" src="https://robinthrift.com//js/langs/rust.min.js"></script>
+
+<script type="text/javascript" src="https://robinthrift.com//js/langs/go.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>

@@ -50,6 +50,38 @@
     <div class="container">
       
       <article>
+        <h2 class="subtitle is-6">October 7, 2018</h2>
+        <h1 class="title"><a href="https://robinthrift.com/post/swift-detect-mime-and-filetype/">Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</a></h1>
+        
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/swift">swift</a>
+    
+        <a class="button is-link" href="/tags/ios">ios</a>
+    
+        <a class="button is-link" href="/tags/macos">macos</a>
+    
+        <a class="button is-link" href="/tags/matrix">matrix</a>
+    
+        <a class="button is-link" href="/tags/entropy">entropy</a>
+    
+</div>
+
+        
+        <div class="content">
+          Why do we want to detect the MIME type or file extension? The Matrix spec defines several messaging types for attachments (essentially binary blobs). The generic m.file can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (m.audio, m.video and m.image respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.
+          
+          ...<a class="button is-link" href="https://robinthrift.com/post/swift-detect-mime-and-filetype/" style="height:28px">
+            Read more
+            <span class="icon is-small">
+              <i class="fa fa-angle-double-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </article>
+      
+      <article>
         <h2 class="subtitle is-6">July 3, 2017</h2>
         <h1 class="title"><a href="https://robinthrift.com/post/swift-error-handling/">Error Handling in Swift?</a></h1>
         
@@ -230,25 +262,6 @@ Without wasting any time, let&rsquo;s get started!
 Writing Plugins I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually.
           
           ...<a class="button is-link" href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/" style="height:28px">
-            Read more
-            <span class="icon is-small">
-              <i class="fa fa-angle-double-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </article>
-      
-      <article>
-        <h2 class="subtitle is-6">April 15, 2014</h2>
-        <h1 class="title"><a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/">Metalsmith Part 2: Shaping The Metal</a></h1>
-        
-        <div class="content">
-          In my last post I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.
- The full source code for this part of the tutorial can be found here
- Content Types Firstly we will need to determine, what kind of content we want to create, or rather, its type.
-          
-          ...<a class="button is-link" href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/" style="height:28px">
             Read more
             <span class="icon is-small">
               <i class="fa fa-angle-double-right"></i>

@@ -7,15 +7,51 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Mon, 03 Jul 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://robinthrift.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Entropy</title>
+      <link>https://robinthrift.com/tags/entropy/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/entropy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ios</title>
+      <link>https://robinthrift.com/tags/ios/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macos</title>
+      <link>https://robinthrift.com/tags/macos/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matrix</title>
+      <link>https://robinthrift.com/tags/matrix/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/matrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Swift</title>
       <link>https://robinthrift.com/tags/swift/</link>
-      <pubDate>Mon, 03 Jul 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
       <guid>https://robinthrift.com/tags/swift/</guid>
       <description></description>

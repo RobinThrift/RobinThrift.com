@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Mon, 03 Jul 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://robinthrift.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</title>
+      <link>https://robinthrift.com/post/swift-detect-mime-and-filetype/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/post/swift-detect-mime-and-filetype/</guid>
+      <description>Why do we want to detect the MIME type or file extension? The Matrix spec defines several messaging types for attachments (essentially binary blobs). The generic m.file can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (m.audio, m.video and m.image respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.</description>
+    </item>
     
     <item>
       <title>Error Handling in Swift?</title>
