@@ -6,7 +6,7 @@ env:
     global:
         - SSH_KEY="travis_rsa"
         - GIT_NAME="Robin Thrift"
-        - GIT_EMAIL="romancoedo@gmail.com"
+        - GIT_EMAIL="robinthrift@users.noreply.github.com"
         - SOURCE_DIR="public"
         - DEPLOY_BRANCH="master"
 script:
