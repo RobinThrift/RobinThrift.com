@@ -1,10 +1,10 @@
 language: go
 before_install:
     - openssl aes-256-cbc -K $encrypted_e462e79a70e0_key -iv $encrypted_e462e79a70e0_iv -in travis_rsa.enc -out travis_rsa -d
-    - sudo apt-get install -y hugo
-addons:
-    apt:
-        update: true
+install:
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.tar.gz
+    - echo "768296178bb3ca5daaf39d897a2505f91e0224ca48a41dc0d1d73120859c4b1f hugo_0.49_Linux-64bit.tar.gz" | sha256sum -c
+    - tar -xzf hugo_0.49_Linux-64bit.tar.gz
 env:
     global:
         - SSH_KEY="travis_rsa"
@@ -14,7 +14,7 @@ env:
         - DEPLOY_BRANCH="master"
 script:
     - git clone https://github.com/RobinThrift/hemingway2.git ./themes/hemingway2
-    - hugo
+    - ./hugo
 after_success:
     - echo "robinthrift.com" > ./public/CNAME
     - ./scripts/deploy.sh
