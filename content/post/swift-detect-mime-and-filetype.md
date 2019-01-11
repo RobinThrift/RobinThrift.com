@@ -49,7 +49,7 @@ guard
     let mimeUTI = UTTypeCopyPreferredTagWithClass(extUTI, kUTTagClassMIMEType)
 else { return }
 
-print(mimeUTI) // will print 'audio/mpeg'
+print(mimeUTI) // will print 'image/png'
 
 ```
 
