@@ -2,7 +2,7 @@ languageCode = "en-gb"
 title = "Robin Thrift"
 baseURL = "https://robinthrift.com/"
 theme = "hemingway2"
-copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2018"
+copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2019"
 
 [taxonomies]
 tag = "tags"
