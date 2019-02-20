@@ -2,9 +2,9 @@ language: go
 before_install:
     - openssl aes-256-cbc -K $encrypted_e462e79a70e0_key -iv $encrypted_e462e79a70e0_iv -in travis_rsa.enc -out travis_rsa -d
 install:
-    - wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.tar.gz
-    - echo "768296178bb3ca5daaf39d897a2505f91e0224ca48a41dc0d1d73120859c4b1f hugo_0.49_Linux-64bit.tar.gz" | sha256sum -c
-    - tar -xzf hugo_0.49_Linux-64bit.tar.gz
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
+    - echo "76f90287c12a682c9137b85146c406be410b2b30b0df7367f02ee7c4142bb416  hugo_0.54.0_Linux-64bit.tar.gz" | sha256sum -c
+    - tar -xzf hugo_0.54.0_Linux-64bit.tar.gz
 env:
     global:
         - SSH_KEY="travis_rsa"
