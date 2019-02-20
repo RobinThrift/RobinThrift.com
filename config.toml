@@ -11,7 +11,7 @@ category = "categories"
 [params]
 
 [params.highlight]
-style = "dracula"
+style = "fahrenheit"
 languages = [
     "swift",
     "rust",
