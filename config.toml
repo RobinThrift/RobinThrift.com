@@ -1,6 +1,6 @@
 languageCode = "en-gb"
 title = "Robin Thrift"
-baseURL = "https://robinthrift.com/"
+baseURL = "https://robinthrift.com"
 theme = "hemingway2"
 copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2019"
 
@@ -20,12 +20,12 @@ languages = [
 
 [[params.social]]
 url = "https://github.com/RobinThrift"
-fa_icon = "fa-github"
+name = "github"
 
 [[params.social]]
 url = "https://twitter.com/RobinThrift"
-fa_icon = "fa-twitter"
+name = "twitter"
 
 [[params.social]]
 url = "/index.xml"
-fa_icon = "fa-rss"
+name = "rss"
