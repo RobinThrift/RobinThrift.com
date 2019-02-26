@@ -7,11 +7,7 @@
     <meta content="" name="keywords">
     <meta content="Metalsmith Part 3: Refining Our Tools - Robin Thrift" property="og:title">
     <title>Metalsmith Part 3: Refining Our Tools | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
-    
-    
-    <link rel="stylesheet" href="https://robinthrift.com/css/langs/fahrenheit.min.css">
-    
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
 </head>
 
 
@@ -93,72 +89,62 @@
 <p>I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually. As most posts will likely have the same template, this is a little unnecessary, and error prone. So let&rsquo;s change that.</p>
 
 <p>Firstly a little reminder, how Metalsmith represents files internally:</p>
-
-<pre><code class="language-js">{
-    'title': 'FROM_THE_TITLE_KEY',
-    'template': 'TEMPLATE_NAME',
-    'contents': &lt;Buffer()&gt;,
-    'mode': 'HEX_FILE_PERM_CODE'
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="s1">&#39;title&#39;</span><span class="o">:</span> <span class="s1">&#39;FROM_THE_TITLE_KEY&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;template&#39;</span><span class="o">:</span> <span class="s1">&#39;TEMPLATE_NAME&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;contents&#39;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Buffer</span><span class="p">()</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s1">&#39;mode&#39;</span><span class="o">:</span> <span class="s1">&#39;HEX_FILE_PERM_CODE&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>And Metalsmith passes an object with all the files to every function that is passed to <code>.use()</code>. But that&rsquo;s not all, Metalsmith also passes you the current Metalsmith instance and a function to call, when you&rsquo;re done, so a full plugin would look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">plugin</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="nx">metalsmith</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span>
+    <span class="nx">done</span><span class="p">();</span>
+<span class="p">};</span>
 
-<pre><code class="language-js">var plugin = function(files, metalsmith, done) {
-    console.log(files);
-    done();
-};
-
-Metalsmith(__dirname)
-    //...
-    .use(plugin)
-    //...
-</code></pre>
-
+<span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">plugin</span><span class="p">)</span>
+    <span class="c1">//...
+</span></code></pre></div>
 <div class="note--small">The object keys represent the file path.</div>
 
 <p>As you can probably guess, this will simply log all the files to the console. Go ahead and try it, it will give you a feel about how Metalsmith works.</p>
 
 <p>Before we go on, we should modify out plugin to return a function. This allows us to pass the plugin a configuration object (and use it multiple times with different configs):</p>
-
-<pre><code class="language-js">var findTemplate = function(config) {
-    return function(files, metalsmith, done) {
-        //...
-        done();
-    };
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">findTemplate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="nx">metalsmith</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//...
+</span><span class="c1"></span>        <span class="nx">done</span><span class="p">();</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>We want our plugin to add a template key to our posts (if there is none), so we&rsquo;ll need to filter out our posts first. We will do so, by looping over the files list and use a regular expression to check if the file is a post:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">findTemplate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pattern</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">pattern</span><span class="p">);</span>
 
-<pre><code class="language-js">var findTemplate = function(config) {
-    var pattern = new RegExp(config.pattern);
-
-    return function(files, metalsmith, done) {
-        for (var file in files) {
-            if (pattern.test(file)) {
-                var _f = files[file];
-                if (!_f.template) {
-                    _f.template = config.templateName;
-                }
-            }
-        }
-        done();
-    };
-};
-</code></pre>
-
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="nx">metalsmith</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">file</span> <span class="k">in</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">pattern</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">file</span><span class="p">))</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">_f</span> <span class="o">=</span> <span class="nx">files</span><span class="p">[</span><span class="nx">file</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">_f</span><span class="p">.</span><span class="nx">template</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">_f</span><span class="p">.</span><span class="nx">template</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">templateName</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nx">done</span><span class="p">();</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>We can now use the plugin as follows:</p>
-
-<pre><code class="language-js">Metalsmith(__dirname)
-    //...
-    .use(findTemplate({
-        pattern: 'posts',
-        templateName: 'post.hbt'
-    }))
-    //...
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">findTemplate</span><span class="p">({</span>
+        <span class="nx">pattern</span><span class="o">:</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span>
+        <span class="nx">templateName</span><span class="o">:</span> <span class="s1">&#39;post.hbt&#39;</span>
+    <span class="p">}))</span>
+    <span class="c1">//...
+</span></code></pre></div>
 <div class="note--small">Don't forget to remove the template key from your posts!</div>
 
 <h4 id="metalsmith-metadata">metalsmith.metadata()</h4>
@@ -168,20 +154,16 @@ Metalsmith(__dirname)
 <h4 id="a-note-error-handling">A Note Error Handling</h4>
 
 <p>Metalsmith uses <a href="https://github.com/segmentio/ware">ware</a> to allow for the nice chaining syntax, however, this also means we need to adapt our error handling. Firstly, if an error occurs, we shouldn&rsquo;t just throw it, we should pass it to the <code>done()</code> function as the first parameter. Like so:</p>
-
-<pre><code class="language-js">//...
-done(new Error('Oh noes!'));
-//...
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//...
+</span><span class="c1"></span><span class="nx">done</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Oh noes!&#39;</span><span class="p">));</span>
+<span class="c1">//...
+</span></code></pre></div>
 <p>We can then catch the error in the <code>build()</code> method. To do so, we pass it a callback, which first parameter will be the error, if any (the second parameter is a list of all the files):</p>
-
-<pre><code class="language-js">//...
-    .build(function(err) {
-        if (err) { throw err; }
-    });
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//...
+</span><span class="c1"></span>    <span class="p">.</span><span class="nx">build</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">});</span>
+</code></pre></div>
 <p>Now that we&rsquo;ve got that out of the way, let us continue improving our script!</p>
 
 <h3 id="statics">Statics</h3>
@@ -216,15 +198,13 @@ Firstly we will need to install the CS (<a href="https://github.com/joaoafrmarti
 </code></pre>
 
 <p>Then require them in your build script and add them to your chain (they will filter the files themselves):</p>
-
-<pre><code class="language-js">//...
-    .use(sass({
-        outputStyle: 'compressed'
-    }))
-    .use(coffee())
-//...
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//...
+</span><span class="c1"></span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">sass</span><span class="p">({</span>
+        <span class="nx">outputStyle</span><span class="o">:</span> <span class="s1">&#39;compressed&#39;</span>
+    <span class="p">}))</span>
+    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">coffee</span><span class="p">())</span>
+<span class="c1">//...
+</span></code></pre></div>
 <p>Both plugins accept all the options their respective underlying plugins do. Check the docs, if in doubt.</p>
 
 <h3 id="were-to-go-from-here">Were to go from here</h3>
@@ -243,16 +223,6 @@ Firstly we will need to install the CS (<a href="https://github.com/joaoafrmarti
     <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2019</p>
   </div>
 </section>
-
-<script src="https://robinthrift.com/js/highlight.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/swift.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/rust.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/go.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

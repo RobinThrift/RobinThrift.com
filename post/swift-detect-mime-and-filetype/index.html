@@ -7,11 +7,7 @@
     <meta content="" name="keywords">
     <meta content="Detecting MIME type and file extension in Swift (using Uniform Type Identifiers) - Robin Thrift" property="og:title">
     <title>Detecting MIME type and file extension in Swift (using Uniform Type Identifiers) | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
-    
-    
-    <link rel="stylesheet" href="https://robinthrift.com/css/langs/fahrenheit.min.css">
-    
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
 </head>
 
 
@@ -117,61 +113,47 @@ somewhere. Turns out, Apple&rsquo;s OSs do.</p>
 <blockquote>
 <p>NOTE: In order to use these in iOS you&rsquo;ll need to import <code>MobileCoreServices</code></p>
 </blockquote>
-
-<pre><code class="language-swift">let fileExtension: CFString = &quot;png&quot;
-let extUTI = UTTypeCreatePreferredIdentifierForTag(
-    kUTTagClassFilenameExtension,
-    fileExtension,
-    nil
-)?.takeUnretainedValue()
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">fileExtension</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;png&#34;</span>
+<span class="kd">let</span> <span class="nv">extUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span>
+    <span class="n">kUTTagClassFilenameExtension</span><span class="p">,</span>
+    <span class="n">fileExtension</span><span class="p">,</span>
+    <span class="kc">nil</span>
+<span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span></code></pre></div>
 <p><a href="https://developer.apple.com/documentation/coreservices/1448939-uttypecreatepreferredidentifierf"><code>UTTypeCreatePreferredIdentifierForTag</code></a> returns an <code>Unmanaged&lt;CFString&gt;?</code>. If you don&rsquo;t know what <code>Unmanaged</code> is, I recommend reading the <a href="https://nshipster.com/unmanaged/">NSHipster Guide on Unmanaged</a>.</p>
 
 <p>This will essentially return <code>nil</code>, if the extensions was not recognized, or a new <code>CFString</code> (of which we&rsquo;ll want to take an unretained value in most cases).</p>
 
 <p>Now that we have a UTI for this file extension we can use it to check conformity to a type class or get its associated MIME type.</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">fileExtension</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;png&#34;</span>
+<span class="k">guard</span>
+    <span class="kd">let</span> <span class="nv">extUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span><span class="n">kUTTagClassFilenameExtension</span><span class="p">,</span> <span class="n">fileExtension</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
+<span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
 
-<pre><code class="language-swift">let fileExtension: CFString = &quot;png&quot;
-guard
-    let extUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)?.takeUnretainedValue()
-else { return }
+<span class="k">guard</span>
+    <span class="kd">let</span> <span class="nv">mimeUTI</span> <span class="p">=</span> <span class="n">UTTypeCopyPreferredTagWithClass</span><span class="p">(</span><span class="n">extUTI</span><span class="p">,</span> <span class="n">kUTTagClassMIMEType</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
 
-guard
-    let mimeUTI = UTTypeCopyPreferredTagWithClass(extUTI, kUTTagClassMIMEType)
-else { return }
-
-print(mimeUTI) // will print 'image/png'
-
-</code></pre>
-
+<span class="bp">print</span><span class="p">(</span><span class="n">mimeUTI</span><span class="p">)</span> <span class="c1">// will print &#39;image/png&#39;</span></code></pre></div>
 <p><a href="https://developer.apple.com/documentation/coreservices/1442744-uttypecopypreferredtagwithclass"><code>UTTypeCopyPreferredTagWithClass</code></a> can be used to transfrom one UTI to another tag class, which we are doing here.</p>
 
 <p>We can try to get an appropriate file extension for a given mime type too:</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">mimeType</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;image/png&#34;</span>
+<span class="k">guard</span>
+    <span class="kd">let</span> <span class="nv">mimeUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span><span class="n">kUTTagClassMIMEType</span><span class="p">,</span> <span class="n">mimeType</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
+<span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
 
-<pre><code class="language-swift">let mimeType: CFString = &quot;image/png&quot;
-guard
-    let mimeUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType, nil)?.takeUnretainedValue()
-else { return }
+<span class="k">guard</span>
+    <span class="kd">let</span> <span class="nv">extUTI</span> <span class="p">=</span> <span class="n">UTTypeCopyPreferredTagWithClass</span><span class="p">(</span><span class="n">mimeUTI</span><span class="p">,</span> <span class="n">kUTTagClassFilenameExtension</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
 
-guard
-    let extUTI = UTTypeCopyPreferredTagWithClass(mimeUTI, kUTTagClassFilenameExtension)
-else { return }
-
-print(extUTI) // will print 'png'
-
-</code></pre>
-
+<span class="bp">print</span><span class="p">(</span><span class="n">extUTI</span><span class="p">)</span> <span class="c1">// will print &#39;png&#39;</span></code></pre></div>
 <p>Lastly let&rsquo;s use <a href="https://developer.apple.com/documentation/coreservices/1444079-uttypeconformsto"><code>UTTypeConformsTo</code></a> to check if our extension is an image:</p>
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">let</span> <span class="nv">mimeType</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;image/png&#34;</span>
+<span class="k">guard</span>
+    <span class="kd">let</span> <span class="nv">mimeUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span><span class="n">kUTTagClassMIMEType</span><span class="p">,</span> <span class="n">mimeType</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
+<span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
 
-<pre><code class="language-swift">let mimeType: CFString = &quot;image/png&quot;
-guard
-    let mimeUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType, nil)?.takeUnretainedValue()
-else { return }
-
-print(UTTypeConformsTo(mimeUTI, kUTTypeImage)) // will print `true`
-</code></pre>
-
+<span class="bp">print</span><span class="p">(</span><span class="n">UTTypeConformsTo</span><span class="p">(</span><span class="n">mimeUTI</span><span class="p">,</span> <span class="n">kUTTypeImage</span><span class="p">))</span> <span class="c1">// will print `true`</span></code></pre></div>
 <p>So this is how you can use Apple&rsquo;s &ldquo;System-Declared Uniform Type Identifiers&rdquo; to detect the extension, MIME type and conformity of files in Swift.
 If you&rsquo;re interested in the full code and tests, check out the <a href="https://github.com/Kodeshack/EntropyKit">repo</a></p>
 
@@ -188,16 +170,6 @@ And the tests: <a href="https://github.com/Kodeshack/EntropyKit/blob/7126b7079ee
     <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2019</p>
   </div>
 </section>
-
-<script src="https://robinthrift.com/js/highlight.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/swift.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/rust.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/go.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

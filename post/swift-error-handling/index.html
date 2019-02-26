@@ -7,11 +7,7 @@
     <meta content="" name="keywords">
     <meta content="Error Handling in Swift? - Robin Thrift" property="og:title">
     <title>Error Handling in Swift? | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
-    
-    
-    <link rel="stylesheet" href="https://robinthrift.com/css/langs/fahrenheit.min.css">
-    
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
 </head>
 
 
@@ -92,65 +88,50 @@
         
 
 <p>I&rsquo;ve been writing a lot of Swift recently, both for iOS and macOS (maybe some server side Linux stuff in future too). Whenever you learn a new language you initially take some idioms from other languages with you. I am primarily a JavaScript developer, where, due to the nature of things, most operations are asynchronous, so they are wrapped in promises. Error handling in this case is mostly handled in anonymous functions where the first parameter is the error object:</p>
-
-<pre><code class="language-javascript">fs.readFile('some/file.ext')
-    .then((content) =&gt; {
-        // do something with the content...
-    })
-    .catch((error) =&gt; {
-        console.error(error)
-    })
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;some/file.ext&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">content</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// do something with the content...
+</span><span class="c1"></span>    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+    <span class="p">})</span>
+</code></pre></div>
 <p>Recently though this has changed through the use of <code>async/await</code>. Instead of using the <code>catch</code> callback on a promise we are back to <code>try/catch</code>:</p>
-
-<pre><code class="language-javascript">try {
-    let content = fs.readFile('some/file.ext')
-    // do something with the content...
-} catch (error) {
-    console.error(error)
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">try</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">&#39;some/file.ext&#39;</span><span class="p">)</span>
+    <span class="c1">// do something with the content...
+</span><span class="c1"></span><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>While <code>asnyc/await</code> is amazingly useful, we&rsquo;ve come full circle, back to exceptions like in Java, C# or C++ where I&rsquo;ve seen a lot of code like the following.</p>
-
-<pre><code class="language-java">try {
-    String contents = new File(&quot;some/file.ext&quot;).readAll()
-} catch (IOException e) {}
-
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">contents</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;some/file.ext&#34;</span><span class="o">).</span><span class="na">readAll</span><span class="o">()</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span></code></pre></div>
 <p>Or worse, just letting the method throw, bubbling up the call chain.</p>
 
 <p>Having worked with both Go and Rust this felt a little backwards. Go especially used to advertise with the premise that they didn&rsquo;t have any exceptions (there are <a href="https://github.com/golang/go/wiki/PanicAndRecover">panics</a> however). Instead, Go and Rust make error handling a core part of programming, not an &ldquo;exception&rdquo;.
 I don&rsquo;t want to go into too much detail about Rust or Go, but here&rsquo;s a very quick recap of how they handle errors.</p>
 
 <p><strong>Rust:</strong></p>
-
-<pre><code class="language-rust">// opened `file` above (error also dealt with using `match`)
-let mut s = String::new();
-match file.read_to_string(&amp;mut s) {
-    Err(why) =&gt; panic!(&quot;couldn't read file: {}&quot;, why.description()),
-    Ok(_) =&gt; print!(&quot;contents:\n{}&quot;, s),
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// opened `file` above (error also dealt with using `match`)
+</span><span class="c1"></span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">new</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="k">match</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">read_to_string</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="n">why</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">panic</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;couldn&#39;t read file: {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">why</span><span class="p">.</span><span class="n">description</span><span class="p">()),</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">print</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;contents:</span><span class="se">\n</span><span class="s">{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Rust uses the <a href="https://doc.rust-lang.org/std/result/"><code>Result&lt;T, E&gt;</code></a>-type; an enum that covers the two possible cases of an operation:</p>
-
-<pre><code class="language-rust">enum Result&lt;T, E&gt; {
-   Ok(T),
-   Err(E),
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">enum</span> <span class="nb">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="nb">Ok</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="w">
+</span><span class="w">   </span><span class="nb">Err</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p><strong>Go:</strong></p>
-
-<pre><code class="language-go">dat, err := ioutil.ReadFile(&quot;/some/file.ext&quot;)
-if err != nil {
-	//...
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="s">&#34;/some/file.ext&#34;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+	<span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <p>Go uses multiple return parameters to inform the user that a function could return an error. While it may be a little less elegant than Rust&rsquo;s <code>Result</code>-type the error handling is very expressive.</p>
 
 <h3 id="errors-in-swift">Errors in Swift?</h3>
@@ -158,47 +139,35 @@ if err != nil {
 <p>So finally, after we&rsquo;ve set the playing field we get to Swift. Reading about Swift and how much it seemingly took out of the functional (and in turn Rust&rsquo;s) playbook I was excited to see what the Swift team had come up with. Queue my disappointment when I saw the examples and they defaulted to &ldquo;old school&rdquo; <code>try/catch</code>. Seems like a bit of a waste of the type system. So when writing Swift code, especially asynchronous code, I needed a way other than just throwing an error out there, hoping someone would catch it. Maybe it&rsquo;s due to my inexperience with Swift that I did not like the uncertainty of <code>throw</code>ing.</p>
 
 <p>Initially I tried Go-style tuples and destructuring as a kind of &ldquo;fake&rdquo; multiple return parameters. So a function that could fail looked this:</p>
-
-<pre><code class="language-swift">func readFile(path: String) -&gt; (String?, Error?) {
-    do {
-        let content = try String(contentsOf: path, encoding: String.Encoding.utf8) 
-        return (content, nil)
-    } catch (let e) {
-        return (nil, e)
-    }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">String</span><span class="p">?,</span> <span class="n">Error</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">content</span> <span class="p">=</span> <span class="k">try</span> <span class="nb">String</span><span class="p">(</span><span class="n">contentsOf</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">String</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">utf8</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="kd">let</span> <span class="nv">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>This worked, and solved my problem, but it meant that everything had to be declared as optional. So instead of using the type system to my advantage, encoding logic in types, I threw away some type safety and convenience. So after a while I decided to switch to Rust-style <code>Result</code>s:</p>
 
 <p>I created my own <code>Result</code>-enum:</p>
-
-<pre><code class="language-swift">enum Result&lt;T&gt; {
-    case Value(T)
-    case Error(Error)
-}
-</code></pre>
-
-<pre><code class="language-swift">func readFile(path: String) -&gt; Result&lt;String&gt; {
-    do {
-        let content = try String(contentsOf: path, encoding: String.Encoding.utf8) 
-        return .Value(content)
-    } catch (let e) {
-        return .Error(e)
-    }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="nc">Result</span><span class="p">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Value</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">Error</span><span class="p">(</span><span class="n">Error</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span><span class="p">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">content</span> <span class="p">=</span> <span class="k">try</span> <span class="nb">String</span><span class="p">(</span><span class="n">contentsOf</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">String</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">utf8</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="p">.</span><span class="n">Value</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="kd">let</span> <span class="nv">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">.</span><span class="n">Error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>Now I could use <code>switch</code> statements to handle my errors:</p>
-
-<pre><code class="language-swift">switch readFile(&quot;some/file.ext&quot;) {
-case .Value(let content):
-    print(content)
-case .Error(let error):
-    print(error)
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-swift" data-lang="swift"><span class="k">switch</span> <span class="n">readFile</span><span class="p">(</span><span class="s">&#34;some/file.ext&#34;</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">Value</span><span class="p">(</span><span class="kd">let</span> <span class="nv">content</span><span class="p">):</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">Error</span><span class="p">(</span><span class="kd">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 <p>In future I could even extend the <code>Result</code> enum using functions like <code>map</code> or <code>flatten</code> to make handling errors even easier. I can pass the result around, confident that the type system will make sure I don&rsquo;t do anything stupid (spoiler alert: I will find a way regardless).</p>
 
 <p>I&rsquo;m not sure if this is the most idiomatic way to handle errors in Swift, but it certainly beats <code>try/catch</code> for me.</p>
@@ -211,16 +180,6 @@ case .Error(let error):
     <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2019</p>
   </div>
 </section>
-
-<script src="https://robinthrift.com/js/highlight.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/swift.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/rust.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/go.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

@@ -7,11 +7,7 @@
     <meta content="" name="keywords">
     <meta content="Getting To Know Metalsmith - Robin Thrift" property="og:title">
     <title>Getting To Know Metalsmith | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
-    
-    
-    <link rel="stylesheet" href="https://robinthrift.com/css/langs/fahrenheit.min.css">
-    
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
 </head>
 
 
@@ -95,13 +91,11 @@
 <h3 id="forging-with-javascript">Forging with JavaScript</h3>
 
 <p><a href="http://www.metalsmith.io/">Metalsmith</a> by the guys over at <a href="https://segment.io/">Segment.io</a> is &ldquo;an extremely simple, pluggable static site generator&rdquo;. What that means is, is that everything is a plugin. There&rsquo;s a very small core which creates a list of files for your plugins to work with (similar to Gulp). You give it a source directory and then tell it which plugins to use; if you know <a href="http://expressjs.com/">express.js</a> or have used Gulp before, this will look very familiar:</p>
-
-<pre><code class="language-js">Metalsmith(__dirname)
-    .use(markdown())
-    .use(templates('handlebars'))
-    .build();
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+</code></pre></div>
 <p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files.</p>
 
 <p>Metalsmith will also parse any YAML front-matter at the top of every file, which acts as metadata, e. g. title, date and template.</p>
@@ -132,16 +126,6 @@
     <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2019</p>
   </div>
 </section>
-
-<script src="https://robinthrift.com/js/highlight.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/swift.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/rust.min.js"></script>
-
-<script type="text/javascript" src="https://robinthrift.com/js/langs/go.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>
