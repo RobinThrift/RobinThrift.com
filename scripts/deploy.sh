@@ -33,7 +33,7 @@ REV=$(git rev-parse HEAD)
 git clone --branch ${TARGET_BRANCH} ${REPO} ${TARGET_DIR}
 rsync -rt --delete --exclude=".git" --exclude=".github" $SOURCE_DIR/ $TARGET_DIR/
 cd $TARGET_DIR
-echo "robinthrift.de" > CNAME
+echo "robinthrift.com" > CNAME
 git add -A .
 git commit --allow-empty -m "auto-build: build from $REV at $(date)"
 git remote add gh $REPO
