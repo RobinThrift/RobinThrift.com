@@ -78,40 +78,24 @@
       <h1 class="title">Getting To Know Metalsmith</h1>
       
       <div class="content">
-        
-
-<p>There are dozens of static site generators out there. The most popular is probably <a href="http://jekyllrb.com/">Jekyll</a>, and for good reasons! It&rsquo;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&rsquo;s also the engine powering <a href="https://pages.github.com/">GitHub Pages</a>, GitHub&rsquo;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code <a href="https://github.com/RobinThrift/RobinThrift.com">here</a>). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.</p>
-
-<p>I built a few websites using Jekyll, but as my ruby-fu&trade; is quite limited I had a few problems when it came to plugins, especially developing my own, also I didn&rsquo;t like to depend on ruby, but I guess that&rsquo;s just me being the JS guy I am. Although I plan on learning ruby in-depth at some stage, I&rsquo;m not there yet. Also I simply wanted to try something new, preferably JavaScript based.</p>
-
+        <p>There are dozens of static site generators out there. The most popular is probably <a href="http://jekyllrb.com/">Jekyll</a>, and for good reasons! It&rsquo;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&rsquo;s also the engine powering <a href="https://pages.github.com/">GitHub Pages</a>, GitHub&rsquo;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code <a href="https://github.com/RobinThrift/RobinThrift.com">here</a>). Static sites make it super easy to version control your site and also let others contribute to your site (fork it and fix my typos ;) ), as well as learn from it.</p>
+<p>I built a few websites using Jekyll, but as my ruby-fu™ is quite limited I had a few problems when it came to plugins, especially developing my own, also I didn&rsquo;t like to depend on ruby, but I guess that&rsquo;s just me being the JS guy I am. Although I plan on learning ruby in-depth at some stage, I&rsquo;m not there yet. Also I simply wanted to try something new, preferably JavaScript based.</p>
 <p>Recently I&rsquo;ve been using <a href="http://gulpjs.com/">Gulp.js</a> for all of my build scripts and I thought about using that. While I certainly could have done so, I don&rsquo;t think it would have been very elegant. I like the way Gulp works, for projects like web apps, as it&rsquo;s very flexible. For static sites/blogs however, it didn&rsquo;t feel quite right. Of course there are tons of JS-based static site generators out there, but most weren&rsquo;t quite what I was looking for. <a href="http://assemble.io/">Assemble.io</a> seems quite powerful but I couldn&rsquo;t quite get myself to like it. I don&rsquo;t think the structure of the website/docs are very good for beginners.</p>
-
 <p>This is were Metalsmith comes in.</p>
-
 <h3 id="forging-with-javascript">Forging with JavaScript</h3>
-
 <p><a href="http://www.metalsmith.io/">Metalsmith</a> by the guys over at <a href="https://segment.io/">Segment.io</a> is &ldquo;an extremely simple, pluggable static site generator&rdquo;. What that means is, is that everything is a plugin. There&rsquo;s a very small core which creates a list of files for your plugins to work with (similar to Gulp). You give it a source directory and then tell it which plugins to use; if you know <a href="http://expressjs.com/">express.js</a> or have used Gulp before, this will look very familiar:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
-    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
-    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
-</code></pre></div>
-<p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+<span class="ln">2</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
+<span class="ln">3</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
+<span class="ln">4</span>    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+</code></pre></div><p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files.</p>
 <p>Metalsmith will also parse any YAML front-matter at the top of every file, which acts as metadata, e. g. title, date and template.</p>
-
 <p>The second plugin is <code>templates()</code>, a thin wrapper on top of <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a> used to render the templates specified in the YAML front-matter. The argument you pass in is the engine that consolidate.js will use, so you can use any templating engine you like, i. e. Jade, Handlebars, Swig, etc.</p>
-
 <p>Immediately you can see how flexible and modular Metalsmith is, while at the same time being elegant and very, very easy to develop for and work with.</p>
-
 <p>In this series I will go over my experiences with Metalsmith and how I built this website. I want to cover everything from simple beginner topics like file structure to more advanced usage and plugin development, like my <a href="https://github.com/RobinThrift/metalsmith-paginate">pagination plugin</a>.</p>
-
 <p>Join me next time when I will go over the file structure and basic setup.</p>
-
 <h4 id="update-tutorials-posted">Update: Tutorials Posted</h4>
-
 <p>I have started writing the tutorials:</p>
-
 <ul>
 <li><a href="https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/">Metalsmith Part 1: Setting Up the Forge</a></li>
 <li><a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/">Metalsmith Part 2 : Shaping The Metal</a></li>
@@ -123,7 +107,7 @@
   </section>
   <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2019</p>
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2020</p>
   </div>
 </section>
 

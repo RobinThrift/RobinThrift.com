@@ -1,9 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://robinthrift.com/tags/c/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/opcua/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/open62541/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/post/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/zig/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/post/zig-c-interop-init-failure/</loc>
+    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://robinthrift.com/post/swift-detect-mime-and-filetype/</loc>
+    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/entropy/</loc>
+    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/ios/</loc>
+    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/macos/</loc>
+    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/matrix/</loc>
+    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/swift/</loc>
     <lastmod>2018-10-07T00:00:00+01:00</lastmod>
   </url>
   
@@ -14,6 +79,11 @@
   
   <url>
     <loc>https://robinthrift.com/post/weekly-picks-no-6/</loc>
+    <lastmod>2016-04-24T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robinthrift.com/tags/weekly-picks/</loc>
     <lastmod>2016-04-24T00:00:00+01:00</lastmod>
   </url>
   
@@ -69,61 +139,6 @@
   
   <url>
     <loc>https://robinthrift.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/entropy/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/ios/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/macos/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/matrix/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/post/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/swift/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/</loc>
-    <lastmod>2018-10-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://robinthrift.com/tags/weekly-picks/</loc>
-    <lastmod>2016-04-24T00:00:00+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

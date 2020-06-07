@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://robinthrift.com/index.xml">
+    <meta content="" name="keywords">
+    <meta content="Zig C Interop Adventures - Robin Thrift" property="og:title">
+    <title>Zig C Interop Adventures | Robin Thrift</title>
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
+</head>
+
+
+<body>
+  <section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/RobinThrift">
+              <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-label="github"
+                >
+                  <use xlink:href="/img/social.map.svg#github"/>
+              </svg>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/RobinThrift">
+              <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-label="twitter"
+                >
+                  <use xlink:href="/img/social.map.svg#twitter"/>
+              </svg>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+              <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-label="rss"
+                >
+                  <use xlink:href="/img/social.map.svg#rss"/>
+              </svg>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="subtitle is-6">June 7, 2020</h2>
+      <h1 class="title">Zig C Interop Adventures</h1>
+      
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/zig">zig</a>
+    
+        <a class="button is-link" href="/tags/opcua">opcua</a>
+    
+        <a class="button is-link" href="/tags/c">c</a>
+    
+        <a class="button is-link" href="/tags/open62541">open62541</a>
+    
+</div>
+
+      
+      <div class="content">
+        <p>So this post initially started out as a sort of experience report on how I got Zig working with a C library (<a href="https://github.com/open62541/open62541">open62541</a>) I am quite familiar with, especially in terms of C interop, as I was using it with CGo. However, this little experiment did not go quite as planned&hellip;</p>
+<h3 id="quick-background-and-motivation">Quick Background and Motivation</h3>
+<p><a href="https://opcfoundation.org/about/opc-technologies/opc-ua/">OPC Unified Architecture (UA)</a> is an industry standard for the communication between devices, primarily designed for manufacturing/factory floor settings. I know, great explanation, but this article is not about OPC UA.
+I could write dozens and dozens of pages about my thoughts on OPC UA.
+For now, just know that it&rsquo;s used in factory settings like IIoT (Industrial Internet of Things), meaning it might run on smaller hardware, sometimes even in an embedded environment.</p>
+<p>For this reason using a fast and efficient language would be a good idea. Most of our services are generally written in Go which is good enough, but Go interop with C is sometimes very annoying and not really an ideal situation (plus it comes with some overhead).</p>
+<p>While CGo has its fair share of problems<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, overall I am quite impressed with how easy it was to get working. Converting from Go world to C world and vice versa is very annoying though, and I am 100% sure that there are plenty of memory leaks or null pointer access hidden in there somewhere.</p>
+<p>So when I cam across Zig and its promise of super easy C interop, I was intrigued. It looked very interesting and certain aspects seemed almost &ldquo;inspired&rdquo; by Go<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<h2 id="zig-c-interop-basics">Zig C Interop Basics</h2>
+<p>Importing C types, variables, functions, etc. in Zig is very straightforward:</p>
+<pre><code class="language-zig" data-lang="zig">const c = @cImport({
+    @cInclude(&quot;open62541/types.h&quot;);
+    @cInclude(&quot;open62541/server.h&quot;);
+});
+</code></pre><p>Then the <code>build.zig</code> needs a few tweaks to point it to the correct paths and tell it to link to the correct library:</p>
+<pre><code class="language-zig" data-lang="zig">const open62541 = b.addStaticLibrary(&quot;libopen62541&quot;, &quot;open62541/build/bin/libopen62541.a&quot;);
+// ...
+exe.addIncludeDir(&quot;open62541/include&quot;);
+exe.addIncludeDir(&quot;open62541/build/src_generated&quot;);
+</code></pre><p>Zig is still very new and the docs, especially when it comes to the build system are not great yet. Which is a shame because the build system seems really cool, but I am sure they will be working on that in due time.</p>
+<p>That was all that was necessary to get a very basic OPC UA server working. The code you can see here:</p>
+<pre><code class="language-zig" data-lang="zig">pub fn main() !void {
+    var server = c.UA_Server_new() orelse return error.UnkownStatusCode;
+    defer c.UA_Server_delete(server);
+    var config = @ptrCast(*c.UA_ServerConfig, c.UA_Server_getConfig(server));
+    try ua_error(c.UA_ServerConfig_setDefault(config));
+
+    try ua_error(c.UA_Server_run_startup(server));
+
+    const waitInternal = false;
+
+    while (true) {
+        const timeout = c.UA_Server_run_iterate(server, waitInternal);
+        std.time.sleep(timeout * 1000);
+    }
+
+    try ua_error(c.UA_Server_shutdown(server));
+}
+</code></pre><p>All looked well, I was optimistic!</p>
+<h2 id="zig-being-zig">Zig being Zig</h2>
+<p>The next step was to interact with the server instance a bit, add some variables, etc.
+The first hurdle was, as it always seems, strings. Converting from Go strings to C strings requires the use of <code>C.CString</code> and will force reallocation of the string on the C heap, which means it also needs to be manually freed. There&rsquo;s no way to pass a stack allocated Go string to a C function without the use of a bunch of <code>unsafe</code> trickery and a bit of luck.</p>
+<p>Zig has no built-in notion of strings, instead treating them simply as <code>[:0]const u8</code>, zero-terminated arrays of unsigned 8-bit integers. This maps quite closely to C&rsquo;s idea of strings <code>char*</code> or <code>char[]</code>. While passing a string from Zig to C at least doesn&rsquo;t require a reallocation it still requires a cast using <code>@ptrCast([*c]const u8, &amp;stringVar)</code>.
+However, all (stack allocated) strings in Zig are marked as <code>const</code>, meaning if a C function takes a <code>char*</code> parameter, as opposed to a <code>const char*</code>, Zig throws up its arms and gives up.
+I think this the correct behaviour and most C compilers rightfully warn users when a cast discards a <code>const</code> modifier.
+Unfortunately though, in my case, the <code>UA_LOCALIZEDTEXT</code> function takes two <code>char*</code> instead of <code>const char*</code> arguments, so if Zig marks the string as <code>const</code>, it&rsquo;s <code>const</code> and to change that the string would have to be reallocated.
+This is hardly better than Go. While local variables can be marked as <code>var</code>, function parameters in Zig are always immutable, so no luck there.</p>
+<p>I didn&rsquo;t go much further from here. Maybe there is a way of coercing the <code>const</code> away somehow. Maybe it&rsquo;s a &ldquo;bug&rdquo; in the C lib that should be fixed.
+I guess I could write a C function which takes a <code>const</code> pointer and dangerously cast it away, returning the same pointer as non-<code>const</code>.
+Maybe a catch all <code>type_erasure</code> function which just returns <code>(void*)input</code> could be used as a catch all escape hatch, but that really just feels wrong.
+If I hadn&rsquo;t run into the next problem, I might have actually tried it.</p>
+<h2 id="c-being-c">C being C</h2>
+<p>I don&rsquo;t dislike C, in fact I quite like C in a certain way. Sometimes just writing to memory willy-nilly can be fun. Sometimes I want to rip my hair out over the same kind of &ldquo;whatever could this memory be, nobody knows&rdquo;-situations.
+C has many features that directly relate to it&rsquo;s memory-ness, one of them being <em>bitfield</em>s.
+I don&rsquo;t want to get into what bitfields are here, there are probably far better resources out there if you&rsquo;re interested.
+Zig&rsquo;s C interop works in a way that it parses the C header file as C and then transforms the C AST, <em>Abstract Syntax Tree</em>, to a Zig AST and then continues the compile step as normal.
+At least that&rsquo;s what I read somewhere in some GitHub issue which I can&rsquo;t seem to find now.
+In theory this is cool and even allows fairly easy translation from C code to Zig code (potentially converting an entire project from C to Zig, similar to something like <a href="https://github.com/jameysharp/corrode">corrode</a> for C to Rust).
+In practice this means that Zig must support all C features you want to use.
+While Zig supports most features, it currently doesn&rsquo;t support bitfields properly, instead rendering those structs simply as <code>@OpaqueType()</code>.
+When just <em>using</em> that type, passing it from C function to C function that wouldn&rsquo;t be the end of the world.
+However, because an <code>OpaqueType</code> doesn&rsquo;t have a known size in Zig, creating arrays of such types is not allowed, causing the following error message in my case:</p>
+<pre><code>error: array of type '.cimport:1:11.struct_UA_DataType' not allowed
+pub extern const UA_TYPES: [197]UA_DataType;
+</code></pre><p>Here&rsquo;s the shortened definition of <code>UA_DataType</code> at the time of writing, for those that are interested:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">UA_DataType</span> <span class="p">{</span>
+<span class="ln"> 2</span>    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">typeName</span><span class="p">;</span>
+<span class="ln"> 3</span>    <span class="n">UA_NodeId</span> <span class="n">typeId</span><span class="p">;</span>
+<span class="ln"> 4</span>    <span class="n">UA_UInt16</span> <span class="n">memSize</span><span class="p">;</span>
+<span class="ln"> 5</span>    <span class="n">UA_UInt16</span> <span class="n">typeIndex</span><span class="p">;</span>
+<span class="ln"> 6</span>    <span class="n">UA_UInt32</span> <span class="nl">typeKind</span>         <span class="p">:</span> <span class="mi">6</span><span class="p">;</span>
+<span class="ln"> 7</span>    <span class="n">UA_UInt32</span> <span class="nl">pointerFree</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+<span class="ln"> 8</span>    <span class="n">UA_UInt32</span> <span class="nl">overlayable</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+<span class="ln"> 9</span>    <span class="n">UA_UInt32</span> <span class="nl">membersSize</span>      <span class="p">:</span> <span class="mi">8</span><span class="p">;</span>
+<span class="ln">10</span>    <span class="n">UA_UInt32</span> <span class="n">binaryEncodingId</span><span class="p">;</span>
+<span class="ln">11</span>    <span class="n">UA_DataTypeMember</span> <span class="o">*</span><span class="n">members</span><span class="p">;</span>
+<span class="ln">12</span><span class="p">};</span>
+</code></pre></div><p>Those pesky colons followed by a number are the problem, those are the <em>bitfields</em> that Zig doesn&rsquo;t like.
+And as <code>UA_DataType</code> is more than just <em>essential</em>, my journey, trying to get open62541 to work with Zig, ended.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p><strong>I like Zig</strong>. While experimenting I was writing a different article in which I was documenting my journey and my thoughts.
+I am not holding this against Zig in any way and I hope they can fix this at some point. I will certainly be revisiting Zig soon, when I find a project which doesn&rsquo;t use those pesky bitfields.
+Zig has many interesting features and I really, really enjoyed the short time I had with it.
+The build system seems cool, the way Zig deals with errors is a great hybrid of other modern approaches that doesn&rsquo;t seem to get in the way.
+Even the C interop overall is easy and intuitive. This problem is a very specific problem in a very specific usecase for a very specific reason.
+Again, I don&rsquo;t hold this against Zig.</p>
+<p>You should definitely try Zig!</p>
+<h3 id="addendum">Addendum</h3>
+<p>At the time of writing <a href="https://github.com/alecthomas/chroma">chroma</a> did not have support for Zig highlighting and, because this blog is built in <a href="https://gohugo.io/">Hugo</a> which uses chroma, neither does this article. I sent a <a href="https://github.com/alecthomas/chroma/pull/364">PR</a> to the chroma team which was merged within 5 minutes of me opening it. So huge props to <a href="https://github.com/alecthomas">Alec Thomas</a>. Now I will be eagerly awaiting a new chroma and subsequent Hugo release!</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Just to name a few which are most important for me: speed and cross compiling <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>It seems to be a convention in Zig to import all C imports as <code>c</code> in Zig and then accessing it as <code>c.UA_DataType</code> which looks just the same as Go&rsquo;s access to C exports. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+      </div>
+    </div>
+  </section>
+  <section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2020</p>
+  </div>
+</section>
+
+</body>
+</html>

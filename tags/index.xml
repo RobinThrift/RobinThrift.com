@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Robin Thrift</title>
@@ -6,14 +6,50 @@
     <description>Recent content in Tags on Robin Thrift</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2019</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0100</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2020</copyright>
+    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://robinthrift.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Entropy</title>
+      <title>c</title>
+      <link>https://robinthrift.com/tags/c/</link>
+      <pubDate>Sun, 07 Jun 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>opcua</title>
+      <link>https://robinthrift.com/tags/opcua/</link>
+      <pubDate>Sun, 07 Jun 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/opcua/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open62541</title>
+      <link>https://robinthrift.com/tags/open62541/</link>
+      <pubDate>Sun, 07 Jun 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/open62541/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zig</title>
+      <link>https://robinthrift.com/tags/zig/</link>
+      <pubDate>Sun, 07 Jun 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/zig/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>entropy</title>
       <link>https://robinthrift.com/tags/entropy/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
@@ -22,7 +58,7 @@
     </item>
     
     <item>
-      <title>Ios</title>
+      <title>ios</title>
       <link>https://robinthrift.com/tags/ios/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
@@ -31,7 +67,7 @@
     </item>
     
     <item>
-      <title>Macos</title>
+      <title>macos</title>
       <link>https://robinthrift.com/tags/macos/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
@@ -40,7 +76,7 @@
     </item>
     
     <item>
-      <title>Matrix</title>
+      <title>matrix</title>
       <link>https://robinthrift.com/tags/matrix/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
@@ -49,7 +85,7 @@
     </item>
     
     <item>
-      <title>Swift</title>
+      <title>swift</title>
       <link>https://robinthrift.com/tags/swift/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
@@ -58,7 +94,7 @@
     </item>
     
     <item>
-      <title>Weekly Picks</title>
+      <title>weekly-picks</title>
       <link>https://robinthrift.com/tags/weekly-picks/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0100</pubDate>
       

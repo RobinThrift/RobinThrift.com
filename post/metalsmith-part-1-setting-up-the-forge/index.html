@@ -78,18 +78,11 @@
       <h1 class="title">Metalsmith Part 1: Setting Up the Forge</h1>
       
       <div class="content">
-        
-
-<p>In my <a href="https://robinthrift.com/post/getting-to-know-metalsmith/">last article</a> I gave a brief introduction to <a href="http://www.metalsmith.io/">Metalsmith</a>, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.</p>
-
+        <p>In my <a href="https://robinthrift.com/post/getting-to-know-metalsmith/">last article</a> I gave a brief introduction to <a href="http://www.metalsmith.io/">Metalsmith</a>, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.</p>
 <p>The source code for this tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1">here</a>.</p>
-
-<p><span class="side-note">You will need Node.js and NPM. To find out, how to install them check the <a href="http://nodejs.org/">official documentation</a>.</span></p>
-
+<p><!-- raw HTML omitted -->You will need Node.js and NPM. To find out, how to install them check the <a href="http://nodejs.org/">official documentation</a>.<!-- raw HTML omitted --></p>
 <h3 id="collecting-the-materials">Collecting the Materials</h3>
-
 <p>I usually start every project by thinking about the basic folder structure. A good folder setup is key to keep your files organised and maintainable. For our purposes I think the following structure will do the job:</p>
-
 <pre><code>.
 |– src/
     |– content/
@@ -101,121 +94,87 @@
 |– config.json
 |– index.js
 |_ package.json
-</code></pre>
-
-<p>Let&rsquo;s start at the bottom: The <code>package.json</code> will hold our dependencies which we&rsquo;ll be setting up now. For this simple example we will only need a few packages, namely Metalsmith. You can either add it to your <code>package.json</code> under the <code>dependencies</code> or <code>devDependencies</code> key, but I usually just use the command line to install the package and save it as a dependency at the same time. If you choose to add them manually to the <code>package.json</code> don&rsquo;t forget to run <code>npm install</code> to install all your dependencies once you&rsquo;ve declared them.</p>
-
+</code></pre><p>Let&rsquo;s start at the bottom: The <code>package.json</code> will hold our dependencies which we&rsquo;ll be setting up now. For this simple example we will only need a few packages, namely Metalsmith. You can either add it to your <code>package.json</code> under the <code>dependencies</code> or <code>devDependencies</code> key, but I usually just use the command line to install the package and save it as a dependency at the same time. If you choose to add them manually to the <code>package.json</code> don&rsquo;t forget to run <code>npm install</code> to install all your dependencies once you&rsquo;ve declared them.</p>
 <p>So let us go ahead and install Metalsmith. Using the command line execute the following:</p>
-
 <pre><code>$ npm install --save-dev metalsmith
-</code></pre>
-
-<p>Now let&rsquo;s create the actual build file which will contain the instructions on how to generate our site. I will call this <code>index.js</code> but you could also call it <code>build.js</code> or something along those lines (index.js is often the &ldquo;default&rdquo; for node projects). We&rsquo;ll start with some boilerplate code:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">Metalsmith</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith&#39;</span><span class="p">);</span>
-
-
-<span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">destination</span><span class="p">(</span><span class="s1">&#39;./build&#39;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
-</code></pre></div>
-<p>While this code doesn&rsquo;t do anything except copy the files from <code>src/</code> to <code>build/</code> it does give us a good starting point at least. Metalsmith will look for a folder named <code>src</code> in the given directory. You could change the source folder by calling the <code>source()</code> method and passing it a directory name. Here we are using a variable set by node that will point to the directory our build file is in. Then we set the destination folder using the <code>destination()</code> method, and then tell Metalsmith to run by calling <code>build()</code>.</p>
-
+</code></pre><p>Now let&rsquo;s create the actual build file which will contain the instructions on how to generate our site. I will call this <code>index.js</code> but you could also call it <code>build.js</code> or something along those lines (index.js is often the &ldquo;default&rdquo; for node projects). We&rsquo;ll start with some boilerplate code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="kd">var</span> <span class="nx">Metalsmith</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith&#39;</span><span class="p">);</span>
+<span class="ln">2</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+<span class="ln">5</span>    <span class="p">.</span><span class="nx">destination</span><span class="p">(</span><span class="s1">&#39;./build&#39;</span><span class="p">)</span>
+<span class="ln">6</span>    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
+</code></pre></div><p>While this code doesn&rsquo;t do anything except copy the files from <code>src/</code> to <code>build/</code> it does give us a good starting point at least. Metalsmith will look for a folder named <code>src</code> in the given directory. You could change the source folder by calling the <code>source()</code> method and passing it a directory name. Here we are using a variable set by node that will point to the directory our build file is in. Then we set the destination folder using the <code>destination()</code> method, and then tell Metalsmith to run by calling <code>build()</code>.</p>
 <h3 id="adding-some-content">Adding some Content</h3>
-
 <p>As I said before, our script is pretty much useless right now, so let&rsquo;s add some content. Create a file name <code>index.md</code> in the <code>src/</code> directory and fill it with the following content:</p>
-<div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown">---<span class="err">
-</span><span class="err"></span>title: Home<span class="err">
-</span><span class="err"></span>---<span class="err">
-</span><span class="err"></span>Hi, this is my start page; neat ain&#39;t it? ;)<span class="err">
-</span><span class="err">
-</span><span class="err"></span>### Some info!</code></pre></div>
-<p>The first block enclosed by the <code>---</code> is YAML front-matter, a simple format used to associate metadata with the file that Metalsmith parses and can then be used by plugins. In this example we are telling Metalsmith that the title of the page is &ldquo;Home&rdquo;, nothing too useful yet. What follows after the front-matter is markdown which we&rsquo;ll be easily able to convert to HTML.</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="ln">1</span>---
+<span class="ln">2</span>title: Home
+<span class="ln">3</span>---
+<span class="ln">4</span>Hi, this is my start page; neat ain&#39;t it? ;)
+<span class="ln">5</span>
+<span class="ln">6</span><span class="gu">### Some info!
+</span></code></pre></div><p>The first block enclosed by the <code>---</code> is YAML front-matter, a simple format used to associate metadata with the file that Metalsmith parses and can then be used by plugins. In this example we are telling Metalsmith that the title of the page is &ldquo;Home&rdquo;, nothing too useful yet. What follows after the front-matter is markdown which we&rsquo;ll be easily able to convert to HTML.</p>
 <blockquote>
 <p>If you are not familiar with markdown check out <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">this</a> guide.</p>
 </blockquote>
-
 <p>To do so we will first need to install the markdown plugin for metalsmith, conveniently named <code>metalsmith-markdown</code>. So go ahead and add it to your <code>package.json</code> or install it via the command line:</p>
-
 <pre><code>$ npm install --save-dev metalsmith-markdown
-</code></pre>
-
-<p>Then we simply need to require it and call it in our build file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">Metalsmith</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith&#39;</span><span class="p">),</span>
-    <span class="nx">markdown</span>   <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-markdown&#39;</span><span class="p">);</span>
-
-
-<span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
-    <span class="p">.</span><span class="nx">destination</span><span class="p">(</span><span class="s1">&#39;./build&#39;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">build</span><span class="p">()</span> 
-</code></pre></div>
-<p>If you run the build script now (<code>node index</code>) you will find a file named <code>index.html</code> in the <code>build</code> directory. As you can see it&rsquo;s super easy to add plugins to Metalsmith and customise the way your files are processed. If you have ever worked with <a href="http://gulpjs.com/">Gulp</a> or <a href="http://expressjs.com/">express.js</a> this will look very familiar.</p>
-
-<p><strong><em>Note:</em></strong> Some versions of Metalsmith require a callback on the build method.  If the code above doesn&rsquo;t create the <code>build</code> directory, change <code>.build()</code> to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js">    <span class="p">.</span><span class="nx">build</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">})</span>
-</code></pre></div>
-<h3 id="shaping-your-content">Shaping Your Content</h3>
-
+</code></pre><p>Then we simply need to require it and call it in our build file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="kd">var</span> <span class="nx">Metalsmith</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith&#39;</span><span class="p">),</span>
+<span class="ln">2</span>    <span class="nx">markdown</span>   <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-markdown&#39;</span><span class="p">);</span>
+<span class="ln">3</span>
+<span class="ln">4</span>
+<span class="ln">5</span><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+<span class="ln">6</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
+<span class="ln">7</span>    <span class="p">.</span><span class="nx">destination</span><span class="p">(</span><span class="s1">&#39;./build&#39;</span><span class="p">)</span>
+<span class="ln">8</span>    <span class="p">.</span><span class="nx">build</span><span class="p">()</span> 
+</code></pre></div><p>If you run the build script now (<code>node index</code>) you will find a file named <code>index.html</code> in the <code>build</code> directory. As you can see it&rsquo;s super easy to add plugins to Metalsmith and customise the way your files are processed. If you have ever worked with <a href="http://gulpjs.com/">Gulp</a> or <a href="http://expressjs.com/">express.js</a> this will look very familiar.</p>
+<p><em><strong>Note:</strong></em> Some versions of Metalsmith require a callback on the build method.  If the code above doesn&rsquo;t create the <code>build</code> directory, change <code>.build()</code> to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span>    <span class="p">.</span><span class="nx">build</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">})</span>
+</code></pre></div><h3 id="shaping-your-content">Shaping Your Content</h3>
 <p>Of course rendered markdown is not enough to make a full website. In this next step we will add some templates to wrap our content. For this we will use another Metalsmith plugin cleverly called <code>metalsmith-templates</code>. As before go ahead and install it and add it to your build script:</p>
-
 <pre><code>$ npm install --save-dev metalsmith-templates
-</code></pre>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">Metalsmith</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith&#39;</span><span class="p">),</span>
-    <span class="nx">markdown</span>   <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-markdown&#39;</span><span class="p">),</span>
-    <span class="nx">templates</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-templates&#39;</span><span class="p">);</span>
-
-
-<span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
-    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">())</span>
-    <span class="p">.</span><span class="nx">destination</span><span class="p">(</span><span class="s1">&#39;./build&#39;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
-</code></pre></div>
-<p>As with the markdown plugin we simply pass the <code>templates()</code> function to the <code>use()</code> method to tell Metalsmith to use this plugin. However we are still missing some key parts for this to work, firstly some templates and a templating engine. <code>metalsmith-templates</code> is build on top of <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>, which gives us tons of engines to choose from. I will go with <a href="http://handlebarsjs.com/">Handlebars</a> but you could also choose <a href="http://jade-lang.com/">Jade</a> or <a href="http://paularmstrong.github.io/swig/">Swig</a>.</p>
-
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="kd">var</span> <span class="nx">Metalsmith</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith&#39;</span><span class="p">),</span>
+<span class="ln"> 2</span>    <span class="nx">markdown</span>   <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-markdown&#39;</span><span class="p">),</span>
+<span class="ln"> 3</span>    <span class="nx">templates</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-templates&#39;</span><span class="p">);</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+<span class="ln"> 7</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
+<span class="ln"> 8</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">())</span>
+<span class="ln"> 9</span>    <span class="p">.</span><span class="nx">destination</span><span class="p">(</span><span class="s1">&#39;./build&#39;</span><span class="p">)</span>
+<span class="ln">10</span>    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
+</code></pre></div><p>As with the markdown plugin we simply pass the <code>templates()</code> function to the <code>use()</code> method to tell Metalsmith to use this plugin. However we are still missing some key parts for this to work, firstly some templates and a templating engine. <code>metalsmith-templates</code> is build on top of <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>, which gives us tons of engines to choose from. I will go with <a href="http://handlebarsjs.com/">Handlebars</a> but you could also choose <a href="http://jade-lang.com/">Jade</a> or <a href="http://paularmstrong.github.io/swig/">Swig</a>.</p>
 <p>We need to install our engine and tell <code>metalsmith-templates</code> which engine to use:</p>
-
 <pre><code>$ npm install --save-dev handlebars
-</code></pre>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// ...
-</span><span class="c1"></span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
-<span class="c1">// ...
-</span></code></pre></div>
-<p>Next we need to create a simple template in the <code>templates/</code> folder, so create a file called <code>home.hbt</code> (or whatever extension your engine uses) and fill it with some templating goodness:</p>
-<div class="highlight"><pre class="chroma"><code class="language-handlebars" data-lang="handlebars"><span class="x">&lt;!doctype html&gt;
-</span><span class="x">&lt;html lang=&#34;en&#34;&gt;
-</span><span class="x">&lt;head&gt;
-</span><span class="x">    &lt;meta charset=&#34;UTF-8&#34; /&gt;
-</span><span class="x">    &lt;title&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x"> | Metalsmith Page&lt;/title&gt;
-</span><span class="x">&lt;/head&gt;
-</span><span class="x">&lt;body&gt;
-</span><span class="x">    &lt;div class=&#34;main-wrapper&#34;&gt;
-</span><span class="x">        </span><span class="cs">{{{</span> <span class="nv">contents</span> <span class="cs">}}}</span><span class="x">
-</span><span class="x">    &lt;/div&gt;
-</span><span class="x">    
-</span><span class="x">&lt;/body&gt;
-</span><span class="x">&lt;/html&gt;</span></code></pre></div>
-<p>Now we have to tell Metalsmith which template we want to use wrap the index.md, so we add a &ldquo;template&rdquo; key to the YAML front-matter:</p>
-
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="c1">// ...
+</span><span class="ln">2</span><span class="c1"></span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
+<span class="ln">3</span><span class="c1">// ...
+</span></code></pre></div><p>Next we need to create a simple template in the <code>templates/</code> folder, so create a file called <code>home.hbt</code> (or whatever extension your engine uses) and fill it with some templating goodness:</p>
+<div class="highlight"><pre class="chroma"><code class="language-handlebars" data-lang="handlebars"><span class="ln"> 1</span><span class="x">&lt;!doctype html&gt;
+</span><span class="ln"> 2</span><span class="x">&lt;html lang=&#34;en&#34;&gt;
+</span><span class="ln"> 3</span><span class="x">&lt;head&gt;
+</span><span class="ln"> 4</span><span class="x">    &lt;meta charset=&#34;UTF-8&#34; /&gt;
+</span><span class="ln"> 5</span><span class="x">    &lt;title&gt;</span><span class="cp">{{</span> <span class="nv">title</span> <span class="cp">}}</span><span class="x"> | Metalsmith Page&lt;/title&gt;
+</span><span class="ln"> 6</span><span class="x">&lt;/head&gt;
+</span><span class="ln"> 7</span><span class="x">&lt;body&gt;
+</span><span class="ln"> 8</span><span class="x">    &lt;div class=&#34;main-wrapper&#34;&gt;
+</span><span class="ln"> 9</span><span class="x">        </span><span class="cs">{{{</span> <span class="nv">contents</span> <span class="cs">}}}</span><span class="x">
+</span><span class="ln">10</span><span class="x">    &lt;/div&gt;
+</span><span class="ln">11</span><span class="x">    
+</span><span class="ln">12</span><span class="x">&lt;/body&gt;
+</span><span class="ln">13</span><span class="x">&lt;/html&gt;
+</span></code></pre></div><p>Now we have to tell Metalsmith which template we want to use wrap the index.md, so we add a &ldquo;template&rdquo; key to the YAML front-matter:</p>
 <pre><code>---
 title: Home
 template: home.hbt
 ---
-</code></pre>
-
-<p>Now run you build script et voilà, a wrapped index.html in our <code>build/</code> directory.</p>
-
+</code></pre><p>Now run you build script et voilà, a wrapped index.html in our <code>build/</code> directory.</p>
 <h4 id="turn-the-heat-up">Turn the heat up</h4>
-
 <p>Next time I will dive more into the inner workings of Metalsmith and I will show you how to work with collections, multiple types of content and how to further structure your project.</p>
-
 <p>Take some time and experiment with Metalsmith and read the docs over at <a href="http://www.metalsmith.io/">Metalsmith.io</a>.</p>
-
 <p>The source code for this tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-1">here</a></p>
-
 <h5 id="update">Update:</h5>
-
 <p>You can find the next post in this series here: <a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/">Metalsmith Part 2 : Shaping The Metal</a></p>
 
       </div>
@@ -223,7 +182,7 @@ template: home.hbt
   </section>
   <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2019</p>
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2020</p>
   </div>
 </section>
 

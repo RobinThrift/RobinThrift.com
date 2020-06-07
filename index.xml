@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Robin Thrift</title>
@@ -6,11 +6,21 @@
     <description>Recent content on Robin Thrift</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2019</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0100</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2020</copyright>
+    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://robinthrift.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Zig C Interop Adventures</title>
+      <link>https://robinthrift.com/post/zig-c-interop-init-failure/</link>
+      <pubDate>Sun, 07 Jun 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/post/zig-c-interop-init-failure/</guid>
+      <description>So this post initially started out as a sort of experience report on how I got Zig working with a C library (open62541) I am quite familiar with, especially in terms of C interop, as I was using it with CGo. However, this little experiment did not go quite as planned&amp;hellip;
+Quick Background and Motivation OPC Unified Architecture (UA) is an industry standard for the communication between devices, primarily designed for manufacturing/factory floor settings.</description>
+    </item>
     
     <item>
       <title>Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</title>
@@ -67,7 +77,7 @@
       
       <guid>https://robinthrift.com/post/weekly-picks-no-3/</guid>
       <description>These are programming and non-programming things I found interesting this past week (25.01.16 - 31.01.16) and why:
- github.com/zeithq/micro  Very intersting micro services library with a beautifully minimalistic API. An excellent example for good APIs.  Typescript 1.8 Beta  I&amp;rsquo;m a huge fan of Typescript and the 1.8 release will make it even better, allowing for easier JS and TS interop. I&amp;rsquo;m looking forward to using it.  Alduin Colourscheme  I&amp;rsquo;ve been using base16-ocean (light and dark) up until now, but I instantly fell in love with this colourscheme, and am now using it both for my terminal as well as vim.</description>
+ github.com/zeithq/micro  Very intersting micro services library with a beautifully minimalistic API. An excellent example for good APIs.   Typescript 1.8 Beta  I&amp;rsquo;m a huge fan of Typescript and the 1.8 release will make it even better, allowing for easier JS and TS interop. I&amp;rsquo;m looking forward to using it.   Alduin Colourscheme  I&amp;rsquo;ve been using base16-ocean (light and dark) up until now, but I instantly fell in love with this colourscheme, and am now using it both for my terminal as well as vim.</description>
     </item>
     
     <item>
@@ -87,7 +97,7 @@
       
       <guid>https://robinthrift.com/post/weekly-picks-no-1/</guid>
       <description>These are programming and non-programming things I found interesting this past week (10.11.14 - 23.11.14) and why:
- Golang Examples  Learning a new language, and especially one with so many interesting features, is difficult without good examples.  Gyver  A clever little tool that helps you organize your thoughts and ideas or just gives you inspiration.  Little Secret by Nikki Yanofsky  Note, I found them this week, it does not mean they are new this week.</description>
+ Golang Examples  Learning a new language, and especially one with so many interesting features, is difficult without good examples.   Gyver  A clever little tool that helps you organize your thoughts and ideas or just gives you inspiration.   Little Secret by Nikki Yanofsky  Note, I found them this week, it does not mean they are new this week.</description>
     </item>
     
     <item>
@@ -97,7 +107,8 @@
       
       <guid>https://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</guid>
       <description>I gave a little introductory talk about Metalsmith at last month&amp;rsquo;s HannoverJS.
-You can find the slides here: - Source - Presentation</description>
+You can find the slides here:
+ Source Presentation  </description>
     </item>
     
     <item>
