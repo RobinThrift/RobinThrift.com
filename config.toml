@@ -2,23 +2,23 @@ languageCode = "en-gb"
 title = "Robin Thrift"
 baseURL = "https://robinthrift.com"
 theme = "hemingway2"
-copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2019"
-pygmentsCodeFences = true
-pygmentsUseClasses=true
+copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2020"
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[params]
+[markup]
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = false
+noClasses = false
+tabWidth = 4
 
-[params.highlight]
-style = "fahrenheit"
-languages = [
-    "swift",
-    "rust",
-    "go"
-]
+[params]
 
 [[params.social]]
 url = "https://github.com/RobinThrift"
