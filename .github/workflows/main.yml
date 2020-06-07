@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+    branches: master
+jobs:
+  build:
+    env:
+      GIT_NAME: "GitHub actions"
+      GIT_EMAIL: "robinthrift@users.noreply.github.com"
+      SOURCE_DIR: "public"
+      DEPLOY_BRANCH: "master"
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO_NAME: ${{ github.event.repository.name }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install
+      run: curl -L https://github.com/gohugoio/hugo/releases/download/v0.72.0/hugo_0.72.0_Linux-64bit.tar.gz -o hugo.tar.gz && tar -xzf hugo.tar.gz
+    - name: Clone Theme
+      run: git clone https://github.com/RobinThrift/hemingway2.git ./themes/hemingway2
+    - name: Build
+      run: ./hugo
+    - name: Deploy
+      run: ./scripts/deploy.sh
