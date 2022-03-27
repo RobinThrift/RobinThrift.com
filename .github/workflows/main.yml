@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install
-      run: curl -L https://github.com/gohugoio/hugo/releases/download/v0.72.0/hugo_0.72.0_Linux-64bit.tar.gz -o hugo.tar.gz && tar -xzf hugo.tar.gz
+      run: curl -L https://github.com/gohugoio/hugo/releases/download/v0.96.0/hugo_0.96.0_Linux-64bit.tar.gz -o hugo.tar.gz && tar -xzf hugo.tar.gz
     - name: Clone Theme
       run: git clone https://github.com/RobinThrift/hemingway2.git ./themes/hemingway2
     - name: Build
