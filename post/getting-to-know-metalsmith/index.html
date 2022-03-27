@@ -84,11 +84,11 @@
 <p>This is were Metalsmith comes in.</p>
 <h3 id="forging-with-javascript">Forging with JavaScript</h3>
 <p><a href="http://www.metalsmith.io/">Metalsmith</a> by the guys over at <a href="https://segment.io/">Segment.io</a> is &ldquo;an extremely simple, pluggable static site generator&rdquo;. What that means is, is that everything is a plugin. There&rsquo;s a very small core which creates a list of files for your plugins to work with (similar to Gulp). You give it a source directory and then tell it which plugins to use; if you know <a href="http://expressjs.com/">express.js</a> or have used Gulp before, this will look very familiar:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
-<span class="ln">2</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
-<span class="ln">3</span>    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
-<span class="ln">4</span>    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
-</code></pre></div><p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">markdown</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">templates</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+</span></span></code></pre></div><p>The first line simply creates a new instance of the Metalsmith object which looks for a folder named <code>src</code> in the given directory, <code>__dirname/src</code> in this case. We then specify two plugins that will process the input files found in the source directory. The fist one is <code>markdown()</code>, which processes markdown files (eg *.md) and converts them into .html files.</p>
 <p>Metalsmith will also parse any YAML front-matter at the top of every file, which acts as metadata, e. g. title, date and template.</p>
 <p>The second plugin is <code>templates()</code>, a thin wrapper on top of <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a> used to render the templates specified in the YAML front-matter. The argument you pass in is the engine that consolidate.js will use, so you can use any templating engine you like, i. e. Jade, Handlebars, Swig, etc.</p>
 <p>Immediately you can see how flexible and modular Metalsmith is, while at the same time being elegant and very, very easy to develop for and work with.</p>
@@ -107,7 +107,7 @@
   </section>
   <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2020</p>
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
   </div>
 </section>
 

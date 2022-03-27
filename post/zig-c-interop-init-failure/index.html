@@ -101,35 +101,35 @@ For now, just know that it&rsquo;s used in factory settings like IIoT (Industria
 <p>So when I cam across Zig and its promise of super easy C interop, I was intrigued. It looked very interesting and certain aspects seemed almost &ldquo;inspired&rdquo; by Go<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <h2 id="zig-c-interop-basics">Zig C Interop Basics</h2>
 <p>Importing C types, variables, functions, etc. in Zig is very straightforward:</p>
-<pre><code class="language-zig" data-lang="zig">const c = @cImport({
-    @cInclude(&quot;open62541/types.h&quot;);
-    @cInclude(&quot;open62541/server.h&quot;);
-});
-</code></pre><p>Then the <code>build.zig</code> needs a few tweaks to point it to the correct paths and tell it to link to the correct library:</p>
-<pre><code class="language-zig" data-lang="zig">const open62541 = b.addStaticLibrary(&quot;libopen62541&quot;, &quot;open62541/build/bin/libopen62541.a&quot;);
-// ...
-exe.addIncludeDir(&quot;open62541/include&quot;);
-exe.addIncludeDir(&quot;open62541/build/src_generated&quot;);
-</code></pre><p>Zig is still very new and the docs, especially when it comes to the build system are not great yet. Which is a shame because the build system seems really cool, but I am sure they will be working on that in due time.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zig" data-lang="zig"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">const</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">@cImport</span><span class="p">({</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">    </span><span class="nb">@cInclude</span><span class="p">(</span><span class="s">&#34;open62541/types.h&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">    </span><span class="nb">@cInclude</span><span class="p">(</span><span class="s">&#34;open62541/server.h&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="p">});</span><span class="w">
+</span></span></span></code></pre></div><p>Then the <code>build.zig</code> needs a few tweaks to point it to the correct paths and tell it to link to the correct library:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zig" data-lang="zig"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">const</span><span class="w"> </span><span class="n">open62541</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">addStaticLibrary</span><span class="p">(</span><span class="s">&#34;libopen62541&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;open62541/build/bin/libopen62541.a&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="c1">// ...
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span><span class="n">exe</span><span class="p">.</span><span class="n">addIncludeDir</span><span class="p">(</span><span class="s">&#34;open62541/include&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="n">exe</span><span class="p">.</span><span class="n">addIncludeDir</span><span class="p">(</span><span class="s">&#34;open62541/build/src_generated&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>Zig is still very new and the docs, especially when it comes to the build system are not great yet. Which is a shame because the build system seems really cool, but I am sure they will be working on that in due time.</p>
 <p>That was all that was necessary to get a very basic OPC UA server working. The code you can see here:</p>
-<pre><code class="language-zig" data-lang="zig">pub fn main() !void {
-    var server = c.UA_Server_new() orelse return error.UnkownStatusCode;
-    defer c.UA_Server_delete(server);
-    var config = @ptrCast(*c.UA_ServerConfig, c.UA_Server_getConfig(server));
-    try ua_error(c.UA_ServerConfig_setDefault(config));
-
-    try ua_error(c.UA_Server_run_startup(server));
-
-    const waitInternal = false;
-
-    while (true) {
-        const timeout = c.UA_Server_run_iterate(server, waitInternal);
-        std.time.sleep(timeout * 1000);
-    }
-
-    try ua_error(c.UA_Server_shutdown(server));
-}
-</code></pre><p>All looked well, I was optimistic!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zig" data-lang="zig"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kr">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="o">!</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">    </span><span class="kr">var</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_new</span><span class="p">()</span><span class="w"> </span><span class="k">orelse</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">error</span><span class="p">.</span><span class="n">UnkownStatusCode</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_delete</span><span class="p">(</span><span class="n">server</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="kr">var</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">@ptrCast</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">.</span><span class="n">UA_ServerConfig</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_getConfig</span><span class="p">(</span><span class="n">server</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="n">ua_error</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">UA_ServerConfig_setDefault</span><span class="p">(</span><span class="n">config</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="n">ua_error</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_run_startup</span><span class="p">(</span><span class="n">server</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="kr">const</span><span class="w"> </span><span class="n">waitInternal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">        </span><span class="kr">const</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_run_iterate</span><span class="p">(</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">waitInternal</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">        </span><span class="n">std</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="n">ua_error</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_shutdown</span><span class="p">(</span><span class="n">server</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>All looked well, I was optimistic!</p>
 <h2 id="zig-being-zig">Zig being Zig</h2>
 <p>The next step was to interact with the server instance a bit, add some variables, etc.
 The first hurdle was, as it always seems, strings. Converting from Go strings to C strings requires the use of <code>C.CString</code> and will force reallocation of the string on the C heap, which means it also needs to be manually freed. There&rsquo;s no way to pass a stack allocated Go string to a C function without the use of a bunch of <code>unsafe</code> trickery and a bit of luck.</p>
@@ -153,22 +153,22 @@ In practice this means that Zig must support all C features you want to use.
 While Zig supports most features, it currently doesn&rsquo;t support bitfields properly, instead rendering those structs simply as <code>@OpaqueType()</code>.
 When just <em>using</em> that type, passing it from C function to C function that wouldn&rsquo;t be the end of the world.
 However, because an <code>OpaqueType</code> doesn&rsquo;t have a known size in Zig, creating arrays of such types is not allowed, causing the following error message in my case:</p>
-<pre><code>error: array of type '.cimport:1:11.struct_UA_DataType' not allowed
+<pre tabindex="0"><code>error: array of type &#39;.cimport:1:11.struct_UA_DataType&#39; not allowed
 pub extern const UA_TYPES: [197]UA_DataType;
 </code></pre><p>Here&rsquo;s the shortened definition of <code>UA_DataType</code> at the time of writing, for those that are interested:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">UA_DataType</span> <span class="p">{</span>
-<span class="ln"> 2</span>    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">typeName</span><span class="p">;</span>
-<span class="ln"> 3</span>    <span class="n">UA_NodeId</span> <span class="n">typeId</span><span class="p">;</span>
-<span class="ln"> 4</span>    <span class="n">UA_UInt16</span> <span class="n">memSize</span><span class="p">;</span>
-<span class="ln"> 5</span>    <span class="n">UA_UInt16</span> <span class="n">typeIndex</span><span class="p">;</span>
-<span class="ln"> 6</span>    <span class="n">UA_UInt32</span> <span class="nl">typeKind</span>         <span class="p">:</span> <span class="mi">6</span><span class="p">;</span>
-<span class="ln"> 7</span>    <span class="n">UA_UInt32</span> <span class="nl">pointerFree</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-<span class="ln"> 8</span>    <span class="n">UA_UInt32</span> <span class="nl">overlayable</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-<span class="ln"> 9</span>    <span class="n">UA_UInt32</span> <span class="nl">membersSize</span>      <span class="p">:</span> <span class="mi">8</span><span class="p">;</span>
-<span class="ln">10</span>    <span class="n">UA_UInt32</span> <span class="n">binaryEncodingId</span><span class="p">;</span>
-<span class="ln">11</span>    <span class="n">UA_DataTypeMember</span> <span class="o">*</span><span class="n">members</span><span class="p">;</span>
-<span class="ln">12</span><span class="p">};</span>
-</code></pre></div><p>Those pesky colons followed by a number are the problem, those are the <em>bitfields</em> that Zig doesn&rsquo;t like.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">struct</span> <span class="n">UA_DataType</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">typeName</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">UA_NodeId</span> <span class="n">typeId</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">UA_UInt16</span> <span class="n">memSize</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">UA_UInt16</span> <span class="n">typeIndex</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">typeKind</span>         <span class="p">:</span> <span class="mi">6</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">pointerFree</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">overlayable</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">membersSize</span>      <span class="p">:</span> <span class="mi">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="n">binaryEncodingId</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">UA_DataTypeMember</span> <span class="o">*</span><span class="n">members</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>Those pesky colons followed by a number are the problem, those are the <em>bitfields</em> that Zig doesn&rsquo;t like.
 And as <code>UA_DataType</code> is more than just <em>essential</em>, my journey, trying to get open62541 to work with Zig, ended.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p><strong>I like Zig</strong>. While experimenting I was writing a different article in which I was documenting my journey and my thoughts.
@@ -184,10 +184,10 @@ Again, I don&rsquo;t hold this against Zig.</p>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>Just to name a few which are most important for me: speed and cross compiling <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Just to name a few which are most important for me: speed and cross compiling&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>It seems to be a convention in Zig to import all C imports as <code>c</code> in Zig and then accessing it as <code>c.UA_DataType</code> which looks just the same as Go&rsquo;s access to C exports. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>It seems to be a convention in Zig to import all C imports as <code>c</code> in Zig and then accessing it as <code>c.UA_DataType</code> which looks just the same as Go&rsquo;s access to C exports.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -197,7 +197,7 @@ Again, I don&rsquo;t hold this against Zig.</p>
   </section>
   <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2020</p>
+    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
   </div>
 </section>
 
