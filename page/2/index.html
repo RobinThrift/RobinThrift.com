@@ -1,193 +1,147 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
-	<meta name="generator" content="Hugo 0.96.0" />
+	<meta name="generator" content="Hugo 0.111.3">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="https://robinthrift.com/index.xml">
     <meta content="" name="keywords">
     <meta content="Robin Thrift" property="og:title">
     <title>Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
 </head>
 
 
-<body>
-  <section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="github"
+<body class="antialiased text-slate-500 dark:text-slate-300 bg-white dark:bg-slate-950">
+    <div class="container py-4 mb-10 mt-10">  
+    <nav class="flex">
+        <a class="flex-auto text-3xl text-inherit" href="https://robinthrift.com/"><h1>Robin Thrift</h1></a>
+        <nav class="flex">
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://github.com/RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="github"
                 >
-                  <use xlink:href="/img/social.map.svg#github"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="https://twitter.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="twitter"
+                    <use xlink:href="/img/social.map.svg#github"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://hachyderm.io/@RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="mastodon"
                 >
-                  <use xlink:href="/img/social.map.svg#twitter"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="/index.xml">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="rss"
+                    <use xlink:href="/img/social.map.svg#mastodon"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="/index.xml">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="rss"
                 >
-                  <use xlink:href="/img/social.map.svg#rss"/>
-              </svg>
-          </a>
-          
+                    <use xlink:href="/img/social.map.svg#rss"/>
+                </svg>
+            </a>
+            
         </nav>
-      </div>
     </nav>
-  </div>
-</section>
+</div>
 
-  <section class="section">
-    <div class="container">
-      
-      <article>
-        <h2 class="subtitle is-6">April 17, 2014</h2>
-        <h1 class="title"><a href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Refining Our Tools</a></h1>
+    <main class="container">
         
-        <div class="content">
-          Last time we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.
+        <article class="mt-10 mb-10">
+            <time class="text-sm text-slate-600 dark:text-slate-400">April 17, 2014</time>
+            <h2 class="text-2xl text- mb-2"><a href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/" class="no-underline text-inherit">Metalsmith Part 3: Refining Our Tools</a></h2>
+            
+
+            <section class="mt-2 prose max-w-none dark:text-slate-300">
+                Last time we took a dive into collections and Metalsmiths internals. This time we are going to refine our script and even develop our own little plugin.
 Without wasting any time, let&rsquo;s get started!
 Writing Plugins I am going to start this tutorial off with a little plugin, that will save us a time, and automate our build process further. In order to render our posts correctly, we have to set every posts template individually.
-          
-          ...<a class="button is-link" href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/" style="height:28px">
-            Read more
-            <span class="icon is-small">
-              <i class="fa fa-angle-double-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </article>
-      
-      <article>
-        <h2 class="subtitle is-6">April 15, 2014</h2>
-        <h1 class="title"><a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/">Metalsmith Part 2: Shaping The Metal</a></h1>
+                
+                <a href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/" style="height:28px">
+                    Read more...
+                </a>
+                
+            </section>
+        </article>
         
-        <div class="content">
-          In my last post I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.
- The full source code for this part of the tutorial can be found here
- Content Types Firstly we will need to determine, what kind of content we want to create, or rather, its type.
-          
-          ...<a class="button is-link" href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/" style="height:28px">
-            Read more
-            <span class="icon is-small">
-              <i class="fa fa-angle-double-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </article>
-      
-      <article>
-        <h2 class="subtitle is-6">April 14, 2014</h2>
-        <h1 class="title"><a href="https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/">Metalsmith Part 1: Setting Up the Forge</a></h1>
+        <article class="mt-10 mb-10">
+            <time class="text-sm text-slate-600 dark:text-slate-400">April 15, 2014</time>
+            <h2 class="text-2xl text- mb-2"><a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/" class="no-underline text-inherit">Metalsmith Part 2: Shaping The Metal</a></h2>
+            
+
+            <section class="mt-2 prose max-w-none dark:text-slate-300">
+                In my last post I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.
+The full source code for this part of the tutorial can be found here
+Content Types Firstly we will need to determine, what kind of content we want to create, or rather, its type.
+                
+                <a href="https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/" style="height:28px">
+                    Read more...
+                </a>
+                
+            </section>
+        </article>
         
-        <div class="content">
-          In my last article I gave a brief introduction to Metalsmith, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.
+        <article class="mt-10 mb-10">
+            <time class="text-sm text-slate-600 dark:text-slate-400">April 14, 2014</time>
+            <h2 class="text-2xl text- mb-2"><a href="https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/" class="no-underline text-inherit">Metalsmith Part 1: Setting Up the Forge</a></h2>
+            
+
+            <section class="mt-2 prose max-w-none dark:text-slate-300">
+                In my last article I gave a brief introduction to Metalsmith, a simple, pluggable static site generator written in JavaScript. In this tutorial I want to show, what a basic folder structure for Metalsmith could look like and we will also set up the basic build script.
 The source code for this tutorial can be found here.
 You will need Node.js and NPM. To find out, how to install them check the official documentation.
-          
-          ...<a class="button is-link" href="https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/" style="height:28px">
-            Read more
-            <span class="icon is-small">
-              <i class="fa fa-angle-double-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </article>
-      
-      <article>
-        <h2 class="subtitle is-6">April 13, 2014</h2>
-        <h1 class="title"><a href="https://robinthrift.com/post/getting-to-know-metalsmith/">Getting To Know Metalsmith</a></h1>
+                
+                <a href="https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/" style="height:28px">
+                    Read more...
+                </a>
+                
+            </section>
+        </article>
         
-        <div class="content">
-          There are dozens of static site generators out there. The most popular is probably Jekyll, and for good reasons! It&rsquo;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&rsquo;s also the engine powering GitHub Pages, GitHub&rsquo;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code here).
-          
-          ...<a class="button is-link" href="https://robinthrift.com/post/getting-to-know-metalsmith/" style="height:28px">
-            Read more
-            <span class="icon is-small">
-              <i class="fa fa-angle-double-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </article>
-      
-    </div>
-  </section>
-  <section class="section">
-  <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-          <a class="button" href="/">
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-left"></i>
-            </span>
-            Newer
-          </a>
-          
-        </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            Older
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
+        <article class="mt-10 mb-10">
+            <time class="text-sm text-slate-600 dark:text-slate-400">April 13, 2014</time>
+            <h2 class="text-2xl text- mb-2"><a href="https://robinthrift.com/post/getting-to-know-metalsmith/" class="no-underline text-inherit">Getting To Know Metalsmith</a></h2>
+            
 
-  <section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
-  </div>
-</section>
+            <section class="mt-2 prose max-w-none dark:text-slate-300">
+                There are dozens of static site generators out there. The most popular is probably Jekyll, and for good reasons! It&rsquo;s super easy to set up, has a lot of great features built in and there are a loads of plugins floating around. It&rsquo;s also the engine powering GitHub Pages, GitHub&rsquo;s static site hosting for projects and users (this site too, is hosted on GH-Pages, you can find the source code here).
+                
+                <a href="https://robinthrift.com/post/getting-to-know-metalsmith/" style="height:28px">
+                    Read more...
+                </a>
+                
+            </section>
+        </article>
+        
+    </main>
+    <nav class="container grid  grid-cols-2">
+    
+    <span></span>
+    
+
+    
+    <a class="place-self-end" href="/">
+        Newer
+    </a>
+    
+</nav>
+
+    <footer class="container mt-10 mb-5">
+    <span class="text-xs">
+        <a href="https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/">CooperHewitt</a> by Chester Jenkins – <a href="https://github.com/cooperhewitt/cooperhewitt-typeface/blob/master/files/-OFL-FAQ.txt">License OFL 1.1</a>,
+        <a href="https://github.com/theleagueof/league-mono">LeagueMono</a> font by Tyler Finck – <a href="https://github.com/theleagueof/league-mono/blob/master/OFL.md">License OFL 1.1</a>,
+        <a href="https://icons.getbootstrap.com">Bootstrap Icons</a> – <a href="https://github.com/twbs/icons/blob/main/LICENSE.md">License MIT</a>
+    </span>
+
+    <span class="block mt-3">&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2023</span>
+</footer>
 
 </body>
 </html>

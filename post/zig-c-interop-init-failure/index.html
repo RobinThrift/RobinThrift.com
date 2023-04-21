@@ -7,91 +7,69 @@
     <meta content="" name="keywords">
     <meta content="Zig C Interop Adventures - Robin Thrift" property="og:title">
     <title>Zig C Interop Adventures | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
 </head>
 
 
-<body>
-  <section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="github"
+<body class="antialiased text-slate-500 dark:text-slate-300 bg-white dark:bg-slate-950">
+    <div class="container py-4 mb-10 mt-10">  
+    <nav class="flex">
+        <a class="flex-auto text-3xl text-inherit" href="https://robinthrift.com/"><h1>Robin Thrift</h1></a>
+        <nav class="flex">
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://github.com/RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="github"
                 >
-                  <use xlink:href="/img/social.map.svg#github"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="https://twitter.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="twitter"
+                    <use xlink:href="/img/social.map.svg#github"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://hachyderm.io/@RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="mastodon"
                 >
-                  <use xlink:href="/img/social.map.svg#twitter"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="/index.xml">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="rss"
+                    <use xlink:href="/img/social.map.svg#mastodon"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="/index.xml">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="rss"
                 >
-                  <use xlink:href="/img/social.map.svg#rss"/>
-              </svg>
-          </a>
-          
+                    <use xlink:href="/img/social.map.svg#rss"/>
+                </svg>
+            </a>
+            
         </nav>
-      </div>
     </nav>
-  </div>
-</section>
+</div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="subtitle is-6">June 7, 2020</h2>
-      <h1 class="title">Zig C Interop Adventures</h1>
-      
-      <div class="tags">
+    <main class="container">
+        <time class="text-sm text-slate-600 dark:text-slate-400">June 7, 2020</time>
+        <h1 class="text-2xl mb-2 dark:text-slate-300">Zig C Interop Adventures</h1>
+        
+        <div>
     
-        <a class="button is-link" href="/tags/zig">zig</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/zig">zig</a>
     
-        <a class="button is-link" href="/tags/opcua">opcua</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/opcua">opcua</a>
     
-        <a class="button is-link" href="/tags/c">c</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/c">c</a>
     
-        <a class="button is-link" href="/tags/open62541">open62541</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/open62541">open62541</a>
     
 </div>
 
-      
-      <div class="content">
-        <p>So this post initially started out as a sort of experience report on how I got Zig working with a C library (<a href="https://github.com/open62541/open62541">open62541</a>) I am quite familiar with, especially in terms of C interop, as I was using it with CGo. However, this little experiment did not go quite as planned&hellip;</p>
+        
+        <article class="prose dark:prose-invert max-w-none mt-4">
+            <p>So this post initially started out as a sort of experience report on how I got Zig working with a C library (<a href="https://github.com/open62541/open62541">open62541</a>) I am quite familiar with, especially in terms of C interop, as I was using it with CGo. However, this little experiment did not go quite as planned&hellip;</p>
 <h3 id="quick-background-and-motivation">Quick Background and Motivation</h3>
 <p><a href="https://opcfoundation.org/about/opc-technologies/opc-ua/">OPC Unified Architecture (UA)</a> is an industry standard for the communication between devices, primarily designed for manufacturing/factory floor settings. I know, great explanation, but this article is not about OPC UA.
 I could write dozens and dozens of pages about my thoughts on OPC UA.
@@ -101,34 +79,34 @@ For now, just know that it&rsquo;s used in factory settings like IIoT (Industria
 <p>So when I cam across Zig and its promise of super easy C interop, I was intrigued. It looked very interesting and certain aspects seemed almost &ldquo;inspired&rdquo; by Go<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <h2 id="zig-c-interop-basics">Zig C Interop Basics</h2>
 <p>Importing C types, variables, functions, etc. in Zig is very straightforward:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zig" data-lang="zig"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">const</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">@cImport</span><span class="p">({</span><span class="w">
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w">    </span><span class="nb">@cInclude</span><span class="p">(</span><span class="s">&#34;open62541/types.h&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w">    </span><span class="nb">@cInclude</span><span class="p">(</span><span class="s">&#34;open62541/server.h&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="p">});</span><span class="w">
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#ca9ee6">const</span><span style="color:#414559"> </span><span style="color:#babbf1">c</span><span style="color:#414559"> </span><span style="color:#99d1db">=</span><span style="color:#414559"> </span><span style="color:#c6d0f5;font-style:italic">@cImport</span><span style="color:#c6d0f5">({</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#414559">    </span><span style="color:#c6d0f5;font-style:italic">@cInclude</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#34;open62541/types.h&#34;</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span><span style="color:#414559">    </span><span style="color:#c6d0f5;font-style:italic">@cInclude</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#34;open62541/server.h&#34;</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span><span style="color:#414559"></span><span style="color:#c6d0f5">});</span><span style="color:#414559">
 </span></span></span></code></pre></div><p>Then the <code>build.zig</code> needs a few tweaks to point it to the correct paths and tell it to link to the correct library:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zig" data-lang="zig"><span class="line"><span class="ln">1</span><span class="cl"><span class="kr">const</span><span class="w"> </span><span class="n">open62541</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">addStaticLibrary</span><span class="p">(</span><span class="s">&#34;libopen62541&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;open62541/build/bin/libopen62541.a&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="c1">// ...
-</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span><span class="n">exe</span><span class="p">.</span><span class="n">addIncludeDir</span><span class="p">(</span><span class="s">&#34;open62541/include&#34;</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="n">exe</span><span class="p">.</span><span class="n">addIncludeDir</span><span class="p">(</span><span class="s">&#34;open62541/build/src_generated&#34;</span><span class="p">);</span><span class="w">
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#ca9ee6">const</span><span style="color:#414559"> </span><span style="color:#babbf1">open62541</span><span style="color:#414559"> </span><span style="color:#99d1db">=</span><span style="color:#414559"> </span><span style="color:#babbf1">b</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">addStaticLibrary</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#34;libopen62541&#34;</span><span style="color:#c6d0f5">,</span><span style="color:#414559"> </span><span style="color:#a6d189">&#34;open62541/build/bin/libopen62541.a&#34;</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#414559"></span><span style="color:#626880;font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span><span style="color:#626880;font-style:italic"></span><span style="color:#babbf1">exe</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">addIncludeDir</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#34;open62541/include&#34;</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span><span style="color:#414559"></span><span style="color:#babbf1">exe</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">addIncludeDir</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#34;open62541/build/src_generated&#34;</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
 </span></span></span></code></pre></div><p>Zig is still very new and the docs, especially when it comes to the build system are not great yet. Which is a shame because the build system seems really cool, but I am sure they will be working on that in due time.</p>
 <p>That was all that was necessary to get a very basic OPC UA server working. The code you can see here:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zig" data-lang="zig"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kr">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="o">!</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w">    </span><span class="kr">var</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_new</span><span class="p">()</span><span class="w"> </span><span class="k">orelse</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">error</span><span class="p">.</span><span class="n">UnkownStatusCode</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_delete</span><span class="p">(</span><span class="n">server</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w">    </span><span class="kr">var</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">@ptrCast</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">.</span><span class="n">UA_ServerConfig</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_getConfig</span><span class="p">(</span><span class="n">server</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="n">ua_error</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">UA_ServerConfig_setDefault</span><span class="p">(</span><span class="n">config</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="n">ua_error</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_run_startup</span><span class="p">(</span><span class="n">server</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="kr">const</span><span class="w"> </span><span class="n">waitInternal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">        </span><span class="kr">const</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_run_iterate</span><span class="p">(</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">waitInternal</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">        </span><span class="n">std</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="n">ua_error</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">UA_Server_shutdown</span><span class="p">(</span><span class="n">server</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#ca9ee6">pub</span><span style="color:#414559"> </span><span style="color:#ca9ee6">fn</span><span style="color:#414559"> </span><span style="color:#babbf1">main</span><span style="color:#c6d0f5">()</span><span style="color:#414559"> </span><span style="color:#99d1db">!</span><span style="color:#e5c890">void</span><span style="color:#414559"> </span><span style="color:#c6d0f5">{</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">var</span><span style="color:#414559"> </span><span style="color:#babbf1">server</span><span style="color:#414559"> </span><span style="color:#99d1db">=</span><span style="color:#414559"> </span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_Server_new</span><span style="color:#c6d0f5">()</span><span style="color:#414559"> </span><span style="color:#ca9ee6">orelse</span><span style="color:#414559"> </span><span style="color:#ca9ee6">return</span><span style="color:#414559"> </span><span style="color:#ca9ee6">error</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UnkownStatusCode</span><span style="color:#c6d0f5">;</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">defer</span><span style="color:#414559"> </span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_Server_delete</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">server</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">var</span><span style="color:#414559"> </span><span style="color:#babbf1">config</span><span style="color:#414559"> </span><span style="color:#99d1db">=</span><span style="color:#414559"> </span><span style="color:#c6d0f5;font-style:italic">@ptrCast</span><span style="color:#c6d0f5">(</span><span style="color:#99d1db">*</span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_ServerConfig</span><span style="color:#c6d0f5">,</span><span style="color:#414559"> </span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_Server_getConfig</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">server</span><span style="color:#c6d0f5">));</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">try</span><span style="color:#414559"> </span><span style="color:#babbf1">ua_error</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_ServerConfig_setDefault</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">config</span><span style="color:#c6d0f5">));</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">try</span><span style="color:#414559"> </span><span style="color:#babbf1">ua_error</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_Server_run_startup</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">server</span><span style="color:#c6d0f5">));</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">const</span><span style="color:#414559"> </span><span style="color:#babbf1">waitInternal</span><span style="color:#414559"> </span><span style="color:#99d1db">=</span><span style="color:#414559"> </span><span style="color:#ca9ee6;font-style:italic">false</span><span style="color:#c6d0f5">;</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">11</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">while</span><span style="color:#414559"> </span><span style="color:#c6d0f5">(</span><span style="color:#ca9ee6;font-style:italic">true</span><span style="color:#c6d0f5">)</span><span style="color:#414559"> </span><span style="color:#c6d0f5">{</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">12</span><span><span style="color:#414559">        </span><span style="color:#ca9ee6">const</span><span style="color:#414559"> </span><span style="color:#babbf1">timeout</span><span style="color:#414559"> </span><span style="color:#99d1db">=</span><span style="color:#414559"> </span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_Server_run_iterate</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">server</span><span style="color:#c6d0f5">,</span><span style="color:#414559"> </span><span style="color:#babbf1">waitInternal</span><span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">13</span><span><span style="color:#414559">        </span><span style="color:#babbf1">std</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">time</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">sleep</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">timeout</span><span style="color:#414559"> </span><span style="color:#99d1db">*</span><span style="color:#414559"> </span>1000<span style="color:#c6d0f5">);</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">14</span><span><span style="color:#414559">    </span><span style="color:#c6d0f5">}</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">15</span><span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">16</span><span><span style="color:#414559">    </span><span style="color:#ca9ee6">try</span><span style="color:#414559"> </span><span style="color:#babbf1">ua_error</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">c</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">UA_Server_shutdown</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">server</span><span style="color:#c6d0f5">));</span><span style="color:#414559">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">17</span><span><span style="color:#414559"></span><span style="color:#c6d0f5">}</span><span style="color:#414559">
 </span></span></span></code></pre></div><p>All looked well, I was optimistic!</p>
 <h2 id="zig-being-zig">Zig being Zig</h2>
 <p>The next step was to interact with the server instance a bit, add some variables, etc.
@@ -156,18 +134,18 @@ However, because an <code>OpaqueType</code> doesn&rsquo;t have a known size in Z
 <pre tabindex="0"><code>error: array of type &#39;.cimport:1:11.struct_UA_DataType&#39; not allowed
 pub extern const UA_TYPES: [197]UA_DataType;
 </code></pre><p>Here&rsquo;s the shortened definition of <code>UA_DataType</code> at the time of writing, for those that are interested:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="k">struct</span> <span class="n">UA_DataType</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">typeName</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">UA_NodeId</span> <span class="n">typeId</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">UA_UInt16</span> <span class="n">memSize</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">UA_UInt16</span> <span class="n">typeIndex</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">typeKind</span>         <span class="p">:</span> <span class="mi">6</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">pointerFree</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">overlayable</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="nl">membersSize</span>      <span class="p">:</span> <span class="mi">8</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">UA_UInt32</span> <span class="n">binaryEncodingId</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">UA_DataTypeMember</span> <span class="o">*</span><span class="n">members</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">};</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#ca9ee6">struct</span> <span style="color:#babbf1">UA_DataType</span> <span style="color:#c6d0f5">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span>    <span style="color:#ca9ee6">const</span> <span style="color:#e5c890">char</span> <span style="color:#99d1db">*</span><span style="color:#babbf1">typeName</span><span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span>    <span style="color:#babbf1">UA_NodeId</span> <span style="color:#babbf1">typeId</span><span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span>    <span style="color:#babbf1">UA_UInt16</span> <span style="color:#babbf1">memSize</span><span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span>    <span style="color:#babbf1">UA_UInt16</span> <span style="color:#babbf1">typeIndex</span><span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span>    <span style="color:#babbf1">UA_UInt32</span> <span style="color:#e5c890">typeKind</span>         <span style="color:#c6d0f5">:</span> 6<span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span>    <span style="color:#babbf1">UA_UInt32</span> <span style="color:#e5c890">pointerFree</span>      <span style="color:#c6d0f5">:</span> 1<span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span>    <span style="color:#babbf1">UA_UInt32</span> <span style="color:#e5c890">overlayable</span>      <span style="color:#c6d0f5">:</span> 1<span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span>    <span style="color:#babbf1">UA_UInt32</span> <span style="color:#e5c890">membersSize</span>      <span style="color:#c6d0f5">:</span> 8<span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span>    <span style="color:#babbf1">UA_UInt32</span> <span style="color:#babbf1">binaryEncodingId</span><span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">11</span><span>    <span style="color:#babbf1">UA_DataTypeMember</span> <span style="color:#99d1db">*</span><span style="color:#babbf1">members</span><span style="color:#c6d0f5">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">12</span><span><span style="color:#c6d0f5">};</span>
 </span></span></code></pre></div><p>Those pesky colons followed by a number are the problem, those are the <em>bitfields</em> that Zig doesn&rsquo;t like.
 And as <code>UA_DataType</code> is more than just <em>essential</em>, my journey, trying to get open62541 to work with Zig, ended.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -180,26 +158,29 @@ Again, I don&rsquo;t hold this against Zig.</p>
 <p>You should definitely try Zig!</p>
 <h3 id="addendum">Addendum</h3>
 <p>At the time of writing <a href="https://github.com/alecthomas/chroma">chroma</a> did not have support for Zig highlighting and, because this blog is built in <a href="https://gohugo.io/">Hugo</a> which uses chroma, neither does this article. I sent a <a href="https://github.com/alecthomas/chroma/pull/364">PR</a> to the chroma team which was merged within 5 minutes of me opening it. So huge props to <a href="https://github.com/alecthomas">Alec Thomas</a>. Now I will be eagerly awaiting a new chroma and subsequent Hugo release!</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>Just to name a few which are most important for me: speed and cross compiling&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>It seems to be a convention in Zig to import all C imports as <code>c</code> in Zig and then accessing it as <code>c.UA_DataType</code> which looks just the same as Go&rsquo;s access to C exports.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
-      </div>
-    </div>
-  </section>
-  <section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
-  </div>
-</section>
+        </article>
+    </main>
+    <footer class="container mt-10 mb-5">
+    <span class="text-xs">
+        <a href="https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/">CooperHewitt</a> by Chester Jenkins – <a href="https://github.com/cooperhewitt/cooperhewitt-typeface/blob/master/files/-OFL-FAQ.txt">License OFL 1.1</a>,
+        <a href="https://github.com/theleagueof/league-mono">LeagueMono</a> font by Tyler Finck – <a href="https://github.com/theleagueof/league-mono/blob/master/OFL.md">License OFL 1.1</a>,
+        <a href="https://icons.getbootstrap.com">Bootstrap Icons</a> – <a href="https://github.com/twbs/icons/blob/main/LICENSE.md">License MIT</a>
+    </span>
+
+    <span class="block mt-3">&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2023</span>
+</footer>
 
 </body>
 </html>

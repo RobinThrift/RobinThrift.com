@@ -7,78 +7,56 @@
     <meta content="" name="keywords">
     <meta content="Metalsmith Part 2: Shaping The Metal - Robin Thrift" property="og:title">
     <title>Metalsmith Part 2: Shaping The Metal | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
 </head>
 
 
-<body>
-  <section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="github"
+<body class="antialiased text-slate-500 dark:text-slate-300 bg-white dark:bg-slate-950">
+    <div class="container py-4 mb-10 mt-10">  
+    <nav class="flex">
+        <a class="flex-auto text-3xl text-inherit" href="https://robinthrift.com/"><h1>Robin Thrift</h1></a>
+        <nav class="flex">
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://github.com/RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="github"
                 >
-                  <use xlink:href="/img/social.map.svg#github"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="https://twitter.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="twitter"
+                    <use xlink:href="/img/social.map.svg#github"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://hachyderm.io/@RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="mastodon"
                 >
-                  <use xlink:href="/img/social.map.svg#twitter"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="/index.xml">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="rss"
+                    <use xlink:href="/img/social.map.svg#mastodon"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="/index.xml">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="rss"
                 >
-                  <use xlink:href="/img/social.map.svg#rss"/>
-              </svg>
-          </a>
-          
+                    <use xlink:href="/img/social.map.svg#rss"/>
+                </svg>
+            </a>
+            
         </nav>
-      </div>
     </nav>
-  </div>
-</section>
+</div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="subtitle is-6">April 15, 2014</h2>
-      <h1 class="title">Metalsmith Part 2: Shaping The Metal</h1>
-      
-      <div class="content">
-        <p>In my last <a href="http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/">post</a> I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.</p>
+    <main class="container">
+        <time class="text-sm text-slate-600 dark:text-slate-400">April 15, 2014</time>
+        <h1 class="text-2xl mb-2 dark:text-slate-300">Metalsmith Part 2: Shaping The Metal</h1>
+        
+        <article class="prose dark:prose-invert max-w-none mt-4">
+            <p>In my last <a href="http://www.robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/">post</a> I talked about the basic structure of a Metalsmith project and showed you the basics, like templating and plugin installation/configuration. This time we are going to delve further into the subject and look at some Metalsmith internals.</p>
 <blockquote>
 <p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></p>
 </blockquote>
@@ -86,61 +64,61 @@
 <p>Firstly we will need to determine, what kind of content we want to create, or rather, its type. Wordpress by default gives you two options: posts and pages. Posts are blog posts, so articles that are added regularly and pages are content that doesn&rsquo;t change very often, like contact or about pages. This separation is simple enough so we will use it for now, feel free to add any extra types you will need.</p>
 <p>Unlike something like <a href="http://jekyllrb.com/">Jekyll</a> Metalsmith does not have a built in &ldquo;static&rdquo; page and &ldquo;dynamic&rdquo; post mechanism, all files are treated (and created) equal. This has advantages and disadvantages, but I think it makes Metalsmith very flexible.</p>
 <p>Firstly, create a new folder for each content type in the <code>src/content</code> folder. Let&rsquo;s start with an example about page:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl">---
-</span></span><span class="line"><span class="ln">2</span><span class="cl">title: About
-</span></span><span class="line"><span class="ln">3</span><span class="cl">template: page.hbt
-</span></span><span class="line"><span class="ln">4</span><span class="cl">---
-</span></span><span class="line"><span class="ln">5</span><span class="cl">Tell the world something about yourself here!
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span>title: About
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>template: page.hbt
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>Tell the world something about yourself here!
 </span></span></code></pre></div><p>Save this to <code>src/content/pages/about.md</code></p>
 <h4 id="template-partials">Template Partials</h4>
 <p>At this stage we should also create partials for the head and foot section of our template, so we don&rsquo;t have to copy and paste it every time and can simply create a menu or logo that will appear on every page. Every templating engine handles partials differently, so I will only quickly go over my Handlebars version here:</p>
 <p>I simply added this to my <code>index.js</code> and added a <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/header.hbt">header.hbt</a> and <a href="https://github.com/RobinThrift/metalsmith-tutorial/blob/58ba1d06938cc5fae76a070bd09fb03913474673/templates/partials/footer.hbt">footer.hbt</a>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// ...
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="nx">Handlebars</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;handlebars&#39;</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nx">fs</span>         <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="nx">Handlebars</span><span class="p">.</span><span class="nx">registerPartial</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/templates/partials/header.hbt&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="nx">Handlebars</span><span class="p">.</span><span class="nx">registerPartial</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/templates/partials/footer.hbt&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="c1">//...
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#626880;font-style:italic">// ...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#626880;font-style:italic"></span><span style="color:#babbf1">Handlebars</span> <span style="color:#99d1db">=</span> <span style="color:#babbf1">require</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#39;handlebars&#39;</span><span style="color:#c6d0f5">),</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span><span style="color:#babbf1">fs</span>         <span style="color:#99d1db">=</span> <span style="color:#babbf1">require</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#39;fs&#39;</span><span style="color:#c6d0f5">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span><span style="color:#babbf1">Handlebars</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">registerPartial</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#39;header&#39;</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">fs</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">readFileSync</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">__dirname</span> <span style="color:#99d1db">+</span> <span style="color:#a6d189">&#39;/templates/partials/header.hbt&#39;</span><span style="color:#c6d0f5">).</span><span style="color:#babbf1">toString</span><span style="color:#c6d0f5">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span><span style="color:#babbf1">Handlebars</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">registerPartial</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#39;footer&#39;</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">fs</span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">readFileSync</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">__dirname</span> <span style="color:#99d1db">+</span> <span style="color:#a6d189">&#39;/templates/partials/footer.hbt&#39;</span><span style="color:#c6d0f5">).</span><span style="color:#babbf1">toString</span><span style="color:#c6d0f5">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">7</span><span><span style="color:#626880;font-style:italic">//...
 </span></span></span></code></pre></div><blockquote>
 <p>Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/58ba1d06938cc5fae76a070bd09fb03913474673">here</a></p>
 </blockquote>
 <p>As you can see I created a new sub folder in my <code>templates/</code> folder named <code>partials</code> with the two partial templates containing the wrapping HTML for our content.</p>
 <h3 id="creating-content-templates">Creating Content Templates</h3>
 <p>Now that we have set up our partials it&rsquo;s time to add the page template (as required by the &ldquo;template&rdquo;-key in <code>about.md</code>), so go ahead and create a <code>page.hbt</code> in the <code>templates/</code> folder. We won&rsquo;t do anything special here, just print the title and content:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-handlebars" data-lang="handlebars"><span class="line"><span class="ln">1</span><span class="cl"><span class="cp">{{</span><span class="k">&gt;</span> <span class="nv">header</span><span class="cp">}}</span><span class="x">
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="x">&lt;h2&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="x">&lt;/h2&gt;
-</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="x">
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="x">&lt;article&gt;
-</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="x">    </span><span class="cs">{{{</span><span class="nv">contents</span><span class="cs">}}}</span><span class="x">
-</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="x">&lt;/article&gt;
-</span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="x">
-</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="x"></span><span class="cp">{{</span><span class="k">&gt;</span> <span class="nv">footer</span><span class="cp">}}</span><span class="x">
-</span></span></span></code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-handlebars" data-lang="handlebars"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#8caaee;font-style:italic">{{</span><span style="color:#ca9ee6">&gt;</span> <span style="color:#babbf1">header</span><span style="color:#8caaee;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span>&lt;h2&gt;<span style="color:#8caaee;font-style:italic">{{</span><span style="color:#babbf1">title</span><span style="color:#8caaee;font-style:italic">}}</span>&lt;/h2&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>&lt;article&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>    <span style="color:#626880;font-style:italic">{{{</span><span style="color:#babbf1">contents</span><span style="color:#626880;font-style:italic">}}}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span>&lt;/article&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">8</span><span><span style="color:#8caaee;font-style:italic">{{</span><span style="color:#ca9ee6">&gt;</span> <span style="color:#babbf1">footer</span><span style="color:#8caaee;font-style:italic">}}</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <p>When you build your project again, you will find an <code>about.html</code>-file under <code>build/content/pages/</code>, just as expected.</p>
 <h3 id="files-and-paths">Files and Paths</h3>
 <p>As you might have noticed, Metalsmith replicates the input folder structure in our output folder (<code>build/</code>). When you run Metalsmith, it looks though your source folder and creates an internal representation for every file, including it&rsquo;s contents and path. It also populates every internal file object with the metadata you pass it in the YAML front-matter. We end up with an object where each key is the file&rsquo;s path and each file object looks something like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="s1">&#39;title&#39;</span><span class="o">:</span> <span class="s1">&#39;FROM_THE_TITLE_KEY&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="s1">&#39;template&#39;</span><span class="o">:</span> <span class="s1">&#39;TEMPLATE_NAME&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="s1">&#39;contents&#39;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">Buffer</span><span class="p">()</span><span class="o">&gt;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="s1">&#39;mode&#39;</span><span class="o">:</span> <span class="s1">&#39;HEX_FILE_PERM_CODE&#39;</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#c6d0f5">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span>    <span style="color:#a6d189">&#39;title&#39;</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;FROM_THE_TITLE_KEY&#39;</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>    <span style="color:#a6d189">&#39;template&#39;</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;TEMPLATE_NAME&#39;</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>    <span style="color:#a6d189">&#39;contents&#39;</span><span style="color:#99d1db">:</span> <span style="color:#99d1db">&lt;</span><span style="color:#babbf1">Buffer</span><span style="color:#c6d0f5">()</span><span style="color:#99d1db">&gt;</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>    <span style="color:#a6d189">&#39;mode&#39;</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;HEX_FILE_PERM_CODE&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span><span style="color:#c6d0f5">}</span>
 </span></span></code></pre></div><p>As you can see it&rsquo;s a very simple and intuitive structure that makes it easy to work with the files and write plugins. But you are not limited to modifying only the files themselves, you can also alter the file list, deleting or adding files (including virtual ones).</p>
 <h3 id="link-structure">Link Structure</h3>
 <p>If we leave or site like this, we will have links that look like this: &ldquo;hostname/content/pages/about.html&rdquo;, but wouldn&rsquo;t it be much nicer (and search engine friendlier) to have a link structure like this: &ldquo;hostname/pages/about&rdquo;?</p>
 <p>To achieve this we will need two more Metalsmith plugins: <a href="https://github.com/segmentio/metalsmith-collections">metalsmith-collections</a> and <a href="https://github.com/segmentio/metalsmith-permalinks">metalsmith-permalinks</a>, so install those and save them to your dependencies. Now we will use these two plugins together to achieve our desired result:</p>
 <p>Let&rsquo;s modify our <code>index.js</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">//...
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>    <span class="nx">collections</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-collections&#39;</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="nx">permalinks</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;metalsmith-permalinks&#39;</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">//...
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="nx">Metalsmith</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">collections</span><span class="p">())</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">permalinks</span><span class="p">())</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="c1">//...
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#626880;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span><span style="color:#626880;font-style:italic"></span>    <span style="color:#babbf1">collections</span> <span style="color:#99d1db">=</span> <span style="color:#babbf1">require</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#39;metalsmith-collections&#39;</span><span style="color:#c6d0f5">),</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span>    <span style="color:#babbf1">permalinks</span>  <span style="color:#99d1db">=</span> <span style="color:#babbf1">require</span><span style="color:#c6d0f5">(</span><span style="color:#a6d189">&#39;metalsmith-permalinks&#39;</span><span style="color:#c6d0f5">),</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span><span style="color:#626880;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span><span style="color:#626880;font-style:italic"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span><span style="color:#babbf1">Metalsmith</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">__dirname</span><span style="color:#c6d0f5">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span>    <span style="color:#c6d0f5">.</span><span style="color:#babbf1">use</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">collections</span><span style="color:#c6d0f5">())</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span>    <span style="color:#c6d0f5">.</span><span style="color:#babbf1">use</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">permalinks</span><span style="color:#c6d0f5">())</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span>    <span style="color:#626880;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span><span style="color:#626880;font-style:italic"></span>    <span style="color:#c6d0f5">.</span><span style="color:#babbf1">build</span><span style="color:#c6d0f5">()</span>
 </span></span></code></pre></div><blockquote>
 <p>Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/d72b5c4fde8956eefdf92f5c0736cb4d8795998c">here</a></p>
 </blockquote>
@@ -150,83 +128,86 @@
 <li>file path pattern matching</li>
 </ul>
 <p>The first option is the quickest, but only allows you to add your content to one collection at a time and is easy to forget. The second option is extremely flexible and safer, so we&rsquo;ll be going with that. So let us add some patterns for our content types:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">//...
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">collections</span><span class="p">({</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nx">pages</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="nx">pattern</span><span class="o">:</span> <span class="s1">&#39;content/pages/*.md&#39;</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}))</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="c1">//...
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#626880;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#626880;font-style:italic"></span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">use</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">collections</span><span style="color:#c6d0f5">({</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>    <span style="color:#babbf1">pages</span><span style="color:#99d1db">:</span> <span style="color:#c6d0f5">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>        <span style="color:#babbf1">pattern</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;content/pages/*.md&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>    <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span><span style="color:#c6d0f5">}))</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">7</span><span><span style="color:#626880;font-style:italic">//...
 </span></span></span></code></pre></div><p>Metalsmith will now create a collection for our pages. While it may seem silly to create a collection for our pages it will come in useful when we are constructing our permalinks and when you want to construct a sitemap. For now let&rsquo;s continue with our permalinks:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">//...
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">permalinks</span><span class="p">({</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nx">pattern</span><span class="o">:</span> <span class="s1">&#39;:collection/:title&#39;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="p">}))</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="c1">//...
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#626880;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#626880;font-style:italic"></span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">use</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">permalinks</span><span style="color:#c6d0f5">({</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>    <span style="color:#babbf1">pattern</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;:collection/:title&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span><span style="color:#c6d0f5">}))</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span><span style="color:#626880;font-style:italic">//...
 </span></span></span></code></pre></div><!-- raw HTML omitted -->
 <p>If you run your build script now, you won&rsquo;t find an <code>about.html</code> but instead a folder named &ldquo;about&rdquo; in the <code>pages/</code> folder with an <code>index.html</code> file. This will result in a link that looks like this: &ldquo;hostname/pages/about&rdquo;, just like we wanted.</p>
 <p>We can do the same for our posts. So let&rsquo;s create a simple posts called &ldquo;First Post&rdquo; in <code>src/content/posts/first-post.md</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl">---
-</span></span><span class="line"><span class="ln">2</span><span class="cl">title: &#34;First Post&#34;
-</span></span><span class="line"><span class="ln">3</span><span class="cl">date: 2014-04-18
-</span></span><span class="line"><span class="ln">4</span><span class="cl">template: post.hbt
-</span></span><span class="line"><span class="ln">5</span><span class="cl">---
-</span></span><span class="line"><span class="ln">6</span><span class="cl">This is an amazing blogpost!
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span>title: &#34;First Post&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>date: 2014-04-18
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>template: post.hbt
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span>This is an amazing blogpost!
 </span></span></code></pre></div><!-- raw HTML omitted -->
 <p>Now we just need to extend the options object for the collections function:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">//...
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">collections</span><span class="p">({</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="nx">pages</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="nx">pattern</span><span class="o">:</span> <span class="s1">&#39;content/pages/*.md&#39;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="nx">posts</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="nx">pattern</span><span class="o">:</span> <span class="s1">&#39;content/posts/*.md&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="nx">sortBy</span><span class="o">:</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="nx">reverse</span><span class="o">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">}))</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1">//...
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#626880;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span><span style="color:#626880;font-style:italic"></span><span style="color:#c6d0f5">.</span><span style="color:#babbf1">use</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">collections</span><span style="color:#c6d0f5">({</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span>    <span style="color:#babbf1">pages</span><span style="color:#99d1db">:</span> <span style="color:#c6d0f5">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span>        <span style="color:#babbf1">pattern</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;content/pages/*.md&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span>    <span style="color:#c6d0f5">},</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span>    <span style="color:#babbf1">posts</span><span style="color:#99d1db">:</span> <span style="color:#c6d0f5">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span>        <span style="color:#babbf1">pattern</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;content/posts/*.md&#39;</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span>        <span style="color:#babbf1">sortBy</span><span style="color:#99d1db">:</span> <span style="color:#a6d189">&#39;date&#39;</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span>        <span style="color:#babbf1">reverse</span><span style="color:#99d1db">:</span> <span style="color:#ca9ee6;font-style:italic">true</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span>    <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">11</span><span><span style="color:#c6d0f5">}))</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">12</span><span><span style="color:#626880;font-style:italic">//...
 </span></span></span></code></pre></div><blockquote>
 <p>Full diff can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/commit/12c88cd4845fe6e6043766f50af552a5ead8cbde">here</a></p>
 </blockquote>
 <p>Here we make use of metalsmith-collections options to sort the posts by date and reverse the order, so the newest are first.</p>
 <h3 id="collections-in-templates">Collections in Templates</h3>
 <p>Our collections are kind of useless (except for the permalinks) without displaying them, so let&rsquo;s change that. We are going to add a page that lists all of our blog posts, so create a file called <code>blog.md</code> in your <code>src/content/pages</code> folder and add the following content:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl">---
-</span></span><span class="line"><span class="ln">2</span><span class="cl">title: Blog
-</span></span><span class="line"><span class="ln">3</span><span class="cl">template: blog.hbt
-</span></span><span class="line"><span class="ln">4</span><span class="cl">---
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span>title: Blog
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>template: blog.hbt
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>---
 </span></span></code></pre></div><p>And create the template (<code>templates/blog.hbt</code>):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-handlebars" data-lang="handlebars"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">{{</span><span class="k">&gt;</span> <span class="nv">header</span><span class="cp">}}</span><span class="x">
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="x">&lt;h2&gt;</span><span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="x">&lt;/h2&gt;
-</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="x">
-</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="x">&lt;article&gt;
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="x">    &lt;ul&gt;
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="x">        </span><span class="cp">{{</span><span class="k">#each</span> <span class="nv">collections.posts</span><span class="cp">}}</span><span class="x">
-</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="x">            &lt;li&gt;
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="x">                &lt;h3&gt;</span><span class="cp">{{</span><span class="nv">this.title</span><span class="cp">}}</span><span class="x">&lt;/h3&gt;
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="x">                &lt;article&gt;</span><span class="cp">{{</span><span class="nv">this.contents</span><span class="cp">}}</span><span class="x">&lt;/article&gt;
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="x">            &lt;/li&gt;
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="x">        </span><span class="cp">{{</span><span class="k">/each</span><span class="cp">}}</span><span class="x">
-</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="x">    &lt;/ul&gt;
-</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="x">&lt;/article&gt;
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="x">
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="x"></span><span class="cp">{{</span><span class="k">&gt;</span> <span class="nv">footer</span><span class="cp">}}</span><span class="x">
-</span></span></span></code></pre></div><p>Now you have a list of all your articles ordered by date, newest first.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-handlebars" data-lang="handlebars"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#8caaee;font-style:italic">{{</span><span style="color:#ca9ee6">&gt;</span> <span style="color:#babbf1">header</span><span style="color:#8caaee;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span>&lt;h2&gt;<span style="color:#8caaee;font-style:italic">{{</span><span style="color:#babbf1">title</span><span style="color:#8caaee;font-style:italic">}}</span>&lt;/h2&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span>&lt;article&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span>    &lt;ul&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span>        <span style="color:#8caaee;font-style:italic">{{</span><span style="color:#ca9ee6">#each</span> <span style="color:#babbf1">collections.posts</span><span style="color:#8caaee;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span>            &lt;li&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span>                &lt;h3&gt;<span style="color:#8caaee;font-style:italic">{{</span><span style="color:#babbf1">this.title</span><span style="color:#8caaee;font-style:italic">}}</span>&lt;/h3&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span>                &lt;article&gt;<span style="color:#8caaee;font-style:italic">{{</span><span style="color:#babbf1">this.contents</span><span style="color:#8caaee;font-style:italic">}}</span>&lt;/article&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span>            &lt;/li&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">11</span><span>        <span style="color:#8caaee;font-style:italic">{{</span><span style="color:#ca9ee6">/each</span><span style="color:#8caaee;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">12</span><span>    &lt;/ul&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">13</span><span>&lt;/article&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">15</span><span><span style="color:#8caaee;font-style:italic">{{</span><span style="color:#ca9ee6">&gt;</span> <span style="color:#babbf1">footer</span><span style="color:#8caaee;font-style:italic">}}</span>
+</span></span></code></pre></div><p>Now you have a list of all your articles ordered by date, newest first.</p>
 <h3 id="keep-the-flame-going">Keep the Flame going</h3>
 <p>That&rsquo;s all for now, but next time we will expand our knowledge on collections, look into pagination and have some more fun with Metalsmith&rsquo;s internals.</p>
 <p>The full source code for this part of the tutorial can be found <a href="https://github.com/RobinThrift/metalsmith-tutorial/tree/END-OF-PART-2">here</a></p>
 <h5 id="update">Update:</h5>
 <p>You can find the next post in this series here: <a href="https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/">Metalsmith Part 3: Refining Our Tools</a></p>
 
-      </div>
-    </div>
-  </section>
-  <section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
-  </div>
-</section>
+        </article>
+    </main>
+    <footer class="container mt-10 mb-5">
+    <span class="text-xs">
+        <a href="https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/">CooperHewitt</a> by Chester Jenkins – <a href="https://github.com/cooperhewitt/cooperhewitt-typeface/blob/master/files/-OFL-FAQ.txt">License OFL 1.1</a>,
+        <a href="https://github.com/theleagueof/league-mono">LeagueMono</a> font by Tyler Finck – <a href="https://github.com/theleagueof/league-mono/blob/master/OFL.md">License OFL 1.1</a>,
+        <a href="https://icons.getbootstrap.com">Bootstrap Icons</a> – <a href="https://github.com/twbs/icons/blob/main/LICENSE.md">License MIT</a>
+    </span>
+
+    <span class="block mt-3">&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2023</span>
+</footer>
 
 </body>
 </html>

@@ -7,93 +7,71 @@
     <meta content="" name="keywords">
     <meta content="Detecting MIME type and file extension in Swift (using Uniform Type Identifiers) - Robin Thrift" property="og:title">
     <title>Detecting MIME type and file extension in Swift (using Uniform Type Identifiers) | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
 </head>
 
 
-<body>
-  <section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="github"
+<body class="antialiased text-slate-500 dark:text-slate-300 bg-white dark:bg-slate-950">
+    <div class="container py-4 mb-10 mt-10">  
+    <nav class="flex">
+        <a class="flex-auto text-3xl text-inherit" href="https://robinthrift.com/"><h1>Robin Thrift</h1></a>
+        <nav class="flex">
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://github.com/RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="github"
                 >
-                  <use xlink:href="/img/social.map.svg#github"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="https://twitter.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="twitter"
+                    <use xlink:href="/img/social.map.svg#github"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://hachyderm.io/@RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="mastodon"
                 >
-                  <use xlink:href="/img/social.map.svg#twitter"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="/index.xml">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="rss"
+                    <use xlink:href="/img/social.map.svg#mastodon"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="/index.xml">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="rss"
                 >
-                  <use xlink:href="/img/social.map.svg#rss"/>
-              </svg>
-          </a>
-          
+                    <use xlink:href="/img/social.map.svg#rss"/>
+                </svg>
+            </a>
+            
         </nav>
-      </div>
     </nav>
-  </div>
-</section>
+</div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="subtitle is-6">October 7, 2018</h2>
-      <h1 class="title">Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</h1>
-      
-      <div class="tags">
+    <main class="container">
+        <time class="text-sm text-slate-600 dark:text-slate-400">October 7, 2018</time>
+        <h1 class="text-2xl mb-2 dark:text-slate-300">Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</h1>
+        
+        <div>
     
-        <a class="button is-link" href="/tags/swift">swift</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/swift">swift</a>
     
-        <a class="button is-link" href="/tags/ios">ios</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/ios">ios</a>
     
-        <a class="button is-link" href="/tags/macos">macos</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/macos">macos</a>
     
-        <a class="button is-link" href="/tags/matrix">matrix</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/matrix">matrix</a>
     
-        <a class="button is-link" href="/tags/entropy">entropy</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/entropy">entropy</a>
     
 </div>
 
-      
-      <div class="content">
-        <h2 id="why-do-we-want-to-detect-the-mime-type-or-file-extension">Why do we want to detect the MIME type or file extension?</h2>
+        
+        <article class="prose dark:prose-invert max-w-none mt-4">
+            <h2 id="why-do-we-want-to-detect-the-mime-type-or-file-extension">Why do we want to detect the MIME type or file extension?</h2>
 <p>The <a href="https://matrix.org/docs/spec/">Matrix spec</a> defines several messaging types for attachments (essentially binary blobs). The generic <code>m.file</code> can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (<code>m.audio</code>, <code>m.video</code> and <code>m.image</code> respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.</p>
 <p>One way of trying to determine, what kind of attachment we are sending is the extension. While this is not 100% accurate, it&rsquo;s a good first guess. However, we will need to maintain some kind of list, mapping extension (or MIME type) to message type. Nobody likes maintaining lists like that as it&rsquo;s easy to forget a type or make mistakes. So I thought there must already be a predefined list
 somewhere. Turns out, Apple&rsquo;s OSs do.</p>
@@ -104,44 +82,44 @@ somewhere. Turns out, Apple&rsquo;s OSs do.</p>
 <blockquote>
 <p>NOTE: In order to use these in iOS you&rsquo;ll need to import <code>MobileCoreServices</code></p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">let</span> <span class="nv">fileExtension</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;png&#34;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kd">let</span> <span class="nv">extUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">kUTTagClassFilenameExtension</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">fileExtension</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="kc">nil</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#ca9ee6">let</span> <span style="color:#babbf1">fileExtension</span><span style="color:#c6d0f5">:</span> <span style="color:#babbf1">CFString</span> <span style="color:#c6d0f5">=</span> <span style="color:#a6d189">&#34;png&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#ca9ee6">let</span> <span style="color:#babbf1">extUTI</span> <span style="color:#c6d0f5">=</span> <span style="color:#babbf1">UTTypeCreatePreferredIdentifierForTag</span><span style="color:#c6d0f5">(</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>    <span style="color:#babbf1">kUTTagClassFilenameExtension</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span>    <span style="color:#babbf1">fileExtension</span><span style="color:#c6d0f5">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>    <span style="color:#ca9ee6;font-style:italic">nil</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span><span style="color:#c6d0f5">)?.</span><span style="color:#babbf1">takeUnretainedValue</span><span style="color:#c6d0f5">()</span>
 </span></span></code></pre></div><p><a href="https://developer.apple.com/documentation/coreservices/1448939-uttypecreatepreferredidentifierf"><code>UTTypeCreatePreferredIdentifierForTag</code></a> returns an <code>Unmanaged&lt;CFString&gt;?</code>. If you don&rsquo;t know what <code>Unmanaged</code> is, I recommend reading the <a href="https://nshipster.com/unmanaged/">NSHipster Guide on Unmanaged</a>.</p>
 <p>This will essentially return <code>nil</code>, if the extensions was not recognized, or a new <code>CFString</code> (of which we&rsquo;ll want to take an unretained value in most cases).</p>
 <p>Now that we have a UTI for this file extension we can use it to check conformity to a type class or get its associated MIME type.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">let</span> <span class="nv">fileExtension</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;png&#34;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">guard</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="kd">let</span> <span class="nv">extUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span><span class="n">kUTTagClassFilenameExtension</span><span class="p">,</span> <span class="n">fileExtension</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">guard</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">let</span> <span class="nv">mimeUTI</span> <span class="p">=</span> <span class="n">UTTypeCopyPreferredTagWithClass</span><span class="p">(</span><span class="n">extUTI</span><span class="p">,</span> <span class="n">kUTTagClassMIMEType</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="bp">print</span><span class="p">(</span><span class="n">mimeUTI</span><span class="p">)</span> <span class="c1">// will print &#39;image/png&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#ca9ee6">let</span> <span style="color:#babbf1">fileExtension</span><span style="color:#c6d0f5">:</span> <span style="color:#babbf1">CFString</span> <span style="color:#c6d0f5">=</span> <span style="color:#a6d189">&#34;png&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span><span style="color:#ca9ee6">guard</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span>    <span style="color:#ca9ee6">let</span> <span style="color:#babbf1">extUTI</span> <span style="color:#c6d0f5">=</span> <span style="color:#babbf1">UTTypeCreatePreferredIdentifierForTag</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">kUTTagClassFilenameExtension</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">fileExtension</span><span style="color:#c6d0f5">,</span> <span style="color:#ca9ee6;font-style:italic">nil</span><span style="color:#c6d0f5">)?.</span><span style="color:#babbf1">takeUnretainedValue</span><span style="color:#c6d0f5">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span><span style="color:#ca9ee6">else</span> <span style="color:#c6d0f5">{</span> <span style="color:#ca9ee6">return</span> <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span><span style="color:#ca9ee6">guard</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span>    <span style="color:#ca9ee6">let</span> <span style="color:#babbf1">mimeUTI</span> <span style="color:#c6d0f5">=</span> <span style="color:#babbf1">UTTypeCopyPreferredTagWithClass</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">extUTI</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">kUTTagClassMIMEType</span><span style="color:#c6d0f5">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span><span style="color:#ca9ee6">else</span> <span style="color:#c6d0f5">{</span> <span style="color:#ca9ee6">return</span> <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span><span style="color:#babbf1">print</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">mimeUTI</span><span style="color:#c6d0f5">)</span> <span style="color:#626880;font-style:italic">// will print &#39;image/png&#39;</span>
 </span></span></code></pre></div><p><a href="https://developer.apple.com/documentation/coreservices/1442744-uttypecopypreferredtagwithclass"><code>UTTypeCopyPreferredTagWithClass</code></a> can be used to transfrom one UTI to another tag class, which we are doing here.</p>
 <p>We can try to get an appropriate file extension for a given mime type too:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">let</span> <span class="nv">mimeType</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;image/png&#34;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">guard</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="kd">let</span> <span class="nv">mimeUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span><span class="n">kUTTagClassMIMEType</span><span class="p">,</span> <span class="n">mimeType</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">guard</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">let</span> <span class="nv">extUTI</span> <span class="p">=</span> <span class="n">UTTypeCopyPreferredTagWithClass</span><span class="p">(</span><span class="n">mimeUTI</span><span class="p">,</span> <span class="n">kUTTagClassFilenameExtension</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="bp">print</span><span class="p">(</span><span class="n">extUTI</span><span class="p">)</span> <span class="c1">// will print &#39;png&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 1</span><span><span style="color:#ca9ee6">let</span> <span style="color:#babbf1">mimeType</span><span style="color:#c6d0f5">:</span> <span style="color:#babbf1">CFString</span> <span style="color:#c6d0f5">=</span> <span style="color:#a6d189">&#34;image/png&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 2</span><span><span style="color:#ca9ee6">guard</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 3</span><span>    <span style="color:#ca9ee6">let</span> <span style="color:#babbf1">mimeUTI</span> <span style="color:#c6d0f5">=</span> <span style="color:#babbf1">UTTypeCreatePreferredIdentifierForTag</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">kUTTagClassMIMEType</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">mimeType</span><span style="color:#c6d0f5">,</span> <span style="color:#ca9ee6;font-style:italic">nil</span><span style="color:#c6d0f5">)?.</span><span style="color:#babbf1">takeUnretainedValue</span><span style="color:#c6d0f5">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 4</span><span><span style="color:#ca9ee6">else</span> <span style="color:#c6d0f5">{</span> <span style="color:#ca9ee6">return</span> <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 6</span><span><span style="color:#ca9ee6">guard</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 7</span><span>    <span style="color:#ca9ee6">let</span> <span style="color:#babbf1">extUTI</span> <span style="color:#c6d0f5">=</span> <span style="color:#babbf1">UTTypeCopyPreferredTagWithClass</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">mimeUTI</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">kUTTagClassFilenameExtension</span><span style="color:#c6d0f5">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 8</span><span><span style="color:#ca9ee6">else</span> <span style="color:#c6d0f5">{</span> <span style="color:#ca9ee6">return</span> <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">10</span><span><span style="color:#babbf1">print</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">extUTI</span><span style="color:#c6d0f5">)</span> <span style="color:#626880;font-style:italic">// will print &#39;png&#39;</span>
 </span></span></code></pre></div><p>Lastly let&rsquo;s use <a href="https://developer.apple.com/documentation/coreservices/1444079-uttypeconformsto"><code>UTTypeConformsTo</code></a> to check if our extension is an image:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">let</span> <span class="nv">mimeType</span><span class="p">:</span> <span class="n">CFString</span> <span class="p">=</span> <span class="s">&#34;image/png&#34;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">guard</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="kd">let</span> <span class="nv">mimeUTI</span> <span class="p">=</span> <span class="n">UTTypeCreatePreferredIdentifierForTag</span><span class="p">(</span><span class="n">kUTTagClassMIMEType</span><span class="p">,</span> <span class="n">mimeType</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)?.</span><span class="n">takeUnretainedValue</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="bp">print</span><span class="p">(</span><span class="n">UTTypeConformsTo</span><span class="p">(</span><span class="n">mimeUTI</span><span class="p">,</span> <span class="n">kUTTypeImage</span><span class="p">))</span> <span class="c1">// will print `true`</span>
+<div class="highlight"><pre tabindex="0" style="color:#ef9f76;background-color:#303446;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">1</span><span><span style="color:#ca9ee6">let</span> <span style="color:#babbf1">mimeType</span><span style="color:#c6d0f5">:</span> <span style="color:#babbf1">CFString</span> <span style="color:#c6d0f5">=</span> <span style="color:#a6d189">&#34;image/png&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">2</span><span><span style="color:#ca9ee6">guard</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">3</span><span>    <span style="color:#ca9ee6">let</span> <span style="color:#babbf1">mimeUTI</span> <span style="color:#c6d0f5">=</span> <span style="color:#babbf1">UTTypeCreatePreferredIdentifierForTag</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">kUTTagClassMIMEType</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">mimeType</span><span style="color:#c6d0f5">,</span> <span style="color:#ca9ee6;font-style:italic">nil</span><span style="color:#c6d0f5">)?.</span><span style="color:#babbf1">takeUnretainedValue</span><span style="color:#c6d0f5">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">4</span><span><span style="color:#ca9ee6">else</span> <span style="color:#c6d0f5">{</span> <span style="color:#ca9ee6">return</span> <span style="color:#c6d0f5">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#774f3b">6</span><span><span style="color:#babbf1">print</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">UTTypeConformsTo</span><span style="color:#c6d0f5">(</span><span style="color:#babbf1">mimeUTI</span><span style="color:#c6d0f5">,</span> <span style="color:#babbf1">kUTTypeImage</span><span style="color:#c6d0f5">))</span> <span style="color:#626880;font-style:italic">// will print `true`</span>
 </span></span></code></pre></div><p>So this is how you can use Apple&rsquo;s &ldquo;System-Declared Uniform Type Identifiers&rdquo; to detect the extension, MIME type and conformity of files in Swift.
 If you&rsquo;re interested in the full code and tests, check out the <a href="https://github.com/Kodeshack/EntropyKit">repo</a></p>
 <blockquote>
@@ -149,14 +127,17 @@ If you&rsquo;re interested in the full code and tests, check out the <a href="ht
 And the tests: <a href="https://github.com/Kodeshack/EntropyKit/blob/7126b7079eeb1e3e3b6e5faec802dcfa2468d527/Tests/Utilities/MIMETypeTests.swift">here</a></p>
 </blockquote>
 
-      </div>
-    </div>
-  </section>
-  <section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
-  </div>
-</section>
+        </article>
+    </main>
+    <footer class="container mt-10 mb-5">
+    <span class="text-xs">
+        <a href="https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/">CooperHewitt</a> by Chester Jenkins – <a href="https://github.com/cooperhewitt/cooperhewitt-typeface/blob/master/files/-OFL-FAQ.txt">License OFL 1.1</a>,
+        <a href="https://github.com/theleagueof/league-mono">LeagueMono</a> font by Tyler Finck – <a href="https://github.com/theleagueof/league-mono/blob/master/OFL.md">License OFL 1.1</a>,
+        <a href="https://icons.getbootstrap.com">Bootstrap Icons</a> – <a href="https://github.com/twbs/icons/blob/main/LICENSE.md">License MIT</a>
+    </span>
+
+    <span class="block mt-3">&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2023</span>
+</footer>
 
 </body>
 </html>

@@ -7,144 +7,102 @@
     <meta content="" name="keywords">
     <meta content="entropy - Robin Thrift" property="og:title">
     <title>entropy | Robin Thrift</title>
-    <link rel="stylesheet" href="https://robinthrift.com/css/style.min.css">
+    <link rel="stylesheet" href="https://robinthrift.com/css/style.css">
 </head>
 
 
-<body>
-  <section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://robinthrift.com/"><h1 class="title is-4">Robin Thrift</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="github"
+<body class="antialiased text-slate-500 dark:text-slate-300 bg-white dark:bg-slate-950">
+    <div class="container py-4 mb-10 mt-10">  
+    <nav class="flex">
+        <a class="flex-auto text-3xl text-inherit" href="https://robinthrift.com/"><h1>Robin Thrift</h1></a>
+        <nav class="flex">
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://github.com/RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="github"
                 >
-                  <use xlink:href="/img/social.map.svg#github"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="https://twitter.com/RobinThrift">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="twitter"
+                    <use xlink:href="/img/social.map.svg#github"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="https://hachyderm.io/@RobinThrift">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="mastodon"
                 >
-                  <use xlink:href="/img/social.map.svg#twitter"/>
-              </svg>
-          </a>
-          
-          <a class="level-item" href="/index.xml">
-              <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-label="rss"
+                    <use xlink:href="/img/social.map.svg#mastodon"/>
+                </svg>
+            </a>
+            
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="/index.xml">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="rss"
                 >
-                  <use xlink:href="/img/social.map.svg#rss"/>
-              </svg>
-          </a>
-          
+                    <use xlink:href="/img/social.map.svg#rss"/>
+                </svg>
+            </a>
+            
         </nav>
-      </div>
     </nav>
-  </div>
-</section>
+</div>
 
-  <section class="section">
-    <div class="container">
-      
-      <article>
-        <h2 class="subtitle is-6">October 7, 2018</h2>
-        <h1 class="title"><a href="https://robinthrift.com/post/swift-detect-mime-and-filetype/">Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</a></h1>
+    <main class="container">
         
-        <div class="tags">
+        <article class="mt-10 mb-10">
+            <time class="text-sm text-slate-600 dark:text-slate-400">October 7, 2018</time>
+            <h2 class="text-2xl text- mb-2"><a href="https://robinthrift.com/post/swift-detect-mime-and-filetype/" class="no-underline text-inherit">Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</a></h2>
+            
+            <div>
     
-        <a class="button is-link" href="/tags/swift">swift</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/swift">swift</a>
     
-        <a class="button is-link" href="/tags/ios">ios</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/ios">ios</a>
     
-        <a class="button is-link" href="/tags/macos">macos</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/macos">macos</a>
     
-        <a class="button is-link" href="/tags/matrix">matrix</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/matrix">matrix</a>
     
-        <a class="button is-link" href="/tags/entropy">entropy</a>
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="/tags/entropy">entropy</a>
     
 </div>
 
-        
-        <div class="content">
-          Why do we want to detect the MIME type or file extension? The Matrix spec defines several messaging types for attachments (essentially binary blobs). The generic m.file can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (m.audio, m.video and m.image respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.
-          
-          ...<a class="button is-link" href="https://robinthrift.com/post/swift-detect-mime-and-filetype/" style="height:28px">
-            Read more
-            <span class="icon is-small">
-              <i class="fa fa-angle-double-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </article>
-      
-    </div>
-  </section>
-  <section class="section">
-  <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-left"></i>
-            </span>
-            Newer
-          </a>
-          
-        </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            Older
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
+            
 
-  <section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2022</p>
-  </div>
-</section>
+            <section class="mt-2 prose max-w-none dark:text-slate-300">
+                Why do we want to detect the MIME type or file extension? The Matrix spec defines several messaging types for attachments (essentially binary blobs). The generic m.file can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (m.audio, m.video and m.image respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.
+                
+                <a href="https://robinthrift.com/post/swift-detect-mime-and-filetype/" style="height:28px">
+                    Read more...
+                </a>
+                
+            </section>
+        </article>
+        
+    </main>
+    <nav class="container grid  grid-cols-2">
+    
+    <span></span>
+    
+
+    
+    <span></span>
+    
+</nav>
+
+    <footer class="container mt-10 mb-5">
+    <span class="text-xs">
+        <a href="https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/">CooperHewitt</a> by Chester Jenkins – <a href="https://github.com/cooperhewitt/cooperhewitt-typeface/blob/master/files/-OFL-FAQ.txt">License OFL 1.1</a>,
+        <a href="https://github.com/theleagueof/league-mono">LeagueMono</a> font by Tyler Finck – <a href="https://github.com/theleagueof/league-mono/blob/master/OFL.md">License OFL 1.1</a>,
+        <a href="https://icons.getbootstrap.com">Bootstrap Icons</a> – <a href="https://github.com/twbs/icons/blob/main/LICENSE.md">License MIT</a>
+    </span>
+
+    <span class="block mt-3">&copy; <a href="https://github.com/RobinThrift">Robin Thrift</a> 2023</span>
+</footer>
 
 </body>
 </html>
