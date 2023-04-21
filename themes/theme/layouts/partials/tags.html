@@ -1,0 +1,5 @@
+<div>
+    {{ range . }}
+        <a class="text-sm text-slate-600 dark:text-slate-500 underline px-3 first:px-0 hover:text-blue-900" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+    {{ end }}
+</div>

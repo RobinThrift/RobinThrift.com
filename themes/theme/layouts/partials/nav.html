@@ -1,0 +1,18 @@
+<div class="container py-4 mb-10 mt-10">  
+    <nav class="flex">
+        <a class="flex-auto text-3xl text-inherit" href="{{ .Site.BaseURL }}/"><h1>{{ .Site.Title }}</h1></a>
+        <nav class="flex">
+            {{ range .Site.Params.social }}
+            <a class="text-inherit px-2 last:pe-0 first:ps-0" href="{{ .url }}">
+                <svg
+                    width="24"
+                    height="24"
+                    aria-label="{{ .name }}"
+                >
+                    <use xlink:href="{{ .Site.BaseURL }}/img/social.map.svg#{{ .name }}"/>
+                </svg>
+            </a>
+            {{ end }}
+        </nav>
+    </nav>
+</div>

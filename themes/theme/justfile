@@ -1,0 +1,31 @@
+_default:
+    @just --list
+
+install:
+    npm i
+
+build: css-build
+
+css-watch:
+    ./node_modules/.bin/tailwindcss --watch -i ./styles/style.css -o ./static/css/style.css
+
+css-build:
+    ./node_modules/.bin/tailwindcss -m -i ./styles/style.css -o ./static/css/style.css
+
+fonts: _leaguemono _cooperhewitt
+
+_leaguemono:
+   curl -L https://github.com/theleagueof/league-mono/releases/download/2.300/LeagueMono-2.300.tar.xz -o LeagueMono-2.300.tar.xz
+   tar -xzf LeagueMono-2.300.tar.xz
+   cp LeagueMono-2.300/static/{OTF,TTF,WOFF,WOFF2}/{LeagueMono-NarrowLight,LeagueMono-NarrowRegular}.* static/fonts/leaguemono/
+   curl -L https://raw.githubusercontent.com/theleagueof/league-mono/master/OFL.md > static/fonts/leaguemono/LICENSE
+   rm -rf LeagueMono-2.300 LeagueMono-2.300.tar.xz
+
+
+_cooperhewitt:
+    curl -L http://cooperhewitt.wpengine.com//wp-content/uploads/fonts/CooperHewitt-WebFonts-public.zip -o cooperhewitt.zip
+    unzip cooperhewitt.zip
+    cp CooperHewitt-WebFonts-public/-CooperHewitt-OFL-201406.txt static/fonts/cooperhewitt/LICENSE
+    cp CooperHewitt-WebFonts-public/CooperHewitt-{Book,Semibold,BookItalic,SemiboldItalic}.* static/fonts/cooperhewitt/
+    rm -rf cooperhewitt.zip CooperHewitt-WebFonts-public
+

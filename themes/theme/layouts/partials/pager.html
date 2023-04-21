@@ -1,0 +1,17 @@
+<nav class="container grid  grid-cols-2">
+    {{ if .Paginator.HasNext }}
+    <a class="place-self-start" href="{{ .Paginator.Next.URL }}">
+        Older
+    </a>
+    {{ else }}
+    <span></span>
+    {{ end }}
+
+    {{ if .Paginator.HasPrev }}
+    <a class="place-self-end" href="{{ .Paginator.Prev.URL }}">
+        Newer
+    </a>
+    {{ else }}
+    <span></span>
+    {{ end }}
+</nav>

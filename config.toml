@@ -1,33 +1,38 @@
 languageCode = "en-gb"
 title = "Robin Thrift"
 baseURL = "https://robinthrift.com"
-theme = "hemingway2"
-copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2022"
+theme = "theme"
+copyright = "&copy; <a href=\"https://github.com/RobinThrift\">Robin Thrift</a> 2023"
+enableRobotsTXT = true
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[markup]
 [markup.highlight]
-codeFences = true
 guessSyntax = false
+codeFences = true
+style = "catppuccin-frappe"
 lineNoStart = 1
 lineNos = true
 lineNumbersInTable = false
-noClasses = false
 tabWidth = 4
 
-[params]
+[blackfriday]
+hrefTargetBlank = true
+
+[params.rss]
+includeContent = true
+authorName = "Robin Thrift"
 
 [[params.social]]
-url = "https://github.com/RobinThrift"
 name = "github"
+url = "https://github.com/RobinThrift"
 
 [[params.social]]
-url = "https://twitter.com/RobinThrift"
-name = "twitter"
+name = "mastodon"
+url = "https://hachyderm.io/@RobinThrift"
 
 [[params.social]]
-url = "/index.xml"
 name = "rss"
+url = "/index.xml"

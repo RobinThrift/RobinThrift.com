@@ -1,0 +1,16 @@
+{{ partial "header" . }}
+<body class="antialiased text-slate-500 dark:text-slate-300 bg-white dark:bg-slate-950">
+    {{ partial "nav" . }}
+    <main class="container">
+        <time class="text-sm text-slate-600 dark:text-slate-400">{{ .Date.Format "January 2, 2006" }}</time>
+        <h1 class="text-2xl mb-2 dark:text-slate-300">{{ .Title }}</h1>
+        {{ if .Params.tags }}
+        {{ partial "tags" .Params.tags }}
+        {{ end }}
+        <article class="prose dark:prose-invert max-w-none mt-4">
+            {{ .Content }}
+        </article>
+    </main>
+    {{ partial "footer" . }}
+</body>
+</html>

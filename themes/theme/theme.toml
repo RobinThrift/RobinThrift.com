@@ -1,0 +1,7 @@
+name = "Theme"
+homepage = "https://github.com/RobinThrift/RobinThrift.com"
+min_version = 0.111
+
+[author]
+  name = "Robin Thrift"
+  homepage = "https://robinthrift.com"
