@@ -17,7 +17,7 @@ module.exports = {
             },
 
             fontFamily: {
-                sans: ["CooperHewitt", "ui-sans-serif", "system-ui"],
+                sans: ["Fixel Text", "ui-sans-serif", "system-ui"],
                 mono: ["LeagueMono", "ui-monospace", "SFMono-Regular"],
             },
         },

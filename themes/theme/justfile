@@ -12,7 +12,7 @@ css-watch:
 css-build:
     ./node_modules/.bin/tailwindcss -m -i ./styles/style.css -o ./static/css/style.css
 
-fonts: _leaguemono _cooperhewitt
+fonts: _leaguemono _fixel
 
 _leaguemono:
    curl -L https://github.com/theleagueof/league-mono/releases/download/2.300/LeagueMono-2.300.tar.xz -o LeagueMono-2.300.tar.xz
@@ -21,11 +21,10 @@ _leaguemono:
    curl -L https://raw.githubusercontent.com/theleagueof/league-mono/master/OFL.md > static/fonts/leaguemono/LICENSE
    rm -rf LeagueMono-2.300 LeagueMono-2.300.tar.xz
 
-
-_cooperhewitt:
-    curl -L http://cooperhewitt.wpengine.com//wp-content/uploads/fonts/CooperHewitt-WebFonts-public.zip -o cooperhewitt.zip
-    unzip cooperhewitt.zip
-    cp CooperHewitt-WebFonts-public/-CooperHewitt-OFL-201406.txt static/fonts/cooperhewitt/LICENSE
-    cp CooperHewitt-WebFonts-public/CooperHewitt-{Book,Semibold,BookItalic,SemiboldItalic}.* static/fonts/cooperhewitt/
-    rm -rf cooperhewitt.zip CooperHewitt-WebFonts-public
+_fixel:
+    curl -L https://fonts.macpaw.com/fonts/FixelAll.zip -o FixelAll.zip
+    unzip FixelAll.zip -d FixelAll
+    curl -L "https://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt" -o static/fonts/fixeltext/LICENSE
+    cp FixelAll/FixelText/FixelText-{Bold,Regular,Light}.* static/fonts/fixeltext/
+    rm -rf FixelAll.zip -d FixelAll
 

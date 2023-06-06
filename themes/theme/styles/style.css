@@ -4,6 +4,24 @@
 @tailwind typography;
 
 @font-face {
+  font-family: "Fixel Text";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/fixeltext/FixelText-Regular.woff2) format('woff'),
+    url(/fonts/fixeltext/FixelText-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "Fixel Text";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/fixeltext/FixelText-Bold.woff2) format('woff'),
+    url(/fonts/fixeltext/FixelText-Bold.ttf) format('truetype');
+}
+
+@font-face {
   font-family: "LeagueMono";
   font-style: normal;
   font-weight: 400;
@@ -25,48 +43,6 @@
     url(/fonts/leaguemono/LeagueMono-NarrowRegular.otf) format('opentype'),
     url(/fonts/leaguemono/LeagueMono-NarrowRegular.ttf) format('truetype');
 }
-
-@font-face {
-  font-family: "CooperHewitt";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/cooperhewitt/CooperHewitt-Book.woff) format('woff'),
-    url(/fonts/cooperhewitt/CooperHewitt-Book.svg) format('svg'),
-    url(/fonts/cooperhewitt/CooperHewitt-Book.eot) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: "CooperHewitt";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/cooperhewitt/CooperHewitt-Semibold.woff) format('woff'),
-    url(/fonts/cooperhewitt/CooperHewitt-Semibold.svg) format('svg'),
-    url(/fonts/cooperhewitt/CooperHewitt-Semibold.eot) format('embedded-opentype');
-}
-
-
-@font-face {
-  font-family: "CooperHewitt";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/cooperhewitt/CooperHewitt-BookItalic.woff) format('woff'),
-    url(/fonts/cooperhewitt/CooperHewitt-BookItalic.svg) format('svg'),
-    url(/fonts/cooperhewitt/CooperHewitt-BookItalic.eot) format('embedded-opentype');
-}
-
-@font-face {
-  font-family: "CooperHewitt";
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/cooperhewitt/CooperHewitt-SemiboldItalic.woff) format('woff'),
-    url(/fonts/cooperhewitt/CooperHewitt-SemiboldItalic.svg) format('svg'),
-    url(/fonts/cooperhewitt/CooperHewitt-SemiboldItalic.eot) format('embedded-opentype');
-}
-
 
 @layer base {
     .prose a, a {
