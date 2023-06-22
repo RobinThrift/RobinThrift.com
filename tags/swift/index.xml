@@ -10,19 +10,19 @@
     <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0100</lastBuildDate><atom:link href="https://robinthrift.com/tags/swift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Detecting MIME type and file extension in Swift (using Uniform Type Identifiers)</title>
-      <link>https://robinthrift.com/post/swift-detect-mime-and-filetype/</link>
+      <link>https://robinthrift.com/posts/swift-detect-mime-and-filetype/</link>
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/swift-detect-mime-and-filetype/</guid>
+      <guid>https://robinthrift.com/posts/swift-detect-mime-and-filetype/</guid>
       <description>Why do we want to detect the MIME type or file extension? The Matrix spec defines several messaging types for attachments (essentially binary blobs). The generic m.file can be used to send any type of file as an attachment. Common file types like audio, video, and especially images however have their own message type (m.audio, m.video and m.image respectively). So when sending images (or video, or audio) we want to send it using the appropriate message type.</description>
     </item>
     
     <item>
       <title>Error Handling in Swift?</title>
-      <link>https://robinthrift.com/post/swift-error-handling/</link>
+      <link>https://robinthrift.com/posts/swift-error-handling/</link>
       <pubDate>Mon, 03 Jul 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://robinthrift.com/post/swift-error-handling/</guid>
+      <guid>https://robinthrift.com/posts/swift-error-handling/</guid>
       <description>I&amp;rsquo;ve been writing a lot of Swift recently, both for iOS and macOS (maybe some server side Linux stuff in future too). Whenever you learn a new language you initially take some idioms from other languages with you. I am primarily a JavaScript developer, where, due to the nature of things, most operations are asynchronous, so they are wrapped in promises. Error handling in this case is mostly handled in anonymous functions where the first parameter is the error object:</description>
     </item>
     

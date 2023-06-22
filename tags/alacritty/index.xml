@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>alacritty on Robin Thrift</title>
+    <link>https://robinthrift.com/tags/alacritty/</link>
+    <description>Recent content in alacritty on Robin Thrift</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2023</copyright>
+    <lastBuildDate>Thu, 22 Jun 2023 12:00:00 +0100</lastBuildDate><atom:link href="https://robinthrift.com/tags/alacritty/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Persistent Colour Scheme Changes in Neovim</title>
+      <link>https://robinthrift.com/posts/2023-06-22-neovim-persistent-colourscheme-changes/</link>
+      <pubDate>Thu, 22 Jun 2023 12:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/posts/2023-06-22-neovim-persistent-colourscheme-changes/</guid>
+      <description>If you&amp;rsquo;re too lazy to read how and why, you can skip straight to the solution.
+Say, you&amp;rsquo;re like me—you have more than one colour scheme in your rotation. Perhaps your desk is situated next to a beautiful window that bathes your workspace in ever-changing natural light throughout the day, especially in the summer. This, of course, leads to the necessity of frequently having to switch colour schemes. Thankfully(?), the clever folks behind telescope have made it incredibly easy to find and switch between installed colour schemes.</description>
+    </item>
+    
+  </channel>
+</rss>

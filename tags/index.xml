@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/RobinThrift&#34;&gt;Robin Thrift&lt;/a&gt; 2023</copyright>
-    <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0100</lastBuildDate><atom:link href="https://robinthrift.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Jun 2023 12:00:00 +0100</lastBuildDate><atom:link href="https://robinthrift.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>alacritty</title>
+      <link>https://robinthrift.com/tags/alacritty/</link>
+      <pubDate>Thu, 22 Jun 2023 12:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/alacritty/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>neovim</title>
+      <link>https://robinthrift.com/tags/neovim/</link>
+      <pubDate>Thu, 22 Jun 2023 12:00:00 +0100</pubDate>
+      
+      <guid>https://robinthrift.com/tags/neovim/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>c</title>
       <link>https://robinthrift.com/tags/c/</link>

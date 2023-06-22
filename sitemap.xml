@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://robinthrift.com/tags/alacritty/</loc>
+    <lastmod>2023-06-22T12:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://robinthrift.com/tags/neovim/</loc>
+    <lastmod>2023-06-22T12:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://robinthrift.com/posts/2023-06-22-neovim-persistent-colourscheme-changes/</loc>
+    <lastmod>2023-06-22T12:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://robinthrift.com/posts/</loc>
+    <lastmod>2023-06-22T12:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://robinthrift.com/</loc>
+    <lastmod>2023-06-22T12:00:00+01:00</lastmod>
+  </url><url>
+    <loc>https://robinthrift.com/tags/</loc>
+    <lastmod>2023-06-22T12:00:00+01:00</lastmod>
+  </url><url>
     <loc>https://robinthrift.com/tags/c/</loc>
     <lastmod>2020-06-07T00:00:00+01:00</lastmod>
   </url><url>
@@ -11,22 +29,13 @@
     <loc>https://robinthrift.com/tags/open62541/</loc>
     <lastmod>2020-06-07T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/</loc>
-    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://robinthrift.com/</loc>
-    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://robinthrift.com/tags/</loc>
-    <lastmod>2020-06-07T00:00:00+01:00</lastmod>
-  </url><url>
     <loc>https://robinthrift.com/tags/zig/</loc>
     <lastmod>2020-06-07T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/zig-c-interop-init-failure/</loc>
+    <loc>https://robinthrift.com/posts/zig-c-interop-init-failure/</loc>
     <lastmod>2020-06-07T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/swift-detect-mime-and-filetype/</loc>
+    <loc>https://robinthrift.com/posts/swift-detect-mime-and-filetype/</loc>
     <lastmod>2018-10-07T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://robinthrift.com/tags/entropy/</loc>
@@ -44,43 +53,43 @@
     <loc>https://robinthrift.com/tags/swift/</loc>
     <lastmod>2018-10-07T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/swift-error-handling/</loc>
+    <loc>https://robinthrift.com/posts/swift-error-handling/</loc>
     <lastmod>2017-07-03T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/weekly-picks-no-6/</loc>
+    <loc>https://robinthrift.com/posts/weekly-picks-no-6/</loc>
     <lastmod>2016-04-24T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://robinthrift.com/tags/weekly-picks/</loc>
     <lastmod>2016-04-24T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/weekly-picks-no-5/</loc>
+    <loc>https://robinthrift.com/posts/weekly-picks-no-5/</loc>
     <lastmod>2016-04-17T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/weekly-picks-no-4/</loc>
+    <loc>https://robinthrift.com/posts/weekly-picks-no-4/</loc>
     <lastmod>2016-04-03T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/weekly-picks-no-3/</loc>
+    <loc>https://robinthrift.com/posts/weekly-picks-no-3/</loc>
     <lastmod>2016-01-31T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/weekly-picks-no-2/</loc>
+    <loc>https://robinthrift.com/posts/weekly-picks-no-2/</loc>
     <lastmod>2015-12-20T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/weekly-picks-no-1/</loc>
+    <loc>https://robinthrift.com/posts/weekly-picks-no-1/</loc>
     <lastmod>2014-11-23T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/hannoverjs-august-metalsmith-talk/</loc>
+    <loc>https://robinthrift.com/posts/hannoverjs-august-metalsmith-talk/</loc>
     <lastmod>2014-09-03T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/metalsmith-part-3-refining-our-tools/</loc>
+    <loc>https://robinthrift.com/posts/metalsmith-part-3-refining-our-tools/</loc>
     <lastmod>2014-04-17T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/metalsmith-part-2-shaping-the-metal/</loc>
+    <loc>https://robinthrift.com/posts/metalsmith-part-2-shaping-the-metal/</loc>
     <lastmod>2014-04-15T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/metalsmith-part-1-setting-up-the-forge/</loc>
+    <loc>https://robinthrift.com/posts/metalsmith-part-1-setting-up-the-forge/</loc>
     <lastmod>2014-04-14T00:00:00+01:00</lastmod>
   </url><url>
-    <loc>https://robinthrift.com/post/getting-to-know-metalsmith/</loc>
+    <loc>https://robinthrift.com/posts/getting-to-know-metalsmith/</loc>
     <lastmod>2014-04-13T00:00:00+01:00</lastmod>
   </url><url>
     <loc>https://robinthrift.com/categories/</loc>
